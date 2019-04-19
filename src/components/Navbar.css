@@ -1,0 +1,46 @@
+.navbar{
+    height: 59px;
+    background-color: var(--navbar-color);
+    padding: 0 21px;
+    display: grid;
+    grid-template-columns: 62px 1fr 1fr 1fr;
+    grid-template-areas: "logo iconsLeft iconsLeft iconsRight"; 
+    align-content: center;
+    grid-gap: 10px;
+}
+
+.logo{
+    width: 48px;
+    height: 23px;
+    grid-column: logo;
+    margin-top: 8px;
+}
+
+.icon{
+    height: 14px;
+    width: auto;
+    margin-top: 13px;
+    margin-right: 7vw;
+}
+
+.iconsLeft{
+    grid-area: iconsLeft;
+}
+
+.iconsRight{
+    grid-area: iconsRight;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: end;
+}
+
+.search{
+    margin-left: -7px;
+}
+
+.profile{
+    background-color: white;
+    width: 39px;
+    height: 39px;
+    border-radius: 50px;
+}

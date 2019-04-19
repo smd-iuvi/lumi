@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import Navbar from '../components/Navbar';
 
 class Home extends Component {
   render() {
     return (
-      <h1>Lumi</h1>
+      <div>
+        <Navbar/>
+        <div className="container">
+          
+        </div>
+      </div>
     );
   }
 }

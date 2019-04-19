@@ -6,10 +6,10 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-            <Switch>
-                <Route path="/" exact component={Home} />
-            </Switch>
-        </BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={Home} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
