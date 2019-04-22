@@ -10,7 +10,11 @@ class Home extends Component {
         <div className="container">
           <h1 className="Heading">Tem vídeo novo na área</h1>
           <Carousel></Carousel>
+          <h1 className="Heading">Próximos Lançamentos</h1>
+          <h1 className="Heading">Os mais assistidos</h1>
+          <Carousel></Carousel>
         </div>
+        <footer>© 2019 Lumi</footer>
       </div>
     );
   }
