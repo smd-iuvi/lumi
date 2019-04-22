@@ -1,0 +1,25 @@
+.containerEvents{
+    width: 100%;
+    min-height: 64px;
+}
+
+.containerEvents .borderLeft{
+    width: 30px;
+    height: 30px;
+    margin-bottom: -30px;
+    border-left: 1px solid var(--primary);
+    border-top: 1px solid var(--primary);
+}
+
+.containerEvents .borderRight{
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+    border-right: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+}
+
+.moreViews{
+    margin-top: 30px;
+}

@@ -9,7 +9,7 @@ class Carousels extends Component {
 
     render() {
         return (
-            <Carousel emulateTouch centerMode showStatus={false} showIndicators={false} showThumbs={false} width="100%" className="carousel">
+            <Carousel emulateTouch centerMode showStatus={false} showIndicators={false} showThumbs={false} width="100vw" className="carousel">
                 <Link to="/Video"><div className="card">
                     <img src={birdbox} />
                 </div></Link>

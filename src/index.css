@@ -1,6 +1,7 @@
 :root {
   --navbar-color: #041521;
   --primary: #30bbe6;
+  --secundary: #0d5580;
   --white: #FFFFFF;
   --gradient-primary: #052940;
   --gradient-secundary: #03121C;
@@ -69,6 +70,31 @@ html{
   font-stretch: normal;
   line-height: 1.21;
   letter-spacing: normal;
+  text-align: left;
+  color: var(--white);
+}
+
+.Small-Titles {
+  font-family: GravityBook;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+  text-align: left;
+  color: var(--white);
+  margin-top: 0;
+}
+
+.Small-Subtitles {
+  font-family: GravityLight;
+  font-size: 12px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
   text-align: left;
   color: var(--white);
 }
