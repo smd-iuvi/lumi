@@ -1,0 +1,31 @@
+<svg id="share_button" data-name="share button" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke-width: 0.3px;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #fff;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke-width: 2px;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <path id="share001_-_E027" data-name="share001 - E027" class="cls-1" d="M-2.072-30.564l3.653,3.585L.8-26.23l-2.333-2.3v9.486H-2.614v-9.486l-2.333,2.3-.778-.75Zm7,19h-14V-24.621h5.194v1.063H-7.989v10.931H3.845V-23.558H-.266v-1.063H4.928Z" transform="translate(22.072 40.564)"/>
+  <g id="Ellipse_3" data-name="Ellipse 3" class="cls-2">
+    <circle class="cls-3" cx="20" cy="20" r="20"/>
+    <circle class="cls-4" cx="20" cy="20" r="19"/>
+  </g>
+</svg>

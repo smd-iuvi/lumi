@@ -1,0 +1,25 @@
+iframe{
+    width: 100%;
+    height: 50vw;
+}
+
+.hamburguer{
+    background-color: var(--gradient-secundary);
+    width: 30px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+}
+
+.Actions{
+    justify-content: left;
+}
+
+.Actions .Icons{
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.Actions .Actions-Video{
+    margin-left: -9px;
+}

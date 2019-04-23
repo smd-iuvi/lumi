@@ -39,8 +39,28 @@
     border-radius: 2px;
     padding: 8px;
     cursor: pointer;
+    margin-bottom: 15px;
 }
 
 .Play .fa-play{
     margin-right: 9px;
+}
+
+.Icons{
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.Actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Actions div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
 }
