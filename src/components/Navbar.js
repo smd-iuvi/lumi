@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../components/Navbar.css';
+import './styles/Navbar.css';
 import logo from '../assets/lumi_logo.png';
 import home from '../assets/icons/home_button.svg';
 import explore from '../assets/icons/explore_button.svg';

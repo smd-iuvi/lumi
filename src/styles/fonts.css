@@ -1,0 +1,153 @@
+.Heading {
+    font-family: GravityBold, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.17;
+    letter-spacing: -0.4px;
+    text-align: left;
+    color: var(--white);
+  }
+  
+  .Type {
+    font-family: GravityRegular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+  }
+  
+  .Descriptions{
+    font-family: GravityRegular;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+  }
+  
+  .Small-Titles {
+    font-family: GravityBook;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    text-align: left;
+    color: var(--white);
+    margin-top: 0;
+  }
+  
+  .Small-Subtitles {
+    font-family: GravityLight;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    text-align: left;
+    color: var(--white);
+  }
+  
+  .Actions-Video {
+    font-family: GravityLight;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+  }
+  
+  .Title-Film {
+    font-family: GravityBold;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+  }
+  
+  .Views-Film {
+    font-family: GravityLight;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+  
+  .Pessoal-Area-Infos {
+    font-family: GravityLight;
+    font-size: 14px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+    text-align: left;
+    margin-top: -10px;
+    color: var(--white);
+  }
+  
+  .Profile-Name {
+    font-family: GravityRegular;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.17;
+    letter-spacing: -0.4px;
+    text-align: left;
+    color: var(--white);
+  }
+  
+  .Profile-Descripiton {
+    font-family: GravityBook;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+    text-align: left;
+    margin-top: -5px;
+    color: var(--white);
+  }
+  
+  .Context-Button {
+    font-family: GravityBold;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    cursor: pointer;
+    color: var(--white);
+  }
+  
+  .container{
+    padding-top: 59px;
+    padding-bottom: 43px;
+  }

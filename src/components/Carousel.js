@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../components/Carousel.css';
+import './styles/Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
 import birdbox from '../assets/birdbox.jpg';

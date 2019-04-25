@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import SidebarPlayer from '../components/SidebarPlayer';
-import './Player.css';
+import './styles/Player.css';
 import addList from '../assets/icons/add_list.svg';
 import share from '../assets/icons/share_button.svg';
 import applause from '../assets/icons/clap_button.svg';
@@ -24,6 +24,14 @@ class Player extends Component {
               <img src={applause} className="Icons"/>
               <h1 className="Actions-Video">5.2k {<br/>} aplausos</h1>
             </div>
+          </div>
+          <article className="line"></article>
+          <div className="newComment">
+            <article className="photoComment"></article>
+            <textarea className="textComment" placeholder="Escreva um comentário...">
+            </textarea>
+            <button className="button buttonSecundary">CANCELAR</button>
+            <button className="button buttonPrimary">COMENTAR</button>
           </div>
         </div>
       </div>

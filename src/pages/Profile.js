@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
-import './Profile.css';
+import './styles/Profile.css';
 
 class Profile extends Component {
   render() {
