@@ -1,8 +1,10 @@
 import React from 'react'
 
+import './Footer.css';
+
 const Footer = () => {
   return (
-    <footer>© 2019 Lumi</footer>
+    <footer className="Footer">© 2019 Lumi</footer>
   )
 }
 

@@ -1,9 +1,9 @@
-.containerEvents{
+.EventsList{
     width: 100%;
     min-height: 64px;
 }
 
-.containerEvents .borderLeft{
+.EventsList .borderLeft{
     width: 30px;
     height: 30px;
     margin-bottom: -30px;
@@ -11,7 +11,7 @@
     border-top: 1px solid var(--primary);
 }
 
-.containerEvents .borderRight{
+.EventsList .borderRight{
     float: right;
     width: 30px;
     height: 30px;
@@ -20,6 +20,6 @@
     border-bottom: 1px solid var(--primary);
 }
 
-.moreViews{
-    margin-top: 30px;
+.EventsList{
+    margin-bottom: 30px;
 }

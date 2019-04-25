@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
-
-import './styles/Home.css';
+import React from 'react';
 
 import Header from '../components/Header/Header';
 import Navbar from '../components/NavBar/NavBar';
 import Carousel from '../components/Carousel/Carousel';
-import Event from '../components/Event/Event';
+import EventsList from '../components/EventsList/EventsList';
 import Footer from '../components/Footer/Footer';
 
-class Home extends Component {
-  render() {
+const Home = () => {
     return (
       <div>
         <Navbar/>
@@ -18,14 +15,7 @@ class Home extends Component {
           <Carousel/>
 
           <Header>Próximos lançamentos</Header>
-          <div className="containerEvents">
-            <article className="borderLeft"></article>
-            <Event/>
-            <Event/>
-            <Event/>
-            
-            <article className="borderRight"></article>
-          </div>
+          <EventsList/>
 
           <Header>Os mais assistidos</Header>
           <Carousel/>
@@ -33,7 +23,6 @@ class Home extends Component {
         <Footer/>
       </div>
     );
-  }
 }
 
 export default Home;
