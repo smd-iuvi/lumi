@@ -1,12 +1,15 @@
 .navbar{
     height: 59px;
     background-color: var(--navbar-color);
-    padding: 0 21px;
     display: grid;
-    grid-template-columns: 62px 1fr 1fr 1fr;
+    grid-template-columns: 83px 1fr 1fr 1fr;
     grid-template-areas: "logo iconsLeft iconsLeft iconsRight"; 
     align-content: center;
     grid-gap: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
 }
 
 .logo{
@@ -14,6 +17,7 @@
     height: 23px;
     grid-column: logo;
     margin-top: 8px;
+    margin-left: 21px;
 }
 
 .icon{
@@ -44,4 +48,5 @@
     width: 39px;
     height: 39px;
     border-radius: 50px;
+    margin-right: 21px;
 }
