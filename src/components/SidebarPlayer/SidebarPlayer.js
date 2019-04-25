@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './styles/SidebarPlayer.css';
+
+import './SidebarPlayer.css';
+
 class SidebarPlayer extends Component {
   render() {
     return (

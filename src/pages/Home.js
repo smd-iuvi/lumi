@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+
 import './styles/Home.css';
-import Navbar from '../components/Navbar';
-import Carousel from '../components/Carousel';
-import Event from '../components/Event';
+
+import Header from '../components/Header/Header';
+import Navbar from '../components/NavBar/NavBar';
+import Carousel from '../components/Carousel/Carousel';
+import Event from '../components/Event/Event';
+import Footer from '../components/Footer/Footer';
 
 class Home extends Component {
   render() {
@@ -10,10 +14,10 @@ class Home extends Component {
       <div>
         <Navbar/>
         <div className="container">
-          <h1 className="Heading">Tem vídeo novo na área</h1>
+          <Header>Tem vídeo novo na área</Header>
           <Carousel/>
 
-          <h1 className="Heading">Próximos lançamentos</h1>
+          <Header>Próximos lançamentos</Header>
           <div className="containerEvents">
             <article className="borderLeft"></article>
             <Event/>
@@ -23,10 +27,10 @@ class Home extends Component {
             <article className="borderRight"></article>
           </div>
 
-          <h1 className="Heading moreViews">Os mais assistidos</h1>
+          <Header>Os mais assistidos</Header>
           <Carousel/>
         </div>
-        <footer>© 2019 Lumi</footer>
+        <Footer/>
       </div>
     );
   }

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
-import SidebarPlayer from '../components/SidebarPlayer';
+
+import Navbar from '../components/NavBar/NavBar';
+import SidebarPlayer from '../components/SidebarPlayer/SidebarPlayer';
+
 import './styles/Player.css';
+
 import addList from '../assets/icons/add_list.svg';
 import share from '../assets/icons/share_button.svg';
 import applause from '../assets/icons/clap_button.svg';

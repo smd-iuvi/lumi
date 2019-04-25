@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import './styles/Navbar.css';
-import logo from '../assets/lumi_logo.png';
-import home from '../assets/icons/home_button.svg';
-import explore from '../assets/icons/explore_button.svg';
-import search from '../assets/icons/search_button.svg';
+
+import './NavBar.css';
+
+import logo from './assets/lumi_logo.png';
+import home from './assets/icons/home_button.svg';
+import explore from './assets/icons/explore_button.svg';
+import search from './assets/icons/search_button.svg';
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {

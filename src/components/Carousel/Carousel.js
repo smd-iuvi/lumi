@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import './styles/Carousel.css';
+import { Link } from 'react-router-dom'
+
 import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
-import birdbox from '../assets/birdbox.jpg';
-import { Link } from 'react-router-dom'
+
+
+import './Carousel.css';
+import birdbox from '../../assets/birdbox.jpg';
+
+
+
 
 class Carousels extends Component {
 
