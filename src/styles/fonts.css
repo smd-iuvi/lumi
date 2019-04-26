@@ -146,8 +146,36 @@
     cursor: pointer;
     color: var(--white);
   }
+
+  .Buttons-Navbar{
+    font-family: GravityBold;
+    font-size: 13px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+  }
   
   .container{
-    padding-top: 59px;
+    padding-top: 20px;
     padding-bottom: 43px;
+    margin: 59px 21px 0 21px;
+  }
+
+  @media only screen and (min-width : 1224px) {
+    .container{
+      margin: 88px 61px 0 61px;
+    }
+    .Heading {
+      font-size: 30px;
+    }
+    .Small-Titles {
+      font-size: 18px;
+    }
+    .Small-Subtitles{
+      font-size: 18px;
+    }
   }

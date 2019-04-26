@@ -3,9 +3,12 @@
     min-height: 64px;
 }
 
-.EventsList .borderLeft{
+.EventsList .border{
     width: 30px;
     height: 30px;
+}
+
+.EventsList .borderLeft{
     margin-bottom: -30px;
     border-left: 1px solid var(--primary);
     border-top: 1px solid var(--primary);
@@ -13,13 +16,25 @@
 
 .EventsList .borderRight{
     float: right;
-    width: 30px;
-    height: 30px;
     margin-top: -30px;
-    border-right: 1px solid var(--primary);
     border-bottom: 1px solid var(--primary);
+    border-right: 1px solid var(--primary);
 }
 
 .EventsList{
     margin-bottom: 30px;
+}
+
+@media only screen and (min-width : 1224px) {
+    .EventsList .border{
+        width: 80px;
+        height: 80px;
+    }
+    .EventsList .borderLeft{
+        margin-bottom: -80px;
+    }
+    .Events{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }

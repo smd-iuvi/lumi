@@ -7,11 +7,13 @@ import './EventsList.css';
 const EventsList = () => {
   return (
     <div className="EventsList">
-        <article className="borderLeft"></article>
-        <Event/>
-        <Event/>
-        <Event/>
-        <article className="borderRight"></article>
+        <article className="border borderLeft"></article>
+        <div className="Events">
+          <Event/>
+          <Event/>
+          <Event/>
+        </div>
+        <article className="border borderRight"></article>
     </div>
   )
 }

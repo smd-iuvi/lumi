@@ -15,7 +15,9 @@ class Navbar extends Component {
         <img src={logo} alt="Logo" className="logo"/>
         <div className="iconsLeft">
           <Link to="/"><img src={home} alt="Home" className="icon"/></Link>
+          <h1 className="Buttons-Navbar">INÍCIO</h1>
           <img src={explore} alt="Explore" className="icon"/>
+          <h1 className="Buttons-Navbar">DESCOBRIR</h1>
         </div>
         <div className="iconsRight">
           <img src={search} alt="Search" className="icon search"/>

@@ -10,3 +10,9 @@
     border-radius: 4px;
     background-color: var(--secundary);
 }
+
+@media only screen and (min-width : 1224px) {
+    .Event{
+        margin: 20px;
+    }
+}

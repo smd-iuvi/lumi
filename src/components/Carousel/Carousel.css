@@ -1,9 +1,9 @@
 .card{
     margin-right: 10px;
-    cursor: pointer;
 }
 
-.card:hover{
-    opacity: 30%;
+@media only screen and (min-width : 1224px) {
+    .card{
+        margin-right: 14px;
+    }
 }
-

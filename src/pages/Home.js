@@ -19,6 +19,7 @@ const Home = () => {
 
           <Header>Os mais assistidos</Header>
           <Carousel/>
+          <article className="line"></article>
         </div>
         <Footer/>
       </div>
