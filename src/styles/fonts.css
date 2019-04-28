@@ -158,17 +158,8 @@
     text-align: left;
     color: var(--white);
   }
-  
-  .container{
-    padding-top: 20px;
-    padding-bottom: 43px;
-    margin: 59px 21px 0 21px;
-  }
 
   @media only screen and (min-width : 1224px) {
-    .container{
-      margin: 88px 61px 0 61px;
-    }
     .Heading {
       font-size: 30px;
     }

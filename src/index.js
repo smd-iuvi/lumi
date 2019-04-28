@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './styles/fonts.css';
-import './styles/buttons.css';
+import './styles/global.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
