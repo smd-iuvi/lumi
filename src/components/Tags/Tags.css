@@ -1,0 +1,13 @@
+.Tags{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag{
+    background-color: var(--tags);
+    padding: 7px 8px;
+    border-radius: 4px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}

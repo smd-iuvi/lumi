@@ -92,7 +92,6 @@
     line-height: 1.25;
     letter-spacing: normal;
     text-align: left;
-    margin-bottom: 20px;
     color: var(--white);
   }
   
@@ -147,13 +146,49 @@
     color: var(--white);
   }
 
-  .Buttons-Navbar{
+  .labelButtons{
     font-family: GravityBold;
     font-size: 13px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+  }
+
+  .Next-Film{
+    font-family: GravityBold;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+  }
+
+  .Producer-Name{
+    font-family: GravityRegular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .Tags-Label{
+    font-family: GravityBook;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
     letter-spacing: normal;
     text-align: left;
     color: var(--white);
@@ -168,5 +203,14 @@
     }
     .Small-Subtitles{
       font-size: 18px;
+    }
+    .Views-Film{
+      font-size: 14px;
+    }
+    .Producer-Name{
+      font-size: 14px;
+    }
+    .Context-Button{
+      font-size: 16px;
     }
   }

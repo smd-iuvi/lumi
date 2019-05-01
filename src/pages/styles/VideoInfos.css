@@ -48,15 +48,4 @@
     margin-right: 5px;
 }
 
-.Actions{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
-.Actions div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
-}

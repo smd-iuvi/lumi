@@ -1,0 +1,28 @@
+.Actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Actions div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ActionsPlayer{
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
+.Actions .Icons{
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.Actions .Actions-Video{
+    margin-left: -9px;
+}

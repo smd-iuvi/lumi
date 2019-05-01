@@ -33,6 +33,9 @@
   border: 1px solid var(--secundary);
   border-radius: 4px;
   outline: none;
+  background: none;
+  padding: 12px;
+  color: var(--white);
 }
 
 @media only screen and (min-width : 1224px) {
