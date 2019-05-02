@@ -2,7 +2,7 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
-import * as ROLES from '../constants/roles';
+// import * as ROLES from '../constants/roles';
 
 const config = {};
 
@@ -56,15 +56,15 @@ class Firebase {
 
     users = () => this.db.ref("user");
 
+    updateUser = (uid, user) => this.user(uid).set({
+        ...user
+    })
+
     deleteUser = uid => this.user(uid).remove();
 
     // VIDEO API
 
-    video = uid => this.db.ref(`video/${uid}`);
-
-    videos = () => this.db.ref("video");
-
-    createVideoWith = ({ title, description, duration, tags, platform, userId}) => {
+    createVideo = ({ title, description, duration, tags, platform, userId}) => {
         this.db.ref("video").set({
             title,
             description,
@@ -75,27 +75,41 @@ class Firebase {
         })
     };
 
+    video = uid => this.db.ref(`video/${uid}`);
+
+    videos = () => this.db.ref("video");
+
+    updateVideo = (uid, video) => {
+        this.video(uid).set({
+            ...video
+        })
+    };
+
     deleteVideo = uid => this.video(uid).remove();
 
     // COMMENT API 
 
-    comment = uid => this.db.ref(`comment/${uid}`);
-
-    comments = () => this.db.ref("comment");
-
     createCommentWith = ({ text, videoUid }) => {
-        this.db.ref("comment").set({
+        this.db.ref("comments").push({
             text,
             videoUid,
             createdBy: this.auth.currentUser.uid
         })
     }
 
+    comment = uid => this.db.ref(`comment/${uid}`);
+
+    comments = () => this.db.ref("comment");
+
+    updateComment = (uid, comment) => {
+        this.comment(uid).set({
+            ...comment
+        })
+    }
+
+    deleteComment = uid => this.comment(uid).remove();
+
     // EVENT API
-
-    event = uid => this.db.ref(`event/${uid}`);
-
-    events = () => this.db.ref("event");
 
     createEventWith = ({ name, description, data }) => {
         this.db.ref("event").set({
@@ -106,33 +120,75 @@ class Firebase {
         })
     }
 
+    event = uid => this.db.ref(`event/${uid}`);
+
+    events = () => this.db.ref("event");
+
+    updateEvent = (uid, event) => {
+        this.event(uid).set({
+            ...event
+        })
+    }
+
+    deleteEvent = uid => this.event(uid).remove();
+
     // SEMESTER API
 
-    semester = uid => this.db.ref(`semester/${uid}`);
-
-    semesters = () => this.db.ref("semester");
-
-    doCreateSemester = ({ semester }) => {
+    createSemester = ({ semester }) => {
         this.db.ref("semester").set({
             semester
         })
     }
 
+    semester = uid => this.db.ref(`semester/${uid}`);
+
+    semesters = () => this.db.ref("semester");
+
+    updateSemester = (uid, semester) => {
+        this.semester(uid).set({
+            ...semester
+        })
+    }
+
+    deleteSemester = uid => this.semester(uid).remove();
+
     // GENDER API
+
+    createGender = gender => this.genders().push({
+        ...gender
+    })
 
     gender = uid => this.db.ref(`gender/${uid}`);
 
     genders = () => this.db.ref("gender");
 
+    updateGender = (uid, gender) => {
+        this.gender(uid).set({
+            ...gender
+        })
+    }
+
+    deleteGender = uid => this.gender(uid).remove();
+
     // DISCIPLINE API
+
+    createDiscipline = discipline => {
+        this.disciplines().push({
+            ...discipline
+        })
+    }
 
     discipline = uid => this.db.ref(`discipline/${uid}`);
 
     disciplines = () => this.db.ref("discipline");
 
-    doCreateDis
+    updateDiscipline = (uid, discipline) => {
+        this.discipline(uid).set({
+            ...discipline
+        })
+    }
 
-
+    deleteDiscipline = uid => this.discipline(uid).remove();
 
 }
 
