@@ -12,7 +12,17 @@ import Semester from './Models/Semester';
 
 // import * as ROLES from '../constants/roles';
 
-const config = {};
+const config = {
+    apiKey: process.env.API_KEY,
+    authDomain: "lumi-b8b4e.firebaseapp.com",
+    databaseURL: "https://lumi-b8b4e.firebaseio.com",
+    projectId: "lumi-b8b4e",
+    storageBucket: "lumi-b8b4e.appspot.com",
+    messagingSenderId: "337072262344",
+    appId: "1:337072262344:web:4c8f73e8ad2e8e3a"
+};
+
+console.log(config);
 
 class Firebase {
     constructor() {
