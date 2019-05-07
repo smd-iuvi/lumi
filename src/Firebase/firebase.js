@@ -13,51 +13,51 @@ import Semester from './Models/Semester';
 // import * as ROLES from '../constants/roles';
 
 const config = {
-    apiKey: process.env.API_KEY,
-    authDomain: "lumi-b8b4e.firebaseapp.com",
-    databaseURL: "https://lumi-b8b4e.firebaseio.com",
-    projectId: "lumi-b8b4e",
-    storageBucket: "lumi-b8b4e.appspot.com",
-    messagingSenderId: "337072262344",
-    appId: "1:337072262344:web:4c8f73e8ad2e8e3a"
+  apiKey: 'AIzaSyA66a2Non3h0q-zDstvhpp4I6U7bOfL7eE',
+  authDomain: 'lumi-b8b4e.firebaseapp.com',
+  databaseURL: 'https://lumi-b8b4e.firebaseio.com',
+  projectId: 'lumi-b8b4e',
+  storageBucket: 'lumi-b8b4e.appspot.com',
+  messagingSenderId: '337072262344',
+  appId: '1:337072262344:web:4c8f73e8ad2e8e3a'
 };
 
 console.log(config);
 
 class Firebase {
-    constructor() {
-        app.initializeApp(config);
-        this.auth = app.auth();
-        this.db = app.database();
+  constructor() {
+    app.initializeApp(config);
+    this.auth = app.auth();
+    this.db = app.database();
 
-        this.googleProvider = new app.auth.GoogleAuthProvider();
-        
-        this.event = Event(this.db);
-        this.comment = Comment(this.db);
-        this.discipline = Discipline(this.db);
-        this.semester = Semester(this.db);
-        this.gender = Gender(this.db);
-        this.user = User(this.db);
-        this.video = Video(this.db);
-    }
+    this.googleProvider = new app.auth.GoogleAuthProvider();
 
-    doSignInWithEmailAndPassword = (email, password) => {
-        return this.auth.signInWithEmailAndPassword(email, password);
-    }
+    this.event = new Event(this.db);
+    this.comment = new Comment(this.db);
+    this.discipline = new Discipline(this.db);
+    this.semester = new Semester(this.db);
+    this.gender = new Gender(this.db);
+    this.user = new User(this.db);
+    this.video = new Video(this.db);
+  }
 
-    doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
+  doSignInWithEmailAndPassword = (email, password) => {
+    return this.auth.signInWithEmailAndPassword(email, password);
+  };
 
-    doSignOut = () => this.auth.signOut();
+  doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
-    doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
-    
-    doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+  doSignOut = () => this.auth.signOut();
 
-    doSendEmailVerification = () => {
-        this.auth.currentUser.sendEmailVerification({
-            url: "http://localhost:3000"
-        });
-    }
+  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+
+  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+
+  doSendEmailVerification = () => {
+    this.auth.currentUser.sendEmailVerification({
+      url: 'http://localhost:3000'
+    });
+  };
 }
 
 export default Firebase;
