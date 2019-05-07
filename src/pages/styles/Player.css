@@ -11,6 +11,14 @@
     grid-area: containerBottom;
 }
 
+.containerPlayer .actionDescription{
+    display: none;
+}
+
+.containerPlayer .ActionsPlayer{
+    justify-content: left;
+}
+
 iframe{
     width: 97vw;
     height: 40vh;
@@ -47,6 +55,14 @@ iframe{
     }
     .actionsPlayer{
         grid-area: actions;
+    }
+    .containerPlayer .ActionsPlayer{
+        margin-top: 25px;
+        flex-direction: row-reverse;
+    }
+    .containerPlayer .ActionsPlayer .applauses{
+        flex-direction: row-reverse;
+        text-align: right;
     }
     .containerPlayer{
         display: grid;

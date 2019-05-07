@@ -1,0 +1,13 @@
+.ParentalRating{
+    display: grid;
+    grid-template-columns: 45px 120px;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.age{
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    background-color: #e3d207;
+}

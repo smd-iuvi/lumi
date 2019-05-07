@@ -17,7 +17,6 @@ const SidebarPlayer = () => {
         </div>
         <SessionTitle>Conheça quem fez o vídeo</SessionTitle>
         <Producers/>
-        <SessionTitle>Tags deste vídeo</SessionTitle>
         <Tags/>
       </div>
     );

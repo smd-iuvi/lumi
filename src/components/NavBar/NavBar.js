@@ -6,13 +6,14 @@ import logo from './assets/lumi_logo.png';
 import home from './assets/icons/home_button.svg';
 import explore from './assets/icons/explore_button.svg';
 import upload from './assets/icons/new_video.svg';
+import list from './assets/icons/list_button.svg';
 import profile from './assets/profile.jpg';
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
 
   state = {
-    logged: false
+    logged: true
   }
 
   render() {
