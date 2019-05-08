@@ -1,0 +1,23 @@
+.Producers{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 30px;
+    margin-bottom: 22px;
+}
+
+.producer{
+    text-align: center;
+}
+
+.producer .imgProducer{
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+}
+
+.more{
+    background: none;
+    border: none;
+    margin-bottom: 30px;
+    outline: none;
+}

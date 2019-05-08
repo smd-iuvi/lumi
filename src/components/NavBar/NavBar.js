@@ -6,6 +6,7 @@ import logo from './assets/lumi_logo.png';
 import home from './assets/icons/home_button.svg';
 import explore from './assets/icons/explore_button.svg';
 import upload from './assets/icons/new_video.svg';
+import list from './assets/icons/list_button.svg';
 import profile from './assets/profile.jpg';
 import { Link } from 'react-router-dom';
 
@@ -18,12 +19,20 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar">
-        <img src={logo} alt="Logo" className="logo"/>
+        <Link to="/"><img src={logo} alt="Logo" className="logo"/></Link>
         <div className="iconsLeft">
-          <Link to="/"><img src={home} alt="Home" className="icon"/></Link>
-          <h1 className="Buttons-Navbar">INÍCIO</h1>
-          <img src={explore} alt="Explore" className="icon"/>
-          <h1 className="Buttons-Navbar">DESCOBRIR</h1>
+          <Link to="/">
+            <button className="buttonsNavbar home">
+              <img src={home} alt="Home" className="icon"/>
+              <h1 className="labelButtons">INÍCIO</h1>
+            </button>
+          </Link>
+          <Link to="/">
+            <button className="buttonsNavbar">
+              <img src={explore} alt="Explore" className="icon"/>
+              <h1 className="labelButtons">DESCOBRIR</h1>
+            </button>
+          </Link>
         </div>
         <div className="iconsRight">
           <input type="search" className="search textField" placeholder="Pesquisar"/>
@@ -34,7 +43,7 @@ class Navbar extends Component {
               <Link to="/Profile"><img src={profile} className="profile"></img></Link>
             </div>
           ) : (
-            <Link to="/Profile"><button className="buttonLogin"><i className="far fa-user icon"/><h1 className="Buttons-Navbar">ENTRAR</h1></button></Link>
+            <Link to="/Profile"><button className="buttonsNavbar"><i className="far fa-user icon"/><h1 className="labelButtons">ENTRAR</h1></button></Link>
           )}
         </div>
       </div>

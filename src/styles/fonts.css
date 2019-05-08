@@ -1,4 +1,4 @@
-.Heading {
+.Heading, .Event-Day {
     font-family: GravityBold, sans-serif;
     font-size: 18px;
     font-weight: bold;
@@ -6,8 +6,19 @@
     font-stretch: normal;
     line-height: 1.17;
     letter-spacing: -0.4px;
-    text-align: left;
     color: var(--white);
+  }
+
+  .Event-Month{
+    font-family: GravityRegular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.75;
+    letter-spacing: -0.3px;
+    color: var(--white);
+    margin: 0;
   }
   
   .Type {
@@ -67,7 +78,6 @@
     font-stretch: normal;
     line-height: 1.25;
     letter-spacing: normal;
-    text-align: left;
     color: var(--white);
   }
   
@@ -92,7 +102,6 @@
     line-height: 1.25;
     letter-spacing: normal;
     text-align: left;
-    margin-bottom: 20px;
     color: var(--white);
   }
   
@@ -130,7 +139,6 @@
     line-height: 1.5;
     letter-spacing: -0.3px;
     text-align: left;
-    margin-top: -5px;
     color: var(--white);
   }
   
@@ -147,7 +155,7 @@
     color: var(--white);
   }
 
-  .Buttons-Navbar{
+  .labelButtons{
     font-family: GravityBold;
     font-size: 13px;
     font-weight: bold;
@@ -159,14 +167,99 @@
     color: var(--white);
   }
 
+  .Next-Film{
+    font-family: GravityBold;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+  }
+
+  .Producer-Name{
+    font-family: GravityRegular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .Tags-Label{
+    font-family: GravityBook;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+  }
+
+  .AgeParentalRating{
+    font-family: GravityBold;
+    font-size: 19px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--tags);
+  }
+
+  .DescriptionParentalRating{
+    font-family: GravityBook;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+    margin-top: 0;
+  }
+
+  .Play{
+    font-family: GravityBold;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--primary);
+  }
+
   @media only screen and (min-width : 1224px) {
     .Heading {
       font-size: 30px;
     }
-    .Small-Titles {
+    .Small-Titles, .Small-Subtitles, .Pessoal-Area-Infos, .Profile-Descripiton, .Actions-Video, .Descriptions {
       font-size: 18px;
     }
-    .Small-Subtitles{
-      font-size: 18px;
+    .Views-Film, .Producer-Name{
+      font-size: 14px;
+    }
+    .Context-Button, .Type{
+      font-size: 16px;
+    }
+    .DescriptionParentalRating{
+      font-size: 13px;
+    }
+    .Profile-Name{
+      font-size: 20px;
+    }
+    .Play{
+      font-size: 26px;
     }
   }

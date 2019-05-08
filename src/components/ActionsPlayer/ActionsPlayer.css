@@ -1,0 +1,31 @@
+.Actions div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ActionsPlayer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.Actions .Icons{
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.Actions .Actions-Video{
+    margin-left: -9px;
+}
+
+.descriptionApplauses{
+    flex-direction: column !important;
+    margin-right: 10px;
+}
+.Number-Applauses{
+    margin: 0;
+}

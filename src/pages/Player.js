@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 
 import Navbar from '../components/NavBar/NavBar';
+import NewComment from '../components/Comments/NewComment/NewComment';
 import SidebarPlayer from '../components/SidebarPlayer/SidebarPlayer';
+import ActionsPlayer from '../components/ActionsPlayer/ActionsPlayer';
 
 import { withFirebase } from '../Firebase';
 
 import './styles/Player.css';
-
-import addList from '../assets/icons/add_list.svg';
-import share from '../assets/icons/share_button.svg';
-import applause from '../assets/icons/clap_button.svg';
 
 class Player extends Component {
   constructor(props) {
@@ -40,33 +38,28 @@ class Player extends Component {
     return (
       <div>
         <Navbar />
-        <div className="container">
-          <iframe
-            src="https://www.youtube.com/embed/bo_efYhYU2A"
-            frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          />
-          {/* <SidebarPlayer/> */}
-          <h1 className="Title-Film title">Bird Box</h1>
-          <h1 className="Views-Film">5092 visualizações</h1>
-          <div className="Actions ActionsPlayer">
-            <img src={addList} className="Icons" />
-            <img src={share} className="Icons" />
-            <div>
-              <img src={applause} className="Icons" />
-              <h1 className="Actions-Video">5.2k {<br />} aplausos</h1>
-            </div>
-          </div>
-          <article className="line" />
-          <div className="newComment">
-            <article className="photoComment" />
-            <textarea
-              className="textComment"
-              placeholder="Escreva um comentário..."
+        <div className="container containerPlayer">
+          <div className="containerLeft">
+            <iframe
+              src="https://www.youtube.com/embed/bo_efYhYU2A"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen="allowfullscreen"
+              mozallowfullscreen="mozallowfullscreen"
+              msallowfullscreen="msallowfullscreen"
+              oallowfullscreen="oallowfullscreen"
+              webkitallowfullscreen="webkitallowfullscreen"
             />
-            <button className="button buttonSecundary">CANCELAR</button>
-            <button className="button buttonPrimary">COMENTAR</button>
+            <h1 className="Title-Film title">Bird Box</h1>
+            <h1 className="Views-Film">5092 visualizações</h1>
+            <ActionsPlayer className="actionsPlayer" />
+          </div>
+          <div className="containerRight">
+            <SidebarPlayer />
+          </div>
+          <div className="ContainerBottom">
+            <article className="line" />
+            <NewComment />
           </div>
         </div>
       </div>
