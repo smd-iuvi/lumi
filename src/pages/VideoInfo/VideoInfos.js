@@ -30,7 +30,9 @@ class VideoInfos extends Component {
 
           <button
             className="Play"
-            onClick={() => this.props.history.push(ROUTES.PLAYER)}
+            onClick={() =>
+              this.props.history.push(`${ROUTES.PLAYER}/-LeJafAkmRY9wYnhZKS4`)
+            }
           >
             <i className="fas fa-play" />
             ASSISTIR

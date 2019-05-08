@@ -40,7 +40,6 @@ class Video {
         callback(videosList);
       });
     } else {
-      console.log('Aqui porra');
       this.database.ref(`video/${uid}`).on('value', snapshot => {
         const video = snapshot.val();
 

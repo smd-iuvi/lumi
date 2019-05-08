@@ -20,7 +20,7 @@ class App extends Component {
         <Switch>
           <Route path={ROUTES.HOME} exact component={Home} />
           <Route path={ROUTES.VIDEO} exact component={VideoInfos} />
-          <Route path={ROUTES.PLAYER} exact component={Player} />
+          <Route path={`${ROUTES.PLAYER}/:videoId`} component={Player} />
           <Route path={ROUTES.PROFILE} exact component={Profile} />
         </Switch>
 
