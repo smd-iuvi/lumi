@@ -26,7 +26,6 @@ class Player extends Component {
     } = this.props;
 
     firebase.video.get(params.videoId, (video, error) => {
-      console.log(video);
       this.setState({ video, error, loading: false });
     });
   }
