@@ -1,31 +1,50 @@
-.Actions div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
+.Actions div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
 }
 
-.ActionsPlayer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+.ActionsPlayer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: left;
 }
 
-.Actions .Icons{
-    margin-right: 15px;
-    cursor: pointer;
+.actionDescription {
+  display: none;
 }
 
-.Actions .Actions-Video{
-    margin-left: -9px;
+.Actions .Icons {
+  margin-right: 15px;
+  cursor: pointer;
 }
 
-.descriptionApplauses{
-    flex-direction: column !important;
-    margin-right: 10px;
+.Actions .Actions-Video {
+  margin-left: -9px;
 }
-.Number-Applauses{
-    margin: 0;
+
+.descriptionApplauses {
+  flex-direction: column !important;
+  margin-right: 10px;
+}
+.Number-Applauses {
+  margin: 0;
+}
+
+@media only screen and (min-width: 1224px) {
+  .actionsPlayer {
+    grid-area: actions;
+  }
+  .ActionsPlayer {
+    margin-top: 25px;
+    flex-direction: row-reverse;
+  }
+  .ActionsPlayer .applauses {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
 }

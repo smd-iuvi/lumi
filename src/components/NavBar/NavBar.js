@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import './NavBar.css';
 
+import * as ROUTES from '../../constants/routes';
+
 import logo from './assets/lumi_logo.png';
 import home from './assets/icons/home_button.svg';
 import explore from './assets/icons/explore_button.svg';
@@ -11,39 +13,51 @@ import profile from './assets/profile.jpg';
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
-
   state = {
     logged: true
-  }
+  };
 
   render() {
     return (
       <div className="navbar">
-        <Link to="/"><img src={logo} alt="Logo" className="logo"/></Link>
+        <Link to={ROUTES.HOME}>
+          <img src={logo} alt="Logo" className="logo" />
+        </Link>
         <div className="iconsLeft">
-          <Link to="/">
+          <Link to={ROUTES.HOME}>
             <button className="buttonsNavbar home">
-              <img src={home} alt="Home" className="icon"/>
+              <img src={home} alt="Home" className="icon" />
               <h1 className="labelButtons">INÍCIO</h1>
             </button>
           </Link>
-          <Link to="/">
+          <Link to={ROUTES.HOME}>
             <button className="buttonsNavbar">
-              <img src={explore} alt="Explore" className="icon"/>
+              <img src={explore} alt="Explore" className="icon" />
               <h1 className="labelButtons">DESCOBRIR</h1>
             </button>
           </Link>
         </div>
         <div className="iconsRight">
-          <input type="search" className="search textField" placeholder="Pesquisar"/>
+          <input
+            type="search"
+            className="search textField"
+            placeholder="Pesquisar"
+          />
           {this.state.logged ? (
             <div className="optionsLogged">
-              <img src={upload} alt="Upload" className="icon"/>
-              <img src={upload} alt="List" className="icon"/>
-              <Link to="/Profile"><img src={profile} className="profile"></img></Link>
+              <img src={upload} alt="Upload" className="icon" />
+              <img src={upload} alt="List" className="icon" />
+              <Link to={ROUTES.PROFILE}>
+                <img src={profile} className="profile" />
+              </Link>
             </div>
           ) : (
-            <Link to="/Profile"><button className="buttonsNavbar"><i className="far fa-user icon"/><h1 className="labelButtons">ENTRAR</h1></button></Link>
+            <Link to={ROUTES.PROFILE}>
+              <button className="buttonsNavbar">
+                <i className="far fa-user icon" />
+                <h1 className="labelButtons">ENTRAR</h1>
+              </button>
+            </Link>
           )}
         </div>
       </div>
