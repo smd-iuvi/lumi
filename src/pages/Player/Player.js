@@ -35,11 +35,19 @@ class Player extends Component {
     firebase.video.turnOff();
   }
 
+  didClap = () => {
+    const {
+      firebase,
+      match: { params }
+    } = this.props;
+    firebase.video.clap(params.videoId);
+  };
+
   render() {
     return (
       <div className="container containerPlayer">
         <div className="containerLeft">
-          <VideoPlayer />
+          <VideoPlayer didClap={this.didClap} />
         </div>
         <div className="containerRight">
           <SidebarPlayer />
