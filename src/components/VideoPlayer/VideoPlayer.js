@@ -4,7 +4,7 @@ import './VideoPlayer.css';
 
 import ActionsPlayer from '../ActionsPlayer/ActionsPlayer';
 
-const VideoPlayer = () => {
+const VideoPlayer = ({ didClap }) => {
   return (
     <div className="videoPlayer">
       <iframe
@@ -19,7 +19,7 @@ const VideoPlayer = () => {
       />
       <h1 className="Title-Film title">Bird Box</h1>
       <h1 className="Views-Film">5092 visualizações</h1>
-      <ActionsPlayer />
+      <ActionsPlayer didClap={didClap} />
     </div>
   );
 };

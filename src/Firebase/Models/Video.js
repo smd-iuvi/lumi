@@ -31,7 +31,7 @@ class Video {
         platform,
         url,
         createdBy: userId,
-        applauses: 0,
+        claps: 0,
         views: 0
       })
       .then(() => {
@@ -74,6 +74,16 @@ class Video {
     });
 
   delete = uid => this.get(uid).remove();
+
+  clap = uid => {
+    // console.log(uid);
+    // this.get(uid, (v, err) => {
+    //   this.database.ref(`video/${uid}`).update({
+    //     claps: v.claps + 1
+    //   });
+    //   this.turnOff();
+    // });
+  };
 
   turnOff = () => {
     this.database.ref('video').off();
