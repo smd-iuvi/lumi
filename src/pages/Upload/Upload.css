@@ -1,7 +1,20 @@
-.uploadContainer{
+.uploadContainer .topContainer{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 50px;
+}
+
+.uploadContainer .bottomContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 100px;
+}
+
+.leftContainer .addInfo{
+    background: none;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
 }
 
 .infosContainer{

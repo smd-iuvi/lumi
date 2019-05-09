@@ -1,7 +1,7 @@
-.TextFieldInformation input{
+.infosContainer input[type="text"]{
     width: 100%;
     font-family: GravityRegular;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;

@@ -1,0 +1,15 @@
+.NewInformation{
+    display: grid;
+    grid-template-columns: 10px 1fr;
+    grid-gap: 20px;
+}
+
+.NewInformation select{
+    font-size: 14px !important;
+    font-family: GravityBook;
+    margin-bottom: 15px;
+} 
+
+.NewInformation .tags{
+    margin-top: 20px;
+}
