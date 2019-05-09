@@ -1,11 +1,11 @@
-.carousel .slide {
-  background: none;
-}
-.carousel .slider {
-  width: 55%;
+.SliderCard {
+  margin-right: 10px;
 }
 
 @media only screen and (min-width: 1224px) {
+  .SliderCard {
+    margin-right: 14px;
+  }
   .carousel .slider {
     width: 30%;
     margin-bottom: 40px;

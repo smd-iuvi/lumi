@@ -33,10 +33,16 @@ class Home extends Component {
   }
 
   render() {
+    const { recentsVideos, loading } = this.state;
     return (
       <div className="container">
         <Header>Tem vídeo novo na área</Header>
-        <Carousel />
+
+        {loading ? (
+          <p>Carregando vídeos</p>
+        ) : (
+          <Carousel videos={recentsVideos} />
+        )}
 
         <Header>Próximos lançamentos</Header>
         <EventsList />

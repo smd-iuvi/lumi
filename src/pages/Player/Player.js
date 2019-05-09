@@ -20,10 +20,12 @@ class Player extends Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-    const { firebase } = this.props;
+    const {
+      firebase,
+      match: { params }
+    } = this.props;
 
-    firebase.video.get('-LeJafAkmRY9wYnhZKS4', (video, error) => {
-      console.log(video);
+    firebase.video.get(params.videoId, (video, error) => {
       this.setState({ video, error, loading: false });
     });
   }
