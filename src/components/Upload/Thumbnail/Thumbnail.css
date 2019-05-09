@@ -1,3 +1,7 @@
+.Thumbnail{
+    height: 300px;
+}
+
 .Thumbnail input{
     color: var(--white);
 }

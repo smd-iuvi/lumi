@@ -19,6 +19,12 @@
   cursor: pointer;
 }
 
+.button:hover{
+  background-color: var(--hover);
+  border: 1px solid var(--hover);
+  color: var(--white);
+}
+
 .buttonPrimary{
   color: var(--white);
   background-color: var(--secundary);

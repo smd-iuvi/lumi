@@ -1,0 +1,23 @@
+.SelectBox select{
+    background: none;
+    font-family: GravityRegular;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.SelectBox select option{
+    background-color: var(--tags);
+    font-size: 13px;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
+}

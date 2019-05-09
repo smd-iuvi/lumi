@@ -6,6 +6,7 @@ import Description from '../../components/Upload/Description/Description';
 import TextFieldInformation from '../../components/Upload/TextFieldInformation/TextFieldInformation';
 import Thumbnail from '../../components/Upload/Thumbnail/Thumbnail';
 import AddTags from '../../components/Upload/AddTags/AddTags';
+import SelectBox from '../../components/Upload/SelectBox/SelectBox';
 
 class Upload extends Component {
     render() {
@@ -14,7 +15,7 @@ class Upload extends Component {
                 <div>
                     <Header>Enviar vídeo</Header>
                     <Description />
-                    <TextFieldInformation label="Gênero" />
+                    <SelectBox name="Gender" label="Gênero" />
                 </div>
                 <div>
                     <button className="button buttonSecundary">DESFAZER ALTERAÇÕES</button>
@@ -25,7 +26,8 @@ class Upload extends Component {
                 </div>
                 <div>
                     <AddTags />
-
+                    <SelectBox name="ParentalRating" label="Classificação" />
+                    <TextFieldInformation label="Conteúdo" />
                 </div>
             </div>
         );
