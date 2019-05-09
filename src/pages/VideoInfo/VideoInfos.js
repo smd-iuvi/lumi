@@ -35,7 +35,6 @@ class VideoInfos extends Component {
   }
 
   onPlay = e => {
-    const { video } = this.state;
     const {
       match: { params }
     } = this.props;
@@ -46,23 +45,46 @@ class VideoInfos extends Component {
   render() {
     const { video, loading } = this.state;
 
+    let titleLabel;
+    let disciplineLabel;
+    let semesterLabel;
+    let durationLabel;
+    let genreLabel;
+    let descriptionLabel;
+
+    if (loading) {
+      titleLabel = 'Carregando...';
+      disciplineLabel = 'Carregando...';
+      semesterLabel = 'Carregando...';
+      durationLabel = 'Carregando...';
+      genreLabel = 'Carregando...';
+    } else if (video != null) {
+      titleLabel = video.title ? video.title : 'Informação não disponível';
+      disciplineLabel = video.discipline
+        ? video.discipline
+        : 'Semestre desconhecido';
+      semesterLabel = video.semester ? video.semester : 'Semestre desconhecido';
+      durationLabel = video.duration ? video.duration : 'Duração desconhecida';
+      genreLabel = video.genre ? video.genre : 'Gênero desconhecido';
+      descriptionLabel = video.description
+        ? video.description
+        : 'Sem descrição';
+    }
+
     return (
       <div className="container VideoInfos">
         <div>
           <h1 className="Type">Filme</h1>
-          <h1 className="Heading TitleFilm">Bird Box</h1>
+          <h1 className="Heading TitleFilm">{titleLabel}</h1>
           <div className="descriptionVideo">
-            <h1 className="Descriptions Discipline">Narrativas Multimídea</h1>
+            <h1 className="Descriptions Discipline">{disciplineLabel}</h1>
             <div className="Infos">
-              <h1 className="Descriptions">2018</h1>
-              <h1 className="Descriptions">2h4min</h1>
-              <h1 className="Descriptions">Thriller</h1>
+              <h1 className="Descriptions">{semesterLabel}</h1>
+              <h1 className="Descriptions">{durationLabel}</h1>
+              <h1 className="Descriptions">{genreLabel}</h1>
             </div>
           </div>
-          <h1 className="Descriptions">
-            Quando uma força misteriosa dizima a população, apenas uma coisa é
-            certa: se você olhar, você morre.
-          </h1>
+          <h1 className="Descriptions">{descriptionLabel}</h1>
 
           <PlayButton disabled={loading ? true : false} click={this.onPlay}>
             Assistir

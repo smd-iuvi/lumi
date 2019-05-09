@@ -4,7 +4,18 @@ class Video {
   }
 
   create = (
-    { title, description, duration, tags, platform, url, userId },
+    {
+      title,
+      description,
+      semester,
+      discipline,
+      duration,
+      genre,
+      tags,
+      platform,
+      url,
+      userId
+    },
     callback
   ) => {
     this.database
@@ -12,12 +23,16 @@ class Video {
       .push({
         title,
         description,
+        semester,
+        discipline,
         duration,
+        genre,
         tags,
         platform,
         url,
         createdBy: userId,
-        applauses: 0
+        applauses: 0,
+        views: 0
       })
       .then(() => {
         callback(null);
