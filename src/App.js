@@ -10,6 +10,7 @@ import Home from './pages/Home/Home';
 import VideoInfos from './pages/VideoInfo/VideoInfos';
 import Player from './pages/Player/Player';
 import Profile from './pages/Profile/Profile';
+import Upload from './pages/Upload/Upload';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path={ROUTES.VIDEO} exact component={VideoInfos} />
           <Route path={ROUTES.PLAYER} exact component={Player} />
           <Route path={ROUTES.PROFILE} exact component={Profile} />
+          <Route path={ROUTES.UPLOAD} exact component={Upload} />
         </Switch>
 
         <Footer />

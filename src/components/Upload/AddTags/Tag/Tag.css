@@ -1,0 +1,17 @@
+.Tag .tagLabel{
+    font-family: GravityBook;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+    background-color: var(--tags);
+    padding: 7px 8px;
+    border-radius: 4px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    width: max-content;
+}

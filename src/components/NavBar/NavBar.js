@@ -45,20 +45,22 @@ class Navbar extends Component {
           />
           {this.state.logged ? (
             <div className="optionsLogged">
-              <img src={upload} alt="Upload" className="icon" />
+              <Link to={ROUTES.UPLOAD}>
+                <img src={upload} alt="Upload" className="icon" />
+              </Link>
               <img src={upload} alt="List" className="icon" />
               <Link to={ROUTES.PROFILE}>
                 <img src={profile} className="profile" />
               </Link>
             </div>
           ) : (
-            <Link to={ROUTES.PROFILE}>
-              <button className="buttonsNavbar">
-                <i className="far fa-user icon" />
-                <h1 className="labelButtons">ENTRAR</h1>
-              </button>
-            </Link>
-          )}
+              <Link to={ROUTES.PROFILE}>
+                <button className="buttonsNavbar">
+                  <i className="far fa-user icon" />
+                  <h1 className="labelButtons">ENTRAR</h1>
+                </button>
+              </Link>
+            )}
         </div>
       </div>
     );

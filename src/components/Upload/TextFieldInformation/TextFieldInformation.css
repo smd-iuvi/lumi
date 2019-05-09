@@ -1,0 +1,15 @@
+.TextFieldInformation input{
+    width: 100%;
+    font-family: GravityRegular;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+    background: none;
+    outline: none;
+    border: none;
+}

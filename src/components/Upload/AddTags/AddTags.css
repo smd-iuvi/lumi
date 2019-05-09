@@ -1,0 +1,26 @@
+.AddTags{
+    margin-top: 75px;
+}
+
+.AddTags input{
+    width: 100%;
+    font-family: GravityRegular;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+    background: none;
+    outline: none;
+    border: none;
+    margin-bottom: 20px;
+    padding: 5px 0;
+}
+
+.AddTags .tags{
+    display: flex;
+    flex-wrap: wrap;
+}
