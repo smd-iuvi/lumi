@@ -1,13 +1,13 @@
-.containerLeft {
+.containerPlayer .containerLeft {
   margin: 0;
   grid-area: containerLeft;
 }
 
-.containerRight {
+.containerPlayer .containerRight {
   grid-area: containerRight;
 }
 
-.containerBottom {
+.containerPlayer .containerBottom {
   grid-area: containerBottom;
 }
 

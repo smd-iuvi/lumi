@@ -58,8 +58,8 @@
 
 @media only screen and (min-width : 1224px) {
     .newComment{
-        grid-template-columns: 60px 1fr 1fr 100px;
-        grid-template-areas: "photo text text buttonsSubmit";
+        grid-template-columns: 60px 1fr 100px;
+        grid-template-areas: "photo text buttonsSubmit";
         grid-gap: 20px;
     }
     .buttonsSubmit{
@@ -78,6 +78,7 @@
         height: 60px;
     }
     .newComment .textComment{
+        width: 95%;
         height: 35px;
     }
     .newComment .textComment:focus{

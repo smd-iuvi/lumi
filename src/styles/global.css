@@ -17,6 +17,8 @@
   line-height: 1.18;
   letter-spacing: normal;
   cursor: pointer;
+  
+  transition: border .5s, background-color .5s, color .5s;
 }
 
 .button:hover{

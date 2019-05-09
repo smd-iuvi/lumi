@@ -21,6 +21,8 @@
 .Actions .Icons {
   margin-right: 15px;
   cursor: pointer;
+  border-radius: 50px;
+  transition: background-color .5s;
 }
 
 .Actions .Actions-Video {
@@ -33,6 +35,10 @@
 }
 .Number-Applauses {
   margin: 0;
+}
+
+.ActionsPlayer .Icons:hover {
+  background-color: var(--hover);
 }
 
 @media only screen and (min-width: 1224px) {
