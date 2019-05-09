@@ -1,4 +1,4 @@
-.SelectBox select{
+.infosContainer select{
     background: none;
     font-family: GravityRegular;
     font-size: 20px;
@@ -10,11 +10,13 @@
     text-align: left;
     color: var(--white);
     border: none;
+    border-bottom: 1px solid var(--secundary);
     outline: none;
     cursor: pointer;
+    padding-bottom: 3px;
 }
 
-.SelectBox select option{
+.infosContainer select option{
     background-color: var(--tags);
     font-size: 13px;
     -webkit-backdrop-filter: blur(8px);
