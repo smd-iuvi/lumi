@@ -7,7 +7,7 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 
 import Home from './pages/Home/Home';
-import VideoInfos from './pages/VideoInfo/VideoInfos';
+import VideoInfos from './pages/VideoInfos/VideoInfos';
 import Player from './pages/Player/Player';
 import Profile from './pages/Profile/Profile';
 import Upload from './pages/Upload/Upload';
