@@ -8,6 +8,8 @@ import PlayButton from '../../components/Buttons/PlayButton/PlayButton';
 import ActionsPlayer from '../../components/ActionsPlayer/ActionsPlayer';
 import Tags from '../../components/Tags/Tags';
 import ParentalRating from '../../components/ParentalRating/ParentalRating';
+import SessionTitle from '../../components/SessionTitle/SessionTitle';
+import Info from '../../components/VideoInfo/VideoInfo';
 
 import { withFirebase } from '../../Firebase';
 
@@ -72,29 +74,52 @@ class VideoInfos extends Component {
     }
 
     return (
-      <div className="container VideoInfos">
-        <div>
-          <h1 className="Type">Filme</h1>
-          <h1 className="Heading TitleFilm">{titleLabel}</h1>
-          <div className="descriptionVideo">
-            <h1 className="Descriptions Discipline">{disciplineLabel}</h1>
-            <div className="Infos">
-              <h1 className="Descriptions">{semesterLabel}</h1>
-              <h1 className="Descriptions">{durationLabel}</h1>
-              <h1 className="Descriptions">{genreLabel}</h1>
+      <div className="container infos">
+        <div className="VideoInfos">
+          <div>
+            <h1 className="Type">Filme</h1>
+            <h1 className="Heading TitleFilm">{titleLabel}</h1>
+            <div className="descriptionVideo">
+              <h1 className="Descriptions Discipline">{disciplineLabel}</h1>
+              <div className="Infos">
+                <h1 className="Descriptions">{semesterLabel}</h1>
+                <h1 className="Descriptions">{durationLabel}</h1>
+                <h1 className="Descriptions">{genreLabel}</h1>
+              </div>
             </div>
-          </div>
-          <h1 className="Descriptions">{descriptionLabel}</h1>
+            <h1 className="Descriptions">{descriptionLabel}</h1>
 
-          <PlayButton disabled={loading ? true : false} click={this.onPlay}>
-            Assistir
+            <PlayButton disabled={loading ? true : false} click={this.onPlay}>
+              Assistir
           </PlayButton>
 
-          <ActionsPlayer />
+            <ActionsPlayer />
+          </div>
+          <div>
+            <ParentalRating />
+            <Tags />
+          </div>
         </div>
-        <div>
-          <ParentalRating />
-          <Tags />
+        <article className="line" />
+        <div className="gridInfos">
+          <div>
+            <SessionTitle>Ficha técnica</SessionTitle>
+            <div className="datasheet">
+              <Info label="Direção" />
+              <Info label="Roteiro" />
+              <Info label="Fotografia" />
+              <Info label="Elenco" />
+              <Info label="Edição" />
+            </div>
+          </div>
+          <div>
+            <SessionTitle>Informações Acadêmicas</SessionTitle>
+            <div className="academicInfo">
+              <Info label="Disciplina" />
+              <Info label="Sobre o trabalho" />
+              <Info label="Professor" />
+            </div>
+          </div>
         </div>
       </div>
     );

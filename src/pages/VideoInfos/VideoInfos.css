@@ -39,6 +39,16 @@
     margin-right: 5px;
 }
 
+.infos .line{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.datasheet{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 @media only screen and (min-width : 1224px) {
     .VideoInfos{
         display: grid;
@@ -53,5 +63,18 @@
     .Discipline{
         margin-right: 20px;
         margin-top: 12px;
+    }
+    .gridInfos{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+    .datasheet{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .academicInfo{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
     }
 }
