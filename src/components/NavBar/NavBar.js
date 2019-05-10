@@ -48,7 +48,7 @@ class Navbar extends Component {
               <Link to={ROUTES.UPLOAD}>
                 <img src={upload} alt="Upload" className="icon" />
               </Link>
-              <img src={upload} alt="List" className="icon" />
+              <img src={list} alt="List" className="icon" />
               <Link to={ROUTES.PROFILE}>
                 <img src={profile} className="profile" />
               </Link>

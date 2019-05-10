@@ -1,1 +1,23 @@
-<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="list-ul" class="svg-inline--fa fa-list-ul fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M96 96c0 26.51-21.49 48-48 48S0 122.51 0 96s21.49-48 48-48 48 21.49 48 48zM48 208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm0 160c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm96-236h352c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h352c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h352c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="list_button" data-name="list button" transform="translate(-5.75 -11.5)">
+    <line id="Line_13" data-name="Line 13" class="cls-1" x2="12" transform="translate(10.75 13)"/>
+    <line id="Line_14" data-name="Line 14" class="cls-1" x2="12" transform="translate(10.75 18)"/>
+    <line id="Line_15" data-name="Line 15" class="cls-1" x2="12" transform="translate(10.75 23)"/>
+    <circle id="Ellipse_16" data-name="Ellipse 16" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(5.75 11.5)"/>
+    <circle id="Ellipse_18" data-name="Ellipse 18" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(5.75 16.5)"/>
+    <circle id="Ellipse_19" data-name="Ellipse 19" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(5.75 21.5)"/>
+  </g>
+</svg>
