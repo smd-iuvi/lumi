@@ -64,7 +64,7 @@ class VideoInfos extends Component {
       titleLabel = video.title ? video.title : 'Informação não disponível';
       disciplineLabel = video.discipline
         ? video.discipline
-        : 'Semestre desconhecido';
+        : 'Disciplina desconhecida';
       semesterLabel = video.semester ? video.semester : 'Semestre desconhecido';
       durationLabel = video.duration ? video.duration : 'Duração desconhecida';
       genreLabel = video.genre ? video.genre : 'Gênero desconhecido';
@@ -91,7 +91,7 @@ class VideoInfos extends Component {
 
             <PlayButton disabled={loading ? true : false} click={this.onPlay}>
               Assistir
-          </PlayButton>
+            </PlayButton>
 
             <ActionsPlayer />
           </div>
@@ -105,19 +105,28 @@ class VideoInfos extends Component {
           <div>
             <SessionTitle>Ficha técnica</SessionTitle>
             <div className="datasheet">
-              <Info label="Direção" />
-              <Info label="Roteiro" />
-              <Info label="Fotografia" />
-              <Info label="Elenco" />
-              <Info label="Edição" />
+              <Info label="Direção" value={'Indisponível'} />
+              <Info label="Roteiro" value={'Indisponível'} />
+              <Info label="Fotografia" value={'Indisponível'} />
+              <Info label="Elenco" value={'Indisponível'} />
+              <Info label="Edição" value={'Indisponível'} />
             </div>
           </div>
           <div>
             <SessionTitle>Informações Acadêmicas</SessionTitle>
             <div className="academicInfo">
-              <Info label="Disciplina" />
-              <Info label="Sobre o trabalho" />
-              <Info label="Professor" />
+              <Info
+                label="Disciplina"
+                value={video ? video.discipline : 'Indisponível'}
+              />
+              <Info
+                label="Sobre o trabalho"
+                value={video ? video.about : 'Indisponível'}
+              />
+              <Info
+                label="Professor"
+                value={video ? video.professor : 'Indisponível'}
+              />
             </div>
           </div>
         </div>

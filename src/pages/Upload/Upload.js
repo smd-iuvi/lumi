@@ -12,15 +12,15 @@ import AddTags from '../../components/Upload/AddTags/AddTags';
 import SelectBox from '../../components/Upload/SelectBox/SelectBox';
 import NewInformation from '../../components/Upload/NewInformation/NewInformation';
 
-const INITIAL_STATE = {
+const FORM_INITIAL_STATE = {
   title: '',
   description: '',
-  genre: '',
+  genre: 'Animação',
   tags: [],
   url: '',
-  parentalRating: '',
-  discipline: '',
-  semester: '',
+  parentalRating: 'Livre',
+  discipline: 'Nenhuma',
+  semester: '2010.1',
   content: '',
   professor: '',
   about: '',
@@ -30,7 +30,7 @@ const INITIAL_STATE = {
 class Upload extends Component {
   constructor(props) {
     super(props);
-    this.state = { ...INITIAL_STATE };
+    this.state = { ...FORM_INITIAL_STATE };
     this.addInformation = this.addInformation.bind(this);
   }
 
@@ -41,6 +41,7 @@ class Upload extends Component {
   onChange = e => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state);
   };
 
   onSubmit = () => {
@@ -60,8 +61,38 @@ class Upload extends Component {
   };
 
   reset = () => {
-    this.setState({ ...INITIAL_STATE });
+    this.setState({ form: FORM_INITIAL_STATE });
     console.log(this.state);
+  };
+
+  isFormInvalid = () => {
+    const {
+      title,
+      description,
+      genre,
+      tags,
+      url,
+      parentalRating,
+      discipline,
+      semester,
+      content,
+      professor,
+      about
+    } = this.state;
+
+    const isInvalid =
+      title === '' ||
+      description === '' ||
+      genre === '' ||
+      url === '' ||
+      parentalRating === '' ||
+      discipline === '' ||
+      semester === '' ||
+      content === '' ||
+      professor === '' ||
+      about === '';
+
+    return isInvalid;
   };
 
   render() {
