@@ -20,7 +20,7 @@ const FORM_INITIAL_STATE = {
   url: '',
   parentalRating: 'Livre',
   discipline: 'Nenhuma',
-  semester: '2010.1',
+  semester: '2019.1',
   content: '',
   professor: '',
   about: '',

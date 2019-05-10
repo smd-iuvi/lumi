@@ -49,9 +49,17 @@ class SelectBox extends Component {
     } else if (this.props.name == 'discipline') {
       getValue = [
         'Nenhuma',
+        'Animação 2D',
+        'Animação 3D',
+        'Computação Gráfica',
+        'Direção de Arte para Multimídea',
+        'Edição Audiovisual',
+        'Educomunicação',
+        'Instalações Multimídea',
+        'Linguagem Audiovisual',
         'Narrativas Multimídea',
-        'Produção audiovisual para jovens',
-        'Outra'
+        'Produção Audiovisual para Crianças e Adolescentes',
+        'Videografismo'
       ];
       this.setState({
         name: this.props.name,

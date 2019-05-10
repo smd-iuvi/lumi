@@ -212,7 +212,7 @@
     line-height: 1.21;
     letter-spacing: normal;
     text-align: center;
-    color: var(--tags);
+    color: var(--white);
   }
 
   .DescriptionParentalRating{

@@ -3,11 +3,13 @@
     grid-template-columns: 45px 120px;
     grid-gap: 10px;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .age{
     width: 45px;
     height: 45px;
     border-radius: 4px;
-    background-color: #e3d207;
+    
+    /* background-color: #e3d207; */
 }

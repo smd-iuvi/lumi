@@ -49,12 +49,20 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.VideoInfos .ActionsPlayer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 @media only screen and (min-width : 1224px) {
     .VideoInfos{
         display: grid;
         grid-template-columns: 1fr 400px;
-        grid-gap: 30%;
-        align-items: flex-end;
+        grid-gap: 20%;
+        align-items: center;
     }
     .descriptionVideo{
         display: flex;
@@ -77,4 +85,5 @@
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
     }
+    
 }

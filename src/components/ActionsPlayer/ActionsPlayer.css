@@ -14,10 +14,6 @@
   justify-content: left;
 }
 
-.actionDescription {
-  display: none;
-}
-
 .Actions .Icons {
   margin-right: 15px;
   cursor: pointer;
@@ -39,18 +35,4 @@
 
 .ActionsPlayer .Icons:hover {
   background-color: var(--hover);
-}
-
-@media only screen and (min-width: 1224px) {
-  .actionsPlayer {
-    grid-area: actions;
-  }
-  .ActionsPlayer {
-    margin-top: 25px;
-    flex-direction: row-reverse;
-  }
-  .ActionsPlayer .applauses {
-    flex-direction: row-reverse;
-    text-align: right;
-  }
 }

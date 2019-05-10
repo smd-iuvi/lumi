@@ -11,6 +11,10 @@
   grid-area: containerBottom;
 }
 
+.containerPlayer .actionDescription{
+  display: none;
+}
+
 @keyframes textComment {
   0% {
     height: 15px;
@@ -28,4 +32,16 @@
     grid-template-rows: 65vh 1fr;
     grid-gap: 80px;
   }
+  .containerPlayer .actionsPlayer {
+    grid-area: actions;
+  }
+  .containerPlayer .ActionsPlayer {
+    margin-top: 25px;
+    flex-direction: row-reverse;
+  }
+  .containerPlayer .ActionsPlayer .applauses {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
 }

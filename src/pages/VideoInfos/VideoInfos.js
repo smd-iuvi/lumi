@@ -53,6 +53,8 @@ class VideoInfos extends Component {
     let durationLabel;
     let genreLabel;
     let descriptionLabel;
+    let parentalRating;
+    let content;
 
     if (loading) {
       titleLabel = 'Carregando...';
@@ -60,12 +62,15 @@ class VideoInfos extends Component {
       semesterLabel = 'Carregando...';
       durationLabel = 'Carregando...';
       genreLabel = 'Carregando...';
+      content = 'Carregando...';
     } else if (video != null) {
       titleLabel = video.title ? video.title : 'Informação não disponível';
       disciplineLabel = video.discipline
         ? video.discipline
         : 'Disciplina desconhecida';
       semesterLabel = video.semester ? video.semester : 'Semestre desconhecido';
+      parentalRating = video.parentalRating ? video.parentalRating : '';
+      content = video.content ? video.content : 'Conteúdo desconhecido';
       durationLabel = video.duration ? video.duration : 'Duração desconhecida';
       genreLabel = video.genre ? video.genre : 'Gênero desconhecido';
       descriptionLabel = video.description
@@ -96,7 +101,7 @@ class VideoInfos extends Component {
             <ActionsPlayer />
           </div>
           <div>
-            <ParentalRating />
+            <ParentalRating age={parentalRating} content={content} />
             <Tags />
           </div>
         </div>
