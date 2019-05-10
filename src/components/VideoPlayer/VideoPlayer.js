@@ -4,11 +4,15 @@ import './VideoPlayer.css';
 
 import ActionsPlayer from '../ActionsPlayer/ActionsPlayer';
 
-const VideoPlayer = ({ didClap }) => {
+const VideoPlayer = ({ didClap, name, url, views, claps }) => {
+  const urlCode = url.split('=').slice(-1);
+  const embeedUrl = `https://www.youtube.com/embed/${urlCode}`;
+  console.log(name);
+
   return (
     <div className="videoPlayer">
       <iframe
-        src="https://www.youtube.com/embed/bo_efYhYU2A"
+        src={embeedUrl}
         frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen="allowfullscreen"
@@ -17,9 +21,9 @@ const VideoPlayer = ({ didClap }) => {
         oallowfullscreen="oallowfullscreen"
         webkitallowfullscreen="webkitallowfullscreen"
       />
-      <h1 className="Title-Film title">Bird Box</h1>
-      <h1 className="Views-Film">5092 visualizações</h1>
-      <ActionsPlayer didClap={didClap} />
+      <h1 className="Title-Film title">{name}</h1>
+      <h1 className="Views-Film">{views} visualizações</h1>
+      <ActionsPlayer didClap={didClap} claps={claps} />
     </div>
   );
 };

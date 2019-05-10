@@ -44,10 +44,33 @@ class Player extends Component {
   };
 
   render() {
+    const { video, loading } = this.state;
+
+    let nameLabel;
+    let url = '';
+    let viewsLabel;
+    let clapsLabel = 0;
+
+    if (loading) {
+      nameLabel = 'Carregando...';
+      viewsLabel = 'Carregando...';
+    } else if (video != null) {
+      nameLabel = video.title;
+      viewsLabel = video.views;
+      url = video.url;
+      clapsLabel = video.claps;
+    }
+
     return (
       <div className="container containerPlayer">
         <div className="containerLeft">
-          <VideoPlayer didClap={this.didClap} />
+          <VideoPlayer
+            didClap={this.didClap}
+            name={nameLabel}
+            url={url}
+            views={viewsLabel}
+            claps={clapsLabel}
+          />
         </div>
         <div className="containerRight">
           <SidebarPlayer />

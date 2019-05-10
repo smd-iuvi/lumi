@@ -4,7 +4,7 @@ import addList from './assets/add_list.svg';
 import share from './assets/share_button.svg';
 import applause from './assets/clap_button.svg';
 
-const ActionsPlayer = ({ didClap }) => {
+const ActionsPlayer = ({ didClap, claps }) => {
   return (
     <div className="Actions ActionsPlayer">
       <div>
@@ -20,7 +20,7 @@ const ActionsPlayer = ({ didClap }) => {
       <div className="applauses" onClick={didClap}>
         <img src={applause} className="Icons" />
         <h1 className="Actions-Video descriptionApplauses">
-          5.2k {<br />} aplausos
+          {claps} {<br />} aplausos
         </h1>
       </div>
     </div>
