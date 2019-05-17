@@ -4,6 +4,10 @@
     margin: 59px 21px 0 21px;
 }
 
+.link{
+  text-decoration: none;
+}
+
 .button{
   padding: 0 24px;
   height: 40px;

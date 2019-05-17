@@ -8,11 +8,11 @@ import * as ROUTES from '../../constants/routes';
 
 const SliderCard = ({ video }) => {
   return (
-    <Link to={`${ROUTES.VIDEO}/${video.uid}`}>
-      <div className="SliderCard">
-        <img src={birdbox} />
-      </div>
-    </Link>
+    // <Link to={`${ROUTES.VIDEO}/${video.uid}`}>
+    <div className="SliderCard">
+      <img src={birdbox} />
+    </div>
+    // </Link>
   );
 };
 

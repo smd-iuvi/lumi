@@ -1,13 +1,87 @@
 .SliderCard {
   margin-right: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  grid-gap: 20px;
 }
+
+.SliderCard .infos{
+  padding: 50px;
+}
+
+.SliderCard .addRecent{
+  font-family: FontBold;
+  font-size: 14px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--text-secundary);
+}
+
+.SliderCard .titleFilm{
+  font-family: FontBold;
+  font-size: 20px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--white);
+}
+
+.SliderCard .descriptionFilm{
+  font-family: FontRegular;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--white);
+}
+
+.SliderCard .buttonsFilm{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.SliderCard .addList{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: FontRegular;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.SliderCard .addList img{
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+
 
 @media only screen and (min-width: 1224px) {
   .SliderCard {
     margin-right: 14px;
   }
   .carousel .slider {
-    width: 30%;
+    width: 110%;
+    height: 288px;
     margin-bottom: 40px;
   }
 }

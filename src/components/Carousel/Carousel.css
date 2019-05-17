@@ -5,9 +5,20 @@
   width: 55%;
 }
 
+.carousel .thumbs-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+}
+
+.carousel .thumb{
+  width: auto !important;
+  border: none !important;
+}
+
 @media only screen and (min-width: 1224px) {
   .carousel .slider {
-    width: 30%;
+    width: 10%;
     margin-bottom: 40px;
   }
 }

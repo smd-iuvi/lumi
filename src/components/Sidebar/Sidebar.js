@@ -23,14 +23,14 @@ class Navbar extends Component {
   render() {
     return (
       <div className="sidebar">
-        <Link to={ROUTES.HOME}>
+        <Link to={ROUTES.HOME} className="link">
           <img src={logo} alt="Logo" className="logo" />
         </Link>
         <div className="iconsTop">
-          <Link to={ROUTES.HOME}>
+          <Link to={ROUTES.HOME} className="link">
             <ButtonsTop icon={home}>Início</ButtonsTop>
           </Link>
-          <Link to={ROUTES.HOME}>
+          <Link to={ROUTES.HOME} className="link">
             <ButtonsTop icon={explore}>Descobrir</ButtonsTop>
           </Link>
         </div>
@@ -38,30 +38,30 @@ class Navbar extends Component {
         {this.state.logged ? (
           <div className="optionsLogged">
             <div className="optionsProfile">
-              <Link to={ROUTES.PROFILE}>
+              <Link to={ROUTES.PROFILE} className="link">
                 <ButtonProfile image={profile}>Clarissa Ester</ButtonProfile>
               </Link>
-              <Link to={ROUTES.PROFILE}>
+              <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom icon={home}>Enviar vídeo</ButtonsBottom>
               </Link>
-              <Link to={ROUTES.PROFILE}>
+              <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom icon={home}>Meu perfil</ButtonsBottom>
               </Link>
-              <Link to={ROUTES.PROFILE}>
+              <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom icon={home}>Meus envios</ButtonsBottom>
               </Link>
-              <Link to={ROUTES.PROFILE}>
+              <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom icon={home}>Minha lista</ButtonsBottom>
               </Link>
             </div>
-            <Link to={ROUTES.PROFILE}>
+            <Link to={ROUTES.PROFILE} className="link">
               <ButtonsBottom icon={home}>Ajuda</ButtonsBottom>
-            </Link><Link to={ROUTES.PROFILE}>
+            </Link><Link to={ROUTES.PROFILE} className="link">
               <ButtonsBottom icon={home}>Sair</ButtonsBottom>
             </Link>
           </div>
         ) : (
-            <Link to={ROUTES.PROFILE}>
+            <Link to={ROUTES.PROFILE} className="link">
               <button className="buttonsNavbar">
                 <i className="far fa-user icon" />
                 <h1 className="labelButtons">ENTRAR</h1>
