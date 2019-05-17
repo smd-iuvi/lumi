@@ -36,7 +36,7 @@ class Carousels extends Component {
           <div className="infos">
             <h1 className="addRecent">ADICIONADO RECENTEMENTE</h1>
             <h1 className="titleFilm">BirdBox</h1>
-            <h1 className="descriptionFilm">Chihiro é uma garota de 10 anos que fuma um beck muito louco e vive altas aventuras com um dragão voador bigodudo.</h1>
+            <h1 className="descriptionFilm">Bird Box é um filme thriller pós-apocalíptico americano de 2018, dirigido por Susanne Bier, escrito por Eric Heisserer e baseado no livro homônimo de 2014 de Josh Malerman.</h1>
             <div className="buttonsFilm">
               <button className="button buttonPrimary">ASSISTIR</button>
               <article className="addList"><img src={addList} />Minha lista</article>
@@ -48,7 +48,7 @@ class Carousels extends Component {
           <div className="infos">
             <h1 className="addRecent">ADICIONADO RECENTEMENTE</h1>
             <h1 className="titleFilm">BirdBox</h1>
-            <h1 className="descriptionFilm">Chihiro é uma garota de 10 anos que fuma um beck muito louco e vive altas aventuras com um dragão voador bigodudo.</h1>
+            <h1 className="descriptionFilm">Bird Box é um filme thriller pós-apocalíptico americano de 2018, dirigido por Susanne Bier, escrito por Eric Heisserer e baseado no livro homônimo de 2014 de Josh Malerman.</h1>
             <div className="buttonsFilm">
               <button className="button buttonPrimary">ASSISTIR</button>
               <article className="addList"><img src={addList} />Minha lista</article>
@@ -60,7 +60,7 @@ class Carousels extends Component {
           <div className="infos">
             <h1 className="addRecent">ADICIONADO RECENTEMENTE</h1>
             <h1 className="titleFilm">BirdBox</h1>
-            <h1 className="descriptionFilm">Chihiro é uma garota de 10 anos que fuma um beck muito louco e vive altas aventuras com um dragão voador bigodudo.</h1>
+            <h1 className="descriptionFilm">Bird Box é um filme thriller pós-apocalíptico americano de 2018, dirigido por Susanne Bier, escrito por Eric Heisserer e baseado no livro homônimo de 2014 de Josh Malerman.</h1>
             <div className="buttonsFilm">
               <button className="button buttonPrimary">ASSISTIR</button>
               <article className="addList"><img src={addList} />Minha lista</article>

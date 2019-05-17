@@ -8,6 +8,7 @@
 .HomeFilms .line{
     background-color: #303247;
     margin-bottom: 21px;
+    margin-top: 0;
 }
 
 .HomeFilms .listFilms{
