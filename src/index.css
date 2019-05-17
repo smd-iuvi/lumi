@@ -14,18 +14,13 @@
 }
 
 @font-face{
-  font-family: FontBlack;
-  src: url("./assets/fonts/AvenirLTStd-Black.otf");
-}
-
-@font-face{
   font-family: FontBold;
-  src: url("./assets/fonts/AvenirLTStd-Heavy.otf");
+  src: url("./assets/fonts/Avenir-Heavy.ttf");
 }
 
 @font-face{
   font-family: FontRegular;
-  src: url("./assets/fonts/AvenirLTStd-Roman.otf");
+  src: url("./assets/fonts/Avenir-Medium.ttf");
 }
 
 @font-face{
