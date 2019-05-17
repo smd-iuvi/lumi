@@ -1,0 +1,175 @@
+.sidebar{
+    /* height: 59px; */
+    background-color: var(--sidebar-color);
+    /* display: grid;
+    grid-template-columns: 83px 1fr 1fr 1fr;
+    grid-template-areas: "logo iconsLeft iconsLeft iconsRight";
+    grid-gap: 10px; */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+
+.logo{
+    width: 48px;
+    height: 23px;
+    grid-column: logo;
+    margin-left: 21px;
+    margin-top: 18px;
+}
+
+.buttonsNavbar{
+    color: var(--white);
+    background: none;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-top: 23px;
+}
+
+.buttonsNavbar i{
+    font-size: 15px;
+    width: auto;
+    margin-top: -1px;
+}
+
+.icon{
+    height: 14px;
+    width: auto;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.iconsLeft{
+    grid-area: iconsLeft;
+    height: 59px;
+}
+
+.home{
+    margin-right: 20px;
+}
+
+.labelButtons{
+    display: none;
+}
+
+.iconsRight{
+    grid-area: iconsRight;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: end;
+    margin-right: 21px;
+    height: 59px;
+}
+
+.search{
+    position: absolute;
+    right: 0;
+    height: 35px;
+    margin-top: 13px;
+    margin-right: 80px;
+    background: url(./assets/icons/search_button.svg) no-repeat 10px center;
+    width: 15px;
+	padding-left: 25px;
+	color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: width .5s;
+}
+
+.search:focus{
+    width: 200px;
+    border: 1px solid var(--secundary);
+    border-radius: 4px;
+    color: var(--white);
+    padding: 9px 10px 9px 32px;
+    cursor: auto;
+    background-color: var(--navbar-color);
+}
+
+.profile{
+    width: 39px;
+    height: 39px;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+
+.optionsLogged .icon{
+    display: none;
+}
+
+@media only screen and (min-width : 1224px) {
+    .sidebar{
+        width: 216px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .logo{
+        width: 64px;
+        height: 31px;
+        margin: 24px 0 5vh 40px;
+    }
+    .lineSidebar{
+        align-self: center;
+        width: 56px;
+        height: 2px;
+        background-color: #262833;
+        margin-top: 4vh;
+        margin-bottom: 5vh;
+    }
+    .optionsProfile{
+        margin-bottom: 8vh;
+    }
+    .buttonsNavbar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 0;
+    }
+    .labelButtons{
+        display: block;
+    }
+    .iconsLeft{
+        height: 88px;;
+        /* display: grid;
+        grid-template-columns: 1fr 5fr;
+        grid-gap: 10px;
+        align-items: center; */
+    }
+    .search{
+        position: relative;
+        margin-right: 31px;
+        width: 20vw;
+        height: 37px;
+        border: 1px solid var(--secundary);
+        border-radius: 4px;
+        color: var(--white);
+        padding: 9px 10px 9px 32px;
+        cursor: auto;
+        margin-top: 0;
+    }
+    .search:focus{
+        width: 20vw;
+    }
+    .profile{
+        width: 52px;
+        height: 52px;
+    }
+    .iconsRight{
+        height: 88px;
+        margin-right: 61px;
+        /* align-content: center;
+        align-items: center;
+        justify-items: end; */
+    }
+    .iconsRight .buttonsNavbar{
+        margin-right: 61px;
+    }
+    .optionsLogged .icon{
+        display: block;
+    }
+}

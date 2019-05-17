@@ -1,13 +1,31 @@
 :root {
-  --navbar-color: #041521;
-  --primary: #30bbe6;
+  --sidebar-color: #0f0f13;
+  --navbar-color: #1c1d27;
+  --background: #15161c;
+  --tertiary: #2d304b;
+  --sidebar: #0f0f13;
+  --primary: #303247;
   --primary-opacity: rgba(48, 187, 230, 35%);
   --secundary: #0d5580;
-  --hover: #dc3c78;
+  --hover: #756eff;
   --white: #FFFFFF;
   --tags: #052a43;
-  --gradient-primary: #052940;
-  --gradient-secundary: #03121C;
+  --text-secundary: #c6c5d4;
+}
+
+@font-face{
+  font-family: FontBlack;
+  src: url("./assets/fonts/AvenirLTStd-Black.otf");
+}
+
+@font-face{
+  font-family: FontBold;
+  src: url("./assets/fonts/AvenirLTStd-Heavy.otf");
+}
+
+@font-face{
+  font-family: FontRegular;
+  src: url("./assets/fonts/AvenirLTStd-Roman.otf");
 }
 
 @font-face{
@@ -37,6 +55,6 @@ body {
 }
 
 html{
-  background: linear-gradient(to bottom, var(--gradient-primary), var(--gradient-secundary));
+  background: var(--background);
   background-size: cover;
 }

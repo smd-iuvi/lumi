@@ -1,0 +1,17 @@
+.titleHomeFilms{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.HomeFilms .line{
+    background-color: #303247;
+    margin-bottom: 21px;
+}
+
+.HomeFilms .listFilms{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px;
+}

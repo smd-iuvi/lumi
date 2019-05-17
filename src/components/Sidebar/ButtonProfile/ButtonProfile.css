@@ -1,0 +1,24 @@
+.buttonProfile{
+    width: 160px;
+}
+
+.buttonProfile .imgProfile{
+    border-radius: 50px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--tertiary);
+    margin-left: -5px;
+    margin-top: -5px;
+}
+
+.buttonProfile .labelProfile{
+    font-family: FontRegular;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: var(--text-secundary);
+    margin-top: 10px;
+}

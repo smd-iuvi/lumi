@@ -5,17 +5,18 @@
 }
 
 .button{
-  padding: 6px;
-  height: 25px;
-  border-radius: 2px;
-  border: 1px solid var(--secundary);
-  font-family: GravityBold;
-  font-size: 11px;
-  font-weight: bold;
+  padding: 0 24px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid var(--tertiary);
+  font-family: FontBold;
+  font-size: 14px;
+  font-weight: 900;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.18;
+  line-height: 1.36;
   letter-spacing: normal;
+  text-align: left;
   cursor: pointer;
 
   transition: border .5s, background-color .5s, color .5s;
@@ -29,7 +30,7 @@
 
 .buttonPrimary{
   color: var(--white);
-  background-color: var(--secundary);
+  background-color: var(--tertiary);
 }
 
 .buttonSecundary{
@@ -46,8 +47,14 @@
   color: var(--white);
 }
 
+.line{
+  width: 100%;
+  height: 2px;
+  margin-bottom: 10px;
+}
+
 @media only screen and (min-width : 1224px) {
     .container{
-      margin: 88px 61px 0 61px;
+      margin: 88px 56px 0 272px;
     }
 }

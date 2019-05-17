@@ -1,11 +1,11 @@
 import React from 'react';
 import './NewComment.css';
-import Person from '../../NavBar/assets/profile.jpg';
+import Person from '../../Sidebar/assets/profile.jpg';
 
 const NewComment = () => {
     return (
         <div className="newComment">
-            <img src={Person} className="photoComment"/>
+            <img src={Person} className="photoComment" />
             <textarea className="textComment textField" placeholder="Escreva um comentário...">
             </textarea>
             <div className="buttonsSubmit">

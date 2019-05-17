@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 
 import NavBar from './components/NavBar/NavBar';
+import Sidebar from './components/Sidebar/Sidebar';
 import Footer from './components/Footer/Footer';
 
 import Home from './pages/Home/Home';
@@ -16,6 +17,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        <Sidebar />
         <NavBar />
 
         <Switch>

@@ -1,0 +1,50 @@
+.cardFilm{
+    width: 100%;
+    cursor: pointer;
+}
+
+.cardFilm:hover .infosCard{
+    background-color: var(--hover);
+}
+
+.cardFilm .containerImgCard{
+    width: 100%;
+    overflow: hidden;
+}
+
+.cardFilm .imgCard{
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.cardFilm .infosCard{
+    padding: 5px 16px;
+    margin-top: -4px;
+    border-radius: 0 0 8px 8px;
+    background-color: var(--primary);
+}
+
+.cardFilm .titleCard{
+    font-family: FontBold;
+    font-size: 16px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
+    margin-bottom: 0;
+}
+
+.cardFilm .disciplineCard{
+    margin-top: 0;
+    font-family: FontRegular;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: var(--white);
+}

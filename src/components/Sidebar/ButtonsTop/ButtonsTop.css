@@ -1,0 +1,35 @@
+.buttonsSidebar{
+    background: none;
+    border: none;
+    outline: none;
+    margin: 0 16px;
+    border-radius: 5px; 
+    display: grid;
+    grid-template-columns: 45px 139px;
+    align-items: center;
+    padding-left: 24px;
+    cursor: pointer;
+    margin-bottom: 1vh;
+    height: 40px;
+}
+
+.buttonsSidebar:hover{
+    background-color: var(--tertiary);
+}
+
+.buttonsSidebar .labelButtons{
+    font-family: FontBold;
+    font-size: 16px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: var(--white);
+    margin-top: 10px;
+}
+
+.buttonsSidebar .iconButtonsTop{
+    width: 22px;
+    margin-top: -5px;
+}

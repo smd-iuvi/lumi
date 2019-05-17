@@ -1,24 +1,46 @@
 .Event{
-    margin: 9px;
+    margin: 24px 0;
     display: grid;
-    grid-template-columns: 49px auto;
+    grid-template-columns: 96px auto;
+    cursor: pointer;
+}
+
+.Event:hover .eventDate{
+    background-color: var(--hover);
 }
 
 .eventDate{
-    width: 40px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border-radius: 4px;
-    background-color: var(--secundary);
+    background-color: var(--primary);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .Event-Day{
     margin: 0;
-    padding-top: 6px;
+    font-family: FontBold;
+    font-size: 24px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: var(--white);
 }
 
-@media only screen and (min-width : 1224px) {
-    .Event{
-        margin: 20px;
-    }
+.Event-Month{
+    margin: 0;
+    font-family: FontBold;
+    font-size: 20px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    color: var(--white);
 }

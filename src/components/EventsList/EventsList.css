@@ -1,40 +1,38 @@
 .EventsList{
-    width: 100%;
-    min-height: 64px;
+    background-color: var(--primary);
+    border-radius: 8px;
+    padding: 0 16px;
 }
 
-.EventsList .border{
-    width: 30px;
-    height: 30px;
+.titleEventsFilms{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.EventsList .borderLeft{
-    margin-bottom: -30px;
-    border-left: 1px solid var(--primary);
-    border-top: 1px solid var(--primary);
+.EventsList .line{
+    background-color: #3d3f59;
+    margin-bottom: 21px;
 }
 
-.EventsList .borderRight{
-    float: right;
-    margin-top: -30px;
-    border-bottom: 1px solid var(--primary);
-    border-right: 1px solid var(--primary);
+.EventsList .buttonPrimary{
+    background-color: #3d3f59;
 }
 
-.EventsList{
-    margin-bottom: 30px;
+.EventsList .buttonPrimary:hover{
+    background-color: var(--hover);
 }
 
-@media only screen and (min-width : 1224px) {
-    .EventsList .border{
-        width: 80px;
-        height: 80px;
-    }
-    .EventsList .borderLeft{
-        margin-bottom: -80px;
-    }
-    .Events{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+.EventsList .Month{
+    font-family: FontBold;
+    font-size: 16px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: var(--text-secundary);
+    margin-bottom: 24px;
+    cursor: pointer;
 }

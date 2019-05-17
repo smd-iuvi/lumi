@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import './Home.css';
 
 import { withFirebase } from '../../Firebase';
 
 import Header from '../../components/Header/Header';
+import HomeFilms from '../../components/HomeFilms/HomeFilms';
 import Carousel from '../../components/Carousel/Carousel';
 import EventsList from '../../components/EventsList/EventsList';
 // import { Thumbs } from 'react-responsive-carousel';
@@ -36,20 +38,23 @@ class Home extends Component {
     const { recentsVideos, loading } = this.state;
     return (
       <div className="container">
-        <Header>Tem vídeo novo na área</Header>
+        {/* <Header>Tem vídeo novo na área</Header>
 
         {loading ? (
           <p>Carregando vídeos</p>
         ) : (
-          <Carousel videos={recentsVideos} />
-        )}
+            <Carousel videos={recentsVideos} />
+          )} */}
+        <div className="bannersHome">
+          <HomeFilms />
+          <EventsList />
+        </div>
 
-        <Header>Próximos lançamentos</Header>
-        <EventsList />
+        {/* <EventsList />
 
         <Header>Os mais assistidos</Header>
-        <Carousel />
-        <article className="line" />
+        <Carousel /> */}
+        {/* <article className="line" /> */}
       </div>
     );
   }

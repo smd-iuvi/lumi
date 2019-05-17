@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Carousel from '../../components/Carousel/Carousel';
 
-import ImgProfile from '../../components/NavBar/assets/profile.jpg';
+import ImgProfile from '../../components/Sidebar/assets/profile.jpg';
 
 import './Profile.css';
 
