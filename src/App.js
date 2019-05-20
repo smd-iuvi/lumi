@@ -12,6 +12,10 @@ import VideoInfos from './pages/VideoInfos/VideoInfos';
 import Player from './pages/Player/Player';
 import Profile from './pages/Profile/Profile';
 import Upload from './pages/Upload/Upload';
+import SignIn from './pages/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
+import Landing from './pages/Landing/Landing';
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 
 class App extends Component {
   render() {
@@ -30,6 +34,10 @@ class App extends Component {
           <Route path={`${ROUTES.PLAYER}/:videoId`} component={Player} />
           <Route path={ROUTES.PROFILE} exact component={Profile} />
           <Route path={ROUTES.UPLOAD} exact component={Upload} />
+          <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
+          <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
+          <Route path={ROUTES.LANDING} exact component={Landing} />
+          <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
         </Switch>
 
         <Footer />

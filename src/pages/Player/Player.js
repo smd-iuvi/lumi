@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { compose } from 'recompose';
 
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import SidebarPlayer from '../../components/SidebarPlayer/SidebarPlayer';
 import CommentSection from '../../components/CommentSection/CommentSection';
 
 import { withFirebase } from '../../Firebase';
+import { withAuthUser } from '../../Firebase/Session';
 
 import './Player.css';
 
@@ -25,9 +27,14 @@ class Player extends Component {
       match: { params }
     } = this.props;
 
-    firebase.video.get(params.videoId, (video, error) => {
-      this.setState({ video, error, loading: false });
-    });
+    firebase.video
+      .get(params.videoId)
+      .then(video => {
+        this.setState({ video, loading: false });
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
   }
 
   componentWillUnmount() {
@@ -43,8 +50,24 @@ class Player extends Component {
     firebase.video.clap(params.videoId);
   };
 
+  didAddToWatchlist = () => {
+    const {
+      firebase,
+      authUser,
+      match: { params }
+    } = this.props;
+
+    firebase.user.addVideoToList(authUser.uid, params.videoId, error => {
+      this.setState({ error });
+    });
+  };
+
   render() {
     const { video, loading } = this.state;
+    const {
+      authUser,
+      match: { params }
+    } = this.props;
 
     let nameLabel;
     let url = '';
@@ -66,6 +89,7 @@ class Player extends Component {
         <div className="containerLeft">
           <VideoPlayer
             didClap={this.didClap}
+            didAddToWatchlist={() => this.didAddToWatchlist()}
             name={nameLabel}
             url={url}
             views={viewsLabel}
@@ -76,11 +100,16 @@ class Player extends Component {
           <SidebarPlayer />
         </div>
         <div className="ContainerBottom">
-          <CommentSection />
+          {authUser && (
+            <CommentSection videoId={params.videoId} userId={authUser.uid} />
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default withFirebase(Player);
+export default compose(
+  withFirebase,
+  withAuthUser
+)(Player);

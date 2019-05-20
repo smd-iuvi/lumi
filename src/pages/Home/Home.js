@@ -3,7 +3,7 @@ import './Home.css';
 
 import { withFirebase } from '../../Firebase';
 
-import Header from '../../components/Header/Header';
+// import Header from '../../components/Header/Header';
 import HomeFilms from '../../components/HomeFilms/HomeFilms';
 import Carousel from '../../components/Carousel/Carousel';
 import EventsList from '../../components/EventsList/EventsList';
@@ -24,9 +24,14 @@ class Home extends Component {
     this.setState({ loading: true });
     const { firebase } = this.props;
 
-    this.listener = firebase.video.get(null, videos => {
-      this.setState({ recentsVideos: videos, loading: false });
-    });
+    firebase.video
+      .get()
+      .then(videos => {
+        this.setState({ recentsVideos: videos, loading: false });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false });
+      });
   }
 
   componentWillUnmount() {
@@ -38,12 +43,11 @@ class Home extends Component {
     const { recentsVideos, loading } = this.state;
     return (
       <div className="container">
-
         {loading ? (
           <p>Carregando vídeos</p>
         ) : (
-            <Carousel videos={recentsVideos} />
-          )}
+          <Carousel videos={recentsVideos} />
+        )}
         <div className="bannersHome">
           <HomeFilms />
           <EventsList />
