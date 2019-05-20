@@ -124,29 +124,31 @@ class Video {
     this.database.ref('video').off();
   };
 
-  getVideosByUser = (userId, callback) => {
-    this.database
-      .ref('video')
-      .orderByChild('createdBy')
-      .equalTo(`${userId}`)
-      .once('value')
-      .then(snapshot => {
-        const videos = snapshot.val();
+  getVideosByUser = userId => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('video')
+        .orderByChild('createdBy')
+        .equalTo(`${userId}`)
+        .once('value')
+        .then(snapshot => {
+          const videos = snapshot.val();
 
-        if (videos) {
-          const videoList = Object.keys(videos).map(key => ({
-            ...videos[key],
-            uid: key
-          }));
+          if (videos) {
+            const videoList = Object.keys(videos).map(key => ({
+              ...videos[key],
+              uid: key
+            }));
 
-          callback(videoList, null);
-        } else {
-          callback([], null);
-        }
-      })
-      .catch(error => {
-        callback([], error);
-      });
+            resolve(videoList);
+          } else {
+            resolve(null);
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   };
 
   getByTitle = (title, callback) => {

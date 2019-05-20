@@ -13,7 +13,11 @@ const withAuthorization = condition => Component => {
       this.listener = firebase.onAuthUserListener(
         authUser => {
           if (condition(authUser) === CONDITION.NOT_AUTHORIZED) {
+            console.log(CONDITION.NOT_AUTHORIZED);
             history.push(ROUTES.RESTRICTED_AREA);
+          } else if (condition(authUser) === CONDITION.NOT_LOGGED) {
+            console.log(CONDITION.NOT_LOGGED);
+            history.push(ROUTES.SIGN_IN);
           }
         },
         () => history.push(ROUTES.SIGN_IN)
@@ -28,7 +32,9 @@ const withAuthorization = condition => Component => {
       return (
         <AuthUserContext.Consumer>
           {authUser =>
-            condition(authUser) ? <Component {...this.props} /> : null
+            condition(authUser) === CONDITION.AUTHORIZED ? (
+              <Component {...this.props} />
+            ) : null
           }
         </AuthUserContext.Consumer>
       );

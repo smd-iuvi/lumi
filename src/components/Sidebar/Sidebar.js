@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { compose } from 'recompose';
+import { withRouter } from 'react-router-dom';
+
+import { withFirebase } from '../../Firebase';
 
 import './Sidebar.css';
 
@@ -16,30 +20,44 @@ import newVideo from './assets/icons/upload.svg';
 import myVideos from './assets/icons/my_videos.svg';
 import myList from './assets/icons/bookmark.svg';
 import { Link } from 'react-router-dom';
+import { withAuthUser } from '../../Firebase/Session';
 
 class Navbar extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       logged: true,
       showModal: false
-    }
+    };
     this.handleModal = this.handleModal.bind(this);
   }
 
   handleModal = () => {
-    this.setState({ showModal: true })
-  }
+    this.setState({ showModal: true });
+  };
 
   onChangeState = () => {
-    this.setState({ showModal: false })
-  }
+    this.setState({ showModal: false });
+  };
+
+  onSignOut = () => {
+    const { firebase, history } = this.props;
+
+    console.log('Saind..');
+
+    firebase.doSignOut().then(() => {
+      history.push(ROUTES.HOME);
+    });
+  };
 
   render() {
+    const { authUser } = this.props;
     return (
       <div className="sidebar">
-        <Upload show={this.state.showModal} onChangeState={this.onChangeState} />
+        <Upload
+          show={this.state.showModal}
+          onChangeState={this.onChangeState}
+        />
 
         <Link to={ROUTES.HOME} className="link">
           <img src={logo} alt="Logo" className="logo" />
@@ -52,14 +70,18 @@ class Navbar extends Component {
             <ButtonsTop icon={explore}>Descobrir</ButtonsTop>
           </Link>
         </div>
-        <article className="lineSidebar"></article>
-        {this.state.logged ? (
+        <article className="lineSidebar" />
+        {authUser ? (
           <div className="optionsLogged">
             <div className="optionsProfile">
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonProfile image={profile}>Clarissa Ester</ButtonProfile>
+                <ButtonProfile image={authUser.photo_url}>
+                  {authUser.name}
+                </ButtonProfile>
               </Link>
-              <article onClick={this.handleModal}><ButtonsBottom icon={newVideo}>Enviar vídeo</ButtonsBottom></article>
+              <article onClick={this.handleModal}>
+                <ButtonsBottom icon={newVideo}>Enviar vídeo</ButtonsBottom>
+              </article>
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom icon={home}>Meu perfil</ButtonsBottom>
               </Link>
@@ -72,21 +94,26 @@ class Navbar extends Component {
             </div>
             <Link to={ROUTES.PROFILE} className="link">
               <ButtonsBottom icon={home}>Ajuda</ButtonsBottom>
-            </Link><Link to={ROUTES.PROFILE} className="link">
-              <ButtonsBottom icon={home}>Sair</ButtonsBottom>
             </Link>
+            <ButtonsBottom icon={home} click={this.onSignOut}>
+              Sair
+            </ButtonsBottom>
           </div>
         ) : (
-            <Link to={ROUTES.PROFILE} className="link">
-              <button className="buttonsNavbar">
-                <i className="far fa-user icon" />
-                <h1 className="labelButtons">ENTRAR</h1>
-              </button>
-            </Link>
-          )}
+          <Link to={ROUTES.SIGN_IN} className="link">
+            <button className="buttonsNavbar">
+              <i className="far fa-user icon" />
+              <h1 className="labelButtons">ENTRAR</h1>
+            </button>
+          </Link>
+        )}
       </div>
     );
   }
 }
 
-export default Navbar;
+export default compose(
+  withAuthUser,
+  withFirebase,
+  withRouter
+)(Navbar);

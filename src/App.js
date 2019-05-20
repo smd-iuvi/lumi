@@ -16,6 +16,7 @@ import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import Landing from './pages/Landing/Landing';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
+import { withAuthentification } from './Firebase/Session';
 
 class App extends Component {
   render() {
@@ -46,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withAuthentification(App);
