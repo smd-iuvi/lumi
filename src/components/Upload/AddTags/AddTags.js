@@ -30,7 +30,7 @@ class AddTags extends Component {
     render() {
         return (
             <div className="AddTags infosContainer">
-                <input type="text" placeholder="Digite a tag" value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
+                <input type="text" placeholder={this.props.placeholder} value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
                 {
                     <div className="tags">
                         {this.state.tags.map((tag) =>

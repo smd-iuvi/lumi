@@ -59,7 +59,7 @@ class Navbar extends Component {
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonProfile image={profile}>Clarissa Ester</ButtonProfile>
               </Link>
-              <article onClick={this.handleModal}><ButtonsBottom icon={newVideo}>Enviar vídeo</ButtonsBottom></article>
+              <article onClick={this.handleModal} className="showModal"><ButtonsBottom icon={newVideo} className="btnShow">Enviar vídeo</ButtonsBottom></article>
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom icon={home}>Meu perfil</ButtonsBottom>
               </Link>

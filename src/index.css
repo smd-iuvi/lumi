@@ -21,6 +21,11 @@
 
 @font-face{
   font-family: FontRegular;
+  src: url("./assets/fonts/Avenir-Roman.ttf");
+}
+
+@font-face{
+  font-family: FontMedium;
   src: url("./assets/fonts/Avenir-Medium.ttf");
 }
 

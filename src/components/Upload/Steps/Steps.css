@@ -1,5 +1,5 @@
 .Steps .titleStep{
-    font-family: FontRegular;
+    font-family: FontMedium;
     font-size: 20px;
     font-weight: 500;
     font-style: normal;
@@ -23,4 +23,99 @@
     line-height: 1.36;
     letter-spacing: normal;
     color: var(--text-secundary);
+    margin-bottom: 32px;
+}
+
+.Steps .optionsStep{
+    display: flex;
+    flex-direction: row;
+    margin-top: 22px;
+    text-align: center;
+    justify-content: center;
+}
+
+.Steps .optionsStep img{
+    width: 156px;
+}
+
+.Steps .optionsStep div{
+    cursor: pointer;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--white);
+}
+
+.Steps .optionsStep div:hover{
+    border: 1px solid var(--secundary);
+    border-radius: 8px;
+}
+
+.Steps .optionsStep .optionLeft{
+    margin-right: 5vw;
+}
+
+.Steps .optionsStep .titleStep2{
+    margin-bottom: 0;
+}
+
+.Steps .optionsStep .subtitleStep{
+    margin-top: 4px;
+}
+
+.Steps .finishStep{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.Steps .finishStep img{
+    width: 345px;
+    height: 245px;
+    margin-top: 4vh;
+    margin-bottom: 30px;
+}
+
+.finishStep .titleStep{
+    width: 400px;
+}
+
+.Steps .selects{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+}
+
+.Steps .titleStep2{
+    font-family: FontMedium;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+}
+
+.checkDiscipline{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.checkDiscipline input[type="checkbox"]{
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: 1px solid var(--secundary);
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.checkDiscipline .titleStep2{
+    font-family: FontRegular;
 }

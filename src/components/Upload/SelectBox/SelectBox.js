@@ -89,6 +89,16 @@ class SelectBox extends Component {
         name: this.props.name,
         options: getValue
       });
+    } else if (this.props.name == 'events') {
+      getValue = [
+        'Evento 1',
+        'Evento 2',
+        'Evento 3'
+      ];
+      this.setState({
+        name: this.props.name,
+        options: getValue
+      });
     }
   }
 
@@ -103,6 +113,7 @@ class SelectBox extends Component {
     return (
       <div className="SelectBox infosContainer">
         <select name={name} onChange={this.onChange} value={value}>
+          <option value="" disabled selected hidden>{this.props.placeholder}</option>
           {this.state.options.map(op => (
             <option value={op}>{op}</option>
           ))}
