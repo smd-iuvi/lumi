@@ -10,7 +10,8 @@ const VideoPlayer = ({
   url,
   views,
   claps,
-  didAddToWatchlist
+  didAddToWatchlist,
+  onWatchList
 }) => {
   const urlCode = url.split('=').slice(-1);
   const embeedUrl = `https://www.youtube.com/embed/${urlCode}`;
@@ -33,6 +34,7 @@ const VideoPlayer = ({
         didClap={didClap}
         didAddToWatchlist={didAddToWatchlist}
         claps={claps}
+        onWatchList={onWatchList}
       />
     </div>
   );

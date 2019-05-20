@@ -23,8 +23,6 @@ const config = {
   appId: '1:337072262344:web:4c8f73e8ad2e8e3a'
 };
 
-console.log(config);
-
 class Firebase {
   constructor() {
     app.initializeApp(config);
@@ -82,26 +80,23 @@ class Firebase {
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
-        this.db
-          .ref(`user/${authUser.uid}`)
-          .once('value')
-          .then(snapshot => {
-            const dbUser = snapshot.val();
+        this.db.ref(`user/${authUser.uid}`).on('value', snapshot => {
+          const dbUser = snapshot.val();
 
-            if (!dbUser.role) {
-              dbUser.role = ROLES.STUDENT;
-            }
+          if (!dbUser.role) {
+            dbUser.role = ROLES.STUDENT;
+          }
 
-            authUser = {
-              uid: authUser.uid,
-              email: authUser.email,
-              emailVerified: authUser.emailVerified,
-              providerData: authUser.providerData,
-              ...dbUser
-            };
+          authUser = {
+            uid: authUser.uid,
+            email: authUser.email,
+            emailVerified: authUser.emailVerified,
+            providerData: authUser.providerData,
+            ...dbUser
+          };
 
-            next(authUser);
-          });
+          next(authUser);
+        });
       } else {
         fallback();
       }

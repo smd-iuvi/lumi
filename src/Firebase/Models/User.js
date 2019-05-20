@@ -29,26 +29,31 @@ class User {
       });
   };
 
-  get = (uid = null, callback) => {
+  get = (uid = null) => {
     if (uid == null) {
-      this.database.ref('user').on('value', snapshot => {
-        const users = snapshot.val();
+      return new Promise((resolve, reject) => {
+        this.database.ref('user').on('value', snapshot => {
+          const users = snapshot.val();
 
-        if (users != null) {
-          const usersList = Object.keys(users).map(key => ({
-            ...users[key],
-            uid: key
-          }));
+          if (users != null) {
+            const usersList = Object.keys(users).map(key => ({
+              ...users[key],
+              uid: key
+            }));
 
-          callback(usersList);
-        } else {
-          callback(null);
-        }
+            resolve(usersList);
+          } else {
+            resolve([]);
+          }
+        });
       });
     } else {
-      this.database.ref(`user/${uid}`).on('value', snapshot => {
-        const user = snapshot.val();
-        callback(user);
+      return new Promise((resolve, reject) => {
+        this.database.ref(`user/${uid}`).on('value', snapshot => {
+          const user = snapshot.val();
+          console.log(user);
+          resolve(user);
+        });
       });
     }
   };
@@ -60,37 +65,39 @@ class User {
 
   delete = uid => this.get(uid).remove();
 
-  addVideoToList = (uid, videoId, callback) => {
-    this.database
-      .ref(`user/${uid}`)
-      .once('value')
-      .then(snapshot => {
-        const user = snapshot.val();
+  addVideoToList = (uid, videoId) => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref(`user/${uid}`)
+        .once('value')
+        .then(snapshot => {
+          const user = snapshot.val();
 
-        let newList = [];
+          let newList = [];
 
-        if (user.watchList == null || user.watchList.length === 0) {
-          newList.push(videoId);
-        } else {
-          if (user.watchList.includes(videoId)) {
-            newList = user.watchList.filter(item => item !== videoId);
+          if (user.watchList == null || user.watchList.length === 0) {
+            newList.push(videoId);
           } else {
-            newList = [...user.watchList, videoId];
+            if (user.watchList.includes(videoId)) {
+              newList = user.watchList.filter(item => item !== videoId);
+            } else {
+              newList = [...user.watchList, videoId];
+            }
           }
-        }
 
-        this.database
-          .ref(`user/${uid}`)
-          .update({
-            watchList: newList
-          })
-          .then(user => {
-            callback(null);
-          })
-          .catch(error => {
-            callback(error);
-          });
-      });
+          this.database
+            .ref(`user/${uid}`)
+            .update({
+              watchList: newList
+            })
+            .then(user => {
+              resolve();
+            })
+            .catch(error => {
+              reject(error);
+            });
+        });
+    });
   };
 
   getByName = (name, callback) => {

@@ -89,35 +89,29 @@ class Video {
   delete = uid => this.get(uid).remove();
 
   clap = uid => {
-    let currentClaps = null;
+    return new Promise((resolve, reject) => {
+      let currentClaps = null;
 
-    this.get(uid, (video, error) => {
-      if (error) {
-        return;
-      }
+      this.get(uid)
+        .then(video => {
+          currentClaps = video.claps;
 
-      if (video != null) {
-        currentClaps = video.claps;
-      }
+          this.database
+            .ref(`video/${uid}`)
+            .update({
+              claps: currentClaps + 1
+            })
+            .then(video => {
+              resolve(video);
+            })
+            .catch(error => {
+              reject(error);
+            });
+        })
+        .catch(error => {
+          reject(error);
+        });
     });
-
-    this.database
-      .ref(`video/${uid}`)
-      .update({
-        claps: currentClaps + 1
-      })
-      .then(() => {
-        console.log('Sucess');
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    // this.get(uid, (v, err) => {
-    //   this.database.ref(`video/${uid}`).update({
-    //     claps: v.claps + 1
-    //   });
-    //   this.turnOff();
-    // });
   };
 
   turnOff = () => {

@@ -18,7 +18,7 @@
   margin-right: 15px;
   cursor: pointer;
   border-radius: 50px;
-  transition: background-color .5s;
+  transition: background-color 0.5s;
 }
 
 .Actions .Actions-Video {
@@ -34,5 +34,9 @@
 }
 
 .ActionsPlayer .Icons:hover {
+  background-color: var(--hover);
+}
+
+.ActionsPlayer .onList {
   background-color: var(--hover);
 }
