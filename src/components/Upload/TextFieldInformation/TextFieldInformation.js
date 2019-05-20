@@ -2,16 +2,13 @@ import React from 'react';
 
 import './TextFieldInformation.css';
 
-import Label from '../Label/Label';
-
-const TextFieldInformation = ({ name, label, onChange, value }) => {
+const TextFieldInformation = ({ name, label, onChange, value, placeholder }) => {
   return (
     <div className="TextFieldInformation infosContainer">
-      <Label>{label}</Label>
       <input
         name={name}
         type="text"
-        placeholder="Digite algo..."
+        placeholder={placeholder}
         onChange={onChange}
         value={value}
       />

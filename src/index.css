@@ -6,11 +6,12 @@
   --sidebar: #0f0f13;
   --primary: #303247;
   --primary-opacity: rgba(48, 187, 230, 35%);
-  --secundary: #0d5580;
-  --hover: #756eff;
+  --secundary: #5e58cc;
+  --hover: #5e58cc;
   --white: #FFFFFF;
   --tags: #052a43;
-  --text-secundary: #c6c5d4;
+  --text: #15161c;
+  --text-secundary: #a7a6b3;
 }
 
 @font-face{

@@ -25,6 +25,10 @@
     background-color: var(--hover);
 }
 
+.EventsList .button{
+    padding: 0 20px;
+}
+
 .EventsList .Month{
     font-family: FontBold;
     font-size: 16px;

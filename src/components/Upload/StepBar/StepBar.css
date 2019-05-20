@@ -1,0 +1,38 @@
+.StepBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.StepBar .labelSteps{
+    font-family: FontRegular;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    color: var(--text-secundary);
+    margin-right: 16px;
+}
+
+.StepBar .step{
+    width: 72px;
+    height: 4px;
+    border-radius: 5px;
+    margin-right: 8px;
+}
+
+.stepDone{
+    background-color: var(--secundary);
+}
+
+.stepToDo{
+    background-color: #eeedff;
+}
+
+.lineSteps{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

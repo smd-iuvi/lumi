@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import './SelectBox.css';
 
-import Label from '../Label/Label';
-
 class SelectBox extends Component {
   constructor(props) {
     super(props);
@@ -104,7 +102,6 @@ class SelectBox extends Component {
     const { onChange, name, value } = this.props;
     return (
       <div className="SelectBox infosContainer">
-        <Label>{this.props.label}</Label>
         <select name={name} onChange={this.onChange} value={value}>
           {this.state.options.map(op => (
             <option value={op}>{op}</option>

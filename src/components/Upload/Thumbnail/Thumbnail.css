@@ -1,7 +1,57 @@
-.Thumbnail{
-    height: 300px;
+.containerThumb{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 24px;
+    align-items: center;
+    margin-bottom: 32px;
+    margin-top: 32px;
 }
 
-.Thumbnail input{
-    color: var(--white);
+.containerThumb .titleThumb{
+    font-family: FontRegular;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+}
+
+.containerThumb .subtitleThumb{
+    font-family: FontRegular;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+}
+
+.containerThumb .file{
+    display: none;
+}
+
+.containerThumb .inputFile{
+    height: 32px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding: 0 7px 0 20px;
+    justify-self: right;
+}
+
+.thumb{
+    width: 100%;
+    height: 142px;
+    border: 1px solid var(--secundary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumb img{
+    width: 56px;
+    height: 41px;
 }

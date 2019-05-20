@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56.279" height="41.28" viewBox="0 0 56.279 41.28">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #756eff;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #756eff;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="imagem" transform="translate(-903.86 -261.36)">
+    <path id="photo004_-_E016" data-name="photo004 - E016" class="cls-1" d="M-28.14-60.64v41.28H28.14V-60.64Zm55,1.28V-22L11.46-44,3.94-34.6-9.7-51.24-26.86-22.36v-37Zm-.6,38.72H-26.38L-9.54-49,3.94-32.6l7.44-9.24Z" transform="translate(932 322)"/>
+    <g id="Ellipse_17" data-name="Ellipse 17" class="cls-2" transform="translate(947 266)">
+      <circle class="cls-3" cx="4" cy="4" r="4"/>
+      <circle class="cls-4" cx="4" cy="4" r="3.5"/>
+    </g>
+  </g>
+</svg>

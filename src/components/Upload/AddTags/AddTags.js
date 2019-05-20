@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './AddTags.css';
 
-import Label from '../Label/Label';
 import Tag from './Tag/Tag';
 
 class AddTags extends Component {
@@ -31,7 +30,6 @@ class AddTags extends Component {
     render() {
         return (
             <div className="AddTags infosContainer">
-                <Label>Tags</Label>
                 <input type="text" placeholder="Digite a tag" value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
                 {
                     <div className="tags">

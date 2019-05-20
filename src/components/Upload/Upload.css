@@ -1,0 +1,48 @@
+.backgroundModal{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 15, 19, 0.6);
+    cursor: pointer;
+}
+
+.modalUpload{
+    position: absolute;
+    width: 60vw;
+    height: 90vh;
+    background-color: var(--white);
+    overflow-y: auto;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-left: 20vw;
+}
+
+.modalUpload .labelModal{
+    height: 64px;
+    background-color: var(--secundary);
+    padding: 0 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.closeModal{
+    cursor: pointer;
+}
+
+.contentModal{
+    padding: 16px 40px;
+}
+
+.handleSteps{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.handleSteps .buttonSecundary{
+    margin-right: 16px;
+}

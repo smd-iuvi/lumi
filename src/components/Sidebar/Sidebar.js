@@ -6,6 +6,7 @@ import * as ROUTES from '../../constants/routes';
 import ButtonsTop from './ButtonsTop/ButtonsTop';
 import ButtonProfile from './ButtonProfile/ButtonProfile';
 import ButtonsBottom from './ButtonsBottom/ButtonsBottom';
+import Upload from '../Upload/Upload';
 
 import logo from './assets/icons/lumi.svg';
 import home from './assets/icons/home.svg';
@@ -16,13 +17,29 @@ import profile from './assets/profile.jpg';
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
-  state = {
-    logged: true
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      logged: true,
+      showModal: false
+    }
+    this.handleModal = this.handleModal.bind(this);
+  }
+
+  handleModal = () => {
+    this.setState({ showModal: true })
+  }
+
+  onChangeState = () => {
+    this.setState({ showModal: false })
+  }
 
   render() {
     return (
       <div className="sidebar">
+        <Upload show={this.state.showModal} onChangeState={this.onChangeState} />
+
         <Link to={ROUTES.HOME} className="link">
           <img src={logo} alt="Logo" className="logo" />
         </Link>
@@ -41,9 +58,7 @@ class Navbar extends Component {
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonProfile image={profile}>Clarissa Ester</ButtonProfile>
               </Link>
-              <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom icon={home}>Enviar vídeo</ButtonsBottom>
-              </Link>
+              <article onClick={this.handleModal}><ButtonsBottom icon={home}>Enviar vídeo</ButtonsBottom></article>
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom icon={home}>Meu perfil</ButtonsBottom>
               </Link>

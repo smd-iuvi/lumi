@@ -9,10 +9,10 @@
 }
 
 .button{
-  padding: 0 24px;
+  padding: 0 40px;
   height: 40px;
   border-radius: 5px;
-  border: 1px solid var(--tertiary);
+  border: none;
   font-family: FontBold;
   font-size: 14px;
   font-weight: 900;
@@ -22,24 +22,24 @@
   letter-spacing: normal;
   text-align: left;
   cursor: pointer;
-
   transition: border .5s, background-color .5s, color .5s;
+  outline: none;
 }
 
 .button:hover{
   background-color: var(--hover);
-  border: 1px solid var(--hover);
   color: var(--white);
 }
 
 .buttonPrimary{
   color: var(--white);
-  background-color: var(--tertiary);
+  background-color: var(--secundary);
 }
 
 .buttonSecundary{
   color: var(--secundary);
   background: none;
+  border: 1px solid var(--secundary);
 }
 
 .textField{

@@ -9,7 +9,7 @@ const HomeFilms = () => {
         <div className="HomeFilms">
             <div className="titleHomeFilms">
                 <Header>Os mais assistidos</Header>
-                <button className="button buttonPrimary">Ver todos</button>
+                <button className="button buttonSeeMore">Ver todos</button>
             </div>
             <article className="line" />
             <div className="listFilms">
