@@ -4,10 +4,16 @@ import './VideoPlayer.css';
 
 import ActionsPlayer from '../ActionsPlayer/ActionsPlayer';
 
-const VideoPlayer = ({ didClap, name, url, views, claps }) => {
+const VideoPlayer = ({
+  didClap,
+  name,
+  url,
+  views,
+  claps,
+  didAddToWatchlist
+}) => {
   const urlCode = url.split('=').slice(-1);
   const embeedUrl = `https://www.youtube.com/embed/${urlCode}`;
-  console.log(name);
 
   return (
     <div className="videoPlayer">
@@ -23,7 +29,11 @@ const VideoPlayer = ({ didClap, name, url, views, claps }) => {
       />
       <h1 className="Title-Film title">{name}</h1>
       <h1 className="Views-Film">{views} visualizações</h1>
-      <ActionsPlayer didClap={didClap} claps={claps} />
+      <ActionsPlayer
+        didClap={didClap}
+        didAddToWatchlist={didAddToWatchlist}
+        claps={claps}
+      />
     </div>
   );
 };

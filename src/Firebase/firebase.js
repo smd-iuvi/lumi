@@ -1,6 +1,7 @@
-import app from 'firebase/app';
+import app, { auth } from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 
 import Comment from './Models/Comment';
 import Event from './Models/Event';
@@ -10,7 +11,7 @@ import Video from './Models/Video';
 import Discipline from './Models/Discipline';
 import Semester from './Models/Semester';
 
-// import * as ROLES from '../constants/roles';
+import * as ROLES from '../constants/roles';
 
 const config = {
   apiKey: 'AIzaSyA66a2Non3h0q-zDstvhpp4I6U7bOfL7eE',
@@ -29,6 +30,7 @@ class Firebase {
     app.initializeApp(config);
     this.auth = app.auth();
     this.db = app.database();
+    this.storage = app.storage();
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
 
@@ -37,7 +39,7 @@ class Firebase {
     this.discipline = new Discipline(this.db);
     this.semester = new Semester(this.db);
     this.gender = new Gender(this.db);
-    this.user = new User(this.db);
+    this.user = new User(this.db, this.auth);
     this.video = new Video(this.db);
   }
 
@@ -58,6 +60,52 @@ class Firebase {
       url: 'http://localhost:3000'
     });
   };
+
+  doGeneralSearch = (term, callback) => {
+    const result = {};
+
+    this.user.getByName(term, (users, error) => {
+      result.users = users;
+
+      this.video.getByTitle(term, (videos, error) => {
+        result.videos = videos;
+
+        this.discipline.getByName(term, (disciplines, error) => {
+          result.disciplines = disciplines;
+
+          callback(result, error);
+        });
+      });
+    });
+  };
+
+  onAuthUserListener = (next, fallback) =>
+    this.auth.onAuthStateChanged(authUser => {
+      if (authUser) {
+        this.db
+          .ref(`user/${authUser.uid}`)
+          .once('value')
+          .then(snapshot => {
+            const dbUser = snapshot.val();
+
+            if (!dbUser.role) {
+              dbUser.role = ROLES.STUDENT;
+            }
+
+            authUser = {
+              uid: authUser.uid,
+              email: authUser.email,
+              emailVerified: authUser.emailVerified,
+              providerData: authUser.providerData,
+              ...dbUser
+            };
+
+            next(authUser);
+          });
+      } else {
+        fallback();
+      }
+    });
 }
 
 export default Firebase;
