@@ -1,23 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13">
+<svg id="add_to_list" data-name="add to list" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
   <defs>
     <style>
-      .cls-1 {
+      .cls-1, .cls-3 {
         fill: none;
+      }
+
+      .cls-1 {
         stroke: #fff;
-        stroke-width: 2px;
+        stroke-width: 1.5px;
       }
 
       .cls-2 {
-        fill: #fff;
+        stroke: none;
       }
     </style>
   </defs>
-  <g id="list_button" data-name="list button" transform="translate(-5.75 -11.5)">
-    <line id="Line_13" data-name="Line 13" class="cls-1" x2="12" transform="translate(10.75 13)"/>
-    <line id="Line_14" data-name="Line 14" class="cls-1" x2="12" transform="translate(10.75 18)"/>
-    <line id="Line_15" data-name="Line 15" class="cls-1" x2="12" transform="translate(10.75 23)"/>
-    <circle id="Ellipse_16" data-name="Ellipse 16" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(5.75 11.5)"/>
-    <circle id="Ellipse_18" data-name="Ellipse 18" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(5.75 16.5)"/>
-    <circle id="Ellipse_19" data-name="Ellipse 19" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(5.75 21.5)"/>
+  <g id="Ellipse_1" data-name="Ellipse 1" class="cls-1">
+    <circle class="cls-2" cx="12" cy="12" r="12"/>
+    <circle class="cls-3" cx="12" cy="12" r="11.25"/>
+  </g>
+  <g id="add_to_list_icon" data-name="add to list icon" transform="translate(6 6)">
+    <line id="Line_1" data-name="Line 1" class="cls-1" y2="12" transform="translate(6.286)"/>
+    <line id="Line_2" data-name="Line 2" class="cls-1" x2="12" transform="translate(0 6)"/>
   </g>
 </svg>

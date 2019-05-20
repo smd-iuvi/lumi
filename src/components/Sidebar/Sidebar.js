@@ -11,9 +11,10 @@ import Upload from '../Upload/Upload';
 import logo from './assets/icons/lumi.svg';
 import home from './assets/icons/home.svg';
 import explore from './assets/icons/explore_button.svg';
-import upload from './assets/icons/new_video.svg';
-import list from './assets/icons/list_button.svg';
 import profile from './assets/profile.jpg';
+import newVideo from './assets/icons/upload.svg';
+import myVideos from './assets/icons/my_videos.svg';
+import myList from './assets/icons/bookmark.svg';
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
@@ -58,15 +59,15 @@ class Navbar extends Component {
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonProfile image={profile}>Clarissa Ester</ButtonProfile>
               </Link>
-              <article onClick={this.handleModal}><ButtonsBottom icon={home}>Enviar vídeo</ButtonsBottom></article>
+              <article onClick={this.handleModal}><ButtonsBottom icon={newVideo}>Enviar vídeo</ButtonsBottom></article>
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom icon={home}>Meu perfil</ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom icon={home}>Meus envios</ButtonsBottom>
+                <ButtonsBottom icon={myVideos}>Meus envios</ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom icon={home}>Minha lista</ButtonsBottom>
+                <ButtonsBottom icon={myList}>Minha lista</ButtonsBottom>
               </Link>
             </div>
             <Link to={ROUTES.PROFILE} className="link">
