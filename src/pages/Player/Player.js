@@ -36,7 +36,11 @@ class Player extends Component {
   }
 
   componentWillUnmount() {
-    this.listener();
+    const {
+      firebase,
+      match: { params }
+    } = this.props;
+    firebase.db.ref(`video/${params.videoId}`).off();
   }
 
   didClap = () => {
