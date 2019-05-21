@@ -6,4 +6,9 @@
     line-height: 1.36;
     letter-spacing: normal;
     color: var(--text-secundary);
+
+}
+
+.buttonsBottom .iconBottom{
+    width: 30px;
 }
