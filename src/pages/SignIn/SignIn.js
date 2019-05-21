@@ -24,9 +24,9 @@ class SignIn extends Component {
   componentWillMount() {
     const { authUser, history } = this.props;
 
-    if (authUser !== null) {
-      history.push(ROUTES.HOME);
-    }
+    // if (authUser) {
+    //   history.push(ROUTES.HOME);
+    // }
   }
 
   onSubmit = event => {
