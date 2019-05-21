@@ -1,5 +1,5 @@
-.carousel .slide {
-  background: none;
+.carousel .slide{
+  background: none !important;
 }
 .carousel .slider {
   width: 55%;
