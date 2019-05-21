@@ -9,7 +9,8 @@ class AddTags extends Component {
         super(props);
         this.state = {
             value: '',
-            tags: []
+            tags: [],
+            users: ["Gleislla Monteiro", "Mateus Santos", "Paulo José", "Rebecca Dantas"]
         };
         this.handleChange = this.handleChange.bind(this);
         this.keyPress = this.keyPress.bind(this);
@@ -30,7 +31,14 @@ class AddTags extends Component {
     render() {
         return (
             <div className="AddTags infosContainer">
-                <input type="text" placeholder={this.props.placeholder} value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
+                {this.props.list &&
+                    <datalist id="users">
+                        {this.state.users.map((user) =>
+                            <option>{user}</option>
+                        )}
+                    </datalist>
+                }
+                <input type="text" list="users" placeholder={this.props.placeholder} value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
                 {
                     <div className="tags">
                         {this.state.tags.map((tag) =>
