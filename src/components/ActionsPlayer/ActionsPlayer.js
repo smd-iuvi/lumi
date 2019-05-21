@@ -4,11 +4,12 @@ import addList from './assets/add_list.svg';
 import share from './assets/share_button.svg';
 import applause from './assets/clap_button.svg';
 
-const ActionsPlayer = ({ didClap, claps }) => {
+const ActionsPlayer = ({ didClap, claps, didAddToWatchlist, onWatchList }) => {
+  console.log(onWatchList);
   return (
     <div className="Actions ActionsPlayer">
-      <div>
-        <img src={addList} className="Icons" />
+      <div onClick={didAddToWatchlist}>
+        <img src={addList} className={onWatchList ? 'Icons onList' : 'Icons'} />
         <h1 className="Actions-Video actionDescription">
           Minha {<br />} lista
         </h1>

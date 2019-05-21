@@ -16,7 +16,8 @@ class Player extends Component {
 
     this.state = {
       loading: false,
-      video: null
+      video: null,
+      onWatchList: false
     };
   }
 
@@ -27,19 +28,19 @@ class Player extends Component {
       match: { params }
     } = this.props;
 
-    firebase.video
-      .get(params.videoId)
-      .then(video => {
-        this.setState({ video, loading: false });
-      })
-      .catch(error => {
-        this.setState({ error });
+    this.listener = firebase.db
+      .ref(`video/${params.videoId}`)
+      .on('value', snapshot => {
+        this.setState({ video: snapshot.val(), loading: false });
       });
   }
 
   componentWillUnmount() {
-    const { firebase } = this.props;
-    firebase.video.turnOff();
+    const {
+      firebase,
+      match: { params }
+    } = this.props;
+    firebase.db.ref(`video/${params.videoId}`).off();
   }
 
   didClap = () => {
@@ -47,7 +48,26 @@ class Player extends Component {
       firebase,
       match: { params }
     } = this.props;
-    firebase.video.clap(params.videoId);
+
+    firebase.video
+      .clap(params.videoId)
+      .then(() => {})
+      .catch(error => {
+        this.setState({ error });
+      });
+  };
+
+  checkUserWatchList = () => {
+    const {
+      authUser,
+      match: { params }
+    } = this.props;
+
+    if (authUser.watchList && authUser.watchList.includes(params.videoId)) {
+      this.setState({ onWatchList: true });
+    } else {
+      this.setState({ onWatchList: false });
+    }
   };
 
   didAddToWatchlist = () => {
@@ -57,13 +77,16 @@ class Player extends Component {
       match: { params }
     } = this.props;
 
-    firebase.user.addVideoToList(authUser.uid, params.videoId, error => {
-      this.setState({ error });
-    });
+    firebase.user
+      .addVideoToList(authUser.uid, params.videoId)
+      .then(() => {
+        this.checkUserWatchList();
+      })
+      .catch(error => {});
   };
 
   render() {
-    const { video, loading } = this.state;
+    const { video, loading, onWatchList } = this.state;
     const {
       authUser,
       match: { params }
@@ -94,6 +117,7 @@ class Player extends Component {
             url={url}
             views={viewsLabel}
             claps={clapsLabel}
+            onWatchList={onWatchList}
           />
         </div>
         <div className="containerRight">
