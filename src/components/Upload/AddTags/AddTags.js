@@ -22,9 +22,21 @@ class AddTags extends Component {
 
     keyPress(e) {
         if (e.keyCode == 13) {
-            const getTags = this.state.tags;
-            getTags.push(e.target.value);
-            this.setState({ tags: getTags, value: '' });
+            if (e.target.value != null && e.target.value != '' && e.target.value != ' ') {
+                const getTags = this.state.tags;
+                getTags.push(e.target.value);
+                this.setState({ tags: getTags, value: '' });
+            }
+        }
+    }
+
+    deleteTag = (e) => {
+        let aux = this.state.tags;
+        for (let i = 0; i < aux.length; i++) {
+            if (aux[i] == e) {
+                aux.splice(i, 1);
+                this.setState({ tags: aux });
+            }
         }
     }
 
@@ -42,7 +54,7 @@ class AddTags extends Component {
                 {
                     <div className="tags">
                         {this.state.tags.map((tag) =>
-                            <Tag>{tag}</Tag>
+                            <Tag deleteTag={this.deleteTag}>{tag}</Tag>
                         )}
                     </div>
                 }

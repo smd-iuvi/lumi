@@ -33,6 +33,10 @@ class Upload extends Component {
         this.setState({ step: this.state.step - 1 })
     }
 
+    resetSteps = () => {
+        this.setState({ step: 1 })
+    }
+
     render() {
         if (!this.props.show) {
             return null;
@@ -54,7 +58,7 @@ class Upload extends Component {
                             {this.state.step == 2 && <Step2 />}
                             {this.state.step == 3 && <Step3 />}
                             {this.state.step == 4 && <Step4 />}
-                            {this.state.step == 5 && <Step5 />}
+                            {this.state.step == 5 && <Step5 resetSteps={this.resetSteps} />}
                         </div>
                     }
                     <div className="handleSteps">
