@@ -97,10 +97,8 @@ class Navbar extends Component {
             </div>
             <Link to={ROUTES.PROFILE} className="link">
               <ButtonsBottom icon={help}>Ajuda</ButtonsBottom>
-            </Link><Link to={ROUTES.PROFILE} className="link">
-              <ButtonsBottom icon={logout}>Sair</ButtonsBottom>
             </Link>
-            <ButtonsBottom icon={home} click={this.onSignOut}>
+            <ButtonsBottom icon={logout} click={this.onSignOut}>
               Sair
             </ButtonsBottom>
           </div>
