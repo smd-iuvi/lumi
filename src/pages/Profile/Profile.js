@@ -14,6 +14,9 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 import './Profile.css';
+import ProfileImage from '../../components/ProfileCard/ProfileImage/ProfileImage';
+import ProfileCard from '../../components/ProfileCard/ProfileCard';
+import ProfileLabels from '../../components/ProfileLabels/ProfileLabels';
 
 class Profile extends Component {
   constructor(props) {
@@ -64,7 +67,13 @@ class Profile extends Component {
     const { watchList, myWorks, loadingMyWorks, loadingWatchList } = this.state;
     return (
       <div className="container">
-        <h1 className="Heading">Olá, {authUser ? authUser.name : ''}</h1>
+        <ProfileCard
+          name={authUser.name}
+          imgUrl={authUser.photo_url}
+          role={authUser.role}
+        />
+        <ProfileLabels />
+        {/* <h1 className="Heading">Olá, {authUser ? authUser.name : ''}</h1>
         <h1 className="Pessoal-Area-Infos">Esta é suas área pessoal.</h1>
         <div className="containerCenter">
           <img src={ImgProfile} className="photoProfile" />
@@ -96,7 +105,7 @@ class Profile extends Component {
           )
         ) : (
           <p>Carregando...</p>
-        )}
+        )} */}
       </div>
     );
   }

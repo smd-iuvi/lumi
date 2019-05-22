@@ -1,0 +1,29 @@
+.ProfileImage {
+  width: 200px;
+  height: 200px;
+  clip-path: circle();
+  color: var(--white);
+}
+
+.ProfileImage .editIcon {
+  widows: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 16px;
+  justify-items: center;
+  opacity: 0;
+  background-color: rgba(117, 110, 255, 0.5);
+}
+
+.ProfileImage .editIcon:hover {
+  opacity: 1;
+}
+
+.ProfileImage .editIcon img {
+  align-self: end;
+}
+
+.ProfileImage .editIcon p {
+  margin: 0;
+}

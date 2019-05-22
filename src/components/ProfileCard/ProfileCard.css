@@ -1,0 +1,15 @@
+.ProfileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+}
+
+.ProfileCard .name {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.ProfileCard .role {
+  margin-top: 8px;
+}
