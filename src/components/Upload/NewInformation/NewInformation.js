@@ -30,7 +30,7 @@ class NewInformation extends Component {
 
     render() {
         return (
-            <div className="NewInformation infosContainer">
+            <div className="NewInformation">
                 <div>
                     X
                 </div>

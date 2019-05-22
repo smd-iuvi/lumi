@@ -1,5 +1,5 @@
 .Tag .tagLabel{
-    font-family: GravityBook;
+    font-family: FontRegular;
     font-size: 14px;
     font-weight: normal;
     font-style: normal;
@@ -8,10 +8,19 @@
     letter-spacing: normal;
     text-align: left;
     color: var(--white);
-    background-color: var(--tags);
+    background-color: var(--secundary);
     padding: 7px 8px;
     border-radius: 4px;
     margin-right: 12px;
-    margin-bottom: 12px;
     width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Tag img{
+    width: 8px;
+    height: 8px;
+    margin-left: 5px;
+    cursor: pointer;
 }

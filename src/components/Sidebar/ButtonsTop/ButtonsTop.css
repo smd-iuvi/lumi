@@ -31,5 +31,9 @@
 
 .buttonsSidebar .iconButtonsTop{
     width: 22px;
-    margin-top: -5px;
+    margin-top: -7px;
+}
+
+.buttonsSidebar .iconBottom{
+    margin-top: -2px;
 }

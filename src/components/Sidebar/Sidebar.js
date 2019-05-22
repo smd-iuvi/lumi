@@ -14,11 +14,14 @@ import Upload from '../Upload/Upload';
 
 import logo from './assets/icons/lumi.svg';
 import home from './assets/icons/home.svg';
-import explore from './assets/icons/explore_button.svg';
+import explore from './assets/icons/explore.svg';
 import profile from './assets/profile.jpg';
 import newVideo from './assets/icons/upload.svg';
 import myVideos from './assets/icons/my_videos.svg';
+import user from './assets/icons/user.svg';
 import myList from './assets/icons/bookmark.svg';
+import help from './assets/icons/help.svg';
+import logout from './assets/icons/logout.svg';
 import { Link } from 'react-router-dom';
 import { withAuthUser } from '../../Firebase/Session';
 
@@ -83,7 +86,7 @@ class Navbar extends Component {
                 <ButtonsBottom icon={newVideo}>Enviar vídeo</ButtonsBottom>
               </article>
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom icon={home}>Meu perfil</ButtonsBottom>
+                <ButtonsBottom icon={user}>Meu perfil</ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom icon={myVideos}>Meus envios</ButtonsBottom>
@@ -93,20 +96,22 @@ class Navbar extends Component {
               </Link>
             </div>
             <Link to={ROUTES.PROFILE} className="link">
-              <ButtonsBottom icon={home}>Ajuda</ButtonsBottom>
+              <ButtonsBottom icon={help}>Ajuda</ButtonsBottom>
+            </Link><Link to={ROUTES.PROFILE} className="link">
+              <ButtonsBottom icon={logout}>Sair</ButtonsBottom>
             </Link>
             <ButtonsBottom icon={home} click={this.onSignOut}>
               Sair
             </ButtonsBottom>
           </div>
         ) : (
-          <Link to={ROUTES.SIGN_IN} className="link">
-            <button className="buttonsNavbar">
-              <i className="far fa-user icon" />
-              <h1 className="labelButtons">ENTRAR</h1>
-            </button>
-          </Link>
-        )}
+            <Link to={ROUTES.SIGN_IN} className="link">
+              <button className="buttonsNavbar">
+                <i className="far fa-user icon" />
+                <h1 className="labelButtons">ENTRAR</h1>
+              </button>
+            </Link>
+          )}
       </div>
     );
   }
