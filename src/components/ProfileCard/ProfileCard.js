@@ -9,7 +9,11 @@ const ProfileCard = ({ imgUrl, name, role }) => {
     <div className="ProfileCard">
       <ProfileImage imgUrl={imgUrl} />
       <p className="name">{name}</p>
-      <p className="role">Alunx de Sistemas e Mídias Digitais</p>
+      <div className="roleContainer">
+        <article className="line" />
+        <p className="role">Alunx de Sistemas e Mídias Digitais</p>
+        <article className="line" />
+      </div>
     </div>
   );
 };

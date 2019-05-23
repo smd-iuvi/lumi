@@ -4,6 +4,17 @@
   background-color: var(--navbar-color);
   border-radius: 8px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-  color: var(--white);
+  color: #c6c5d4;
   width: 456px;
+  height: 64px;
+  font-family: FontRegular;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: center;
+  align-items: center;
+  color: var;
 }

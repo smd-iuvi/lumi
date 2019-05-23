@@ -8,42 +8,43 @@
   --primary-opacity: rgba(48, 187, 230, 35%);
   --secundary: #5e58cc;
   --hover: #5e58cc;
-  --white: #FFFFFF;
+  --white: #ffffff;
   --tags: #052a43;
+  --dusk: #575a80; /* Mudar */
   --text: #15161c;
   --text-secundary: #a7a6b3;
 }
 
-@font-face{
+@font-face {
   font-family: FontBold;
-  src: url("./assets/fonts/Avenir-Heavy.ttf");
+  src: url('./assets/fonts/Avenir-Heavy.ttf');
 }
 
-@font-face{
+@font-face {
   font-family: FontRegular;
-  src: url("./assets/fonts/Avenir-Roman.ttf");
+  src: url('./assets/fonts/Avenir-Roman.ttf');
 }
 
-@font-face{
+@font-face {
   font-family: FontMedium;
-  src: url("./assets/fonts/Avenir-Medium.ttf");
+  src: url('./assets/fonts/Avenir-Medium.ttf');
 }
 
-@font-face{
+@font-face {
   font-family: GravityRegular;
-  src: url("./assets/fonts/Gravity-Regular.otf");
+  src: url('./assets/fonts/Gravity-Regular.otf');
 }
-@font-face{
+@font-face {
   font-family: GravityLight;
-  src: url("./assets/fonts/Gravity-Light.otf");
+  src: url('./assets/fonts/Gravity-Light.otf');
 }
-@font-face{
+@font-face {
   font-family: GravityBook;
-  src: url("./assets/fonts/Gravity-Book.otf");
+  src: url('./assets/fonts/Gravity-Book.otf');
 }
-@font-face{
+@font-face {
   font-family: GravityBold;
-  src: url("./assets/fonts/Gravity-Bold.otf");
+  src: url('./assets/fonts/Gravity-Bold.otf');
 }
 
 body {
@@ -55,7 +56,7 @@ body {
   overflow-x: hidden;
 }
 
-html{
+html {
   background: var(--background);
   background-size: cover;
 }
