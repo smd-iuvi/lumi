@@ -18,7 +18,10 @@ import './Profile.css';
 import ProfileImage from '../../components/ProfileCard/ProfileImage/ProfileImage';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
 import ProfileLabels from '../../components/ProfileLabels/ProfileLabels';
+import CardList from '../../components/CardList/CardList';
+import CardFilm from '../../components/CardFilm/CardFilm';
 import TabBar from '../../components/TabBar/TabBar';
+import SecondaryButton from '../../components/Buttons/SecondaryButton/SecondaryButton';
 
 class Profile extends Component {
   constructor(props) {
@@ -30,7 +33,8 @@ class Profile extends Component {
       error: null,
       loadingWatchList: true,
       loadingMyWorks: true,
-      tabs: ["Minhas informações", "Meus envios", "Minha lista"]
+      tabs: ['Minhas informações', 'Meus envios', 'Minha lista'],
+      selected: 0
     };
   }
 
@@ -65,54 +69,69 @@ class Profile extends Component {
     }
   }
 
+  onTabChange = newTab => {
+    this.setState({ selected: newTab });
+  };
+
   render() {
     const { authUser } = this.props;
-    const { watchList, myWorks, loadingMyWorks, loadingWatchList } = this.state;
-    return (
-      <>
-        <TabBar icon={iconProfile} title="Meu perfil" tabs={this.state.tabs} />
-        <div className="container">
+    const {
+      watchList,
+      myWorks,
+      loadingMyWorks,
+      loadingWatchList,
+      selected
+    } = this.state;
+
+    let container = null;
+
+    if (selected == 0) {
+      container = (
+        <>
           <ProfileCard
             name={authUser.name}
             imgUrl={authUser.photo_url}
             role={authUser.role}
             className="ProfileCard"
           />
+          <article className="lineSidebar" />
           <ProfileLabels />
-          {/* <h1 className="Heading">Olá, {authUser ? authUser.name : ''}</h1>
-        <h1 className="Pessoal-Area-Infos">Esta é suas área pessoal.</h1>
-        <div className="containerCenter">
-          <img src={ImgProfile} className="photoProfile" />
-          <h1 className="Profile-Name">{authUser ? authUser.name : ''}</h1>
-          <h1 className="Pessoal-Area-Infos">
-            {authUser ? authUser.email : ''}
-          </h1>
-          <h1 className="Profile-Descripiton">Aluna do SMD</h1>
+          <SecondaryButton>Salvar modificações</SecondaryButton>
+        </>
+      );
+    } else if (selected == 1) {
+      container = (
+        <>
+          <CardList>
+            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+          </CardList>
+        </>
+      );
+    } else if (selected == 2) {
+      container = (
+        <>
+          <CardList>
+            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+          </CardList>
+        </>
+      );
+    }
 
-          <article className="Context-Button">EDITAR INFORMAÇÕES</article>
-          <article className="line" />
-        </div>
-        <h1 className="Heading">Minha lista</h1>
-        {loadingMyWorks ? (
-          watchList ? (
-            <Carousel className="carousel" videos={watchList} />
-          ) : (
-            <p>Não há videos na sua lista</p>
-          )
-        ) : (
-          <p>Carregando...</p>
-        )}
-        <h1 className="Heading">Meus trabalhos</h1>
-        {loadingWatchList ? (
-          myWorks ? (
-            <Carousel className="carousel" videos={myWorks} />
-          ) : (
-            <p>Você ainda não enviou algum vídeo</p>
-          )
-        ) : (
-          <p>Carregando...</p>
-        )} */}
-        </div>
+    return (
+      <>
+        <TabBar
+          icon={iconProfile}
+          title="Meu perfil"
+          tabs={this.state.tabs}
+          onTabChange={this.onTabChange}
+        />
+        <div className="container Profile">{container}</div>
       </>
     );
   }

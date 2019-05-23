@@ -5,11 +5,43 @@
   color: var(--white);
 }
 
+.ProfileCard .roleContainer {
+  display: grid;
+  grid-template-columns: 8px 1fr 8px;
+  grid-column-gap: 8px;
+  align-content: center;
+  justify-items: center;
+}
+
+.ProfileCard .line {
+  width: 8px;
+  height: 1px;
+  background-color: var(--secundary);
+}
+
 .ProfileCard .name {
   margin-top: 16px;
   margin-bottom: 0;
+  font-family: FontBold;
+  font-size: 20px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--white);
 }
 
 .ProfileCard .role {
-  margin-top: 8px;
+  font-family: FontRegular;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--white);
+  align-self: center;
 }

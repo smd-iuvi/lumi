@@ -3,6 +3,7 @@
   height: 200px;
   clip-path: circle();
   color: var(--white);
+  border: solid 1px #2f3146;
 }
 
 .ProfileImage .editIcon {
@@ -14,6 +15,15 @@
   justify-items: center;
   opacity: 0;
   background-color: rgba(117, 110, 255, 0.5);
+  font-family: FontBold;
+  font-size: 16px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
 }
 
 .ProfileImage .editIcon:hover {
