@@ -1,30 +1,34 @@
-.containerCenter{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.containerCenter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.photoProfile{
-    margin-top: 30px;
-    width: 134px;
-    height: 134px;
-    border-radius: 50%;
-    border: 1px solid var(--primary);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+.ProfileCard{
+  margin-top: -50px;
 }
 
-.containerCenter .Context-Button{
-    margin: 30px 0 20px 0;
+.photoProfile {
+  margin-top: 30px;
+  width: 134px;
+  height: 134px;
+  border-radius: 50%;
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 }
 
-.carousel{
-    margin-bottom: 30px;
+.containerCenter .Context-Button {
+  margin: 30px 0 20px 0;
 }
 
-@media only screen and (min-width : 1224px) {
-    .photoProfile{
-        width: 200px;
-        height: 200px;
-    }
+.carousel {
+  margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 1224px) {
+  .photoProfile {
+    width: 200px;
+    height: 200px;
+  }
 }

@@ -3,11 +3,11 @@ import React from 'react';
 import './ButtonsBottom.css';
 
 
-const ButtonsBottom = (props) => {
+const ButtonsBottom = ({ click, newClass, children }) => {
   return (
     <article className="buttonsSidebar buttonsBottom">
-      <article className={props.class} ></article>
-      <h1 className="labelBottom">{props.children}</h1>
+      <article className={newClass} ></article>
+      <h1 className="labelBottom">{children}</h1>
     </article>
   );
 };
