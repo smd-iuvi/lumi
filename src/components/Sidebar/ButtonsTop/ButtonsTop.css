@@ -30,10 +30,29 @@
 }
 
 .buttonsSidebar .iconButtonsTop{
-    width: 22px;
+    width: 28px;
+    height: 28px;
     margin-top: -7px;
 }
 
 .buttonsSidebar .iconBottom{
     margin-top: -2px;
+}
+
+.buttonsSidebar .iconHome{
+    background-image: url("../assets/icons/home.svg");
+    background-position: center;
+}
+
+.buttonsSidebar:hover .iconHome{
+    background-image: url("../assets/icons/home-mouseover.svg");
+}
+
+.buttonsSidebar .iconExplore{
+    background-image: url("../assets/icons/explore.svg");
+    background-position: center;
+}
+
+.buttonsSidebar:hover .iconExplore{
+    background-image: url("../assets/icons/explore-mouseover.svg");
 }

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #756eff;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="descobrir-mouseover" transform="translate(-40 -178)">
+    <path id="compass" class="cls-1" d="M0-26.4A10.4,10.4,0,0,0-10.4-16,10.4,10.4,0,0,0,0-5.6,10.4,10.4,0,0,0,10.4-16,10.4,10.4,0,0,0,0-26.4ZM0-7.2A8.816,8.816,0,0,1-8.8-16,8.816,8.816,0,0,1,0-24.8,8.816,8.816,0,0,1,8.8-16,8.816,8.816,0,0,1,0-7.2ZM-5.984-10,2.08-13.92,6-21.984l-8.128,3.856Zm7.248-5.856L-.16-17.28l2.736-1.312Zm-2.544-.3L.144-14.736l-2.736,1.312Z" transform="translate(54.4 208.4)"/>
+    <rect id="Rectangle_116" data-name="Rectangle 116" class="cls-2" width="28" height="28" transform="translate(40 178)"/>
+  </g>
+</svg>

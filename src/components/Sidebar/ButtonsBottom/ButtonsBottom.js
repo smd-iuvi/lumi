@@ -2,11 +2,12 @@ import React from 'react';
 
 import './ButtonsBottom.css';
 
-const ButtonsBottom = ({ icon, children, click }) => {
+
+const ButtonsBottom = (props) => {
   return (
-    <article className="buttonsSidebar buttonsBottom" onClick={click}>
-      <img src={icon} className="iconBottom" />
-      <h1 className="labelBottom">{children}</h1>
+    <article className="buttonsSidebar buttonsBottom">
+      <article className={props.class} ></article>
+      <h1 className="labelBottom">{props.children}</h1>
     </article>
   );
 };
