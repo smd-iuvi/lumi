@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { compose } from 'recompose';
 
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import SidebarPlayer from '../../components/SidebarPlayer/SidebarPlayer';
 import CommentSection from '../../components/CommentSection/CommentSection';
 
 import { withFirebase } from '../../Firebase';
+import { withAuthUser } from '../../Firebase/Session';
 
 import './Player.css';
 
@@ -14,7 +16,8 @@ class Player extends Component {
 
     this.state = {
       loading: false,
-      video: null
+      video: null,
+      onWatchList: false
     };
   }
 
@@ -25,14 +28,19 @@ class Player extends Component {
       match: { params }
     } = this.props;
 
-    firebase.video.get(params.videoId, (video, error) => {
-      this.setState({ video, error, loading: false });
-    });
+    this.listener = firebase.db
+      .ref(`video/${params.videoId}`)
+      .on('value', snapshot => {
+        this.setState({ video: snapshot.val(), loading: false });
+      });
   }
 
   componentWillUnmount() {
-    const { firebase } = this.props;
-    firebase.video.turnOff();
+    const {
+      firebase,
+      match: { params }
+    } = this.props;
+    firebase.db.ref(`video/${params.videoId}`).off();
   }
 
   didClap = () => {
@@ -40,11 +48,49 @@ class Player extends Component {
       firebase,
       match: { params }
     } = this.props;
-    firebase.video.clap(params.videoId);
+
+    firebase.video
+      .clap(params.videoId)
+      .then(() => {})
+      .catch(error => {
+        this.setState({ error });
+      });
+  };
+
+  checkUserWatchList = () => {
+    const {
+      authUser,
+      match: { params }
+    } = this.props;
+
+    if (authUser.watchList && authUser.watchList.includes(params.videoId)) {
+      this.setState({ onWatchList: true });
+    } else {
+      this.setState({ onWatchList: false });
+    }
+  };
+
+  didAddToWatchlist = () => {
+    const {
+      firebase,
+      authUser,
+      match: { params }
+    } = this.props;
+
+    firebase.user
+      .addVideoToList(authUser.uid, params.videoId)
+      .then(() => {
+        this.checkUserWatchList();
+      })
+      .catch(error => {});
   };
 
   render() {
-    const { video, loading } = this.state;
+    const { video, loading, onWatchList } = this.state;
+    const {
+      authUser,
+      match: { params }
+    } = this.props;
 
     let nameLabel;
     let url = '';
@@ -66,21 +112,28 @@ class Player extends Component {
         <div className="containerLeft">
           <VideoPlayer
             didClap={this.didClap}
+            didAddToWatchlist={() => this.didAddToWatchlist()}
             name={nameLabel}
             url={url}
             views={viewsLabel}
             claps={clapsLabel}
+            onWatchList={onWatchList}
           />
         </div>
         <div className="containerRight">
           <SidebarPlayer />
         </div>
         <div className="ContainerBottom">
-          <CommentSection />
+          {authUser && (
+            <CommentSection videoId={params.videoId} userId={authUser.uid} />
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default withFirebase(Player);
+export default compose(
+  withFirebase,
+  withAuthUser
+)(Player);

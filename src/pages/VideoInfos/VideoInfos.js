@@ -26,14 +26,14 @@ class VideoInfos extends Component {
       match: { params }
     } = this.props;
 
-    firebase.video.get(params.videoId, (video, error) => {
-      this.setState({ video, error, loading: false });
-    });
-  }
-
-  componentWillUnmount() {
-    const { firebase } = this.props;
-    firebase.video.turnOff();
+    firebase.video
+      .get(params.videoId)
+      .then(video => {
+        this.setState({ video, loading: false });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   onPlay = e => {
