@@ -9,15 +9,8 @@ import ButtonsBottom from './ButtonsBottom/ButtonsBottom';
 import Upload from '../Upload/Upload';
 
 import logo from './assets/icons/lumi.svg';
-import home from './assets/icons/home.svg';
-import explore from './assets/icons/explore.svg';
 import profile from './assets/profile.jpg';
-import newVideo from './assets/icons/upload.svg';
-import myVideos from './assets/icons/my_videos.svg';
-import user from './assets/icons/user.svg';
-import myList from './assets/icons/bookmark.svg';
-import help from './assets/icons/help.svg';
-import logout from './assets/icons/logout.svg';
+
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
@@ -49,10 +42,10 @@ class Navbar extends Component {
         </Link>
         <div className="iconsTop">
           <Link to={ROUTES.HOME} className="link">
-            <ButtonsTop icon={home}>Início</ButtonsTop>
+            <ButtonsTop class="iconButtonsTop iconHome">Início</ButtonsTop>
           </Link>
           <Link to={ROUTES.HOME} className="link">
-            <ButtonsTop icon={explore}>Descobrir</ButtonsTop>
+            <ButtonsTop class="iconButtonsTop iconExplore">Descobrir</ButtonsTop>
           </Link>
         </div>
         <article className="lineSidebar"></article>
@@ -62,21 +55,23 @@ class Navbar extends Component {
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonProfile image={profile}>Clarissa Ester</ButtonProfile>
               </Link>
-              <article onClick={this.handleModal} className="showModal"><ButtonsBottom icon={newVideo} className="btnShow">Enviar vídeo</ButtonsBottom></article>
+              <article onClick={this.handleModal} className="showModal">
+                <ButtonsBottom className="btnShow" class="iconBottom iconNewVideo">Enviar vídeo</ButtonsBottom>
+              </article>
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom icon={user}>Meu perfil</ButtonsBottom>
+                <ButtonsBottom class="iconBottom iconUser">Meu perfil</ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom icon={myVideos}>Meus envios</ButtonsBottom>
+                <ButtonsBottom class="iconBottom iconMyVideos">Meus envios</ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom icon={myList}>Minha lista</ButtonsBottom>
+                <ButtonsBottom class="iconBottom iconList">Minha lista</ButtonsBottom>
               </Link>
             </div>
             <Link to={ROUTES.PROFILE} className="link">
-              <ButtonsBottom icon={help}>Ajuda</ButtonsBottom>
+              <ButtonsBottom class="iconBottom iconHelp">Ajuda</ButtonsBottom>
             </Link><Link to={ROUTES.PROFILE} className="link">
-              <ButtonsBottom icon={logout}>Sair</ButtonsBottom>
+              <ButtonsBottom class="iconBottom iconLogout">Sair</ButtonsBottom>
             </Link>
           </div>
         ) : (

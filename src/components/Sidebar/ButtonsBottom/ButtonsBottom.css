@@ -11,4 +11,59 @@
 
 .buttonsBottom .iconBottom{
     width: 30px;
+    height: 30px;
+}
+
+.buttonsBottom .iconUser{
+    background-image: url("../assets/icons/user.svg");
+    background-position: center;
+}
+
+.buttonsBottom:hover .iconUser{
+    background-image: url("../assets/icons/user-mouseover.svg");
+}
+
+.buttonsBottom .iconMyVideos{
+    background-image: url("../assets/icons/my_videos.svg");
+    background-position: center;
+}
+
+.buttonsBottom:hover .iconMyVideos{
+    background-image: url("../assets/icons/myvideos-mouseover.svg");
+}
+
+.buttonsBottom .iconList{
+    background-image: url("../assets/icons/bookmark.svg");
+    background-position: center;
+}
+
+.buttonsBottom:hover .iconList{
+    background-image: url("../assets/icons/mylist-mouseover.svg");
+}
+
+.buttonsBottom .iconHelp{
+    background-image: url("../assets/icons/help.svg");
+    background-position: center;
+}
+
+.buttonsBottom:hover .iconHelp{
+    background-image: url("../assets/icons/help-mouseover.svg");
+}
+
+.buttonsBottom .iconLogout{
+    background-image: url("../assets/icons/logout.svg");
+    background-position: center;
+}
+
+.buttonsBottom:hover .iconLogout{
+    background-image: url("../assets/icons/logout-mouseover.svg");
+}
+
+.buttonsBottom .iconNewVideo{
+    background-image: url("../assets/icons/upload.svg");
+    background-position: center;
+}
+
+.buttonsBottom:hover .iconNewVideo{
+    background-image: url("../assets/icons/upload-mouseover.svg");
 }

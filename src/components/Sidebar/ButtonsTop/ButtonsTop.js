@@ -6,7 +6,7 @@ import './ButtonsTop.css';
 const ButtonsTop = (props) => {
     return (
         <article className="buttonsSidebar">
-            <img src={props.icon} className="iconButtonsTop" />
+            <article className={props.class}></article>
             <h1 className="labelButtons">{props.children}</h1>
         </article>
     );

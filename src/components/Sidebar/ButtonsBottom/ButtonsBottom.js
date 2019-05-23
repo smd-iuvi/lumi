@@ -6,7 +6,7 @@ import './ButtonsBottom.css';
 const ButtonsBottom = (props) => {
     return (
         <article className="buttonsSidebar buttonsBottom">
-            <img src={props.icon} className="iconBottom" />
+            <article className={props.class} ></article>
             <h1 className="labelBottom">{props.children}</h1>
         </article>
     );

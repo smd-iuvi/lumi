@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #756eff;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="inicio-mouseover" transform="translate(-39 -114)">
+    <path id="home" class="cls-1" d="M13.088-16.048,0-26.512-13.088-16.048-12.08-14.8l3.616-2.9V-5.488H8.464V-17.7l3.616,2.9ZM6.864-7.088H-6.864V-18.976L0-24.464l6.864,5.488Z" transform="translate(53.088 143.512)"/>
+    <rect id="Rectangle_115" data-name="Rectangle 115" class="cls-2" width="28" height="28" transform="translate(39 114)"/>
+  </g>
+</svg>
