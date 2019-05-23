@@ -66,14 +66,16 @@ class Profile extends Component {
     const { authUser } = this.props;
     const { watchList, myWorks, loadingMyWorks, loadingWatchList } = this.state;
     return (
-      <div className="container">
-        <ProfileCard
-          name={authUser.name}
-          imgUrl={authUser.photo_url}
-          role={authUser.role}
-        />
-        <ProfileLabels />
-        {/* <h1 className="Heading">Olá, {authUser ? authUser.name : ''}</h1>
+      <>
+        <div className="tabBar" />
+        <div className="container">
+          <ProfileCard
+            name={authUser.name}
+            imgUrl={authUser.photo_url}
+            role={authUser.role}
+          />
+          <ProfileLabels />
+          {/* <h1 className="Heading">Olá, {authUser ? authUser.name : ''}</h1>
         <h1 className="Pessoal-Area-Infos">Esta é suas área pessoal.</h1>
         <div className="containerCenter">
           <img src={ImgProfile} className="photoProfile" />
@@ -106,7 +108,8 @@ class Profile extends Component {
         ) : (
           <p>Carregando...</p>
         )} */}
-      </div>
+        </div>
+      </>
     );
   }
 }
