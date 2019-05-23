@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.ProfileCard{
+  margin-top: -50px;
+}
+
 .photoProfile {
   margin-top: 30px;
   width: 134px;
@@ -27,11 +31,4 @@
     width: 200px;
     height: 200px;
   }
-}
-
-.tabBar {
-  background-color: red;
-  width: 100%;
-  height: 144px;
-  margin: 64px;
 }

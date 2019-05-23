@@ -8,6 +8,7 @@ import { withFirebase } from '../../Firebase';
 import { withAuthorization, withAuthUser } from '../../Firebase/Session';
 
 import ImgProfile from '../../components/Sidebar/assets/profile.jpg';
+import iconProfile from './assets/user.svg';
 
 import * as CONDITIONS from '../../constants/authorizingConditions';
 import * as ROUTES from '../../constants/routes';
@@ -17,6 +18,7 @@ import './Profile.css';
 import ProfileImage from '../../components/ProfileCard/ProfileImage/ProfileImage';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
 import ProfileLabels from '../../components/ProfileLabels/ProfileLabels';
+import TabBar from '../../components/TabBar/TabBar';
 
 class Profile extends Component {
   constructor(props) {
@@ -27,7 +29,8 @@ class Profile extends Component {
       myWorks: null,
       error: null,
       loadingWatchList: true,
-      loadingMyWorks: true
+      loadingMyWorks: true,
+      tabs: ["Minhas informações", "Meus envios", "Minha lista"]
     };
   }
 
@@ -67,12 +70,13 @@ class Profile extends Component {
     const { watchList, myWorks, loadingMyWorks, loadingWatchList } = this.state;
     return (
       <>
-        <div className="tabBar" />
+        <TabBar icon={iconProfile} title="Meu perfil" tabs={this.state.tabs} />
         <div className="container">
           <ProfileCard
             name={authUser.name}
             imgUrl={authUser.photo_url}
             role={authUser.role}
+            className="ProfileCard"
           />
           <ProfileLabels />
           {/* <h1 className="Heading">Olá, {authUser ? authUser.name : ''}</h1>
