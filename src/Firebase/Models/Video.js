@@ -62,7 +62,7 @@ class Video {
 
             resolve(videosList);
           } else {
-            resolve([]);
+            resolve(null);
           }
         });
       });
