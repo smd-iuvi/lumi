@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import * as ROUTES from './constants/routes';
 
@@ -21,10 +21,11 @@ import { withAuthentification } from './Firebase/Session';
 
 class App extends Component {
   render() {
-    console.log(window.location.pathname);
+    const { location } = this.props;
+
     return (
-      <BrowserRouter>
-        {!window.location.pathname.includes(ROUTES.PLAYER) ? <Sidebar /> : null}
+      <div>
+        {!location.pathname.includes(ROUTES.PLAYER) ? <Sidebar /> : null}
         <NavBar />
 
         <Switch>
@@ -45,9 +46,9 @@ class App extends Component {
         </Switch>
 
         <Footer />
-      </BrowserRouter>
+      </div>
     );
   }
 }
 
-export default withAuthentification(App);
+export default withRouter(withAuthentification(App));
