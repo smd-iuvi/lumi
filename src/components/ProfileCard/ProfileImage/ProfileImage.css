@@ -28,6 +28,7 @@
 
 .ProfileImage .editIcon:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .ProfileImage .editIcon img {
