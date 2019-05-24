@@ -75,9 +75,9 @@ class Navbar extends Component {
                   {authUser.name}
                 </ButtonProfile>
               </Link>
-              <article onClick={this.handleModal} className="showModal">
+              <Link onClick={this.handleModal} className="showModal link">
                 <ButtonsBottom className="btnShow" newClass="iconBottom iconNewVideo">Enviar vídeo</ButtonsBottom>
-              </article>
+              </Link>
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom newClass="iconBottom iconUser">Meu perfil</ButtonsBottom>
               </Link>
