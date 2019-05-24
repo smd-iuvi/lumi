@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactPlayer from 'react-player';
 
 import './VideoPlayer.css';
 
@@ -11,14 +12,13 @@ const VideoPlayer = ({
   views,
   claps,
   didAddToWatchlist,
-  onWatchList
+  onWatchList,
+  onProgress,
+  onDuration
 }) => {
-  const urlCode = url.split('=').slice(-1);
-  const embeedUrl = `https://www.youtube.com/embed/${urlCode}`;
-
   return (
     <div className="videoPlayer">
-      <iframe
+      {/* <iframe
         src={embeedUrl}
         frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -27,6 +27,13 @@ const VideoPlayer = ({
         msallowfullscreen="msallowfullscreen"
         oallowfullscreen="oallowfullscreen"
         webkitallowfullscreen="webkitallowfullscreen"
+        onEnded={onVideoEnd}
+      /> */}
+      <ReactPlayer
+        url={url}
+        controls
+        onProgress={onProgress}
+        onDuration={onDuration}
       />
       <h1 className="Title-Film title">{name}</h1>
       <h1 className="Views-Film">{views} visualizações</h1>

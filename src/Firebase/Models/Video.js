@@ -81,6 +81,31 @@ class Video {
     });
   };
 
+  view = uid => {
+    return new Promise((resolve, reject) => {
+      let currentViews = null;
+
+      this.get(uid)
+        .then(video => {
+          currentViews = video.views ? video.views : 0;
+          this.database
+            .ref(`video/${uid}`)
+            .update({
+              views: currentViews + 1
+            })
+            .then(video => {
+              resolve(video);
+            })
+            .catch(error => {
+              reject(error);
+            });
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  };
+
   turnOff = () => {
     this.database.ref('video').off();
   };

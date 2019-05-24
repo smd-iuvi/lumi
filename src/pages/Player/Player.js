@@ -17,7 +17,9 @@ class Player extends Component {
     this.state = {
       loading: false,
       video: null,
-      onWatchList: false
+      onWatchList: false,
+      duration: 0,
+      watched: false
     };
   }
 
@@ -34,6 +36,34 @@ class Player extends Component {
         this.setState({ video: snapshot.val(), loading: false });
       });
   }
+
+  onVideoEnd = () => {
+    alert('Video terminou');
+  };
+
+  onProgress = progress => {
+    const { watched, duration } = this.state;
+    const {
+      firebase,
+      match: { params }
+    } = this.props;
+
+    if (progress.playedSeconds > duration / 2 && !watched) {
+      this.setState({ watched: true });
+      firebase.video
+        .view(params.videoId)
+        .then(video => {
+          console.log('Video assitido');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  };
+
+  onDuration = d => {
+    this.setState({ duration: d });
+  };
 
   componentWillUnmount() {
     const {
@@ -116,8 +146,11 @@ class Player extends Component {
             name={nameLabel}
             url={url}
             views={viewsLabel}
+            videoId={params.videoId}
             claps={clapsLabel}
             onWatchList={onWatchList}
+            onDuration={progress => this.onDuration(progress)}
+            onProgress={duration => this.onProgress(duration)}
           />
         </div>
         <div className="containerRight">
