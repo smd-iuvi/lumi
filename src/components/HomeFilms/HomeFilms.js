@@ -2,6 +2,7 @@ import React from 'react';
 import './HomeFilms.css';
 
 import CardFilm from '../CardFilm/CardFilm';
+import CardList from '../CardList/CardList';
 import Header from '../Header/Header';
 import EmptyLabel from '../EmptyLabel/EmptyLabel';
 
@@ -11,7 +12,7 @@ const HomeFilms = ({ videos, loading }) => {
   if (loading) {
     children = <EmptyLabel>Carregando...</EmptyLabel>;
   } else if (videos !== null) {
-    children = videos.map(video => <CardFilm video={video} />);
+    children = <CardList videos={videos} loading={loading} />;
   } else {
     children = <EmptyLabel>Não há videos nesta lista</EmptyLabel>;
   }
