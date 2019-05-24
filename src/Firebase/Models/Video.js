@@ -5,47 +5,14 @@ class Video {
     this.database = database;
   }
 
-  create = (
-    {
-      title,
-      description,
-      genre,
-      tags,
-      url,
-      parentalRating,
-      discipline,
-      semester,
-      content,
-      professor,
-      about,
-      userId
-    },
-    callback
-  ) => {
-    this.database
-      .ref('video')
-      .push({
-        title,
-        description,
-        genre,
-        tags,
-        url,
-        parentalRating,
-        discipline,
-        semester,
-        content,
-        professor,
-        about,
-        createdBy: userId,
-        claps: 0,
-        views: 0
-      })
-      .then(() => {
-        callback(null);
-      })
-      .catch(error => {
-        callback(error);
-      });
+  create = video => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('video')
+        .push(video)
+        .then(() => resolve())
+        .catch(error => reject(error));
+    });
   };
 
   get = (uid = null) => {
