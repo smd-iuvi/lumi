@@ -103,10 +103,7 @@ class Profile extends Component {
       container = (
         <>
           <CardList>
-            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
-            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
-            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
-            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+            {!loadingMyWorks ? myWorks.map(video => <CardFilm />) : null}
           </CardList>
         </>
       );
