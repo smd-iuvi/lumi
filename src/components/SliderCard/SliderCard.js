@@ -16,7 +16,7 @@ const SliderCard = ({ video, history }) => {
     <div className="SliderCard">
       <div className="infos">
         <h1 className="addRecent">ADICIONADO RECENTEMENTE</h1>
-        <h1 className="titleFilm">{video.title}}</h1>
+        <h1 className="titleFilm">{video.title}</h1>
         <h1 className="descriptionFilm">{video.description}</h1>
         <div className="buttonsFilm">
           <button

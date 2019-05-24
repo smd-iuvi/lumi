@@ -7,6 +7,7 @@ import { withFirebase } from '../../Firebase';
 import HomeFilms from '../../components/HomeFilms/HomeFilms';
 import Carousel from '../../components/Carousel/Carousel';
 import EventsList from '../../components/EventsList/EventsList';
+import EmptyLabel from '../../components/EmptyLabel/EmptyLabel';
 // import { Thumbs } from 'react-responsive-carousel';
 
 class Home extends Component {
@@ -44,7 +45,7 @@ class Home extends Component {
     return (
       <div className="container">
         {loading ? (
-          <p>Carregando vídeos</p>
+          <EmptyLabel>Carregando...</EmptyLabel>
         ) : (
           <Carousel videos={recentsVideos} />
         )}
