@@ -4,7 +4,11 @@ import './CardList.css';
 import EmptyLabel from '../EmptyLabel/EmptyLabel';
 import CardFilm from '../CardFilm/CardFilm';
 
-const CardList = ({ loading, videos }) => {
+const pushUpStyle = {
+  marginTop: '-50px'
+};
+
+const CardList = ({ loading, videos, belowTab = false }) => {
   let children = null;
 
   if (loading) {
@@ -15,7 +19,11 @@ const CardList = ({ loading, videos }) => {
     children = <EmptyLabel>Não há videos nesta lista</EmptyLabel>;
   }
 
-  return <div className="CardList">{children}</div>;
+  return (
+    <div className="CardList" style={belowTab ? pushUpStyle : {}}>
+      {children}
+    </div>
+  );
 };
 
 export default CardList;

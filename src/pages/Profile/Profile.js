@@ -93,9 +93,17 @@ class Profile extends Component {
         </>
       );
     } else if (selected == 1) {
-      container = <CardList loading={loadingMyWorks} videos={myWorks} />;
+      container = (
+        <CardList loading={loadingMyWorks} videos={myWorks} belowTab={true} />
+      );
     } else if (selected == 2) {
-      container = <CardList loading={loadingWatchList} videos={watchList} />;
+      container = (
+        <CardList
+          loading={loadingWatchList}
+          videos={watchList}
+          belowTab={true}
+        />
+      );
     }
 
     return (
