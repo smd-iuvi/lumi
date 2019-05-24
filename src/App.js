@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom';
 
 import * as ROUTES from './constants/routes';
 
@@ -21,9 +21,10 @@ import { withAuthentification } from './Firebase/Session';
 
 class App extends Component {
   render() {
+    console.log(window.location.pathname);
     return (
       <BrowserRouter>
-        <Sidebar />
+        {!window.location.pathname.includes(ROUTES.PLAYER) ? <Sidebar /> : null}
         <NavBar />
 
         <Switch>
