@@ -3,35 +3,43 @@ import './Home.css';
 
 import { withFirebase } from '../../Firebase';
 
-// import Header from '../../components/Header/Header';
 import HomeFilms from '../../components/HomeFilms/HomeFilms';
 import Carousel from '../../components/Carousel/Carousel';
 import EventsList from '../../components/EventsList/EventsList';
-import EmptyLabel from '../../components/EmptyLabel/EmptyLabel';
-// import { Thumbs } from 'react-responsive-carousel';
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loading: false,
+      loadingRecents: false,
+      loadingPopulars: false,
       recentsVideos: [],
+      popularsVideos: [],
       error: null
     };
   }
 
   componentDidMount() {
-    this.setState({ loading: true });
+    this.setState({ loadingRecents: true, loadingPopulars: true });
     const { firebase } = this.props;
 
     firebase.video
       .get()
       .then(videos => {
-        this.setState({ recentsVideos: videos, loading: false });
+        this.setState({ recentsVideos: videos, loadingRecents: false });
       })
       .catch(error => {
-        this.setState({ error, loading: false });
+        this.setState({ error, loadingRecents: false });
+      });
+
+    firebase.video
+      .getPopulars(4)
+      .then(videos => {
+        this.setState({ popularsVideos: videos, loadingPopulars: false });
+      })
+      .catch(error => {
+        this.setState({ error, loadingPopulars: false });
       });
   }
 
@@ -41,24 +49,20 @@ class Home extends Component {
   }
 
   render() {
-    const { recentsVideos, loading } = this.state;
+    const {
+      recentsVideos,
+      loadingRecents,
+      popularsVideos,
+      loadingPopulars
+    } = this.state;
+
     return (
       <div className="container">
-        {loading ? (
-          <EmptyLabel>Carregando...</EmptyLabel>
-        ) : (
-          <Carousel videos={recentsVideos} />
-        )}
+        <Carousel videos={recentsVideos} loading={loadingRecents} />
         <div className="bannersHome">
-          <HomeFilms />
+          <HomeFilms videos={popularsVideos} loading={loadingPopulars} />
           <EventsList />
         </div>
-
-        {/* <EventsList />
-
-        <Header>Os mais assistidos</Header>
-        <Carousel /> */}
-        {/* <article className="line" /> */}
       </div>
     );
   }

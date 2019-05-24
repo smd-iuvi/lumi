@@ -110,6 +110,33 @@ class Video {
     this.database.ref('video').off();
   };
 
+  getPopulars = num => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('video')
+        .orderByChild('views')
+        .limitToFirst(num)
+        .once('value')
+        .then(snapshot => {
+          const videos = snapshot.val();
+
+          if (videos) {
+            const videoList = Object.keys(videos).map(key => ({
+              ...videos[key],
+              uid: key
+            }));
+
+            resolve(videoList);
+          } else {
+            resolve(null);
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  };
+
   getVideosByUser = userId => {
     return new Promise((resolve, reject) => {
       this.database

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
@@ -7,36 +7,33 @@ import 'react-responsive-carousel/lib/styles/carousel.css';
 import { Carousel } from 'react-responsive-carousel';
 
 import SliderCard from '../SliderCard/SliderCard';
+import EmptyLabel from '../EmptyLabel/EmptyLabel';
 
-class Carousels extends Component {
-  onWatch = uid => {
-    const { history } = this.props;
-    history.push(`${ROUTES.VIDEO}/${uid}`);
-  };
+const Carousels = ({ videos, loading }) => {
+  let children = null;
 
-  render() {
-    const { videos } = this.props;
-    let videoList = null;
-
-    if (videos != null) {
-      videoList = videos.map(video => {
-        return <SliderCard video={video} />;
-      });
-    }
-
-    return (
-      <Carousel
-        emulateTouch
-        showStatus={false}
-        showIndicators={false}
-        showThumbs={false}
-        width="100%"
-        className="carousel"
-      >
-        {videoList}
-      </Carousel>
-    );
+  if (loading) {
+    children = <EmptyLabel>Carregando...</EmptyLabel>;
+  } else if (videos != null) {
+    children = videos.map(video => {
+      return <SliderCard video={video} />;
+    });
+  } else {
+    children = <EmptyLabel>Sem vídeos nesta lista</EmptyLabel>;
   }
-}
+
+  return (
+    <Carousel
+      emulateTouch
+      showStatus={false}
+      showIndicators={false}
+      showThumbs={false}
+      width="100%"
+      className="carousel"
+    >
+      {children}
+    </Carousel>
+  );
+};
 
 export default withRouter(Carousels);
