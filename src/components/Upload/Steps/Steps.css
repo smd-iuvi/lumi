@@ -119,3 +119,9 @@
 .checkDiscipline .titleStep2{
     font-family: FontRegular;
 }
+
+.classificationDiv{
+    display: grid;
+    grid-template-columns: 248px 1fr;
+    grid-gap: 16px;
+}

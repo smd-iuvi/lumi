@@ -38,14 +38,14 @@ class TabBar extends Component {
                   {tb}
                 </article>
               ) : (
-                <article
-                  className="tab"
-                  onClick={this.handleTab}
-                  id={this.props.tabs.indexOf(tb)}
-                >
-                  {tb}
-                </article>
-              )}
+                  <article
+                    className="tab"
+                    onClick={this.handleTab}
+                    id={this.props.tabs.indexOf(tb)}
+                  >
+                    {tb}
+                  </article>
+                )}
             </>
           ))}
         </div>
