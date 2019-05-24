@@ -63,7 +63,9 @@ class Navbar extends Component {
             <ButtonsTop newClass="iconButtonsTop iconHome">Início</ButtonsTop>
           </Link>
           <Link to={ROUTES.HOME} className="link">
-            <ButtonsTop newClass="iconButtonsTop iconExplore">Descobrir</ButtonsTop>
+            <ButtonsTop newClass="iconButtonsTop iconExplore">
+              Descobrir
+            </ButtonsTop>
           </Link>
         </div>
         <article className="lineSidebar" />
@@ -75,35 +77,51 @@ class Navbar extends Component {
                   {authUser.name}
                 </ButtonProfile>
               </Link>
-              <Link onClick={this.handleModal} className="showModal link">
-                <ButtonsBottom className="btnShow" newClass="iconBottom iconNewVideo">Enviar vídeo</ButtonsBottom>
+              <article onClick={this.handleModal} className="showModal">
+                <ButtonsBottom
+                  className="btnShow"
+                  newClass="iconBottom iconNewVideo"
+                >
+                  Enviar vídeo
+                </ButtonsBottom>
+              </article>
+              <Link to={ROUTES.PROFILE} className="link">
+                <ButtonsBottom newClass="iconBottom iconUser">
+                  Meu perfil
+                </ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom newClass="iconBottom iconUser">Meu perfil</ButtonsBottom>
+                <ButtonsBottom newClass="iconBottom iconMyVideos">
+                  Meus envios
+                </ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom newClass="iconBottom iconMyVideos">Meus envios</ButtonsBottom>
-              </Link>
-              <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom newClass="iconBottom iconList">Minha lista</ButtonsBottom>
+                <ButtonsBottom newClass="iconBottom iconList">
+                  Minha lista
+                </ButtonsBottom>
               </Link>
             </div>
             <Link to={ROUTES.PROFILE} className="link">
-              <ButtonsBottom newClass="iconBottom iconHelp">Ajuda</ButtonsBottom>
+              <ButtonsBottom newClass="iconBottom iconHelp">
+                Ajuda
+              </ButtonsBottom>
             </Link>
 
-            <ButtonsBottom newClass="iconBottom iconLogout" click={this.onSignOut}>Sair</ButtonsBottom>
-
-
+            <ButtonsBottom
+              newClass="iconBottom iconLogout"
+              click={this.onSignOut}
+            >
+              Sair
+            </ButtonsBottom>
           </div>
         ) : (
-            <Link to={ROUTES.SIGN_IN} className="link">
-              <button className="buttonsNavbar">
-                <i className="far fa-user icon" />
-                <h1 className="labelButtons">ENTRAR</h1>
-              </button>
-            </Link>
-          )}
+          <Link to={ROUTES.SIGN_IN} className="link">
+            <button className="buttonsNavbar">
+              <i className="far fa-user icon" />
+              <h1 className="labelButtons">ENTRAR</h1>
+            </button>
+          </Link>
+        )}
       </div>
     );
   }

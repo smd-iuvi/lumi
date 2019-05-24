@@ -22,6 +22,7 @@ import CardList from '../../components/CardList/CardList';
 import CardFilm from '../../components/CardFilm/CardFilm';
 import TabBar from '../../components/TabBar/TabBar';
 import SecondaryButton from '../../components/Buttons/SecondaryButton/SecondaryButton';
+import EmptyLabel from '../../components/EmptyLabel/EmptyLabel';
 
 class Profile extends Component {
   constructor(props) {
@@ -31,8 +32,8 @@ class Profile extends Component {
       watchList: null,
       myWorks: null,
       error: null,
-      loadingWatchList: true,
-      loadingMyWorks: true,
+      loadingWatchList: false,
+      loadingMyWorks: false,
       tabs: ['Minhas informações', 'Meus envios', 'Minha lista'],
       selected: 0
     };
@@ -49,7 +50,7 @@ class Profile extends Component {
         this.setState({ myWorks: videos, loadingMyWorks: false });
       })
       .catch(error => {
-        this.setState({ error, loadingWatchList: false });
+        this.setState({ error, loadingMyWorks: false });
       });
 
     if (authUser.watchList) {
@@ -83,6 +84,9 @@ class Profile extends Component {
       selected
     } = this.state;
 
+    console.log(loadingWatchList);
+    console.log(watchList);
+
     let container = null;
 
     if (selected == 0) {
@@ -96,14 +100,19 @@ class Profile extends Component {
           />
           <article className="lineSidebar" />
           <ProfileLabels />
-          <SecondaryButton>Salvar modificações</SecondaryButton>
         </>
       );
     } else if (selected == 1) {
       container = (
         <>
           <CardList>
-            {!loadingMyWorks ? myWorks.map(video => <CardFilm />) : null}
+            {loadingMyWorks ? (
+              <EmptyLabel>Carregando...</EmptyLabel>
+            ) : myWorks ? (
+              myWorks.map(video => <CardFilm video={video} />)
+            ) : (
+              <EmptyLabel>Você ainda não enviou nenhum vídeo</EmptyLabel>
+            )}
           </CardList>
         </>
       );
@@ -111,10 +120,15 @@ class Profile extends Component {
       container = (
         <>
           <CardList>
-            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
-            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
-            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
-            <CardFilm name="Interestelar" discipline="Narrativas Multimidia" />
+            {loadingWatchList ? (
+              <EmptyLabel>Carregando...</EmptyLabel>
+            ) : watchList ? (
+              watchList.map(video => <CardFilm video={video} />)
+            ) : (
+              <EmptyLabel>
+                Você ainda não adicionou nenhum vídeo à sua lista
+              </EmptyLabel>
+            )}
           </CardList>
         </>
       );
