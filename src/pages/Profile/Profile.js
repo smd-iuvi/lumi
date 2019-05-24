@@ -2,27 +2,18 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
-import Carousel from '../../components/Carousel/Carousel';
-
 import { withFirebase } from '../../Firebase';
 import { withAuthorization, withAuthUser } from '../../Firebase/Session';
 
-import ImgProfile from '../../components/Sidebar/assets/profile.jpg';
 import iconProfile from './assets/user.svg';
 
 import * as CONDITIONS from '../../constants/authorizingConditions';
-import * as ROUTES from '../../constants/routes';
-import * as ROLES from '../../constants/roles';
 
 import './Profile.css';
-import ProfileImage from '../../components/ProfileCard/ProfileImage/ProfileImage';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
 import ProfileLabels from '../../components/ProfileLabels/ProfileLabels';
 import CardList from '../../components/CardList/CardList';
-import CardFilm from '../../components/CardFilm/CardFilm';
 import TabBar from '../../components/TabBar/TabBar';
-import SecondaryButton from '../../components/Buttons/SecondaryButton/SecondaryButton';
-import EmptyLabel from '../../components/EmptyLabel/EmptyLabel';
 
 class Profile extends Component {
   constructor(props) {
@@ -84,10 +75,9 @@ class Profile extends Component {
       selected
     } = this.state;
 
-    console.log(loadingWatchList);
-    console.log(watchList);
-
     let container = null;
+
+    console.log(selected);
 
     if (selected == 0) {
       container = (
@@ -103,35 +93,9 @@ class Profile extends Component {
         </>
       );
     } else if (selected == 1) {
-      container = (
-        <>
-          <CardList>
-            {loadingMyWorks ? (
-              <EmptyLabel>Carregando...</EmptyLabel>
-            ) : myWorks ? (
-              myWorks.map(video => <CardFilm video={video} />)
-            ) : (
-              <EmptyLabel>Você ainda não enviou nenhum vídeo</EmptyLabel>
-            )}
-          </CardList>
-        </>
-      );
+      container = <CardList loading={loadingMyWorks} videos={myWorks} />;
     } else if (selected == 2) {
-      container = (
-        <>
-          <CardList>
-            {loadingWatchList ? (
-              <EmptyLabel>Carregando...</EmptyLabel>
-            ) : watchList ? (
-              watchList.map(video => <CardFilm video={video} />)
-            ) : (
-              <EmptyLabel>
-                Você ainda não adicionou nenhum vídeo à sua lista
-              </EmptyLabel>
-            )}
-          </CardList>
-        </>
-      );
+      container = <CardList loading={loadingWatchList} videos={watchList} />;
     }
 
     return (
