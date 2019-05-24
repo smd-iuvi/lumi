@@ -1,31 +1,25 @@
-.titleHomeFilms{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+.titleHomeFilms {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.HomeFilms .line{
-    background-color: #303247;
-    margin-bottom: 21px;
-    margin-top: 0;
+.HomeFilms .line {
+  background-color: #303247;
+  margin-bottom: 21px;
+  margin-top: 0;
 }
 
-.HomeFilms .listFilms{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 24px;
+.HomeFilms .buttonSeeMore {
+  background-color: #575a80;
+  color: var(--white);
 }
 
-.HomeFilms .buttonSeeMore{
-    background-color: #575a80;
-    color: var(--white);
+.HomeFilms .buttonSeeMore:hover {
+  background-color: var(--secundary);
 }
 
-.HomeFilms .buttonSeeMore:hover{
-    background-color: var(--secundary);
-}
-
-.HomeFilms .button{
-    padding: 0 20px;
+.HomeFilms .button {
+  padding: 0 20px;
 }
