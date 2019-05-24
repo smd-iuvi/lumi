@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './NewInformation.css';
 
-import Tag from '../AddTags/Tag/Tag';
+import iconX from './assets/x.svg';
 
 class NewInformation extends Component {
     constructor(props) {
@@ -13,26 +13,21 @@ class NewInformation extends Component {
             options: ['Direção', 'Edição', 'Trilha Sonora', 'Roteiro', 'Filmagem', 'Fotografia']
         };
         this.handleChange = this.handleChange.bind(this);
-        this.keyPress = this.keyPress.bind(this);
     }
 
     handleChange(e) {
         this.setState({ value: e.target.value });
     }
 
-    keyPress(e) {
-        if (e.keyCode == 13) {
-            const getTags = this.state.tags;
-            getTags.push(e.target.value);
-            this.setState({ tags: getTags, value: '' });
-        }
+    closeInfo = () => {
+        this.props.removeFunction(this.props.index)
     }
 
     render() {
         return (
             <div className="NewInformation">
                 <div>
-                    X
+                    <img src={iconX} className="closeInfo" onClick={this.closeInfo} />
                 </div>
                 <div>
                     <select>
@@ -40,14 +35,10 @@ class NewInformation extends Component {
                             <option value={op}>{op}</option>
                         )}
                     </select>
+                    <br />
                     <input type="text" placeholder="Nome do participante" value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
-                    <div className="tags">
-                        {this.state.tags.map((tag) =>
-                            <Tag>{tag}</Tag>
-                        )}
-                    </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }
