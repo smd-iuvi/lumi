@@ -6,9 +6,6 @@
     margin-left: 216px;
     padding: 0 56px;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
-    /* position: fixed;
-    /* top: 0;
-    z-index: 19; */
 }
 
 .tabBar .titleTabBar{
@@ -25,13 +22,14 @@
     background-color: var(--navbar-color);
     border-radius: 4px;
     margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tabBar .titleTabBar article img{
     width: 30px;
     height: 30px;
-    margin-left: 5px;
-    margin-top: 5px;
 }
 
 .tabBar .tabs{

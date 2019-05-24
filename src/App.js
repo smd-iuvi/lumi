@@ -14,6 +14,7 @@ import Profile from './pages/Profile/Profile';
 import Upload from './pages/Upload/Upload';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import Search from './pages/Search/Search';
 import Landing from './pages/Landing/Landing';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import { withAuthentification } from './Firebase/Session';
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
           <Route path={ROUTES.LANDING} exact component={Landing} />
           <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
+          <Route path={ROUTES.SEARCH} exact component={Search} />
         </Switch>
 
         <Footer />
