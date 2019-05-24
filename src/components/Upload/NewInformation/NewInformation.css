@@ -2,14 +2,39 @@
     display: grid;
     grid-template-columns: 10px 1fr;
     grid-gap: 20px;
+    align-items: center;
+    border: 1px solid var(--secundary);
+    border-radius: 8px;
+    padding: 17px;
 }
 
 .NewInformation select{
-    font-size: 14px !important;
-    font-family: GravityBook;
-    margin-bottom: 15px;
+    font-size: 16px !important;
+    font-family: FontRegular;
+    margin-bottom: 8px;
+    border: none;
+    outline: none;
+    color: var(--secundary);
+    cursor: pointer;
+    width: 100%;
 } 
 
-.NewInformation .tags{
-    margin-top: 20px;
+.NewInformation input[type="text"]{
+    font-family: FontRegular;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    border: none;
+    outline: none;
+    color: var(--text);
+    width: 100%;
+}
+
+.NewInformation .closeInfo{
+    width: 13px;
+    height: 13px;
+    cursor: pointer;
 }

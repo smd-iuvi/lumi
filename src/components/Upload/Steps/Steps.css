@@ -125,3 +125,33 @@
     grid-template-columns: 248px 1fr;
     grid-gap: 16px;
 }
+
+.Steps .bntNewInformation{
+    background: none;
+    border: none;
+    font-family: FontBold;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    color: var(--text-secundary);
+    display: flex;
+    align-items: center;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.Steps .bntNewInformation img{
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.Steps .functions{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+    grid-gap: 24px;
+}
