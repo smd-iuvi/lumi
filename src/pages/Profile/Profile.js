@@ -32,8 +32,8 @@ class Profile extends Component {
       watchList: null,
       myWorks: null,
       error: null,
-      loadingWatchList: true,
-      loadingMyWorks: true,
+      loadingWatchList: false,
+      loadingMyWorks: false,
       tabs: ['Minhas informações', 'Meus envios', 'Minha lista'],
       selected: 0
     };
@@ -50,7 +50,7 @@ class Profile extends Component {
         this.setState({ myWorks: videos, loadingMyWorks: false });
       })
       .catch(error => {
-        this.setState({ error, loadingWatchList: false });
+        this.setState({ error, loadingMyWorks: false });
       });
 
     if (authUser.watchList) {
@@ -83,6 +83,9 @@ class Profile extends Component {
       loadingWatchList,
       selected
     } = this.state;
+
+    console.log(loadingWatchList);
+    console.log(watchList);
 
     let container = null;
 
