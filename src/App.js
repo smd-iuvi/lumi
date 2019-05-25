@@ -26,7 +26,9 @@ class App extends Component {
     return (
       <div>
         {!location.pathname.includes(ROUTES.PLAYER) ? <Sidebar /> : null}
-        <NavBar />
+        {!location.pathname.includes(ROUTES.PLAYER) ? <NavBar class="navbar" />
+          :
+          <NavBar class="navbar navbarComplete" />}
 
         <Switch>
           <Route path={ROUTES.HOME} exact component={Home} />
@@ -45,7 +47,7 @@ class App extends Component {
           <Route path={ROUTES.SEARCH} exact component={Search} />
         </Switch>
 
-        <Footer />
+        {!location.pathname.includes(ROUTES.PLAYER) ? <Footer /> : null}
       </div>
     );
   }

@@ -12,7 +12,7 @@ class NavBar extends Component {
   }
   render() {
     return (
-      <div className="navbar">
+      <div className={this.props.class}>
         <img src={search} className="iconNavbar" />
 
         <input

@@ -1,3 +1,14 @@
+.containerPlayer {
+  display: grid;
+  grid-template-areas: 'containerLeft containerRight' 'containerBottom containerRight';
+  grid-template-columns: 1fr 380px;
+  grid-template-rows: 65vh 1fr;
+  grid-gap: 80px;
+  padding-top: 50px;
+  padding-bottom: 43px;
+  margin: 59px 104px 0 104px;
+}
+
 .containerPlayer .containerLeft {
   margin: 0;
   grid-area: containerLeft;
@@ -25,13 +36,6 @@
 }
 
 @media only screen and (min-width: 1224px) {
-  .containerPlayer {
-    display: grid;
-    grid-template-areas: 'containerLeft containerRight' 'containerBottom containerRight';
-    grid-template-columns: 1fr 380px;
-    grid-template-rows: 65vh 1fr;
-    grid-gap: 80px;
-  }
   .containerPlayer .actionsPlayer {
     grid-area: actions;
   }

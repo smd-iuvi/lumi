@@ -81,7 +81,7 @@ class Player extends Component {
 
     firebase.video
       .clap(params.videoId)
-      .then(() => {})
+      .then(() => { })
       .catch(error => {
         this.setState({ error });
       });
@@ -112,7 +112,7 @@ class Player extends Component {
       .then(() => {
         this.checkUserWatchList();
       })
-      .catch(error => {});
+      .catch(error => { });
   };
 
   render() {
@@ -138,7 +138,7 @@ class Player extends Component {
     }
 
     return (
-      <div className="container containerPlayer">
+      <div className="containerPlayer">
         <div className="containerLeft">
           <VideoPlayer
             didClap={this.didClap}

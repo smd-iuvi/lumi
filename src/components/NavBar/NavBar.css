@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.navbarComplete{
+    padding-left: 56px !important;
+}
+
 .navbar .iconNavbar{
     width: 18px;
     height: 29px;
