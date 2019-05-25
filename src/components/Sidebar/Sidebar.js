@@ -77,14 +77,14 @@ class Navbar extends Component {
                   {authUser.name}
                 </ButtonProfile>
               </Link>
-              <article onClick={this.handleModal} className="showModal">
+              <Link onClick={this.handleModal} className="showModal link">
                 <ButtonsBottom
                   className="btnShow"
                   newClass="iconBottom iconNewVideo"
                 >
                   Enviar vídeo
                 </ButtonsBottom>
-              </article>
+              </Link>
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom newClass="iconBottom iconUser">
                   Meu perfil
@@ -115,13 +115,13 @@ class Navbar extends Component {
             </ButtonsBottom>
           </div>
         ) : (
-          <Link to={ROUTES.SIGN_IN} className="link">
-            <button className="buttonsNavbar">
-              <i className="far fa-user icon" />
-              <h1 className="labelButtons">ENTRAR</h1>
-            </button>
-          </Link>
-        )}
+            <Link to={ROUTES.SIGN_IN} className="link">
+              <button className="buttonsNavbar">
+                <i className="far fa-user icon" />
+                <h1 className="labelButtons">ENTRAR</h1>
+              </button>
+            </Link>
+          )}
       </div>
     );
   }
