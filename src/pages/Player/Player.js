@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
+import TabBarPlayer from '../../components/Player/TabBarPlayer/TabBarPlayer';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import SidebarPlayer from '../../components/SidebarPlayer/SidebarPlayer';
 import CommentSection from '../../components/CommentSection/CommentSection';
@@ -138,8 +139,10 @@ class Player extends Component {
     }
 
     return (
-      <div className="containerPlayer">
-        <div className="containerLeft">
+      <>
+        <TabBarPlayer />
+        <div className="containerPlayer">
+          {/* <div className="containerLeft">
           <VideoPlayer
             didClap={this.didClap}
             didAddToWatchlist={() => this.didAddToWatchlist()}
@@ -160,8 +163,9 @@ class Player extends Component {
           {authUser && (
             <CommentSection videoId={params.videoId} userId={authUser.uid} />
           )}
+        </div> */}
         </div>
-      </div>
+      </>
     );
   }
 }

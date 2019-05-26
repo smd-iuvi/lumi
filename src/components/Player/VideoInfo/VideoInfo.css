@@ -1,0 +1,46 @@
+.VideoInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.VideoInfo div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.VideoInfo .titleFilm{
+    font-family: FontBold;
+    font-size: 20px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    color: var(--white);
+    margin-bottom: 0;
+}
+
+.VideoInfo .disciplineName{
+    font-family: FontBold;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    color: var(--text-secundary);
+    margin-right: 24px;
+}
+
+.VideoInfo .infosFilm{
+    font-family: FontRegular;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    color: var(--text-secundary);
+    margin-right: 24px;
+}

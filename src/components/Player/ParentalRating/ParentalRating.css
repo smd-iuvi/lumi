@@ -1,0 +1,23 @@
+.ParentalRating{
+    align-items: center;
+}
+
+.ageParental{
+    color: var(--white) !important;
+    margin: 0 !important;
+}
+
+.age{
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    margin-right: 16px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+.descriptionParental{
+    width: 180px;
+}

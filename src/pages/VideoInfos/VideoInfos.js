@@ -7,7 +7,7 @@ import * as ROUTES from '../../constants/routes';
 import PlayButton from '../../components/Buttons/PlayButton/PlayButton';
 import ActionsPlayer from '../../components/ActionsPlayer/ActionsPlayer';
 import Tags from '../../components/Tags/Tags';
-import ParentalRating from '../../components/ParentalRating/ParentalRating';
+// import ParentalRating from '../../components/ParentalRating/ParentalRating';
 import SessionTitle from '../../components/SessionTitle/SessionTitle';
 import Info from '../../components/VideoInfo/VideoInfo';
 
@@ -101,7 +101,7 @@ class VideoInfos extends Component {
             <ActionsPlayer />
           </div>
           <div>
-            <ParentalRating age={parentalRating} content={content} />
+            {/* <ParentalRating age={parentalRating} content={content} /> */}
             <Tags />
           </div>
         </div>
