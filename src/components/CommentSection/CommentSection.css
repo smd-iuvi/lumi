@@ -1,3 +1,14 @@
 .CommentSection{
     margin-top: 30px;
 }
+
+.CommentSection .Small-Text-Bold{
+    color: var(--text-secundary);
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.CommentSection .comments{
+    border-radius: 8px;
+    overflow: hidden;
+}

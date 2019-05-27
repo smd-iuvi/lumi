@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 import './CommentSection.css';
 
 import NewComment from './NewComment/NewComment';
+import Comment from './Comment/Comment';
 import { withFirebase } from '../../Firebase';
 import { withAuthUser } from '../../Firebase/Session';
 
@@ -67,6 +68,7 @@ class CommentSection extends Component {
     return (
       <div className="CommentSection">
         <NewComment videoId={videoId} userId={userId} />
+        <h1 className="Small-Text-Bold">3 COMENTÁRIOS</h1>
         {commentsList &&
           commentsList.map(comment => {
             return (
@@ -81,6 +83,12 @@ class CommentSection extends Component {
               </div>
             );
           })}
+        <div className="comments">
+          <Comment>Esse filme é incríiiiveeeeeel</Comment>
+          <Comment>Esse filme é incríiiiveeeeeel</Comment>
+          <Comment>Esse filme é incríiiiveeeeeel</Comment>
+        </div>
+
       </div>
     );
   }

@@ -1,0 +1,33 @@
+.Comment{
+    background-color: var(--navbar-color);
+    margin-bottom: 2px;
+    padding: 8px 16px;
+}
+
+.Comment .imgUserComment{
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    margin-right: 8px;
+}
+
+.Comment .contentComment{
+    color: var(--white);
+    margin-left: 40px;
+    margin-top: 0;
+}
+
+.Comment .infosUser{
+    display: flex;
+    align-items: center;
+}
+
+.Comment .Small-Text-Bold{
+    margin-right: 8px;
+    margin-top: 7px;
+}
+
+.Comment .infosUser .Small-Text-Regular{
+    margin-top: 8px;
+    color: var(--text-secundary);
+}
