@@ -9,6 +9,7 @@
     height: 32px;
     border-radius: 30px;
     margin-right: 8px;
+    border: solid 1px #2f3146;
 }
 
 .Comment .contentComment{

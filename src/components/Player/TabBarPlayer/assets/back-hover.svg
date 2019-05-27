@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #756eff;
+      }
+    </style>
+  </defs>
+  <path id="seta-esquerda" class="cls-1" d="M1.406,0,0,1.392l9.208,9.1L0,19.608,1.406,21,12,10.49Z" transform="translate(12 21) rotate(180)"/>
+</svg>

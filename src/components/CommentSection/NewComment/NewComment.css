@@ -30,6 +30,7 @@
     width: 24px;
     height: 24px;
     border-radius: 30px;
+    border: solid 1px #2f3146;
 }
 
 .newComment .buttonComment{

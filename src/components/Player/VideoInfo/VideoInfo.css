@@ -31,6 +31,11 @@
     letter-spacing: normal;
     color: var(--text-secundary);
     margin-right: 24px;
+    cursor: pointer;
+}
+
+.VideoInfo .disciplineName:hover{
+    color: var(--secundary);
 }
 
 .VideoInfo .infosFilm{

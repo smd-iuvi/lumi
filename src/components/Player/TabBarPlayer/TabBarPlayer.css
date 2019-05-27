@@ -13,7 +13,24 @@
 .TabBarPlayer .iconBack{
     width: 12px;
     height: 21px;
+    background-image: url(./assets/back.svg);
     margin-left: 56px;
+    cursor: pointer;
+}
+
+.TabBarPlayer .iconBack:hover{
+    background-image: url(./assets/back-hover.svg);
+}
+
+.TabBarPlayer .iconNext{
+    width: 12px;
+    height: 21px;
+    background-image: url(./assets/next.svg);
+    cursor: pointer;
+}
+
+.TabBarPlayer .iconNext:hover{
+    background-image: url(./assets/next-hover.svg);
 }
 
 .TabBarPlayer .containerNextFilm{
@@ -37,7 +54,7 @@
     color: var(--white);
 }
 
-.containerNextFilm article{
+.containerNextFilm .imgNextVideo{
     width: 128px;
     height: 84px;
     overflow: hidden;
@@ -45,6 +62,6 @@
     border-radius: 4px;
 }
 
-.containerNextFilm article img{
+.containerNextFilm .imgNextVideo img{
     height: 84px;
 }
