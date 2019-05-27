@@ -1,88 +1,56 @@
 .newComment{
     width: 100%;
+    background-color: var(--navbar-color);
+    border-radius: 8px;
+    height: 85px;
+}
+
+.newComment div{
     display: grid;
-    grid-template-columns: 40px 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "photo text text" ". buttonsSubmit buttonsSubmit";
-    grid-gap: 10px;
-    margin-top: 20px;
+    grid-template-columns: 24px 1fr;
+    grid-gap: 16px;
+    padding: 8px 16px;
 }
 
-.buttonsSubmit{
-    grid-area: buttonsSubmit;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly
-}
-
-.buttonsSubmit .button{
-    width: 50%;
+.newComment .textField{
+    width: 100%;
+    background: none;
+    height: 24px;
+    font-family: FontRegular;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    color: var(--white);
 }
 
 .newComment .photoComment{
-    width: 40px;
-    height: 40px;
-    background-color: var(--white);
-    border-radius: 50px;
-    grid-area: photo;
+    width: 24px;
+    height: 24px;
+    border-radius: 30px;
 }
 
-.newComment .textComment{
-    resize: none;
-    height: 15px;
-    grid-area: text;
-    font-family: GravityBold;
-    font-size: 12px;
-    font-weight: bold;
+.newComment .buttonComment{
+    height: 32px;
+    width: 80px;
+    text-align: center;
+    padding: 0;
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    float: right;
+    margin-right: 16px;
+    margin-bottom: 8px;
+    font-family: FontBold;
+    font-size: 14px;
+    font-weight: 900;
     font-style: normal;
     font-stretch: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    text-align: left;
+    line-height: 1.36;
 }
 
-.newComment .textComment:focus{
-    height: 60px;
-    animation-name: textComment;
-    animation-duration: .5s;
-}
-
-.newComment .buttonPrimary{
-    grid-area: submit;
-    margin-left: 10px;
-}
-
-.newComment .buttonSecundary{
-    grid-area: cancel;
-}
-
-@media only screen and (min-width : 1224px) {
-    .newComment{
-        grid-template-columns: 60px 1fr 100px;
-        grid-template-areas: "photo text buttonsSubmit";
-        grid-gap: 20px;
-    }
-    .buttonsSubmit{
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .buttonsSubmit .button{
-        width: 100%;
-        font-size: 12px;
-    }
-    .buttonsSubmit .buttonPrimary{
-        margin: 0;
-    }
-    .newComment .photoComment{
-        width: 60px;
-        height: 60px;
-    }
-    .newComment .textComment{
-        width: 95%;
-        height: 35px;
-    }
-    .newComment .textComment:focus{
-        height: 35px;
-        animation: none;
-    }
+.newComment .buttonComment:disabled{
+    background-color: var(--button-disabled);
 }

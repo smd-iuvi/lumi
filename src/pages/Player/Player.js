@@ -142,26 +142,31 @@ class Player extends Component {
       <>
         <TabBarPlayer />
         <div className="containerPlayer">
-          <VideoPlayer
-            didClap={this.didClap}
-            didAddToWatchlist={() => this.didAddToWatchlist()}
-            name={nameLabel}
-            url={url}
-            views={viewsLabel}
-            videoId={params.videoId}
-            claps={clapsLabel}
-            onWatchList={onWatchList}
-            onDuration={progress => this.onDuration(progress)}
-            onProgress={duration => this.onProgress(duration)}
-          />
+          <div>
+            <VideoPlayer
+              didClap={this.didClap}
+              didAddToWatchlist={() => this.didAddToWatchlist()}
+              name={nameLabel}
+              url={url}
+              views={viewsLabel}
+              videoId={params.videoId}
+              claps={clapsLabel}
+              onWatchList={onWatchList}
+              onDuration={progress => this.onDuration(progress)}
+              onProgress={duration => this.onProgress(duration)}
+            />
+            {authUser && (
+              <CommentSection videoId={params.videoId} userId={authUser.uid} />
+            )}
+          </div>
           {/* <div className="containerRight">
-          <SidebarPlayer />
-        </div>
-        <div className="ContainerBottom">
-          {authUser && (
-            <CommentSection videoId={params.videoId} userId={authUser.uid} />
-          )}
-        </div> */}
+            <SidebarPlayer />
+          </div>
+          <div className="ContainerBottom">
+            {authUser && (
+              <CommentSection videoId={params.videoId} userId={authUser.uid} />
+            )}
+          </div> */}
         </div>
       </>
     );

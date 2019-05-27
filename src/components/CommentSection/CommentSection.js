@@ -66,7 +66,6 @@ class CommentSection extends Component {
 
     return (
       <div className="CommentSection">
-        <article className="line" />
         <NewComment videoId={videoId} userId={userId} />
         {commentsList &&
           commentsList.map(comment => {

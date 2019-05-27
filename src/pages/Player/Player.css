@@ -4,12 +4,3 @@
   grid-gap: 72px;
   margin: 0 0 29px 104px;
 }
-
-@keyframes textComment {
-  0% {
-    height: 15px;
-  }
-  100% {
-    height: 60px;
-  }
-}

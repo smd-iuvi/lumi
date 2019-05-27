@@ -8,7 +8,7 @@ import addList from '../Carousel/assets/add-list.svg';
 import * as ROUTES from '../../constants/routes';
 
 const onWatch = (uid, history) => {
-  history.push(`${ROUTES.VIDEO}/${uid}`);
+  history.push(`${ROUTES.PLAYER}/${uid}`);
 };
 
 const SliderCard = ({ video, history }) => {
