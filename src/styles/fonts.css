@@ -46,17 +46,6 @@
     color: var(--white);
   }
   
-  .Actions-Video {
-    font-family: GravityLight;
-    font-size: 12px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    color: var(--white);
-  }
-  
   .Title-Film {
     font-family: GravityBold;
     font-size: 18px;
@@ -64,18 +53,6 @@
     font-style: normal;
     font-stretch: normal;
     line-height: 1.22;
-    letter-spacing: normal;
-    text-align: left;
-    color: var(--white);
-  }
-  
-  .Views-Film {
-    font-family: GravityLight;
-    font-size: 12px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.25;
     letter-spacing: normal;
     text-align: left;
     color: var(--white);
@@ -204,5 +181,14 @@
     color: var(--primary);
   }
 
-  @media only screen and (min-width : 1224px) {
-  }
+/* Novas classes de fontes */
+
+.Small-Text-Bold {
+  font-family: FontBold;
+  font-size: 14px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+}

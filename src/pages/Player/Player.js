@@ -142,7 +142,6 @@ class Player extends Component {
       <>
         <TabBarPlayer />
         <div className="containerPlayer">
-          {/* <div className="containerLeft">
           <VideoPlayer
             didClap={this.didClap}
             didAddToWatchlist={() => this.didAddToWatchlist()}
@@ -155,8 +154,7 @@ class Player extends Component {
             onDuration={progress => this.onDuration(progress)}
             onProgress={duration => this.onProgress(duration)}
           />
-        </div>
-        <div className="containerRight">
+          {/* <div className="containerRight">
           <SidebarPlayer />
         </div>
         <div className="ContainerBottom">

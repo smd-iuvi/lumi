@@ -1,28 +1,21 @@
 import React from 'react';
 import './ActionsPlayer.css';
-import addList from './assets/add_list.svg';
-import share from './assets/share_button.svg';
-import applause from './assets/clap_button.svg';
 
 const ActionsPlayer = ({ didClap, claps, didAddToWatchlist, onWatchList }) => {
   console.log(onWatchList);
   return (
     <div className="Actions ActionsPlayer">
+      <div onClick={didClap}>
+        <article className="Icons iconAplause"></article>
+        <h1 className="Small-Text-Bold">Aplaudir</h1>
+      </div>
       <div onClick={didAddToWatchlist}>
-        <img src={addList} className={onWatchList ? 'Icons onList' : 'Icons'} />
-        <h1 className="Actions-Video actionDescription">
-          Minha {<br />} lista
-        </h1>
+        <article className="Icons iconList"></article>
+        <h1 className="Small-Text-Bold myList">Minha lista</h1>
       </div>
       <div>
-        <img src={share} className="Icons" />
-        <h1 className="Actions-Video actionDescription">Compartilhar</h1>
-      </div>
-      <div className="applauses" onClick={didClap}>
-        <img src={applause} className="Icons" />
-        <h1 className="Actions-Video descriptionApplauses">
-          {claps} {<br />} aplausos
-        </h1>
+        <article className="Icons iconShare"></article>
+        <h1 className="Small-Text-Bold">Compartilhar</h1>
       </div>
     </div>
   );

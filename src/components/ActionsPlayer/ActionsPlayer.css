@@ -1,42 +1,53 @@
-.Actions div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-}
-
 .ActionsPlayer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
   justify-content: left;
 }
 
-.Actions .Icons {
-  margin-right: 15px;
+.Actions div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   cursor: pointer;
-  border-radius: 50px;
-  transition: background-color 0.5s;
+  margin-left: 24px;
 }
 
-.Actions .Actions-Video {
-  margin-left: -9px;
+.Actions .Icons {
+  margin-right: 8px;
+  cursor: pointer;
+  width: 35px;
+  height: 28px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px 28px;
 }
 
-.descriptionApplauses {
-  flex-direction: column !important;
-  margin-right: 10px;
-}
-.Number-Applauses {
-  margin: 0;
+.ActionsPlayer .Small-Text-Bold{
+  width: max-content;
 }
 
-.ActionsPlayer .Icons:hover {
-  background-color: var(--hover);
+.Actions .iconAplause{
+  background-image: url('./assets/clap.svg');
 }
 
-.ActionsPlayer .onList {
-  background-color: var(--hover);
+.Actions .iconShare{
+  background-image: url('./assets/share.svg');
+}
+
+.Actions .iconList{
+  background-image: url('./assets/add_list.svg');
+}
+
+.Actions div:hover .iconAplause{
+  background-image: url('./assets/clap_hover.svg');
+}
+
+.Actions div:hover .iconShare{
+  background-image: url('./assets/share_hover.svg');
+}
+
+.Actions div:hover .iconList{
+  background-image: url('./assets/add_list_hover.svg');
 }

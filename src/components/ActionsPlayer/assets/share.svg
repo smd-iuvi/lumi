@@ -1,0 +1,46 @@
+<svg id="compartilhar" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #c6c5d4;
+      }
+
+      .cls-1 {
+        stroke-width: 1.5px;
+      }
+
+      .cls-2 {
+        stroke-width: 2px;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="compart" transform="translate(4 3)">
+    <g id="Ellipse_25" data-name="Ellipse 25" class="cls-1" transform="translate(0 7.232)">
+      <circle class="cls-4" cx="4" cy="4" r="4"/>
+      <circle class="cls-3" cx="4" cy="4" r="3.25"/>
+    </g>
+    <g id="Group_46" data-name="Group 46" transform="matrix(0.966, 0.259, -0.259, 0.966, 10.1, 0)">
+      <g id="Ellipse_26" data-name="Ellipse 26" class="cls-1" transform="translate(3.285 0)">
+        <circle class="cls-4" cx="4" cy="4" r="4"/>
+        <circle class="cls-3" cx="4" cy="4" r="3.25"/>
+      </g>
+      <line id="Line_28" data-name="Line 28" class="cls-2" y1="4.133" x2="5.059" transform="translate(0 5.913)"/>
+    </g>
+    <g id="Group_47" data-name="Group 47" transform="matrix(0.966, -0.259, 0.259, 0.966, 7.5, 12.704)">
+      <g id="Ellipse_26-2" data-name="Ellipse 26" class="cls-1" transform="translate(3.285 2.046)">
+        <circle class="cls-4" cx="4" cy="4" r="4"/>
+        <circle class="cls-3" cx="4" cy="4" r="3.25"/>
+      </g>
+      <line id="Line_28-2" data-name="Line 28" class="cls-2" x2="5.059" y2="4.133" transform="translate(0 0)"/>
+    </g>
+  </g>
+  <rect id="Rectangle_126" data-name="Rectangle 126" class="cls-3" width="28" height="28"/>
+</svg>

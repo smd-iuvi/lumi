@@ -34,15 +34,19 @@ const VideoPlayer = ({
         controls
         onProgress={onProgress}
         onDuration={onDuration}
+        className="player"
+        width="100%"
+        height="60vh"
       />
-      <h1 className="Title-Film title">{name}</h1>
-      <h1 className="Views-Film">{views} visualizações</h1>
-      <ActionsPlayer
-        didClap={didClap}
-        didAddToWatchlist={didAddToWatchlist}
-        claps={claps}
-        onWatchList={onWatchList}
-      />
+      <div className="optionsFilm">
+        <h1 className="Small-Text-Bold">{views} visualizações</h1>
+        <ActionsPlayer
+          didClap={didClap}
+          didAddToWatchlist={didAddToWatchlist}
+          claps={claps}
+          onWatchList={onWatchList}
+        />
+      </div>
     </div>
   );
 };
