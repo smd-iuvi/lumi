@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 import iconResultSearch from './assets/resultSearch.svg';
 
-import { withRouter } from 'react-router-dom';
+import { withFirebase } from '../../Firebase';
 
 import TabBar from '../../components/TabBar/TabBar';
 import CardList from '../../components/CardList/CardList';
@@ -109,7 +111,8 @@ class Search extends Component {
           loading: false,
           list: videos
         };
-        this.setState({ usersListState: newVideosListState });
+
+        this.setState({ videosListState: newVideosListState });
       })
       .catch(error => {
         const { videosListState } = this.state;
@@ -127,14 +130,24 @@ class Search extends Component {
   };
 
   render() {
-    const { selected } = this.state;
+    const {
+      selected,
+      videosListState,
+      usersListState,
+      disciplinesListState
+    } = this.state;
 
+    console.log(videosListState);
     let container = null;
 
     if (selected == 0) {
       container = (
         <>
-          <CardList videos={null} loading={false} belowTab={true} />
+          <CardList
+            videos={videosListState.list}
+            loading={videosListState.loading}
+            belowTab={true}
+          />
         </>
       );
     } else if (selected == 1) {
@@ -170,4 +183,7 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default compose(
+  withRouter,
+  withFirebase
+)(Search);
