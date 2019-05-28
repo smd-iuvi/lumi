@@ -3,7 +3,14 @@ import React from 'react';
 import './Label.css';
 import SecondaryButton from '../../Buttons/SecondaryButton/SecondaryButton';
 
-const Label = ({ editing, type, isPassword, value }) => {
+const Label = ({
+  isEditing,
+  type,
+  isPassword,
+  value,
+  onStateChange,
+  onEdit
+}) => {
   var label = null;
 
   const style = {
@@ -19,8 +26,14 @@ const Label = ({ editing, type, isPassword, value }) => {
   if (isPassword) {
     label = (
       <div style={style}>
-        <p>{value}</p>
-        <SecondaryButton>Mudar Senha</SecondaryButton>
+        {isEditing ? (
+          <input value={value} type="password" onChange={onEdit} />
+        ) : (
+          <p />
+        )}
+        <SecondaryButton onClick={onStateChange}>
+          {isEditing ? 'Cancelar' : 'Mudar Senha'}
+        </SecondaryButton>
       </div>
     );
   } else {
@@ -29,7 +42,7 @@ const Label = ({ editing, type, isPassword, value }) => {
   return (
     <div className="Label">
       <p>{type}</p>
-      {editing ? <input /> : label}
+      {label}
     </div>
   );
 };
