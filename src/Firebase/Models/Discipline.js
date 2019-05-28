@@ -39,8 +39,8 @@ class Discipline {
               uid: key
             }));
 
-            const disciplinesToReturn = disciplinesList.filter(user => {
-              return user.title.toLowerCase().includes(name.toLowerCase());
+            const disciplinesToReturn = disciplinesList.filter(discipline => {
+              return discipline.name.toLowerCase().includes(name.toLowerCase());
             });
 
             resolve(disciplinesToReturn);
