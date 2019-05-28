@@ -5,6 +5,7 @@ import TabBarPlayer from '../../components/Player/TabBarPlayer/TabBarPlayer';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import SidebarPlayer from '../../components/SidebarPlayer/SidebarPlayer';
 import CommentSection from '../../components/CommentSection/CommentSection';
+import Datasheet from '../../components/Player/Datasheet/Datasheet';
 
 import { withFirebase } from '../../Firebase';
 import { withAuthUser } from '../../Firebase/Session';
@@ -20,7 +21,9 @@ class Player extends Component {
       video: null,
       onWatchList: false,
       duration: 0,
-      watched: false
+      watched: false,
+      tabs: ["Ficha técnica", "Informações acadêmicas", "Tags"],
+      selected: 0
     };
   }
 
@@ -159,6 +162,8 @@ class Player extends Component {
               <CommentSection videoId={params.videoId} userId={authUser.uid} />
             )}
           </div>
+          <Datasheet />
+          {/* <Tabs tabs={this.state.tabs} onTabChange={this.onTabChange} /> */}
           {/* <div className="containerRight">
             <SidebarPlayer />
           </div>

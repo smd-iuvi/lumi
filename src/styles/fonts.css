@@ -202,3 +202,13 @@
   line-height: 1.36;
   letter-spacing: normal;
 }
+
+.Medium-Text-Regular {
+  font-family: FontRegular;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+}

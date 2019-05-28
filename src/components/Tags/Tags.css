@@ -1,13 +1,15 @@
 .Tags{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .tag{
-    background-color: var(--tags);
+    background-color: var(--tertiary);
     padding: 7px 8px;
     border-radius: 4px;
     margin-right: 12px;
     margin-bottom: 12px;
     cursor: pointer;
+    color: var(--white);
 }
