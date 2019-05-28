@@ -59,24 +59,6 @@ class Firebase {
     });
   };
 
-  doGeneralSearch = (term, callback) => {
-    const result = {};
-
-    this.user.getByName(term, (users, error) => {
-      result.users = users;
-
-      this.video.getByTitle(term, (videos, error) => {
-        result.videos = videos;
-
-        this.discipline.getByName(term, (disciplines, error) => {
-          result.disciplines = disciplines;
-
-          callback(result, error);
-        });
-      });
-    });
-  };
-
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
