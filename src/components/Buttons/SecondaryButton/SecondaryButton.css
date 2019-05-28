@@ -1,6 +1,5 @@
 .SecondaryButton {
   border-radius: 4px;
-  background-color: var(--dusk);
   font-family: FontBold;
   font-size: 14px;
   font-weight: 900;
@@ -13,6 +12,17 @@
   padding: 8px 16px;
 }
 
-.SecondaryButton:hover {
+.enabled:hover {
   background-color: var(--secundary); /* Consertar esse nome */
+  cursor: pointer;
+}
+
+.enabled {
+  background-color: var(--dusk);
+  cursor: default;
+}
+
+.disabled {
+  background-color: #3b3a43;
+  cursor: default;
 }
