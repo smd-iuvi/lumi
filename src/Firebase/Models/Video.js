@@ -164,31 +164,33 @@ class Video {
     });
   };
 
-  getByTitle = (title, callback) => {
-    this.database
-      .ref('video')
-      .once('value')
-      .then(snapshot => {
-        const videos = snapshot.val();
+  getByTitle = title => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('video')
+        .once('value')
+        .then(snapshot => {
+          const videos = snapshot.val();
 
-        if (videos != null) {
-          const videosList = Object.keys(videos).map(key => ({
-            ...videos[key],
-            uid: key
-          }));
+          if (videos != null) {
+            const videosList = Object.keys(videos).map(key => ({
+              ...videos[key],
+              uid: key
+            }));
 
-          const videosToReturn = videosList.filter(user => {
-            return user.title.toLowerCase().includes(title.toLowerCase());
-          });
+            const videosToReturn = videosList.filter(user => {
+              return user.title.toLowerCase().includes(title.toLowerCase());
+            });
 
-          callback(videosToReturn, null);
-        } else {
-          callback([], null);
-        }
-      })
-      .catch(error => {
-        callback([], error);
-      });
+            resolve(videosToReturn);
+          } else {
+            resolve(null);
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   };
 }
 
