@@ -1,3 +1,5 @@
+import { reject } from 'q';
+
 class Discipline {
   constructor(database) {
     this.database = database;
@@ -23,31 +25,33 @@ class Discipline {
 
   delete = uid => this.get(uid).remove();
 
-  getByName = (name, callback) => {
-    this.database
-      .ref('discipline')
-      .once('value')
-      .then(snapshot => {
-        const disciplines = snapshot.val();
+  getByName = name => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('discipline')
+        .once('value')
+        .then(snapshot => {
+          const disciplines = snapshot.val();
 
-        if (disciplines != null) {
-          const disciplinesList = Object.keys(disciplines).map(key => ({
-            ...disciplines[key],
-            uid: key
-          }));
+          if (disciplines != null) {
+            const disciplinesList = Object.keys(disciplines).map(key => ({
+              ...disciplines[key],
+              uid: key
+            }));
 
-          const disciplinesToReturn = disciplinesList.filter(user => {
-            return user.title.toLowerCase().includes(name.toLowerCase());
-          });
+            const disciplinesToReturn = disciplinesList.filter(user => {
+              return user.title.toLowerCase().includes(name.toLowerCase());
+            });
 
-          callback(disciplinesToReturn, null);
-        } else {
-          callback([], null);
-        }
-      })
-      .catch(error => {
-        callback([], error);
-      });
+            resolve(disciplinesToReturn);
+          } else {
+            resolve(null);
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   };
 }
 
