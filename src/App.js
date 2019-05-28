@@ -26,9 +26,11 @@ class App extends Component {
     return (
       <div>
         {!location.pathname.includes(ROUTES.PLAYER) ? <Sidebar /> : null}
-        {!location.pathname.includes(ROUTES.PLAYER) ? <NavBar class="navbar" />
-          :
-          <NavBar class="navbar navbarComplete" />}
+        {!location.pathname.includes(ROUTES.PLAYER) ? (
+          <NavBar class="navbar" />
+        ) : (
+          <NavBar class="navbar navbarComplete" />
+        )}
 
         <Switch>
           <Route path={ROUTES.HOME} exact component={Home} />
@@ -44,7 +46,11 @@ class App extends Component {
           <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
           <Route path={ROUTES.LANDING} exact component={Landing} />
           <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
-          <Route path={ROUTES.SEARCH} exact component={Search} />
+          <Route
+            path={`${ROUTES.SEARCH}/:searchTerm`}
+            exact
+            component={Search}
+          />
         </Switch>
 
         {!location.pathname.includes(ROUTES.PLAYER) ? <Footer /> : null}

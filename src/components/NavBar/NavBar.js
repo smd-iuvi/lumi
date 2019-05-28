@@ -6,11 +6,27 @@ import { withRouter } from 'react-router-dom';
 import search from './assets/search_button.svg';
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
 
-  goSearch = () => {
-    this.props.history.push('/SEARCH')
+    this.state = { searchTerm: '' };
   }
+  onKeyDown = e => {
+    const { searchTerm } = this.state;
+
+    if (e.key === 'Enter' && searchTerm !== '') {
+      this.props.history.push(`/SEARCH/${searchTerm}`);
+      e.target.blur();
+    }
+  };
+
+  onChange = e => {
+    e.preventDefault();
+    this.setState({ searchTerm: e.target.value });
+  };
+
   render() {
+    const { searchTerm } = this.state;
     return (
       <div className={this.props.class}>
         <img src={search} className="iconNavbar" />
@@ -19,12 +35,13 @@ class NavBar extends Component {
           type="text"
           className="inputSearch"
           placeholder="Busque por vídeos, disciplinas, gêneros…"
-          onClick={this.goSearch}
+          value={searchTerm}
+          onChange={this.onChange}
+          onKeyDown={this.onKeyDown}
         />
-
       </div>
-    )
-  };
-};
+    );
+  }
+}
 
 export default withRouter(NavBar);

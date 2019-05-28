@@ -100,31 +100,33 @@ class User {
     });
   };
 
-  getByName = (name, callback) => {
-    this.database
-      .ref('user')
-      .once('value')
-      .then(snapshot => {
-        const users = snapshot.val();
+  getByName = name => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('user')
+        .once('value')
+        .then(snapshot => {
+          const users = snapshot.val();
 
-        if (users != null) {
-          const usersList = Object.keys(users).map(key => ({
-            ...users[key],
-            uid: key
-          }));
+          if (users != null) {
+            const usersList = Object.keys(users).map(key => ({
+              ...users[key],
+              uid: key
+            }));
 
-          const usersToReturn = usersList.filter(user => {
-            return user.name.includes(name);
-          });
+            const usersToReturn = usersList.filter(user => {
+              return user.name.includes(name);
+            });
 
-          callback(usersToReturn, null);
-        } else {
-          callback([], null);
-        }
-      })
-      .catch(error => {
-        callback([], error);
-      });
+            resolve(usersToReturn.lenght == 0 ? null : usersToReturn);
+          } else {
+            resolve(null);
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   };
 }
 
