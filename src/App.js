@@ -47,7 +47,7 @@ class App extends Component {
           <Route path={ROUTES.LANDING} exact component={Landing} />
           <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
           <Route
-            path={`${ROUTES.SEARCH}/:seachTerm`}
+            path={`${ROUTES.SEARCH}/:searchTerm`}
             exact
             component={Search}
           />

@@ -22,6 +22,18 @@ class Search extends Component {
     };
   }
 
+  componentDidMount() {
+    const {
+      firebase,
+      match: { params }
+    } = this.props;
+
+    firebase
+      .doGeneralSearch(params.searchTerm)
+      .then(result => console.log(result))
+      .catch(error => console.log(error));
+  }
+
   onTabChange = newTab => {
     this.setState({ selected: newTab });
   };
