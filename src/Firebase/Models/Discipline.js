@@ -43,7 +43,9 @@ class Discipline {
               return discipline.name.toLowerCase().includes(name.toLowerCase());
             });
 
-            resolve(disciplinesToReturn);
+            resolve(
+              disciplinesToReturn.length == 0 ? null : disciplinesToReturn
+            );
           } else {
             resolve(null);
           }

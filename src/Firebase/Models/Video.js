@@ -182,7 +182,7 @@ class Video {
               return user.title.toLowerCase().includes(title.toLowerCase());
             });
 
-            resolve(videosToReturn);
+            resolve(videosToReturn.length == 0 ? null : videosToReturn);
           } else {
             resolve(null);
           }

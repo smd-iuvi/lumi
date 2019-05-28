@@ -118,7 +118,7 @@ class User {
               return user.name.includes(name);
             });
 
-            resolve(usersToReturn);
+            resolve(usersToReturn.lenght == 0 ? null : usersToReturn);
           } else {
             resolve(null);
           }
