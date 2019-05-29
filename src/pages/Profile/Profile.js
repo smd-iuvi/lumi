@@ -14,6 +14,7 @@ import ProfileCard from '../../components/ProfileCard/ProfileCard';
 import ProfileLabels from '../../components/ProfileLabels/ProfileLabels';
 import CardList from '../../components/CardList/CardList';
 import TabBar from '../../components/TabBar/TabBar';
+import EventsControll from '../../components/EventsControll/EventsControll';
 
 class Profile extends Component {
   constructor(props) {
@@ -25,12 +26,19 @@ class Profile extends Component {
       error: null,
       loadingWatchList: false,
       loadingMyWorks: false,
-      tabs: ['Minhas informações', 'Meus envios', 'Minha lista'],
-      selected: 0
+      tabs: [],
+      selected: 0,
+      profileTeacher: true
     };
   }
 
   componentDidMount() {
+    //Verifica se é professor e muda as opções da tabbar
+    if (this.state.profileTeacher)
+      this.setState({ tabs: ['Minhas informações', 'Meus envios', 'Minha lista', 'Meus eventos'] });
+    else
+      this.setState({ tabs: ['Minhas informações', 'Meus envios', 'Minha lista'] });
+
     const { firebase, authUser } = this.props;
 
     this.setState({ loadingMyWorks: true });
@@ -87,6 +95,7 @@ class Profile extends Component {
             imgUrl={authUser.photo_url}
             role={authUser.role}
             className="ProfileCard"
+            profileTeacher={this.state.profileTeacher}
           />
           <article className="lineSidebar" />
           <ProfileLabels />
@@ -102,6 +111,12 @@ class Profile extends Component {
           loading={loadingWatchList}
           videos={watchList}
           belowTab={true}
+        />
+      );
+    } else if (selected == 3) {
+      container = (
+        <EventsControll
+
         />
       );
     }

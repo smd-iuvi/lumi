@@ -1,0 +1,22 @@
+.EventsControll{
+    width: 100%;
+}
+
+.EventsControll .line{
+    margin: 0;
+}
+
+.EventsControll .EventInfo{
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 2.5fr 1.8fr 1fr 1fr 20px;
+    grid-gap: 24px;
+    padding: 18px 0;
+    align-items: center;
+}
+
+.EventsControll .EventLabels{
+    color: var(--text-secundary);
+    padding: 5px 0;
+    margin-top: -50px;
+}

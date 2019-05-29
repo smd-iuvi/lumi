@@ -1,0 +1,34 @@
+.EventInfo .buttonOptions{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.EventInfo .dropdownOptions{
+    width: 168px;
+    background-color: var(--white);
+    position: absolute;
+    right: 0;
+    margin-right: 56px;
+    margin-top: 35px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.EventInfo .dropdownOptions article{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0 5px;
+}
+
+.EventInfo .dropdownOptions article:hover{
+    background-color: #eeedff;
+}
+
+.EventInfo .dropdownOptions .Small-Text-Regular{
+    color: var(--text);
+    margin-left: 8px;
+}
