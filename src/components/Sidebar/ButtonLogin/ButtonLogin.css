@@ -1,0 +1,9 @@
+.buttonLogin .Medium-Text-Regular{
+    color: var(--text-secundary);
+    margin-left: 8px;
+}
+
+.buttonLogin{
+    display: flex;
+    align-items: center;
+}

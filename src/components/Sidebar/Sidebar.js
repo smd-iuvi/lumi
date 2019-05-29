@@ -10,10 +10,11 @@ import * as ROUTES from '../../constants/routes';
 import ButtonsTop from './ButtonsTop/ButtonsTop';
 import ButtonProfile from './ButtonProfile/ButtonProfile';
 import ButtonsBottom from './ButtonsBottom/ButtonsBottom';
+import ButtonLogin from './ButtonLogin/ButtonLogin';
 import Upload from '../Upload/Upload';
 
 import logo from './assets/icons/lumi.svg';
-import profile from './assets/profile.jpg';
+import userPlaceholder from './assets/icons/user-placeholder.svg';
 
 import { Link } from 'react-router-dom';
 import { withAuthUser } from '../../Firebase/Session';
@@ -116,10 +117,7 @@ class Navbar extends Component {
           </div>
         ) : (
             <Link to={ROUTES.SIGN_IN} className="link">
-              <button className="buttonsNavbar">
-                <i className="far fa-user icon" />
-                <h1 className="labelButtons">ENTRAR</h1>
-              </button>
+              <ButtonLogin image={userPlaceholder} />
             </Link>
           )}
       </div>
