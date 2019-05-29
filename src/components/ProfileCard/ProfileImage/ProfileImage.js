@@ -12,7 +12,7 @@ const ProfileImage = ({ imgUrl, icon }) => {
     <div className="ProfileImage" style={style}>
       <div className="editIcon">
         <img src={camera} />
-        <p>Editar foto</p>
+        <p className="Medium-Text-Bold">Editar foto</p>
       </div>
     </div>
   );

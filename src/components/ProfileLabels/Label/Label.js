@@ -28,7 +28,7 @@ const Label = ({ editing, type, isPassword, value }) => {
   }
   return (
     <div className="Label">
-      <p>{type}</p>
+      <p className="Medium-Text-Regular">{type}</p>
       {editing ? <input /> : label}
     </div>
   );

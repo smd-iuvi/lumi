@@ -1,11 +1,4 @@
 .Heading{
-    font-family: FontBold;
-    font-size: 20px;
-    font-weight: 900;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.35;
-    letter-spacing: normal;
     text-align: left;
     color: var(--white);
 }

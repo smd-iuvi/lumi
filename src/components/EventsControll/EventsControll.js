@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 import './EventsControll.css';
 
-import iconOptions from './assets/options.svg';
-import iconManage from './assets/manage-event.svg';
-import iconDelete from './assets/delete-event.svg';
-
 import Event from './Event/Event';
 
 class EventsControll extends Component {

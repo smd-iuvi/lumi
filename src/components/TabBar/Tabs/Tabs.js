@@ -22,7 +22,7 @@ class Tabs extends Component {
                     <>
                         {this.props.tabs.indexOf(tb) == this.state.active ? (
                             <article
-                                className="tab active"
+                                className="Small-Text-Regular tab active"
                                 onClick={this.handleTab}
                                 id={this.props.tabs.indexOf(tb)}
                             >
@@ -30,7 +30,7 @@ class Tabs extends Component {
                             </article>
                         ) : (
                                 <article
-                                    className="tab"
+                                    className="Small-Text-Regular tab"
                                     onClick={this.handleTab}
                                     id={this.props.tabs.indexOf(tb)}
                                 >

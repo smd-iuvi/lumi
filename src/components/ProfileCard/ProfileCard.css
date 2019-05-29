@@ -19,29 +19,13 @@
   background-color: var(--secundary);
 }
 
-.ProfileCard .name {
+.ProfileCard .Large-Text-Bold {
   margin-top: 16px;
   margin-bottom: 0;
-  font-family: FontBold;
-  font-size: 20px;
-  font-weight: 900;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.35;
-  letter-spacing: normal;
-  text-align: left;
   color: var(--white);
 }
 
-.ProfileCard .role {
-  font-family: FontRegular;
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.36;
-  letter-spacing: normal;
-  text-align: left;
+.ProfileCard .Small-Text-Regular {
   color: var(--white);
   align-self: center;
 }

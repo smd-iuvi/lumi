@@ -4,7 +4,7 @@ import './Header.css';
 
 const Header = (props) => {
   return (
-    <h1 className="Heading">{props.children}</h1>
+    <h1 className="Heading Large-Text-Bold">{props.children}</h1>
   )
 }
 
