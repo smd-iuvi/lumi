@@ -11,8 +11,8 @@ class Event extends Component {
                     <h1 className="Event-Month">ABR</h1>
                 </div>
                 <div>
-                    <h1 className="Small-Titles">Curtas animados para crianças com autismo</h1>
-                    <h1 className="Small-Subtitles">Produção Audiovisual para Crianças e Adolescentes</h1>
+                    <h1 className="Medium-Text-Bold">Curtas animados para crianças com autismo</h1>
+                    <h1 className="Medium-Text-Regular">Produção Audiovisual para Crianças e Adolescentes</h1>
                 </div>
             </div>
         );

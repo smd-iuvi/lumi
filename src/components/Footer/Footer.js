@@ -13,22 +13,22 @@ const Footer = () => {
     <div className="Footer">
       <div className="optionsFooter">
         <div>
-          <h1 className="titleOptions">Recursos</h1>
-          <h1 className="options">Descobrir</h1>
-          <h1 className="options">Sobre o Lumi</h1>
-          <h1 className="options">Site do SMD</h1>
-          <h1 className="options">Site da UFC</h1>
+          <h1 className="Medium-Text-Bold">Recursos</h1>
+          <h1 className="Medium-Text-Regular">Descobrir</h1>
+          <h1 className="Medium-Text-Regular">Sobre o Lumi</h1>
+          <h1 className="Medium-Text-Regular">Site do SMD</h1>
+          <h1 className="Medium-Text-Regular">Site da UFC</h1>
         </div>
         <div>
-          <h1 className="titleOptions">Conta</h1>
-          <h1 className="options">Minha conta</h1>
-          <h1 className="options">Minha lista</h1>
-          <h1 className="options">Vídeos enviados</h1>
+          <h1 className="Medium-Text-Bold">Conta</h1>
+          <h1 className="Medium-Text-Regular">Minha conta</h1>
+          <h1 className="Medium-Text-Regular">Minha lista</h1>
+          <h1 className="Medium-Text-Regular">Vídeos enviados</h1>
         </div>
         <div>
-          <h1 className="titleOptions">Suporte</h1>
-          <h1 className="options">Preciso de ajuda</h1>
-          <h1 className="options">Relatar um problema</h1>
+          <h1 className="Medium-Text-Bold">Suporte</h1>
+          <h1 className="Medium-Text-Regular">Preciso de ajuda</h1>
+          <h1 className="Medium-Text-Regular">Relatar um problema</h1>
         </div>
         <div>
           <div className="logos">
@@ -36,15 +36,15 @@ const Footer = () => {
             <img src={smd} className="logoImg" />
             <img src={lumi} className="logoImg" />
           </div>
-          <h1 className="titleOptions">Redes sociais</h1>
+          <h1 className="Medium-Text-Bold">Redes sociais</h1>
           <div className="networks logos">
             <article>
               <img src={facebook} />
-              <h1 className="titleNetwork">@SMDUFC</h1>
+              <h1 className="titleNetwork Medium-Text-Regular">@SMDUFC</h1>
             </article>
             <article>
               <img src={instagram} />
-              <h1 className="titleNetwork">@smdufc</h1>
+              <h1 className="titleNetwork Medium-Text-Regular">@smdufc</h1>
             </article>
           </div>
         </div>

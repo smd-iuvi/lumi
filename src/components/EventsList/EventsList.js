@@ -13,10 +13,10 @@ const EventsList = () => {
         <button className="button buttonPrimary">Ver todos</button>
       </div>
       <article className="line" />
-      <h1 className="Month">NESTE MÊS</h1>
+      <h1 className="Month Small-Text-Bold">NESTE MÊS</h1>
       <Event />
       <Event />
-      <h1 className="Month">PRÓXIMOS MESES</h1>
+      <h1 className="Month Small-Text-Bold">PRÓXIMOS MESES</h1>
       <Event />
     </div>
   )

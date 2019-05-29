@@ -10,37 +10,16 @@
 }
 
 .SliderCard .addRecent{
-  font-family: FontBold;
-  font-size: 14px;
-  font-weight: 900;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.36;
-  letter-spacing: normal;
-  text-align: left;
   color: var(--text-secundary);
+  text-align: left;
 }
 
-.SliderCard .titleFilm{
-  font-family: FontBold;
-  font-size: 20px;
-  font-weight: 900;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.35;
-  letter-spacing: normal;
+.SliderCard .Large-Text-Bold{
   text-align: left;
   color: var(--white);
 }
 
 .SliderCard .descriptionFilm{
-  font-family: FontRegular;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.38;
-  letter-spacing: normal;
   text-align: left;
   color: var(--white);
 }
@@ -56,13 +35,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-family: FontRegular;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.38;
-  letter-spacing: normal;
   color: var(--white);
   cursor: pointer;
 }

@@ -15,9 +15,9 @@ const SliderCard = ({ video, history }) => {
   return (
     <div className="SliderCard">
       <div className="infos">
-        <h1 className="addRecent">ADICIONADO RECENTEMENTE</h1>
-        <h1 className="titleFilm">{video.title}</h1>
-        <h1 className="descriptionFilm">{video.description}</h1>
+        <h1 className="addRecent Small-Text-Bold">ADICIONADO RECENTEMENTE</h1>
+        <h1 className="Large-Text-Bold">{video.title}</h1>
+        <h1 className="descriptionFilm Medium-Text-Regular">{video.description}</h1>
         <div className="buttonsFilm">
           <button
             className="button buttonPrimary"
@@ -25,7 +25,7 @@ const SliderCard = ({ video, history }) => {
           >
             ASSISTIR
           </button>
-          <article className="addList">
+          <article className="addList Medium-Text-Bold">
             <img src={addList} />
             Minha lista
           </article>

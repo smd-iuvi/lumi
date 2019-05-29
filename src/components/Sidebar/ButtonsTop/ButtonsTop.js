@@ -7,7 +7,7 @@ const ButtonsTop = (props) => {
     return (
         <article className="buttonsSidebar">
             <article className={props.newClass}></article>
-            <h1 className="labelButtons">{props.children}</h1>
+            <h1 className="labelButtons Medium-Text-Bold">{props.children}</h1>
         </article>
     );
 };

@@ -212,3 +212,23 @@
   line-height: 1.38;
   letter-spacing: normal;
 }
+
+.Medium-Text-Bold {
+  font-family: FontBold;
+  font-size: 16px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+}
+
+.Large-Text-Bold {
+  font-family: FontBold;
+  font-size: 20px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+}

@@ -30,13 +30,6 @@
 }
 
 .EventsList .Month{
-    font-family: FontBold;
-    font-size: 16px;
-    font-weight: 900;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
     color: var(--text-secundary);
     margin-bottom: 24px;
     cursor: pointer;

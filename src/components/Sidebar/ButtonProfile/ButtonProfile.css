@@ -10,14 +10,7 @@
     margin-top: -5px;
 }
 
-.buttonProfile .labelProfile{
-    font-family: FontRegular;
-    font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
+.buttonProfile .Medium-Text-Regular{
     color: var(--text-secundary);
     margin-top: 10px;
 }

@@ -6,7 +6,7 @@ const ButtonsBottom = ({ click, newClass, children }) => {
   return (
     <article className="buttonsSidebar buttonsBottom" onClick={click}>
       <article className={newClass} />
-      <h1 className="labelBottom">{children}</h1>
+      <h1 className="Small-Text-Regular">{children}</h1>
     </article>
   );
 };

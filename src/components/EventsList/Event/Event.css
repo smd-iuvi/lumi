@@ -44,3 +44,8 @@
     letter-spacing: normal;
     color: var(--white);
 }
+
+.Event .Medium-Text-Regular, .Event .Medium-Text-Bold{
+    color: var(--white);
+    margin: 0;
+}
