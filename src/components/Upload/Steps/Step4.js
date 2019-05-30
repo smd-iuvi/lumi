@@ -16,19 +16,19 @@ class Step4 extends Component {
     render() {
         return (
             <div className="Steps">
-                <h1 className="titleStep">Informações acadêmicas</h1>
+                <h1 className="Large-Text-Medium">Informações acadêmicas</h1>
                 <article className="line"></article>
-                <h1 className="subtitleStep">Fale mais sobre seu trabalho acadêmico.</h1>
+                <h1 className="subtitleStep Small-Text-Regular">Fale mais sobre seu trabalho acadêmico.</h1>
                 <div className="selects">
                     <SelectBox name="discipline" placeholder="Disciplina" />
                     <SelectBox name="semester" placeholder="Semestre" />
                 </div>
                 <TextFieldInformation placeholder="Professor(es) da disciplina" />
                 <TextAreaInformation placeholder="Sobre o trabalho" />
-                <h1 className="titleStep2">Evento de disciplina</h1>
+                <h1 className="Medium-Text-Medium">Evento de disciplina</h1>
                 <div className="checkDiscipline">
                     <input type="checkbox" id="checkbox" className="checkboxEvent" onChange={this.handleSelect} />
-                    <label for="checkbox" className="titleStep2">Este vídeo faz parte de um evento da disciplina.</label>
+                    <label for="checkbox" className="Medium-Text-Medium">Este vídeo faz parte de um evento da disciplina.</label>
                 </div>
                 {this.state.showSelect &&
                     <SelectBox name="events" placeholder="Selecione o evento" />

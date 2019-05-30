@@ -1,14 +1,6 @@
-
 .AddTags input{
     width: 100%;
-    font-family: FontRegular;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
     line-height: 1.2;
-    letter-spacing: normal;
-    text-align: left;
     color: var(--white);
     background: none;
     outline: none;

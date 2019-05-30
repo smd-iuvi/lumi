@@ -11,6 +11,7 @@ const TextFieldInformation = ({ name, label, onChange, value, placeholder }) => 
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        className="Medium-Text-Regular"
       />
     </div>
   );

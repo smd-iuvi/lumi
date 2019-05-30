@@ -1,11 +1,4 @@
-.Steps .titleStep{
-    font-family: FontMedium;
-    font-size: 20px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.35;
-    letter-spacing: normal;
+.Steps .Large-Text-Medium{
     color: var(--text);
 }
 
@@ -15,13 +8,6 @@
 }
 
 .Steps .subtitleStep{
-    font-family: FontRegular;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.36;
-    letter-spacing: normal;
     color: var(--text-secundary);
     margin-bottom: 32px;
 }
@@ -80,7 +66,7 @@
     margin-bottom: 30px;
 }
 
-.finishStep .titleStep{
+.finishStep .Large-Text-Medium{
     width: 400px;
 }
 
@@ -88,16 +74,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 16px;
-}
-
-.Steps .titleStep2{
-    font-family: FontMedium;
-    font-size: 16px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
 }
 
 .checkDiscipline{
@@ -129,13 +105,6 @@
 .Steps .bntNewInformation{
     background: none;
     border: none;
-    font-family: FontBold;
-    font-size: 14px;
-    font-weight: 900;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.36;
-    letter-spacing: normal;
     color: var(--text-secundary);
     display: flex;
     align-items: center;

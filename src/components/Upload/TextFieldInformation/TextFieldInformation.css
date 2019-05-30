@@ -1,12 +1,5 @@
 .infosContainer input[type="text"]{
     width: 100%;
-    font-family: FontRegular;
-    font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
     color: var(--text);
     background: none;
     outline: none;

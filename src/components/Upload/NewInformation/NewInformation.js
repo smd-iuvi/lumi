@@ -30,13 +30,19 @@ class NewInformation extends Component {
                     <img src={iconX} className="closeInfo" onClick={this.closeInfo} />
                 </div>
                 <div>
-                    <select>
+                    <select className="Medium-Text-Regular">
                         {this.state.options.map((op) =>
                             <option value={op}>{op}</option>
                         )}
                     </select>
                     <br />
-                    <input type="text" placeholder="Nome do participante" value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
+                    <input type="text"
+                        placeholder="Nome do participante"
+                        value={this.state.value}
+                        onKeyDown={this.keyPress}
+                        onChange={this.handleChange}
+                        className="Medium-Text-Regular"
+                    />
                 </div>
             </div >
         )

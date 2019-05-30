@@ -23,27 +23,12 @@
   background-color: var(--primary);
 }
 
-.cardFilm .titleCard {
-  font-family: FontBold;
-  font-size: 16px;
-  font-weight: 900;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.38;
-  letter-spacing: normal;
-  text-align: left;
+.cardFilm .Medium-Text-Bold {
   color: var(--white);
   margin-bottom: 0;
 }
 
-.cardFilm .disciplineCard {
+.cardFilm .Medium-Text-Regular {
   margin-top: 0;
-  font-family: FontRegular;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.38;
-  letter-spacing: normal;
   color: var(--white);
 }

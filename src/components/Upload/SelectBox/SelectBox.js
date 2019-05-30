@@ -112,7 +112,7 @@ class SelectBox extends Component {
     const { onChange, name, value } = this.props;
     return (
       <div className="SelectBox infosContainer">
-        <select name={name} onChange={this.onChange} value={value}>
+        <select name={name} onChange={this.onChange} value={value} className="Medium-Text-Regular">
           <option value="" disabled selected hidden>{this.props.placeholder}</option>
           {this.state.options.map(op => (
             <option value={op}>{op}</option>

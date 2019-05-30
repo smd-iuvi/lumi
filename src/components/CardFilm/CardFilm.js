@@ -17,10 +17,10 @@ const CardFilm = ({ video }) => {
           <img src={card} className="imgCard" />
         </article>
         <div className="infosCard">
-          <h1 className="titleCard">
+          <h1 className="Medium-Text-Bold">
             {video ? video.title : 'Nome indefinido'}
           </h1>
-          <h1 className="disciplineCard">
+          <h1 className="Medium-Text-Regular">
             {video ? video.discipline : 'Disciplina indefinida'}
           </h1>
         </div>

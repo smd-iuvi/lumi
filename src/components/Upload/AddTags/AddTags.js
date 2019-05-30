@@ -50,7 +50,14 @@ class AddTags extends Component {
                         )}
                     </datalist>
                 }
-                <input type="text" list="users" placeholder={this.props.placeholder} value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
+                <input type="text"
+                    list="users"
+                    placeholder={this.props.placeholder}
+                    value={this.state.value}
+                    onKeyDown={this.keyPress}
+                    onChange={this.handleChange}
+                    className="Small-Text-Regular"
+                />
                 {
                     <div className="tags">
                         {this.state.tags.map((tag) =>

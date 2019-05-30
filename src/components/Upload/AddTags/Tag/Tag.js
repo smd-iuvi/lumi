@@ -9,7 +9,7 @@ class Tag extends Component {
     render() {
         return (
             <div className="Tag">
-                <article className="tagLabel">{this.props.children}<img src={x} onClick={this.removeTag} /></article>
+                <article className="tagLabel Small-Text-Regular">{this.props.children}<img src={x} onClick={this.removeTag} /></article>
             </div>
         );
     }

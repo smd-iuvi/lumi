@@ -33,7 +33,7 @@ class NavBar extends Component {
 
         <input
           type="text"
-          className="inputSearch"
+          className="inputSearch Small-Text-Regular"
           placeholder="Busque por vídeos, disciplinas, gêneros…"
           value={searchTerm}
           onChange={this.onChange}

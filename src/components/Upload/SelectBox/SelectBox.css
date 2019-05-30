@@ -4,13 +4,6 @@
 
 .infosContainer select{
     background: none;
-    font-family: FontRegular;
-    font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
     color: var(--text-secundary);
     border: none;
     outline: none;

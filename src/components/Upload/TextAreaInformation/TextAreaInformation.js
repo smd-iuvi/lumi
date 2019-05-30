@@ -10,6 +10,7 @@ const TextAreaInformation = ({ name, children, value, onChange, placeholder }) =
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        className="Medium-Text-Regular"
       />
     </div>
   );

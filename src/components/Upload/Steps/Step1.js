@@ -11,7 +11,7 @@ import AddTags from '../AddTags/AddTags';
 const Step1 = (props) => {
     return (
         <div className="Steps">
-            <h1 className="titleStep">Informações gerais</h1>
+            <h1 className="Large-Text-Medium">Informações gerais</h1>
             <article className="line"></article>
             <Thumbnail />
             <TextFieldInformation placeholder="Título do vídeo" />

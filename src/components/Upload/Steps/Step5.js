@@ -13,7 +13,7 @@ class Step5 extends Component {
             <div className="Steps">
                 <div className="finishStep">
                     <img src={videoEnviado} />
-                    <h1 className="titleStep">Sucesso! Seu vídeo foi enviado e está aguardando revisão para ser publicado :)</h1>
+                    <h1 className="Large-Text-Medium">Sucesso! Seu vídeo foi enviado e está aguardando revisão para ser publicado :)</h1>
                     <button className="button buttonSecundary" onClick={this.reset}>Enviar outro vídeo</button>
                 </div>
             </div>

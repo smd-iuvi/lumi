@@ -7,26 +7,6 @@
     margin-top: 32px;
 }
 
-.containerThumb .titleThumb{
-    font-family: FontRegular;
-    font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-}
-
-.containerThumb .subtitleThumb{
-    font-family: FontRegular;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.36;
-    letter-spacing: normal;
-}
-
 .containerThumb .file{
     display: none;
 }
