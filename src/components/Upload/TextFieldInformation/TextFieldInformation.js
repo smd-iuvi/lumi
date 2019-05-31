@@ -2,7 +2,13 @@ import React from 'react';
 
 import './TextFieldInformation.css';
 
-const TextFieldInformation = ({ name, label, onChange, value, placeholder }) => {
+const TextFieldInformation = ({
+  name,
+  label,
+  onChange,
+  value,
+  placeholder
+}) => {
   return (
     <div className="TextFieldInformation infosContainer">
       <input
