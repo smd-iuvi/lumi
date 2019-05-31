@@ -104,6 +104,20 @@ class Upload extends Component {
 
   isValid = e => {
     if (e.target.name == 'link') {
+      if (
+        e.target.value.startsWith('https://www.youtube.com/watch?v=') ||
+        e.target.value.startsWith('http://www.youtube.com/watch?v=') ||
+        e.target.value.startsWith('www.youtube.com/watch?v=') ||
+        e.target.value.startsWith('youtube.com/watch?v=') ||
+        e.target.value.startsWith('https://vimeo.com') ||
+        e.target.value.startsWith('http://vimeo.com') ||
+        e.target.value.startsWith('https://www.vimeo.com') ||
+        e.target.value.startsWith('http://www/vimeo.com') ||
+        e.target.value.startsWith('www.vimeo.com') ||
+        e.target.value.startsWith('vimeo.com')
+      ) {
+        return true;
+      }
     } else if (e.target.name == 'tags') {
       return true;
     } else {
@@ -121,8 +135,6 @@ class Upload extends Component {
   canChangeStep = () => {
     const { steps, step } = this.state;
     const currentStepState = steps[step - 1];
-
-    console.log(currentStepState);
 
     return Object.keys(currentStepState)
       .map(key => currentStepState[key].isValid)
