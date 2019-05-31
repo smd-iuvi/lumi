@@ -5,6 +5,8 @@ import './Upload.css';
 
 import iconX from './assets/x.svg';
 
+import { withFirebase } from '../../Firebase';
+
 import Header from '../Header/Header';
 import StepBar from './StepBar/StepBar';
 import Step1 from './Steps/Step1';
@@ -129,7 +131,22 @@ class Upload extends Component {
   };
 
   onUpload = image => {
-    const imageName = uuid.v4();
+    const { firebase } = this.props;
+    firebase
+      .upload(image, 'thumbnail', snapshot => console.log(snapshot))
+      .then(url => {
+        const { steps, step } = this.state;
+        const currentStepState = steps[step - 1];
+        const newCurrentStepState = {
+          ...currentStepState,
+          imageUrl: { value: url, isValid: true }
+        };
+        const newSteps = [...steps];
+        newSteps[step - 1] = newCurrentStepState;
+
+        this.setState({ steps: newSteps });
+      })
+      .catch(error => console.log(error));
   };
 
   isValid = e => {
@@ -171,7 +188,10 @@ class Upload extends Component {
     const { steps, step } = this.state;
     const currentStepState = steps[step - 1];
 
-    const shouldVerifyEvents = currentStepState.shouldVerifyEvents.value;
+    let shouldVerifyEvents = false;
+    if (step == 4) {
+      shouldVerifyEvents = currentStepState.shouldVerifyEvents.value;
+    }
 
     return Object.keys(currentStepState)
       .map(key => {
@@ -302,4 +322,4 @@ class Upload extends Component {
   }
 }
 
-export default Upload;
+export default withFirebase(Upload);

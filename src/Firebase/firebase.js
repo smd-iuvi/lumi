@@ -3,6 +3,8 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/storage';
 
+import uuid from 'uuid';
+
 import Comment from './Models/Comment';
 import Event from './Models/Event';
 import Gender from './Models/Gender';
@@ -83,6 +85,36 @@ class Firebase {
         fallback();
       }
     });
+
+  upload = (image, path, callback) => {
+    const imageName = uuid.v4();
+    return new Promise((resolve, reject) => {
+      this.storage
+        .ref(`${path}/${imageName}`)
+        .put(image)
+        .on(
+          'state_changed',
+          snapshot => {
+            callback(snapshot);
+          },
+          error => {
+            reject(error);
+          },
+          completion => {
+            this.storage
+              .ref(`${path}`)
+              .child(imageName)
+              .getDownloadURL()
+              .then(url => {
+                resolve(url);
+              })
+              .catch(error => {
+                reject(error);
+              });
+          }
+        );
+    });
+  };
 }
 
 export default Firebase;

@@ -4,7 +4,19 @@ import './Thumbnail.css';
 
 import image from './assets/imagem.svg';
 
-const Thumbnail = ({ uploading, url, onFileChange }) => {
+const Thumbnail = ({ uploading, url, isValid, onFileChange }) => {
+  let backgroundStyle = {
+    backgroundImage: `url(${url ? url : image})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center'
+  };
+
+  let classes = '';
+  if (isValid || isValid == null) {
+    classes = `thumb valid`;
+  } else {
+    classes = `thumb invalid`;
+  }
   return (
     <div className="containerThumb">
       <div>
@@ -18,8 +30,8 @@ const Thumbnail = ({ uploading, url, onFileChange }) => {
       <label for="file" className="button buttonSecundary inputFile">
         Escolher arquivo
       </label>
-      <div className="thumb">
-        <img src={url ? url : image} />
+      <div className={classes} style={backgroundStyle}>
+        {/* <img src={url ? url : image} /> */}
       </div>
     </div>
   );

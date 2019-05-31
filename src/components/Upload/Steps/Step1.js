@@ -17,6 +17,7 @@ const Step1 = ({ stepState, onChange, uploading, onFileChange }) => {
       <Thumbnail
         uploading={uploading}
         url={stepState.imageUrl.value}
+        isValid={stepState.imageUrl.isValid}
         onFileChange={onFileChange}
       />
       <TextFieldInformation
