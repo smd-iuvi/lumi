@@ -16,7 +16,7 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 2,
+      step: 1,
       steps: [
         {
           title: {

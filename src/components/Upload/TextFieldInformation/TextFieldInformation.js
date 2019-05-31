@@ -7,10 +7,17 @@ const TextFieldInformation = ({
   label,
   onChange,
   value,
+  isValid,
   placeholder
 }) => {
+  let classes = '';
+  if (isValid || isValid == null) {
+    classes = 'TextFieldInformation infosContainer';
+  } else {
+    classes = 'TextFieldInformation infosContainer invalid';
+  }
   return (
-    <div className="TextFieldInformation infosContainer">
+    <div className={classes}>
       <input
         name={name}
         type="text"

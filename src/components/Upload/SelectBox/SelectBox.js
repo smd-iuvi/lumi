@@ -105,9 +105,17 @@ class SelectBox extends Component {
   };
 
   render() {
-    const { onChange, name, value } = this.props;
+    const { onChange, name, value, isValid } = this.props;
+
+    let classes = '';
+    if (isValid || isValid == null) {
+      classes = 'SelectBox infosContainer';
+    } else {
+      classes = 'SelectBox infosContainer invalid';
+    }
+
     return (
-      <div className="SelectBox infosContainer">
+      <div className={classes}>
         <select
           name={name}
           onChange={onChange}

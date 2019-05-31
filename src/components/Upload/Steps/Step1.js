@@ -18,12 +18,14 @@ const Step1 = ({ stepState, onChange }) => {
       <TextFieldInformation
         name="title"
         value={stepState.title.value}
+        isValid={stepState.title.isValid}
         onChange={onChange}
         placeholder="Título do vídeo"
       />
       <TextFieldInformation
         name="link"
         value={stepState.link.value}
+        isValid={stepState.link.isValid}
         onChange={onChange}
         placeholder="Link do vídeo"
       />
@@ -36,6 +38,7 @@ const Step1 = ({ stepState, onChange }) => {
       <SelectBox
         name="genre"
         value={stepState.genre.value}
+        isValid={stepState.genre.isValid}
         onChange={onChange}
         placeholder="Gênero"
       />
@@ -43,12 +46,14 @@ const Step1 = ({ stepState, onChange }) => {
         <SelectBox
           name="parentalRating"
           value={stepState.parentalRating.value}
+          isValid={stepState.parentalRating.isValid}
           onChange={onChange}
           placeholder="Classificação"
         />
         <TextFieldInformation
           name="content"
           value={stepState.content.value}
+          isValid={stepState.content.isValid}
           onChange={onChange}
           placeholder="Conteúdo"
         />

@@ -26,12 +26,14 @@ class Step4 extends Component {
           <SelectBox
             name="discipline"
             value={stepState.discipline.value}
+            isValid={stepState.discipline.isValid}
             onChange={onChange}
             placeholder="Disciplina"
           />
           <SelectBox
             name="semester"
             value={stepState.semester.value}
+            isValid={stepState.semester.isValid}
             onChange={onChange}
             placeholder="Semestre"
           />
@@ -39,12 +41,14 @@ class Step4 extends Component {
         <TextFieldInformation
           name="professor"
           value={stepState.professor.value}
+          isValid={stepState.professor.isValid}
           onChange={onChange}
           placeholder="Professor(es) da disciplina"
         />
         <TextAreaInformation
           name="about"
           value={stepState.about.value}
+          isValid={stepState.about.isValid}
           onChange={onChange}
           placeholder="Sobre o trabalho"
         />
