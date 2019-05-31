@@ -81,7 +81,7 @@ class Upload extends Component {
             value: '',
             isValid: null
           },
-          event: {
+          events: {
             value: '',
             isValid: null
           }
@@ -121,7 +121,9 @@ class Upload extends Component {
     } else if (
       e.target.name == 'tags' ||
       e.target.name == 'cast' ||
-      e.target.name == 'members'
+      e.target.name == 'members' ||
+      e.target.name == 'isIndependent' ||
+      e.target.name == 'events'
     ) {
       return true;
     } else {
