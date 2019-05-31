@@ -90,11 +90,7 @@ class SelectBox extends Component {
         options: getValue
       });
     } else if (this.props.name == 'events') {
-      getValue = [
-        'Evento 1',
-        'Evento 2',
-        'Evento 3'
-      ];
+      getValue = ['Evento 1', 'Evento 2', 'Evento 3'];
       this.setState({
         name: this.props.name,
         options: getValue
@@ -112,8 +108,15 @@ class SelectBox extends Component {
     const { onChange, name, value } = this.props;
     return (
       <div className="SelectBox infosContainer">
-        <select name={name} onChange={this.onChange} value={value} className="Medium-Text-Regular">
-          <option value="" disabled selected hidden>{this.props.placeholder}</option>
+        <select
+          name={name}
+          onChange={onChange}
+          value={value}
+          className="Medium-Text-Regular"
+        >
+          <option value="" disabled selected hidden>
+            {this.props.placeholder}
+          </option>
           {this.state.options.map(op => (
             <option value={op}>{op}</option>
           ))}
