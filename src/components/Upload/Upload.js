@@ -16,7 +16,7 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 1,
+      step: 2,
       steps: [
         {
           title: {
@@ -51,11 +51,11 @@ class Upload extends Component {
         {
           cast: {
             value: [],
-            isValid: null
+            isValid: true
           },
           members: {
             value: [],
-            isValid: null
+            isValid: true
           }
         },
         {
@@ -118,7 +118,11 @@ class Upload extends Component {
       ) {
         return true;
       }
-    } else if (e.target.name == 'tags') {
+    } else if (
+      e.target.name == 'tags' ||
+      e.target.name == 'cast' ||
+      e.target.name == 'members'
+    ) {
       return true;
     } else {
       if (
@@ -163,6 +167,7 @@ class Upload extends Component {
 
   render() {
     const { steps } = this.state;
+    console.log(steps);
     if (!this.props.show) {
       return null;
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 
 import './Steps.css';
 
@@ -8,24 +9,59 @@ import NewInformation from '../NewInformation/NewInformation';
 import iconNew from './assets/add-function.svg';
 
 class Step2 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      functions: [{ func: '', name: '' }]
-    };
-    this.addFunction = this.addFunction.bind(this);
-  }
+  addMember = () => {
+    const { stepState, onChange } = this.props;
+    const members = stepState.members.value;
+    const newMembers = [
+      ...members,
+      { role: 'Direção', name: '', key: uuid.v4 }
+    ];
 
-  addFunction = () => {
-    let aux = this.state.functions;
-    aux.push({ func: '', name: '' });
-    this.setState({ functions: aux });
+    const event = {
+      target: {
+        name: 'members',
+        value: newMembers
+      }
+    };
+
+    onChange(event);
   };
 
-  removeFunction = value => {
-    let aux = this.state.functions;
-    aux.splice(value, 1);
-    this.setState({ functions: aux });
+  removeMember = key => {
+    const { stepState, onChange } = this.props;
+    const members = stepState.members.value;
+    const newMembers = members.filter(m => m.key !== key);
+
+    const event = {
+      target: {
+        name: 'members',
+        value: newMembers
+      }
+    };
+
+    onChange(event);
+  };
+
+  onMemberChange = (key, e) => {
+    const { stepState, onChange } = this.props;
+    const members = stepState.members.value;
+    const memberToUpdate = members.filter(m => m.key == key)[0];
+
+    const newmemberToUpdate = {
+      ...memberToUpdate,
+      [e.target.name]: e.target.value
+    };
+
+    const newMembers = members.map(m => (m.key == key ? newmemberToUpdate : m));
+
+    const event = {
+      target: {
+        name: 'members',
+        value: newMembers
+      }
+    };
+
+    onChange(event);
   };
 
   render() {
@@ -48,16 +84,17 @@ class Step2 extends Component {
         <h1 className="Medium-Text-Medium">Funções dos participantes</h1>
         <button
           className="bntNewInformation Small-Text-Bold"
-          onClick={this.addFunction}
+          onClick={this.addMember}
         >
           <img src={iconNew} />
           Adicionar função
         </button>
         <div className="functions">
-          {this.state.functions.map((op, index) => (
+          {stepState.members.value.map(member => (
             <NewInformation
-              index={index}
-              removeFunction={this.removeFunction}
+              member={member}
+              onChange={e => this.onMemberChange(member.key, e)}
+              remove={() => this.removeMember(member.key)}
             />
           ))}
         </div>
