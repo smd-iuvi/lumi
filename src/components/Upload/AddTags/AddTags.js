@@ -5,69 +5,94 @@ import './AddTags.css';
 import Tag from './Tag/Tag';
 
 class AddTags extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: '',
-            tags: [],
-            users: ["Gleislla Monteiro", "Mateus Santos", "Paulo José", "Rebecca Dantas"]
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: '',
+      users: [
+        'Gleislla Monteiro',
+        'Mateus Santos',
+        'Paulo José',
+        'Rebecca Dantas'
+      ]
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.keyPress = this.keyPress.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
+
+  keyPress(e) {
+    const { onChange, name, value } = this.props;
+    if (e.keyCode == 13) {
+      if (
+        e.target.value != null &&
+        e.target.value != '' &&
+        e.target.value != ' '
+      ) {
+        const getTags = value;
+        getTags.push(e.target.value);
+        const event = {
+          target: {
+            name: name,
+            value: getTags
+          }
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.keyPress = this.keyPress.bind(this);
+        onChange(event);
+        this.setState({ value: '' });
+      }
     }
+  }
 
-    handleChange(e) {
-        this.setState({ value: e.target.value });
+  deleteTag = e => {
+    const { onChange, name, value } = this.props;
+    let aux = value;
+    for (let i = 0; i < aux.length; i++) {
+      if (aux[i] == e) {
+        aux.splice(i, 1);
+        const event = {
+          target: {
+            name: name,
+            value: aux
+          }
+        };
+        onChange(event);
+      }
     }
+  };
 
-    keyPress(e) {
-        if (e.keyCode == 13) {
-            if (e.target.value != null && e.target.value != '' && e.target.value != ' ') {
-                const getTags = this.state.tags;
-                getTags.push(e.target.value);
-                this.setState({ tags: getTags, value: '' });
-            }
+  render() {
+    const { value } = this.props;
+    return (
+      <div className="AddTags infosContainer">
+        {this.props.list && (
+          <datalist id="users">
+            {this.state.users.map(user => (
+              <option>{user}</option>
+            ))}
+          </datalist>
+        )}
+        <input
+          type="text"
+          list="users"
+          placeholder={this.props.placeholder}
+          value={this.state.value}
+          onKeyDown={this.keyPress}
+          onChange={this.handleChange}
+          className="Small-Text-Regular"
+        />
+        {
+          <div className="tags">
+            {value.map(tag => (
+              <Tag deleteTag={this.deleteTag}>{tag}</Tag>
+            ))}
+          </div>
         }
-    }
-
-    deleteTag = (e) => {
-        let aux = this.state.tags;
-        for (let i = 0; i < aux.length; i++) {
-            if (aux[i] == e) {
-                aux.splice(i, 1);
-                this.setState({ tags: aux });
-            }
-        }
-    }
-
-    render() {
-        return (
-            <div className="AddTags infosContainer">
-                {this.props.list &&
-                    <datalist id="users">
-                        {this.state.users.map((user) =>
-                            <option>{user}</option>
-                        )}
-                    </datalist>
-                }
-                <input type="text"
-                    list="users"
-                    placeholder={this.props.placeholder}
-                    value={this.state.value}
-                    onKeyDown={this.keyPress}
-                    onChange={this.handleChange}
-                    className="Small-Text-Regular"
-                />
-                {
-                    <div className="tags">
-                        {this.state.tags.map((tag) =>
-                            <Tag deleteTag={this.deleteTag}>{tag}</Tag>
-                        )}
-                    </div>
-                }
-            </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 
-export default AddTags
+export default AddTags;
