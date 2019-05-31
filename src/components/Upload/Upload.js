@@ -59,8 +59,8 @@ class Upload extends Component {
           }
         },
         {
-          isIdenpendent: {
-            value: false,
+          isIndependent: {
+            value: null,
             isValid: null
           }
         },
