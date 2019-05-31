@@ -109,7 +109,7 @@ class SelectBox extends Component {
 
     let classes = '';
     if (isValid || isValid == null) {
-      classes = 'SelectBox infosContainer';
+      classes = 'SelectBox infosContainer valid';
     } else {
       classes = 'SelectBox infosContainer invalid';
     }

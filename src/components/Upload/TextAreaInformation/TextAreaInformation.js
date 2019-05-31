@@ -12,7 +12,7 @@ const TextAreaInformation = ({
 }) => {
   let classes = '';
   if (isValid || isValid == null) {
-    classes = 'TextAreaInformation infosContainer';
+    classes = 'TextAreaInformation infosContainer valid';
   } else {
     classes = 'TextAreaInformation infosContainer invalid';
   }

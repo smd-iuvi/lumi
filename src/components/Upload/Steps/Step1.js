@@ -32,6 +32,7 @@ const Step1 = ({ stepState, onChange }) => {
       <TextAreaInformation
         name="description"
         value={stepState.description.value}
+        isValid={stepState.description.isValid}
         onChange={onChange}
         placeholder="Sinopse/Descrição"
       />

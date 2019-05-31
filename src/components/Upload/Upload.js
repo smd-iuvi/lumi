@@ -16,7 +16,7 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 1,
+      step: 4,
       steps: [
         {
           title: {
@@ -37,7 +37,7 @@ class Upload extends Component {
           },
           parentalRating: {
             value: 'Livre',
-            isValid: null
+            isValid: true
           },
           content: {
             value: '',
@@ -84,6 +84,10 @@ class Upload extends Component {
           events: {
             value: '',
             isValid: null
+          },
+          shouldVerifyEvents: {
+            value: false,
+            isValid: true
           }
         }
       ]
@@ -95,7 +99,13 @@ class Upload extends Component {
     const currentStepState = steps[step - 1];
     const newCurrentStepState = {
       ...currentStepState,
-      [e.target.name]: { value: e.target.value, isValid: this.isValid(e) }
+      [e.target.name]: {
+        value:
+          e.target.name == 'shouldVerifyEvents'
+            ? e.target.checked
+            : e.target.value,
+        isValid: this.isValid(e)
+      }
     };
     const newSteps = [...steps];
     newSteps[step - 1] = newCurrentStepState;
@@ -122,8 +132,7 @@ class Upload extends Component {
       e.target.name == 'tags' ||
       e.target.name == 'cast' ||
       e.target.name == 'members' ||
-      e.target.name == 'isIndependent' ||
-      e.target.name == 'events'
+      e.target.name == 'isIndependent'
     ) {
       return true;
     } else {
@@ -142,8 +151,15 @@ class Upload extends Component {
     const { steps, step } = this.state;
     const currentStepState = steps[step - 1];
 
+    const shouldVerifyEvents = currentStepState.shouldVerifyEvents.value;
+
     return Object.keys(currentStepState)
-      .map(key => currentStepState[key].isValid)
+      .map(key => {
+        if (key == 'events' && !shouldVerifyEvents) {
+          return true;
+        }
+        return currentStepState[key].isValid;
+      })
       .reduce((accumulator, current) => {
         return current && accumulator;
       }, true);
@@ -156,7 +172,35 @@ class Upload extends Component {
   nextStep = () => {
     if (this.canChangeStep()) {
       this.setState({ step: this.state.step + 1 });
+    } else {
+      this.highlightInvalidFields();
     }
+  };
+
+  highlightInvalidFields = () => {
+    const { steps, step } = this.state;
+    const currentStepState = steps[step - 1];
+
+    const newCurrentStepStateArr = Object.keys(currentStepState).map(key => {
+      let obj = {};
+      obj[key] = {
+        ...currentStepState[key],
+        isValid:
+          currentStepState[key].isValid == null
+            ? false
+            : currentStepState[key].isValid
+      };
+      return obj;
+    });
+
+    let newCurrentStepState = {};
+    newCurrentStepStateArr.forEach(k => {
+      newCurrentStepState = { ...newCurrentStepState, ...k };
+    });
+
+    const newSteps = [...steps];
+    newSteps[step - 1] = newCurrentStepState;
+    this.setState({ steps: newSteps });
   };
 
   returnStep = () => {

@@ -1,22 +1,32 @@
-.SelectBox{
-    padding: 0;
+.SelectBox {
+  padding: 0;
 }
 
-.infosContainer select{
-    background: none;
-    color: var(--text-secundary);
-    border: none;
-    outline: none;
-    cursor: pointer;
-    width: 100%;
-    padding: 17px 24px;
+.infosContainer select {
+  background: none;
+  color: var(--text-secundary);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 17px 24px;
 }
 
-.infosContainer select option{
-    background-color: var(--white);
-    font-size: 16px;
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
-    color: var(--text);
+.infosContainer select option {
+  background-color: var(--white);
+  font-size: 16px;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
+  color: var(--text);
+}
+
+.valid {
+  border: 1px solid;
+  border-color: var(--secundary);
+}
+
+.invalid {
+  border: 1px solid;
+  border-color: var(--feedback-negativo);
 }

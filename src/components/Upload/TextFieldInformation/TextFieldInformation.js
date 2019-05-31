@@ -12,7 +12,7 @@ const TextFieldInformation = ({
 }) => {
   let classes = '';
   if (isValid || isValid == null) {
-    classes = 'TextFieldInformation infosContainer';
+    classes = 'TextFieldInformation infosContainer valid';
   } else {
     classes = 'TextFieldInformation infosContainer invalid';
   }

@@ -1,19 +1,21 @@
-.AddTags input{
-    width: 100%;
-    line-height: 1.2;
-    color: var(--white);
-    background: none;
-    outline: none;
-    border: none;
-    margin-bottom: 20px;
-    padding: 5px 0;
+.AddTags input {
+  width: 100%;
+  line-height: 1.2;
+  color: var(--white);
+  background: none;
+  outline: none;
+  border: none;
+  margin-bottom: 20px;
+  padding: 5px 0;
 }
 
-.infosContainer .tags{
-    display: flex;
-    flex-wrap: wrap;
+.infosContainer .tags {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.AddTags{
-    margin-bottom: 24px;
+.AddTags {
+  margin-bottom: 24px;
+  border: 1px solid;
+  border-color: var(--secundary);
 }

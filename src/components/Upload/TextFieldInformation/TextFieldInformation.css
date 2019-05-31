@@ -7,8 +7,17 @@
 }
 
 .infosContainer {
-  border: 1px solid var(--secundary);
   border-radius: 8px;
   padding: 17px 24px;
   margin-bottom: 16px;
+}
+
+.valid {
+  border: 1px solid;
+  border-color: var(--secundary);
+}
+
+.invalid {
+  border: 1px solid;
+  border-color: var(--feedback-negativo);
 }

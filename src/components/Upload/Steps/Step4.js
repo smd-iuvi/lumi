@@ -7,12 +7,6 @@ import TextFieldInformation from '../TextFieldInformation/TextFieldInformation';
 import TextAreaInformation from '../TextAreaInformation/TextAreaInformation';
 
 class Step4 extends Component {
-  state = {
-    showSelect: false
-  };
-  handleSelect = () => {
-    this.setState({ showSelect: !this.state.showSelect });
-  };
   render() {
     const { stepState, onChange } = this.props;
     return (
@@ -58,16 +52,19 @@ class Step4 extends Component {
             type="checkbox"
             id="checkbox"
             className="checkboxEvent"
-            onChange={this.handleSelect}
+            name="shouldVerifyEvents"
+            value={stepState.shouldVerifyEvents.value}
+            onChange={onChange}
           />
           <label for="checkbox" className="Medium-Text-Medium">
             Este vídeo faz parte de um evento da disciplina.
           </label>
         </div>
-        {this.state.showSelect && (
+        {stepState.shouldVerifyEvents.value && (
           <SelectBox
             name="events"
             value={stepState.events.value}
+            isValid={stepState.events.isValid}
             onChange={onChange}
             placeholder="Selecione o evento"
           />
