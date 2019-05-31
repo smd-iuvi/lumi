@@ -21,27 +21,27 @@ class Upload extends Component {
         {
           title: {
             value: '',
-            isValid: true
+            isValid: null
           },
           link: {
             value: '',
-            isValid: true
+            isValid: null
           },
           description: {
             value: '',
-            isValid: true
+            isValid: null
           },
           genre: {
             value: '',
-            isValid: true
+            isValid: null
           },
           parentalRating: {
             value: 'Livre',
-            isValid: true
+            isValid: null
           },
           content: {
             value: '',
-            isValid: true
+            isValid: null
           },
           tags: {
             value: [],
@@ -51,39 +51,39 @@ class Upload extends Component {
         {
           cast: {
             value: [],
-            isValid: true
+            isValid: null
           },
           members: {
             value: [],
-            isValid: true
+            isValid: null
           }
         },
         {
           isIdenpendent: {
             value: false,
-            isValid: false
+            isValid: null
           }
         },
         {
           discipline: {
             value: '',
-            isValid: true
+            isValid: null
           },
           semester: {
             value: '',
-            isValid: true
+            isValid: null
           },
           professor: {
             value: '',
-            isValid: true
+            isValid: null
           },
           about: {
             value: '',
-            isValid: true
+            isValid: null
           },
           event: {
             value: '',
-            isValid: true
+            isValid: null
           }
         }
       ]
@@ -92,19 +92,21 @@ class Upload extends Component {
 
   onChange = e => {
     const { steps, step } = this.state;
-    const currentStepsState = steps[step - 1];
-    const newCurrentStepsState = {
-      ...currentStepsState,
+    const currentStepState = steps[step - 1];
+    const newCurrentStepState = {
+      ...currentStepState,
       [e.target.name]: { value: e.target.value, isValid: this.isValid(e) }
     };
     const newSteps = [...steps];
-    newSteps[step - 1] = newCurrentStepsState;
-    console.log(newSteps);
+    newSteps[step - 1] = newCurrentStepState;
     this.setState({ steps: newSteps });
   };
 
   isValid = e => {
-    if (e.target.name !== 'link') {
+    if (e.target.name == 'link') {
+    } else if (e.target.name == 'tags') {
+      return true;
+    } else {
       if (
         e.target.value != null &&
         e.target.value != undefined &&
@@ -116,12 +118,27 @@ class Upload extends Component {
     return false;
   };
 
+  canChangeStep = () => {
+    const { steps, step } = this.state;
+    const currentStepState = steps[step - 1];
+
+    console.log(currentStepState);
+
+    return Object.keys(currentStepState)
+      .map(key => currentStepState[key].isValid)
+      .reduce((accumulator, current) => {
+        return current && accumulator;
+      }, true);
+  };
+
   closeModal = () => {
     this.props.onChangeState();
   };
 
   nextStep = () => {
-    this.setState({ step: this.state.step + 1 });
+    if (this.canChangeStep()) {
+      this.setState({ step: this.state.step + 1 });
+    }
   };
 
   returnStep = () => {
