@@ -9,12 +9,16 @@ import SelectBox from '../SelectBox/SelectBox';
 import AddTags from '../AddTags/AddTags';
 // import { on } from 'cluster';
 
-const Step1 = ({ stepState, onChange }) => {
+const Step1 = ({ stepState, onChange, uploading, onFileChange }) => {
   return (
     <div className="Steps">
       <h1 className="Large-Text-Medium">Informações gerais</h1>
       <article className="line" />
-      <Thumbnail />
+      <Thumbnail
+        uploading={uploading}
+        url={stepState.imageUrl.value}
+        onFileChange={onFileChange}
+      />
       <TextFieldInformation
         name="title"
         value={stepState.title.value}

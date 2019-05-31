@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 
 import './Upload.css';
 
@@ -11,16 +12,23 @@ import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 import Step4 from './Steps/Step4';
 import Step5 from './Steps/Step5';
+import { isNull } from 'util';
 
 class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 4,
+      step: 1,
+      uploadingImage: false,
+      fileToUpload: null,
       steps: [
         {
           title: {
             value: '',
+            isValid: null
+          },
+          imageUrl: {
+            value: null,
             isValid: null
           },
           link: {
@@ -110,6 +118,18 @@ class Upload extends Component {
     const newSteps = [...steps];
     newSteps[step - 1] = newCurrentStepState;
     this.setState({ steps: newSteps });
+  };
+
+  onFileChange = event => {
+    if (event.target.files[0]) {
+      const image = event.target.files[0];
+      this.setState({ fileToUpload: image, uploadingImage: true });
+      this.onUpload(image);
+    }
+  };
+
+  onUpload = image => {
+    const imageName = uuid.v4();
   };
 
   isValid = e => {
@@ -212,7 +232,7 @@ class Upload extends Component {
   };
 
   render() {
-    const { steps } = this.state;
+    const { steps, uploadingImage } = this.state;
     console.log(steps);
     if (!this.props.show) {
       return null;
@@ -229,7 +249,12 @@ class Upload extends Component {
             <div className="contentModal">
               {this.state.step < 5 && <StepBar step={this.state.step} />}
               {this.state.step == 1 && (
-                <Step1 stepState={steps[0]} onChange={this.onChange} />
+                <Step1
+                  stepState={steps[0]}
+                  onChange={this.onChange}
+                  onFileChange={this.onFileChange}
+                  uploading={uploadingImage}
+                />
               )}
               {this.state.step == 2 && (
                 <Step2 stepState={steps[1]} onChange={this.onChange} />
