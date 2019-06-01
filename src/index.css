@@ -8,6 +8,7 @@
   --text-light: #15161c;
   --placeholders-light: #a7a6b3;
   --negative-feedback: #ff6e6e;
+  --negative-feedback-with-transparency: rgba(255, 110, 110, 0.2);
   --sidebar-footer: #0f0f13;
   --secundary-light: #eeedff;
   --cards: #2d304b;

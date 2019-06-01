@@ -21,14 +21,14 @@
   justify-self: right;
 }
 
-.thumb{
-    width: 100%;
-    height: 142px;
-    border: 1px solid var(--primary);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.thumb {
+  width: 100%;
+  height: 142px;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .thumb img {
@@ -37,9 +37,12 @@
 }
 
 .valid {
-  border-color: var(--secundary);
+  border: 1px solid;
+  border-color: var(--primary);
 }
 
 .invalid {
-  border-color: var(--feedback-negativo);
+  border: 1px solid;
+  border-color: var(--negative-feedback);
+  background-color: var(--negative-feedback-with-transparency);
 }

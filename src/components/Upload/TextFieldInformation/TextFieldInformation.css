@@ -1,16 +1,16 @@
-.infosContainer input[type="text"]{
-    width: 100%;
-    color: var(--text-light);
-    background: none;
-    outline: none;
-    border: none;
+.infosContainer input[type='text'] {
+  width: 100%;
+  color: var(--text-light);
+  background: none;
+  outline: none;
+  border: none;
 }
 
-.infosContainer{
-    border: 1px solid var(--primary);
-    border-radius: 8px;
-    padding: 17px 24px;
-    margin-bottom: 16px;
+.infosContainer {
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  padding: 17px 24px;
+  margin-bottom: 16px;
 }
 
 .valid {
@@ -21,4 +21,5 @@
 .invalid {
   border: 1px solid;
   border-color: var(--negative-feedback);
+  background-color: var(--negative-feedback-with-transparency);
 }
