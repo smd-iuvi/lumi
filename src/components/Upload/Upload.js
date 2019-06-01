@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import uuid from 'uuid';
 
 import './Upload.css';
 
@@ -30,7 +29,7 @@ class Upload extends Component {
       ...currentStepState,
       [e.target.name]: {
         value:
-          e.target.name == 'shouldVerifyEvents'
+          e.target.name === 'shouldVerifyEvents'
             ? e.target.checked
             : e.target.value,
         isValid: this.isValid(e)
@@ -68,6 +67,12 @@ class Upload extends Component {
       .catch(error => console.log(error));
   };
 
+  cleanMembersUUIDKeys = members => {
+    return members.map(member => {
+      return { role: member.role, name: member.name };
+    });
+  };
+
   onSend = () => {
     const { firebase } = this.props;
     const { steps } = this.state;
@@ -84,7 +89,7 @@ class Upload extends Component {
       content: steps[0].content.value,
       tags: steps[0].tags.value,
       cast: steps[1].cast.value,
-      members: steps[1].members.value,
+      members: this.cleanMembersUUIDKeys(steps[1].members.value),
       isIndependent: steps[2].isIndependent.value,
       discipline: steps[3].discipline.value,
       semester: steps[3].semester.value,
@@ -96,15 +101,17 @@ class Upload extends Component {
     firebase.video
       .create(video)
       .then(() => {
+        console.log('Criado');
         this.setState({ sending: false });
       })
       .catch(error => {
+        console.log(error);
         this.setState({ error });
       });
   };
 
   isValid = e => {
-    if (e.target.name == 'link') {
+    if (e.target.name === 'link') {
       if (
         e.target.value.startsWith('https://www.youtube.com/watch?v=') ||
         e.target.value.startsWith('http://www.youtube.com/watch?v=') ||
@@ -120,17 +127,17 @@ class Upload extends Component {
         return true;
       }
     } else if (
-      e.target.name == 'tags' ||
-      e.target.name == 'cast' ||
-      e.target.name == 'members' ||
-      e.target.name == 'isIndependent'
+      e.target.name === 'tags' ||
+      e.target.name === 'cast' ||
+      e.target.name === 'members' ||
+      e.target.name === 'isIndependent'
     ) {
       return true;
     } else {
       if (
-        e.target.value != null &&
-        e.target.value != undefined &&
-        e.target.value != ''
+        e.target.value !== null &&
+        e.target.value !== undefined &&
+        e.target.value !== ''
       ) {
         return true;
       }
@@ -143,13 +150,13 @@ class Upload extends Component {
     const currentStepState = steps[step - 1];
 
     let shouldVerifyEvents = false;
-    if (step == 4) {
+    if (step === 4) {
       shouldVerifyEvents = currentStepState.shouldVerifyEvents.value;
     }
 
     return Object.keys(currentStepState)
       .map(key => {
-        if (key == 'events' && !shouldVerifyEvents) {
+        if (key === 'events' && !shouldVerifyEvents) {
           return true;
         }
         return currentStepState[key].isValid;
@@ -167,10 +174,10 @@ class Upload extends Component {
   nextStep = () => {
     const { step, steps } = this.state;
     if (this.canChangeStep()) {
-      if (step == 3 && steps[2].isIndependent.value) {
+      if (step === 3 && steps[2].isIndependent.value) {
         this.onSend();
         this.setState({ step: this.state.step + 2 });
-      } else if (step == 4) {
+      } else if (step === 4) {
         this.onSend();
         this.setState({ step: this.state.step + 1 });
       } else {
@@ -217,7 +224,7 @@ class Upload extends Component {
 
   render() {
     const { steps, uploadingImage } = this.state;
-
+    console.log(steps);
     if (!this.props.show) {
       return null;
     }
@@ -227,12 +234,17 @@ class Upload extends Component {
         <div className="modalUpload">
           <div className="labelModal">
             <Header>Enviar vídeo</Header>
-            <img src={iconX} className="closeModal" onClick={this.closeModal} />
+            <img
+              src={iconX}
+              className="closeModal"
+              alt="Botão para fechar modal"
+              onClick={this.closeModal}
+            />
           </div>
           {this.state.step <= 5 && (
             <div className="contentModal">
               {this.state.step < 5 && <StepBar step={this.state.step} />}
-              {this.state.step == 1 && (
+              {this.state.step === 1 && (
                 <Step1
                   stepState={steps[0]}
                   onChange={this.onChange}
@@ -240,16 +252,16 @@ class Upload extends Component {
                   uploading={uploadingImage}
                 />
               )}
-              {this.state.step == 2 && (
+              {this.state.step === 2 && (
                 <Step2 stepState={steps[1]} onChange={this.onChange} />
               )}
-              {this.state.step == 3 && (
+              {this.state.step === 3 && (
                 <Step3 stepState={steps[2]} onChange={this.onChange} />
               )}
-              {this.state.step == 4 && (
+              {this.state.step === 4 && (
                 <Step4 stepState={steps[3]} onChange={this.onChange} />
               )}
-              {this.state.step == 5 && <Step5 resetSteps={this.resetSteps} />}
+              {this.state.step === 5 && <Step5 resetSteps={this.resetSteps} />}
             </div>
           )}
           <div className="handleSteps">
@@ -266,12 +278,12 @@ class Upload extends Component {
                 Próximo
               </button>
             )}
-            {this.state.step == 4 && (
+            {this.state.step === 4 && (
               <button className="button buttonPrimary" onClick={this.nextStep}>
                 Concluir
               </button>
             )}
-            {this.state.step == 5 && (
+            {this.state.step === 5 && (
               <button
                 className="button buttonPrimary"
                 onClick={this.closeModal}

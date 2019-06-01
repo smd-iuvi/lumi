@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import uuid from 'uuid';
+import uuid from 'uuid/v4';
 
 import './Steps.css';
 
@@ -12,10 +12,7 @@ class Step2 extends Component {
   addMember = () => {
     const { stepState, onChange } = this.props;
     const members = stepState.members.value;
-    const newMembers = [
-      ...members,
-      { role: 'Direção', name: '', key: uuid.v4 }
-    ];
+    const newMembers = [...members, { role: 'Direção', name: '', key: uuid() }];
 
     const event = {
       target: {
@@ -49,13 +46,12 @@ class Step2 extends Component {
 
     const newmemberToUpdate = {
       ...memberToUpdate,
-      key: null,
       [e.target.name]: e.target.value
     };
 
-    const newMembers = members.map(m =>
-      m.key == key ? newmemberToUpdate : { role: m.role, name: m.name }
-    );
+    const newMembers = members.map(m => {
+      return m.key === key ? newmemberToUpdate : m;
+    });
 
     const event = {
       target: {

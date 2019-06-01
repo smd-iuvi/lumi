@@ -69,7 +69,7 @@ export const INITIAL_STATE = {
         isValid: null
       },
       about: {
-        value: '',
+        value: null,
         isValid: null
       },
       events: {
