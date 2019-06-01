@@ -14,94 +14,13 @@ import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 import Step4 from './Steps/Step4';
 import Step5 from './Steps/Step5';
-import { isNull } from 'util';
+
+import { INITIAL_STATE } from './InitialState';
 
 class Upload extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      step: 1,
-      uploadingImage: false,
-      fileToUpload: null,
-      steps: [
-        {
-          title: {
-            value: '',
-            isValid: null
-          },
-          imageUrl: {
-            value: null,
-            isValid: null
-          },
-          link: {
-            value: '',
-            isValid: null
-          },
-          description: {
-            value: '',
-            isValid: null
-          },
-          genre: {
-            value: '',
-            isValid: null
-          },
-          parentalRating: {
-            value: 'Livre',
-            isValid: true
-          },
-          content: {
-            value: '',
-            isValid: null
-          },
-          tags: {
-            value: [],
-            isValid: true
-          }
-        },
-        {
-          cast: {
-            value: [],
-            isValid: true
-          },
-          members: {
-            value: [],
-            isValid: true
-          }
-        },
-        {
-          isIndependent: {
-            value: null,
-            isValid: null
-          }
-        },
-        {
-          discipline: {
-            value: '',
-            isValid: null
-          },
-          semester: {
-            value: '',
-            isValid: null
-          },
-          professor: {
-            value: '',
-            isValid: null
-          },
-          about: {
-            value: '',
-            isValid: null
-          },
-          events: {
-            value: '',
-            isValid: null
-          },
-          shouldVerifyEvents: {
-            value: false,
-            isValid: true
-          }
-        }
-      ]
-    };
+    this.state = INITIAL_STATE;
   }
 
   onChange = e => {
@@ -147,6 +66,41 @@ class Upload extends Component {
         this.setState({ steps: newSteps });
       })
       .catch(error => console.log(error));
+  };
+
+  onSend = () => {
+    const { firebase } = this.props;
+    const { steps } = this.state;
+
+    this.setState({ sending: true });
+
+    const video = {
+      title: steps[0].title.value,
+      imageUrl: steps[0].imageUrl.value,
+      link: steps[0].link.value,
+      description: steps[0].description.value,
+      genre: steps[0].genre.value,
+      parentalRating: steps[0].parentalRating.value,
+      content: steps[0].content.value,
+      tags: steps[0].tags.value,
+      cast: steps[1].cast.value,
+      members: steps[1].members.value,
+      isIndependent: steps[2].isIndependent.value,
+      discipline: steps[3].discipline.value,
+      semester: steps[3].semester.value,
+      professor: steps[3].professor.value,
+      about: steps[3].about.value,
+      event: steps[3].events.value
+    };
+
+    firebase.video
+      .create(video)
+      .then(() => {
+        this.setState({ sending: false });
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
   };
 
   isValid = e => {
@@ -206,12 +160,22 @@ class Upload extends Component {
   };
 
   closeModal = () => {
+    this.setState(INITIAL_STATE);
     this.props.onChangeState();
   };
 
   nextStep = () => {
+    const { step, steps } = this.state;
     if (this.canChangeStep()) {
-      this.setState({ step: this.state.step + 1 });
+      if (step == 3 && steps[2].isIndependent.value) {
+        this.onSend();
+        this.setState({ step: this.state.step + 2 });
+      } else if (step == 4) {
+        this.onSend();
+        this.setState({ step: this.state.step + 1 });
+      } else {
+        this.setState({ step: this.state.step + 1 });
+      }
     } else {
       this.highlightInvalidFields();
     }
@@ -248,12 +212,12 @@ class Upload extends Component {
   };
 
   resetSteps = () => {
-    this.setState({ step: 1 });
+    this.setState(INITIAL_STATE);
   };
 
   render() {
     const { steps, uploadingImage } = this.state;
-    console.log(steps);
+
     if (!this.props.show) {
       return null;
     }

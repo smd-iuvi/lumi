@@ -49,10 +49,13 @@ class Step2 extends Component {
 
     const newmemberToUpdate = {
       ...memberToUpdate,
+      key: null,
       [e.target.name]: e.target.value
     };
 
-    const newMembers = members.map(m => (m.key == key ? newmemberToUpdate : m));
+    const newMembers = members.map(m =>
+      m.key == key ? newmemberToUpdate : { role: m.role, name: m.name }
+    );
 
     const event = {
       target: {
