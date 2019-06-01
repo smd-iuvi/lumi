@@ -115,9 +115,7 @@ class Profile extends Component {
       );
     } else if (selected == 3) {
       container = (
-        <EventsControll
-
-        />
+        <EventsControll />
       );
     }
 

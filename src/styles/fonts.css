@@ -184,9 +184,9 @@
 /* Novas classes de fontes */
 
 .Small-Text-Bold {
-  font-family: FontBold;
+  font-family: 'Muli', sans-serif;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.36;
@@ -194,9 +194,9 @@
 }
 
 .Small-Text-Regular {
-  font-family: FontRegular;
+  font-family: 'Muli', sans-serif;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.36;
@@ -204,9 +204,9 @@
 }
 
 .Medium-Text-Regular {
-  font-family: FontRegular;
+  font-family: 'Muli', sans-serif;
   font-size: 16px;
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.38;
@@ -214,9 +214,9 @@
 }
 
 .Medium-Text-Medium {
-  font-family: FontMedium;
+  font-family: 'Muli', sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.38;
@@ -224,9 +224,9 @@
 }
 
 .Medium-Text-Bold {
-  font-family: FontBold;
+  font-family: 'Muli', sans-serif;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 700;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.38;
@@ -234,9 +234,9 @@
 }
 
 .Large-Text-Bold {
-  font-family: FontBold;
+  font-family: 'Muli', sans-serif;
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.35;
@@ -244,9 +244,9 @@
 }
 
 .Large-Text-Medium {
-  font-family: FontMedium;
+  font-family: 'Muli', sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.35;

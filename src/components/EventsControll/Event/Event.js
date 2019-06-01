@@ -19,6 +19,10 @@ class Event extends Component {
         this.setState({ showOptions: !this.state.showOptions });
     }
 
+    accessEvent = () => {
+        this.props.goEvent();
+    }
+
     render() {
         return (
             <>
@@ -30,7 +34,7 @@ class Event extends Component {
                     <img src={iconOptions} className="buttonOptions" onClick={this.handleOptions} />
                     {this.state.showOptions &&
                         <div className="dropdownOptions">
-                            <article>
+                            <article onClick={this.accessEvent}>
                                 <img src={iconManage} />
                                 <h1 className="Small-Text-Regular">Gerenciar evento</h1>
                             </article>
