@@ -2,9 +2,22 @@ import React from 'react';
 
 import './TextAreaInformation.css';
 
-const TextAreaInformation = ({ name, children, value, onChange, placeholder }) => {
+const TextAreaInformation = ({
+  name,
+  children,
+  value,
+  isValid,
+  onChange,
+  placeholder
+}) => {
+  let classes = '';
+  if (isValid || isValid == null) {
+    classes = 'TextAreaInformation infosContainer valid';
+  } else {
+    classes = 'TextAreaInformation infosContainer invalid';
+  }
   return (
-    <div className="TextAreaInformation infosContainer">
+    <div className={classes}>
       <textarea
         name={name}
         value={value}

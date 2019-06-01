@@ -2,9 +2,22 @@ import React from 'react';
 
 import './TextFieldInformation.css';
 
-const TextFieldInformation = ({ name, label, onChange, value, placeholder }) => {
+const TextFieldInformation = ({
+  name,
+  label,
+  onChange,
+  value,
+  isValid,
+  placeholder
+}) => {
+  let classes = '';
+  if (isValid || isValid == null) {
+    classes = 'TextFieldInformation infosContainer valid';
+  } else {
+    classes = 'TextFieldInformation infosContainer invalid';
+  }
   return (
-    <div className="TextFieldInformation infosContainer">
+    <div className={classes}>
       <input
         name={name}
         type="text"

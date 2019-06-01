@@ -1,5 +1,5 @@
-.SelectBox{
-    padding: 0;
+.SelectBox {
+  padding: 0;
 }
 
 .infosContainer select{
@@ -19,4 +19,14 @@
     backdrop-filter: blur(8px);
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
     color: var(--text-light);
+}
+
+.valid {
+  border: 1px solid;
+  border-color: var(--secundary);
+}
+
+.invalid {
+  border: 1px solid;
+  border-color: var(--feedback-negativo);
 }

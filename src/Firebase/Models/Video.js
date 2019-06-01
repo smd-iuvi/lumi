@@ -1,5 +1,3 @@
-import { Thumbs } from 'react-responsive-carousel';
-
 class Video {
   constructor(database) {
     this.database = database;

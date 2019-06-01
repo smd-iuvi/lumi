@@ -1,24 +1,24 @@
-.containerThumb{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 24px;
-    align-items: center;
-    margin-bottom: 32px;
-    margin-top: 32px;
+.containerThumb {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 24px;
+  align-items: center;
+  margin-bottom: 32px;
+  margin-top: 32px;
 }
 
-.containerThumb .file{
-    display: none;
+.containerThumb .file {
+  display: none;
 }
 
-.containerThumb .inputFile{
-    height: 32px;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    padding: 0 7px 0 20px;
-    justify-self: right;
+.containerThumb .inputFile {
+  height: 32px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 0 7px 0 20px;
+  justify-self: right;
 }
 
 .thumb{
@@ -31,7 +31,15 @@
     justify-content: center;
 }
 
-.thumb img{
-    width: 56px;
-    height: 41px;
+.thumb img {
+  width: 56px;
+  height: 41px;
+}
+
+.valid {
+  border-color: var(--secundary);
+}
+
+.invalid {
+  border-color: var(--feedback-negativo);
 }
