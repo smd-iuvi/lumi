@@ -10,10 +10,10 @@ textarea{
 
 .valid {
   border: 1px solid;
-  border-color: var(--secundary);
+  border-color: var(--primary);
 }
 
 .invalid {
   border: 1px solid;
-  border-color: var(--feedback-negativo);
+  border-color: var(--negative-feedback);
 }
