@@ -1,5 +1,5 @@
 .EmptyLabel {
   font-family: FontBold;
-  color: white;
+  color: var(--text-dark);
   font-size: 18px;
 }

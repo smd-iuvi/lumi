@@ -2,7 +2,7 @@
     margin-top: 64px;
     height: 144px;
     width: 100%;
-    background-color: var(--background);
+    background-color: var(--text-light);
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
     display: grid;
     grid-template-columns: 68px 1fr 1fr;
@@ -42,16 +42,9 @@
     margin-right: 56px;
 }
 
-.containerNextFilm .nextVideo{
-    font-family: FontBold;
-    font-size: 16px;
-    font-weight: 900;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
+.containerNextFilm .Medium-Text-Bold{
     text-align: right;
-    color: var(--white);
+    color: var(--text-dark);
 }
 
 .containerNextFilm .imgNextVideo{

@@ -1,7 +1,7 @@
 .Tag .tagLabel{
     line-height: 1.21;
-    color: var(--white);
-    background-color: var(--secundary);
+    color: var(--text-dark);
+    background-color: var(--primary);
     padding: 7px 8px;
     border-radius: 4px;
     margin-right: 12px;

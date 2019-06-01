@@ -1,5 +1,5 @@
 .buttonLogin .Medium-Text-Regular{
-    color: var(--text-secundary);
+    color: var(--placeholders-buttons-dark);
     margin-left: 8px;
 }
 

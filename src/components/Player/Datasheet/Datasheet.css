@@ -4,7 +4,7 @@
 }
 
 .datasheet .tabs{
-    background-color: var(--navbar-color);
+    background-color: var(--searchBar);
     height: 48px;
     width: 100%;
     padding: 0 19px;
@@ -17,18 +17,18 @@
 }
 
 .datasheet .contentTab{
-    background-color: var(--navbar-color);
+    background-color: var(--searchBar);
 }
 
 .datasheet .contentFunction{
     display: flex;
     padding: 8px 16px;
-    border-bottom: 2px solid var(--background);
+    border-bottom: 2px solid var(--text-light);
     color: var(--white);
 }
 
 .datasheet .titleFunction{
-    color: var(--text-secundary);
+    color: var(--placeholders-buttons-dark);
     margin-right: 16px;
     min-width: max-content;
 }
@@ -38,6 +38,6 @@
     grid-template-columns: auto 1fr 1fr;
     grid-gap: 16px;
     padding: 8px 16px;
-    border-bottom: 2px solid var(--background);
-    color: var(--white);
+    border-bottom: 2px solid var(--text-light);
+    color: var(--text-dark);
 }

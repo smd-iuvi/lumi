@@ -1,6 +1,6 @@
 .sidebar{
     /* height: 59px; */
-    background-color: var(--sidebar-color);
+    background-color: var(--sidebar-footer);
     /* display: grid;
     grid-template-columns: 83px 1fr 1fr 1fr;
     grid-template-areas: "logo iconsLeft iconsLeft iconsRight";
@@ -20,7 +20,7 @@
 }
 
 .buttonsNavbar{
-    color: var(--white);
+    color: var(--text-dark);
     background: none;
     width: 30px;
     border: none;
@@ -71,7 +71,7 @@
         align-self: center;
         width: 56px;
         height: 2px;
-        background-color: #262833;
+        background-color: var(--cards);
         margin-top: 4vh;
         margin-bottom: 5vh;
     }

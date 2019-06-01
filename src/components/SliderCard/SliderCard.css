@@ -10,18 +10,18 @@
 }
 
 .SliderCard .addRecent{
-  color: var(--text-secundary);
+  color: var(--placeholders-buttons-dark);
   text-align: left;
 }
 
 .SliderCard .Large-Text-Bold{
   text-align: left;
-  color: var(--white);
+  color: var(--text-dark);
 }
 
 .SliderCard .descriptionFilm{
   text-align: left;
-  color: var(--white);
+  color: var(--text-dark);
 }
 
 .SliderCard .buttonsFilm{
@@ -35,7 +35,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: var(--white);
+  color: var(--text-dark);
   cursor: pointer;
 }
 

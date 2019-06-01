@@ -4,7 +4,7 @@
 
 .infosContainer select{
     background: none;
-    color: var(--text-secundary);
+    color: var(--placeholders-buttons-dark);
     border: none;
     outline: none;
     cursor: pointer;
@@ -13,10 +13,10 @@
 }
 
 .infosContainer select option{
-    background-color: var(--white);
+    background-color: var(--text-dark);
     font-size: 16px;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
-    color: var(--text);
+    color: var(--text-light);
 }

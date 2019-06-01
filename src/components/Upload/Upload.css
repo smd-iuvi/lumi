@@ -11,7 +11,7 @@
     width: 60vw;
     display: grid;
     grid-template-rows: 64px 70vh 70px;
-    background-color: var(--white);
+    background-color: var(--text-dark);
     /* overflow-y: auto; */
     border-radius: 8px;
     margin-top: 30px;
@@ -20,7 +20,7 @@
 
 .modalUpload .labelModal{
     height: 64px;
-    background-color: var(--secundary);
+    background-color: var(--primary);
     padding: 0 40px;
     display: flex;
     flex-direction: row;

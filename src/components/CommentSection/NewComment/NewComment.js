@@ -7,10 +7,10 @@ const NewComment = () => {
         <div className="newComment">
             <div>
                 <img src={Person} className="photoComment" />
-                <textarea className="textComment textField" placeholder="Escreva um comentário...">
+                <textarea className="textComment textField Small-Text-Regular" placeholder="Escreva um comentário...">
                 </textarea>
             </div>
-            <button className="buttonComment" disabled>Enviar</button>
+            <button className="buttonComment Small-Text-Bold" disabled>Enviar</button>
         </div>
     );
 }

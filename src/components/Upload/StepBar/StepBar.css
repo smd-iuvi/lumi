@@ -5,7 +5,7 @@
 }
 
 .StepBar .Small-Text-Regular{
-    color: var(--text-secundary);
+    color: var(--placeholders-buttons-dark);
     margin-right: 16px;
 }
 
@@ -17,11 +17,11 @@
 }
 
 .stepDone{
-    background-color: var(--secundary);
+    background-color: var(--primary);
 }
 
 .stepToDo{
-    background-color: #eeedff;
+    background-color: var(--secundary-light);
 }
 
 .lineSteps{

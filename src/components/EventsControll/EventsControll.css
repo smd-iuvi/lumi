@@ -7,7 +7,7 @@
 }
 
 .EventsControll .EventInfo{
-    color: var(--white);
+    color: var(--text-dark);
     display: grid;
     grid-template-columns: 2.5fr 1.8fr 1fr 1fr 20px;
     grid-gap: 24px;
@@ -16,7 +16,7 @@
 }
 
 .EventsControll .EventLabels{
-    color: var(--text-secundary);
+    color: var(--placeholders-buttons-dark);
     padding: 5px 0;
     margin-top: -50px;
 }

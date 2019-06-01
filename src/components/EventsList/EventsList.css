@@ -1,5 +1,5 @@
 .EventsList{
-    background-color: var(--primary);
+    background-color: var(--cards);
     border-radius: 8px;
     padding: 0 16px;
 }
@@ -12,17 +12,17 @@
 }
 
 .EventsList .line{
-    background-color: #3d3f59;
+    background-color: var(--secundary);
     margin-bottom: 21px;
     margin-top: 0;
 }
 
 .EventsList .buttonPrimary{
-    background-color: #3d3f59;
+    background-color: var(--secundary);
 }
 
 .EventsList .buttonPrimary:hover{
-    background-color: var(--hover);
+    background-color: var(--primary);
 }
 
 .EventsList .button{
@@ -30,7 +30,7 @@
 }
 
 .EventsList .Month{
-    color: var(--text-secundary);
+    color: var(--placeholders-buttons-dark);
     margin-bottom: 24px;
     cursor: pointer;
 }

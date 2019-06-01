@@ -1,7 +1,7 @@
 .navbar{
     width: 100%;
     height: 64px;
-    background-color: var(--navbar-color);
+    background-color: var(--searchBar);
     position: fixed;
     top: 0;
     z-index: 20;
@@ -23,7 +23,7 @@
 
 .navbar .inputSearch{
     width: 35%;
-    color: var(--text-secundary);
+    color: var(--placeholders-buttons-dark);
     background: none;
     border: none;
     outline: none;

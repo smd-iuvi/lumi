@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--white);
+  color: var(--text-dark);
 }
 
 .ProfileCard .roleContainer {
@@ -16,16 +16,16 @@
 .ProfileCard .line {
   width: 8px;
   height: 1px;
-  background-color: var(--secundary);
+  background-color: var(--primary);
 }
 
 .ProfileCard .Large-Text-Bold {
   margin-top: 16px;
   margin-bottom: 0;
-  color: var(--white);
+  color: var(--text-dark);
 }
 
 .ProfileCard .Small-Text-Regular {
-  color: var(--white);
+  color: var(--text-dark);
   align-self: center;
 }

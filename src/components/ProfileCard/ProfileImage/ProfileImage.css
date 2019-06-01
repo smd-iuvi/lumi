@@ -2,7 +2,7 @@
   width: 200px;
   height: 200px;
   clip-path: circle();
-  color: var(--white);
+  color: var(--text-dark);
   border: solid 1px #2f3146;
 }
 
@@ -23,7 +23,7 @@
   line-height: 1.38;
   letter-spacing: normal;
   text-align: center;
-  color: var(--white);
+  color: var(--text-dark);
 }
 
 .ProfileImage .editIcon:hover {

@@ -1,6 +1,6 @@
 .newComment{
     width: 100%;
-    background-color: var(--navbar-color);
+    background-color: var(--searchBar);
     border-radius: 8px;
     height: 85px;
 }
@@ -16,14 +16,7 @@
     width: 100%;
     background: none;
     height: 24px;
-    font-family: FontRegular;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.36;
-    letter-spacing: normal;
-    color: var(--white);
+    color: var(--text-dark);
 }
 
 .newComment .photoComment{
@@ -38,20 +31,13 @@
     width: 80px;
     text-align: center;
     padding: 0;
-    color: var(--white);
+    color: var(--text-dark);
     border: none;
     border-radius: 4px;
     float: right;
-    margin-right: 16px;
-    margin-bottom: 8px;
-    font-family: FontBold;
-    font-size: 14px;
-    font-weight: 900;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.36;
+    margin: 0 16px 0 9px;
 }
 
 .newComment .buttonComment:disabled{
-    background-color: var(--button-disabled);
+    background-color: var(--inactive);
 }

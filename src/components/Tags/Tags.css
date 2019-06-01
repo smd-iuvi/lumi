@@ -5,11 +5,11 @@
 }
 
 .tag{
-    background-color: var(--tertiary);
+    background-color: var(--cards);
     padding: 7px 8px;
     border-radius: 4px;
     margin-right: 12px;
     margin-bottom: 12px;
     cursor: pointer;
-    color: var(--white);
+    color: var(--text-dark);
 }

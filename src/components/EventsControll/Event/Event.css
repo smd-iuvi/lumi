@@ -6,7 +6,7 @@
 
 .EventInfo .dropdownOptions{
     width: 168px;
-    background-color: var(--white);
+    background-color: var(--text-dark);
     position: absolute;
     right: 0;
     margin-right: 56px;
@@ -25,10 +25,10 @@
 }
 
 .EventInfo .dropdownOptions article:hover{
-    background-color: #eeedff;
+    background-color: var(--secundary-light);
 }
 
 .EventInfo .dropdownOptions .Small-Text-Regular{
-    color: var(--text);
+    color: var(--text-light);
     margin-left: 8px;
 }

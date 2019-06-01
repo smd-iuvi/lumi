@@ -3,7 +3,7 @@
 }
 
 .CommentSection .Small-Text-Bold{
-    color: var(--text-secundary);
+    color: var(--placeholders-buttons-dark);
     margin-top: 24px;
     margin-bottom: 8px;
 }

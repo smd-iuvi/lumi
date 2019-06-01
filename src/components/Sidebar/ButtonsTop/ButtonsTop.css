@@ -14,11 +14,11 @@
 }
 
 .buttonsSidebar:hover{
-    background-color: var(--tertiary);
+    background-color: var(--cards);
 }
 
 .buttonsSidebar .labelButtons{
-    color: var(--white);
+    color: var(--text-dark);
     margin-top: 10px;
 }
 

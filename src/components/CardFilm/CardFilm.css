@@ -3,7 +3,7 @@
 }
 
 .cardFilm:hover .infosCard {
-  background-color: var(--hover);
+  background-color: var(--primary);
 }
 
 .cardFilm .containerImgCard {
@@ -20,15 +20,15 @@
   padding: 5px 16px;
   margin-top: -4px;
   border-radius: 0 0 8px 8px;
-  background-color: var(--primary);
+  background-color: var(--cards);
 }
 
 .cardFilm .Medium-Text-Bold {
-  color: var(--white);
+  color: var(--text-dark);
   margin-bottom: 0;
 }
 
 .cardFilm .Medium-Text-Regular {
   margin-top: 0;
-  color: var(--white);
+  color: var(--text-dark);
 }

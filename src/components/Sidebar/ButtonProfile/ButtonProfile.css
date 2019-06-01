@@ -6,11 +6,11 @@
     border-radius: 50px;
     width: 32px;
     height: 32px;
-    border: 1px solid var(--tertiary);
+    border: 1px solid var(--cards);
     margin-top: -5px;
 }
 
 .buttonProfile .Medium-Text-Regular{
-    color: var(--text-secundary);
+    color: var(--placeholders-buttons-dark);
     margin-top: 10px;
 }

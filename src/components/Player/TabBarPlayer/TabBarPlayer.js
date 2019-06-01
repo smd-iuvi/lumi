@@ -14,7 +14,7 @@ const TabBarPlayer = () => {
                 <VideoInfo />
             </div>
             <div className="containerNextFilm">
-                <h1 className="nextVideo">Assistir ao próximo vídeo</h1>
+                <h1 className="Medium-Text-Bold">Assistir ao próximo vídeo</h1>
                 <article className="imgNextVideo"><img src={film} /></article>
                 <article className="iconNext" />
             </div>

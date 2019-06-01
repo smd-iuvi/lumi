@@ -5,11 +5,11 @@
 
 .tabs .tab{
     margin-right: 35px;
-    color: var(--white);
+    color: var(--text-dark);
     padding: 8px 3px;
     cursor: pointer;
 }
 
 .tabs .active{
-    border-bottom: 3px solid var(--secundary); 
+    border-bottom: 3px solid var(--primary); 
 }

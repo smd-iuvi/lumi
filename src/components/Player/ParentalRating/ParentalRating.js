@@ -26,9 +26,9 @@ const ParentalRating = (props) => {
   return (
     <div className="ParentalRating">
       <div className="age" style={color}>
-        <h1 className="infosFilm ageParental">{value}</h1>
+        <h1 className="Small-Text-Regular ageParental">{value}</h1>
       </div>
-      <h1 className="infosFilm descriptionParental">{props.content}</h1>
+      <h1 className="Small-Text-Regular descriptionParental">{props.content}</h1>
     </div>
   );
 }

@@ -6,18 +6,18 @@
 }
 
 .HomeFilms .line {
-  background-color: #303247;
+  background-color: var(--cards);
   margin-bottom: 21px;
   margin-top: 0;
 }
 
 .HomeFilms .buttonSeeMore {
-  background-color: #575a80;
-  color: var(--white);
+  background-color: var(--secundary);
+  color: var(--text-dark);
 }
 
 .HomeFilms .buttonSeeMore:hover {
-  background-color: var(--secundary);
+  background-color: var(--primary);
 }
 
 .HomeFilms .button {

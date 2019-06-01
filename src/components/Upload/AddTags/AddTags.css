@@ -1,7 +1,7 @@
 .AddTags input{
     width: 100%;
     line-height: 1.2;
-    color: var(--white);
+    color: var(--text-dark);
     background: none;
     outline: none;
     border: none;

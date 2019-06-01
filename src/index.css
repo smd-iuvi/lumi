@@ -1,51 +1,16 @@
 :root {
-  --sidebar-color: #0f0f13;
-  --navbar-color: #1c1d27;
-  --background: #15161c;
-  --tertiary: #2d304b;
-  --sidebar: #0f0f13;
-  --primary: #303247;
-  --primary-opacity: rgba(48, 187, 230, 35%);
-  --secundary: #756eff;
-  --hover: #5e58cc;
-  --white: #ffffff;
-  --tags: #052a43;
-  --dusk: #575a80; /* Mudar */
-  --text: #15161c;
-  --text-secundary: #c6c5d4;
-  --button-disabled: #3b3a43;
-}
-
-@font-face {
-  font-family: FontBold;
-  src: url('./assets/fonts/Avenir-Heavy.ttf');
-}
-
-@font-face {
-  font-family: FontRegular;
-  src: url('./assets/fonts/Avenir-Roman.ttf');
-}
-
-@font-face {
-  font-family: FontMedium;
-  src: url('./assets/fonts/Avenir-Medium.ttf');
-}
-
-@font-face {
-  font-family: GravityRegular;
-  src: url('./assets/fonts/Gravity-Regular.otf');
-}
-@font-face {
-  font-family: GravityLight;
-  src: url('./assets/fonts/Gravity-Light.otf');
-}
-@font-face {
-  font-family: GravityBook;
-  src: url('./assets/fonts/Gravity-Book.otf');
-}
-@font-face {
-  font-family: GravityBold;
-  src: url('./assets/fonts/Gravity-Bold.otf');
+  --primary: #756eff;
+  --secundary: #575a80;
+  --inactive: #3b3a43;
+  --searchBar: #1c1d27;
+  --placeholders-buttons-dark: #c6c5d4;
+  --text-dark: #ffffff;
+  --text-light: #15161c;
+  --placeholders-light: #a7a6b3;
+  --negative-feedback: #ff6e6e;
+  --sidebar-footer: #0f0f13;
+  --secundary-light: #eeedff;
+  --cards: #2d304b;
 }
 
 body {
@@ -58,6 +23,6 @@ body {
 }
 
 html {
-  background: var(--background);
+  background: var(--text-light);
   background-size: cover;
 }

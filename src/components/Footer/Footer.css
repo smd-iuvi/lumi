@@ -1,5 +1,5 @@
 .Footer{
-  background-color: var(--navbar-color);
+  background-color: var(--searchBar);
   margin-bottom: 0;
   padding: 40px 30px 30px 288px;
 }
@@ -11,13 +11,13 @@
 
 .optionsFooter .Medium-Text-Bold{
   line-height: 0.63;
-  color: var(--text-secundary);
+  color: var(--placeholders-buttons-dark);
   margin-bottom: 25px;
 }
 
 .optionsFooter .Medium-Text-Regular{
   line-height: 0.63;
-  color: var(--text-secundary);
+  color: var(--placeholders-buttons-dark);
   margin-bottom: 15px;
   cursor: pointer;
 }
@@ -43,7 +43,7 @@
 }
 
 .line{
-  background-color: var(--primary);
+  background-color: var(--cards);
   margin-top: 34px;
   margin-bottom: 24px;
 }
@@ -62,7 +62,7 @@
   font-stretch: normal;
   line-height: 1.75;
   letter-spacing: -0.3px;
-  color: var(--text-secundary);
+  color: var(--placeholders-buttons-dark);
   margin-right: 16px;
   margin-bottom: 0;
 }

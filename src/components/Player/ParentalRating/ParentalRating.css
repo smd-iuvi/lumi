@@ -3,7 +3,7 @@
 }
 
 .ageParental{
-    color: var(--white) !important;
+    color: var(--text-dark) !important;
     margin: 0 !important;
 }
 
@@ -19,5 +19,5 @@
 }
 
 .descriptionParental{
-    width: 180px;
+    width: 200px;
 }

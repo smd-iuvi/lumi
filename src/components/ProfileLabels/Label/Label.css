@@ -1,7 +1,7 @@
 .Label {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  background-color: var(--navbar-color);
+  background-color: var(--searchBar);
   border-radius: 8px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   color: #c6c5d4;
@@ -9,5 +9,5 @@
   height: 64px;
   text-align: center;
   align-items: center;
-  color: var;
+  color: var(--placeholders-buttons-dark);
 }
