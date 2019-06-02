@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+import EventInfos from '../EventInfos/EventInfos'
+
 import './ManageEvent.css';
+import iconBack from '../assets/back.svg';
 
 class ManageEvent extends Component {
     constructor(props) {
@@ -14,7 +17,11 @@ class ManageEvent extends Component {
     render() {
         return (
             <div className="ManageEvent">
-
+                <img src={iconBack} className="iconBack" />
+                <div>
+                    <EventInfos />
+                    <article className="line"></article>
+                </div>
             </div>
         )
     }
