@@ -16,7 +16,7 @@ class EventsControll extends Component {
     }
 
     goEvent = () => {
-        this.setState({ manageEvent: true });
+        this.setState({ manageEvent: !this.state.manageEvent });
     }
 
     render() {
@@ -24,7 +24,7 @@ class EventsControll extends Component {
         if (this.state.manageEvent) {
             container = (
                 <>
-                    <ManageEvent />
+                    <ManageEvent back={this.goEvent} />
                 </>
             );
         } else {

@@ -1,0 +1,30 @@
+.ManageEvent{
+    display: grid;
+    grid-template-columns: 12px 1fr;
+    grid-gap: 40px;
+}
+
+.ManageEvent .iconBack{
+    width: 12px;
+    height: 21px;
+    background-image: url('../assets/back.svg');
+    cursor: pointer;
+}
+
+.ManageEvent .iconBack:hover{
+    background-image: url('../assets/back-hover.svg');
+}
+
+.ManageEvent .videosEvent{
+    color: var(--placeholders-buttons-dark);
+    margin-top: 32px;
+}
+
+.ManageEvent .EventInfo{
+    margin-top: 0;
+    grid-template-columns: 2.5fr 1.5fr 1fr 20px;
+}
+
+.ManageEvent .EventLabels{
+    margin-bottom: -5px;
+}

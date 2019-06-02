@@ -10,7 +10,7 @@
 
 .button{
   padding: 0 40px;
-  height: 40px;
+  height: 32px;
   border-radius: 5px;
   border: none;
   font-family: 'Muli', sans-serif;
@@ -37,8 +37,13 @@
 
 .buttonSecundary{
   color: var(--primary);
-  background: none;
-  border: 1px solid var(--primary);
+  background: var(--secundary-light);
+}
+
+.buttonTerceary{
+  color: var(--text-dark);
+  background: var(--secundary);
+  padding: 0 20px;
 }
 
 .line{

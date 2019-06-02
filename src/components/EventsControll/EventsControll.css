@@ -6,7 +6,7 @@
     margin: 0;
 }
 
-.EventsControll .EventInfo{
+.EventInfo{
     color: var(--text-dark);
     display: grid;
     grid-template-columns: 2.5fr 1.8fr 1fr 1fr 20px;
@@ -15,7 +15,7 @@
     align-items: center;
 }
 
-.EventsControll .EventLabels{
+.EventLabels{
     color: var(--placeholders-buttons-dark);
     padding: 5px 0;
     margin-top: -50px;
