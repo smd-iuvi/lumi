@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
 
-import EventInfos from '../EventInfos/EventInfos'
+import EventInfos from '../EventInfos/EventInfos';
+import VideoEvent from '../VideoEvent/VideoEvent';
 
 import './ManageEvent.css';
-import iconBack from '../assets/back.svg';
 
 class ManageEvent extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            manageEvent: false
-        };
+    backPage = () => {
+        this.props.back();
     }
 
     render() {
         return (
             <div className="ManageEvent">
-                <img src={iconBack} className="iconBack" />
+                <article className="iconBack" onClick={this.backPage}></article>
                 <div>
                     <EventInfos />
                     <article className="line"></article>
+                    <h1 className="Small-Text-Bold videosEvent">VÍDEOS CADASTRADOS NESTE EVENTO</h1>
+                    <div className="EventInfo EventLabels">
+                        <h1 className="Small-Text-Regular">Nome</h1>
+                        <h1 className="Small-Text-Regular">Aluno proprietário</h1>
+                        <h1 className="Small-Text-Regular">Data de envio</h1>
+                    </div>
+                    <article className="line"></article>
+                    <VideoEvent />
+                    <VideoEvent />
+                    <VideoEvent />
                 </div>
             </div>
         )
