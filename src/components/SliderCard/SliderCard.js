@@ -23,7 +23,7 @@ const SliderCard = ({ video, history }) => {
             className="button buttonPrimary"
             onClick={() => onWatch(video.uid, history)}
           >
-            ASSISTIR
+            Assistir
           </button>
           <article className="addList Medium-Text-Bold">
             <img src={addList} />
