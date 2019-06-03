@@ -101,6 +101,12 @@ class Navbar extends Component {
                   Minha lista
                 </ButtonsBottom>
               </Link>
+              {/* Se for professor */}
+              <Link to={ROUTES.PROFILE} className="link">
+                <ButtonsBottom newClass="iconBottom iconEvents">
+                  Meus eventos
+                </ButtonsBottom>
+              </Link>
             </div>
             <Link to={ROUTES.PROFILE} className="link">
               <ButtonsBottom newClass="iconBottom iconHelp">

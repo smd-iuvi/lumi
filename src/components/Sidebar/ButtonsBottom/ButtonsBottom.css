@@ -60,3 +60,12 @@
 .buttonsBottom:hover .iconNewVideo{
     background-image: url("../assets/icons/upload-mouseover.svg");
 }
+
+.buttonsBottom .iconEvents{
+    background-image: url("../assets/icons/my-events.svg");
+    background-position: center;
+}
+
+.buttonsBottom:hover .iconEvents{
+    background-image: url("../assets/icons/my-events.svg");
+}
