@@ -33,4 +33,9 @@
 
 .ProfileImage .editIcon img {
   align-self: end;
+  padding-bottom: 0;
+}
+
+.ProfileImage .editIcon p{
+  margin-top: 0;
 }
