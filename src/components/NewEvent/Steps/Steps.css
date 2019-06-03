@@ -1,0 +1,25 @@
+.Steps .calendar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.Steps .calendar .react-calendar{
+    border: none;
+    font-family: 'Lato', sans-serif;
+} 
+
+.Steps .calendar .react-calendar__tile--active{
+    background-color: var(--primary);
+}
+
+.Steps .calendar .react-calendar__tile--hasActive{
+    background-color: var(--primary);
+    color: white;
+}
+
+.Steps .calendar .react-calendar__tile,
+.Steps .calendar .react-calendar__navigation button{
+    border-radius: 8px;
+}

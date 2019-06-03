@@ -3,6 +3,7 @@ import './NewEvent.css';
 
 import Header from '../Header/Header';
 import StepBar from './StepBar/StepBar';
+import Step2 from './Steps/Step2';
 
 import iconX from './assets/x.svg';
 
@@ -61,8 +62,7 @@ class NewEvent extends Component {
                                 // />
                             )}
                             {this.state.step === 2 && (
-                                <h1>passo 2</h1>
-                                // <Step2 stepState={steps[1]} onChange={this.onChange} />
+                                <Step2 />
                             )}
                             {this.state.step === 3 && (
                                 <h1>passo final</h1>
