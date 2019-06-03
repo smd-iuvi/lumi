@@ -4,6 +4,7 @@ import './NewEvent.css';
 import Header from '../Header/Header';
 import StepBar from './StepBar/StepBar';
 import Step2 from './Steps/Step2';
+import Step3 from './Steps/Step3';
 
 import iconX from './assets/x.svg';
 
@@ -65,8 +66,7 @@ class NewEvent extends Component {
                                 <Step2 />
                             )}
                             {this.state.step === 3 && (
-                                <h1>passo final</h1>
-                                // <Step3 stepState={steps[2]} onChange={this.onChange} />
+                                <Step3 resetSteps={this.resetSteps} />
                             )}
                         </div>
                     )}

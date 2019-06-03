@@ -23,3 +23,7 @@
 .Steps .calendar .react-calendar__navigation button{
     border-radius: 8px;
 }
+
+.NewEvent .finishStep .Large-Text-Medium{
+    width: 410px;
+}
