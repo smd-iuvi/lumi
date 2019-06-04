@@ -30,7 +30,18 @@ class Event {
           .ref('event')
           .once('value')
           .then(snapshot => {
-            console.log(snapshot.val());
+            const value = snapshot.val();
+
+            if (value != null) {
+              const valueList = Object.keys(value).map(key => ({
+                ...value[key],
+                uid: key
+              }));
+
+              resolve(valueList);
+            } else {
+              resolve(null);
+            }
           })
           .catch(error => {
             reject(error);
@@ -42,7 +53,7 @@ class Event {
           .ref(`event/${uid}`)
           .once('value')
           .then(snapshot => {
-            console.log(snapshot.val());
+            resolve(snapshot.val());
           })
           .catch(error => {
             reject(error);
