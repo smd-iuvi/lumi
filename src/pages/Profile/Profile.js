@@ -3,6 +3,7 @@ import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
 import { withFirebase } from '../../Firebase';
+import { QueryableFields as Video } from '../../Firebase/Models/Video';
 import { withAuthorization, withAuthUser } from '../../Firebase/Session';
 
 import iconProfile from './assets/user.svg';
@@ -35,16 +36,25 @@ class Profile extends Component {
   componentDidMount() {
     //Verifica se é professor e muda as opções da tabbar
     if (this.state.profileTeacher)
-      this.setState({ tabs: ['Minhas informações', 'Meus envios', 'Minha lista', 'Meus eventos'] });
+      this.setState({
+        tabs: [
+          'Minhas informações',
+          'Meus envios',
+          'Minha lista',
+          'Meus eventos'
+        ]
+      });
     else
-      this.setState({ tabs: ['Minhas informações', 'Meus envios', 'Minha lista'] });
+      this.setState({
+        tabs: ['Minhas informações', 'Meus envios', 'Minha lista']
+      });
 
     const { firebase, authUser } = this.props;
 
     this.setState({ loadingMyWorks: true });
 
     firebase.video
-      .getVideosByUser(authUser.uid)
+      .getVideosBy(Video.CREATED_BY, authUser.uid)
       .then(videos => {
         this.setState({ myWorks: videos, loadingMyWorks: false });
       })
@@ -114,9 +124,7 @@ class Profile extends Component {
         />
       );
     } else if (selected == 3) {
-      container = (
-        <EventsControll />
-      );
+      container = <EventsControll />;
     }
 
     return (
