@@ -3,10 +3,15 @@ class Discipline {
     this.database = database;
   }
 
-  create = discipline =>
-    this.get().push({
-      ...discipline
+  create = discipline => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('discipline')
+        .push({ ...discipline })
+        .then(() => resolve())
+        .catch(error => reject(error));
     });
+  };
 
   get = (uid = null) => {
     if (uid == null) {
