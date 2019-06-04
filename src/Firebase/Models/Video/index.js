@@ -1,5 +1,7 @@
 import * as QueryableFields from './QueryableFields';
 
+export { QueryableFields };
+
 class Video {
   constructor(database) {
     this.database = database;
