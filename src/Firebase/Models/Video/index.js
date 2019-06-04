@@ -1,3 +1,5 @@
+import * as QueryableFields from './QueryableFields';
+
 class Video {
   constructor(database) {
     this.database = database;
@@ -135,12 +137,12 @@ class Video {
     });
   };
 
-  getVideosByUser = userId => {
+  getVideosBy = (field, value) => {
     return new Promise((resolve, reject) => {
       this.database
         .ref('video')
-        .orderByChild('createdBy')
-        .equalTo(`${userId}`)
+        .orderByChild(field)
+        .equalTo(`${value}`)
         .once('value')
         .then(snapshot => {
           const videos = snapshot.val();
@@ -161,6 +163,60 @@ class Video {
         });
     });
   };
+
+  // getVideosByUser = userId => {
+  //   return new Promise((resolve, reject) => {
+  //     this.database
+  //       .ref('video')
+  //       .orderByChild('createdBy')
+  //       .equalTo(`${userId}`)
+  //       .once('value')
+  //       .then(snapshot => {
+  //         const videos = snapshot.val();
+
+  //         if (videos) {
+  //           const videoList = Object.keys(videos).map(key => ({
+  //             ...videos[key],
+  //             uid: key
+  //           }));
+
+  //           resolve(videoList);
+  //         } else {
+  //           resolve(null);
+  //         }
+  //       })
+  //       .catch(error => {
+  //         reject(error);
+  //       });
+  //   });
+  // };
+
+  // getVideosByEvent = uid => {
+  //   return new Promise((resolve, reject) => {
+  //     this.database
+  //       .ref('video')
+  //       .orderByChild('createdBy')
+  //       .equalTo(`${userId}`)
+  //       .once('value')
+  //       .then(snapshot => {
+  //         const videos = snapshot.val();
+
+  //         if (videos) {
+  //           const videoList = Object.keys(videos).map(key => ({
+  //             ...videos[key],
+  //             uid: key
+  //           }));
+
+  //           resolve(videoList);
+  //         } else {
+  //           resolve(null);
+  //         }
+  //       })
+  //       .catch(error => {
+  //         reject(error);
+  //       });
+  //   });
+  // };
 
   getByTitle = title => {
     return new Promise((resolve, reject) => {
