@@ -4,7 +4,7 @@ export const INITIAL_STATE = {
   errorOnImageFile: null,
   sending: false,
   error: null,
-  step: 2,
+  step: 1,
   steps: [
     {
       name: {
