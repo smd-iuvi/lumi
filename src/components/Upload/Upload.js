@@ -5,6 +5,7 @@ import './Upload.css';
 import iconX from './assets/x.svg';
 
 import { withFirebase } from '../../Firebase';
+import { withAuthUser } from '../../Firebase/Session';
 
 import Header from '../Header/Header';
 import StepBar from './StepBar/StepBar';
@@ -86,7 +87,7 @@ class Upload extends Component {
   };
 
   onSend = () => {
-    const { firebase } = this.props;
+    const { firebase, authUser } = this.props;
     const { steps } = this.state;
 
     this.setState({ sending: true });
@@ -107,7 +108,8 @@ class Upload extends Component {
       semester: steps[3].semester.value,
       professor: steps[3].professor.value,
       about: steps[3].about.value,
-      event: steps[3].events.value
+      event: steps[3].events.value,
+      createdBy: authUser.uid
     };
 
     firebase.video
@@ -312,4 +314,4 @@ class Upload extends Component {
   }
 }
 
-export default withFirebase(Upload);
+export default withAuthUser(withFirebase(Upload));
