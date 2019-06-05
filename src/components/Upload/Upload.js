@@ -43,8 +43,20 @@ class Upload extends Component {
   onFileChange = event => {
     if (event.target.files[0]) {
       const image = event.target.files[0];
-      this.setState({ fileToUpload: image, uploadingImage: true });
-      this.onUpload(image);
+      if (image.type.includes('image')) {
+        this.setState({
+          fileToUpload: image,
+          uploadingImage: true,
+          errorOnImageFile: null
+        });
+        this.onUpload(image);
+      } else {
+        this.setState({
+          errorOnImageFile: {
+            message: 'Tipo de arquivo inválido. Escolha uma imagem'
+          }
+        });
+      }
     }
   };
 
@@ -223,7 +235,7 @@ class Upload extends Component {
   };
 
   render() {
-    const { steps, uploadingImage } = this.state;
+    const { steps, uploadingImage, errorOnImageFile } = this.state;
     console.log(steps);
     if (!this.props.show) {
       return null;
@@ -249,6 +261,7 @@ class Upload extends Component {
                   stepState={steps[0]}
                   onChange={this.onChange}
                   onFileChange={this.onFileChange}
+                  error={errorOnImageFile}
                   uploading={uploadingImage}
                 />
               )}

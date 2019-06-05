@@ -43,7 +43,7 @@ class Step1 extends Component {
   }
 
   render() {
-    const { stepState, onChange, uploading, onFileChange } = this.props;
+    const { stepState, onChange, uploading, onFileChange, error } = this.props;
     const { genreDataSource, parentalRatingDataSource } = this.state;
 
     console.log(genreDataSource);
@@ -57,6 +57,7 @@ class Step1 extends Component {
           url={stepState.imageUrl.value}
           isValid={stepState.imageUrl.isValid}
           onFileChange={onFileChange}
+          error={error}
         />
         <TextFieldInformation
           name="title"

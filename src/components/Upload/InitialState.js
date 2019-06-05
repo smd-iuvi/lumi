@@ -1,7 +1,8 @@
 export const INITIAL_STATE = {
-  step: 3,
+  step: 1,
   uploadingImage: false,
   fileToUpload: null,
+  errorOnImageFile: null,
   sending: false,
   error: null,
   steps: [
