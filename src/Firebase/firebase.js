@@ -38,7 +38,7 @@ class Firebase {
     this.comment = new Comment(this.db);
     this.discipline = new Discipline(this.db);
     this.semester = new Semester(this.db);
-    this.gender = new Gender(this.db);
+    this.genre = new Gender(this.db);
     this.user = new User(this.db, this.auth);
     this.video = new Video(this.db);
   }

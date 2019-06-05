@@ -1,20 +1,54 @@
-import { reject } from 'q';
-
 class Discipline {
   constructor(database) {
     this.database = database;
   }
 
-  create = discipline =>
-    this.get().push({
-      ...discipline
+  create = discipline => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('discipline')
+        .push({ ...discipline })
+        .then(() => resolve())
+        .catch(error => reject(error));
     });
+  };
 
   get = (uid = null) => {
     if (uid == null) {
-      this.database.ref('discipline');
+      return new Promise((resolve, reject) => {
+        this.database
+          .ref('discipline')
+          .once('value')
+          .then(snapshot => {
+            const value = snapshot.val();
+
+            if (value != null) {
+              const valueList = Object.keys(value).map(key => ({
+                ...value[key],
+                uid: key
+              }));
+
+              resolve(valueList);
+            } else {
+              resolve(null);
+            }
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
     } else {
-      this.database.ref(`discipline/${uid}`);
+      return new Promise((resolve, reject) => {
+        this.database
+          .ref('discipline')
+          .once('value')
+          .then(snapshot => {
+            resolve(snapshot.val());
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
     }
   };
 
