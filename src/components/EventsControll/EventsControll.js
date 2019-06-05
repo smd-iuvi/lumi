@@ -13,13 +13,16 @@ class EventsControll extends Component {
     super(props);
 
     this.state = {
-      manageEvent: false
+      manageEvent: false,
+      selectedEvent: null
     };
-    this.goEvent = this.goEvent.bind(this);
   }
 
-  goEvent = () => {
-    this.setState({ manageEvent: !this.state.manageEvent });
+  goEvent = (event = null) => {
+    this.setState({
+      manageEvent: !this.state.manageEvent,
+      selectedEvent: event
+    });
   };
 
   render() {
@@ -30,7 +33,7 @@ class EventsControll extends Component {
     if (this.state.manageEvent) {
       container = (
         <>
-          <ManageEvent back={this.goEvent} />
+          <ManageEvent event={this.state.selectedEvent} back={this.goEvent} />
         </>
       );
     } else {
@@ -41,7 +44,7 @@ class EventsControll extends Component {
         children = events.map(event => (
           <Event
             event={event}
-            goEvent={this.goEvent}
+            goEvent={() => this.goEvent(event)}
             onDelete={() => onDelete(event.uid)}
           />
         ));

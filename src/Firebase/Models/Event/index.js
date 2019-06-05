@@ -7,12 +7,20 @@ class Event {
     this.database = database;
   }
 
-  create = async ({ name, description, date, createdBy, discipline }) => {
+  create = async ({
+    name,
+    description,
+    date,
+    createdBy,
+    discipline,
+    imageUrl
+  }) => {
     return new Promise((resolve, reject) => {
       this.database
         .ref('event')
         .push({
           name,
+          imageUrl,
           description,
           date,
           createdBy,
