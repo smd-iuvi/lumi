@@ -3,6 +3,7 @@ import './NewEvent.css';
 
 import Header from '../Header/Header';
 import StepBar from './StepBar/StepBar';
+import Step1 from './Steps/Step1';
 import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 
@@ -54,13 +55,7 @@ class NewEvent extends Component {
                         <div className="contentModal">
                             {this.state.step < 3 && <StepBar step={this.state.step} />}
                             {this.state.step === 1 && (
-                                <h1>passo 1</h1>
-                                // <Step1
-                                //     stepState={steps[0]}
-                                //     onChange={this.onChange}
-                                //     onFileChange={this.onFileChange}
-                                //     uploading={uploadingImage}
-                                // />
+                                <Step1 />
                             )}
                             {this.state.step === 2 && (
                                 <Step2 />

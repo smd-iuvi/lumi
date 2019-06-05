@@ -20,7 +20,7 @@ const Thumbnail = ({ uploading, url, isValid, onFileChange }) => {
   return (
     <div className="containerThumb">
       <div>
-        <h1 className="Medium-Text-Regular">Adicione uma capa ao vídeo</h1>
+        <h1 className="Medium-Text-Regular">Adicione uma capa</h1>
         <h1 className="Small-Text-Regular">
           A imagem deve ter no mínimo 368 x 242 pixels (altura x largura) e
           estar na horizontal.
