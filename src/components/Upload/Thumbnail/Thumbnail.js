@@ -27,7 +27,6 @@ const Thumbnail = ({ uploading, url, isValid, onFileChange, error }) => {
           A imagem deve ter no mínimo 368 x 242 pixels (altura x largura) e
           estar na horizontal.
         </h1>
-        {error && <p class="Small-Text-Regular">{error.message}</p>}
       </div>
       <input type="file" className="file" id="file" onChange={onFileChange} />
       <label for="file" className="button buttonSecundary inputFile">
@@ -36,6 +35,7 @@ const Thumbnail = ({ uploading, url, isValid, onFileChange, error }) => {
       <div className={classes} style={backgroundStyle}>
         {/* <img src={url ? url : image} /> */}
       </div>
+      {error && <p class="Small-Text-Regular">{error.message}</p>}
     </div>
   );
 };
