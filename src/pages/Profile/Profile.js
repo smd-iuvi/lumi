@@ -4,11 +4,13 @@ import { withRouter } from 'react-router-dom';
 
 import { withFirebase } from '../../Firebase';
 import { QueryableFields as Video } from '../../Firebase/Models/Video';
+import { QueryableFields as Event } from '../../Firebase/Models/Event';
 import { withAuthorization, withAuthUser } from '../../Firebase/Session';
 
 import iconProfile from './assets/user.svg';
 
 import * as CONDITIONS from '../../constants/authorizingConditions';
+import * as ROLES from '../../constants/roles';
 
 import './Profile.css';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
@@ -24,9 +26,11 @@ class Profile extends Component {
     this.state = {
       watchList: null,
       myWorks: null,
+      myEvents: null,
       error: null,
       loadingWatchList: false,
       loadingMyWorks: false,
+      loadingMyEvents: false,
       tabs: [],
       selected: 0,
       profileTeacher: true
@@ -34,8 +38,10 @@ class Profile extends Component {
   }
 
   componentDidMount() {
+    const { authUser } = this.props;
+
     //Verifica se é professor e muda as opções da tabbar
-    if (this.state.profileTeacher)
+    if (authUser.role && authUser.role == ROLES.TEACHER) {
       this.setState({
         tabs: [
           'Minhas informações',
@@ -44,13 +50,43 @@ class Profile extends Component {
           'Meus eventos'
         ]
       });
-    else
+
+      this.fetchEvents();
+    } else {
       this.setState({
         tabs: ['Minhas informações', 'Meus envios', 'Minha lista']
       });
+    }
 
+    this.fetchMyWorks();
+
+    if (authUser.watchList) {
+      this.fetchMyWatchList();
+    }
+  }
+
+  onTabChange = newTab => {
+    this.setState({ selected: newTab });
+  };
+
+  onEventDelete = uid => {
+    const { firebase } = this.props;
+    firebase.event.delete(uid).catch(error => this.setState({ error }));
+    this.fetchEvents();
+  };
+
+  fetchEvents = () => {
     const { firebase, authUser } = this.props;
+    this.setState({ loadingMyEvents: true });
 
+    firebase.event
+      .getEventsBy(Event.CREATED_BY, authUser.uid)
+      .then(myEvents => this.setState({ myEvents, loadingMyEvents: false }))
+      .catch(error => this.setState({ error }));
+  };
+
+  fetchMyWorks = () => {
+    const { firebase, authUser } = this.props;
     this.setState({ loadingMyWorks: true });
 
     firebase.video
@@ -61,26 +97,23 @@ class Profile extends Component {
       .catch(error => {
         this.setState({ error, loadingMyWorks: false });
       });
+  };
 
-    if (authUser.watchList) {
-      this.setState({ loadingWatchList: true });
-      firebase.video
-        .get()
-        .then(videos => {
-          const newWatchList = videos.filter(video => {
-            return authUser.watchList.includes(video.uid);
-          });
-
-          this.setState({ watchList: newWatchList, loadingWatchList: false });
-        })
-        .catch(error => {
-          this.setState({ error, loadingWatchList: false });
+  fetchMyWatchList = () => {
+    const { firebase, authUser } = this.props;
+    this.setState({ loadingWatchList: true });
+    firebase.video
+      .get()
+      .then(videos => {
+        const newWatchList = videos.filter(video => {
+          return authUser.watchList.includes(video.uid);
         });
-    }
-  }
 
-  onTabChange = newTab => {
-    this.setState({ selected: newTab });
+        this.setState({ watchList: newWatchList, loadingWatchList: false });
+      })
+      .catch(error => {
+        this.setState({ error, loadingWatchList: false });
+      });
   };
 
   render() {
@@ -88,14 +121,14 @@ class Profile extends Component {
     const {
       watchList,
       myWorks,
+      myEvents,
       loadingMyWorks,
       loadingWatchList,
+      loadingMyEvents,
       selected
     } = this.state;
 
     let container = null;
-
-    console.log(selected);
 
     if (selected == 0) {
       container = (
@@ -124,7 +157,13 @@ class Profile extends Component {
         />
       );
     } else if (selected == 3) {
-      container = <EventsControll />;
+      container = (
+        <EventsControll
+          events={myEvents}
+          loading={loadingMyEvents}
+          onDelete={this.onEventDelete}
+        />
+      );
     }
 
     return (
