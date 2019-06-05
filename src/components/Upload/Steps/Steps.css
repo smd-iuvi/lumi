@@ -1,122 +1,127 @@
-.Steps .Large-Text-Medium{
-    color: var(--text);
+.Steps .Large-Text-Medium {
+  color: var(--text);
 }
 
-.Steps .line{
-    background-color: rgba(15, 15, 19, 0.6);
-    margin-top: 0;
+.Steps .line {
+  background-color: rgba(15, 15, 19, 0.6);
+  margin-top: 0;
 }
 
-.Steps .subtitleStep{
-    color: var(--placeholders-buttons-dark);
-    margin-bottom: 32px;
+.Steps .subtitleStep {
+  color: var(--placeholders-buttons-dark);
+  margin-bottom: 32px;
 }
 
-.Steps .optionsStep{
-    display: flex;
-    flex-direction: row;
-    margin-top: 22px;
-    text-align: center;
-    justify-content: center;
+.Steps .optionsStep {
+  display: flex;
+  flex-direction: row;
+  margin-top: 22px;
+  text-align: center;
+  justify-content: center;
 }
 
-.Steps .optionsStep img{
-    width: 156px;
+.Steps .optionsStep img {
+  width: 156px;
 }
 
-.Steps .optionsStep div{
-    cursor: pointer;
-    width: 260px;
-    height: 260px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--text-dark);
+.Steps .optionsStep div {
+  cursor: pointer;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--text-dark);
 }
 
-.Steps .optionsStep div:hover{
-    border: 1px solid var(--primary);
-    border-radius: 8px;
+.Steps .optionsStep div:hover {
+  border: 1px solid var(--primary);
+  border-radius: 8px;
 }
 
-.Steps .optionsStep .optionLeft{
-    margin-right: 5vw;
+.Steps .optionsStep div.selected {
+  border: 1px solid var(--primary);
+  border-radius: 8px;
 }
 
-.Steps .optionsStep .titleStep2{
-    margin-bottom: 0;
+.Steps .optionsStep .optionLeft {
+  margin-right: 5vw;
 }
 
-.Steps .optionsStep .subtitleStep{
-    margin-top: 4px;
+.Steps .optionsStep .titleStep2 {
+  margin-bottom: 0;
 }
 
-.Steps .finishStep{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+.Steps .optionsStep .subtitleStep {
+  margin-top: 4px;
 }
 
-.Steps .finishStep img{
-    width: 345px;
-    height: 245px;
-    margin-top: 4vh;
-    margin-bottom: 30px;
+.Steps .finishStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.finishStep .Large-Text-Medium{
-    width: 400px;
+.Steps .finishStep img {
+  width: 345px;
+  height: 245px;
+  margin-top: 4vh;
+  margin-bottom: 30px;
 }
 
-.Steps .selects{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 16px;
+.finishStep .Large-Text-Medium {
+  width: 400px;
 }
 
-.checkDiscipline{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 16px;
+.Steps .selects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
 }
 
-.checkDiscipline input[type="checkbox"]{
-    width: 24px;
-    height: 24px;
-    background: none;
-    border: 1px solid var(--primary);
-    border-radius: 4px;
-    margin-right: 8px;
+.checkDiscipline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-.classificationDiv{
-    display: grid;
-    grid-template-columns: 248px 1fr;
-    grid-gap: 16px;
+.checkDiscipline input[type='checkbox'] {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  margin-right: 8px;
 }
 
-.Steps .bntNewInformation{
-    background: none;
-    border: none;
-    color: var(--placeholders-buttons-dark);
-    display: flex;
-    align-items: center;
-    outline: none;
-    cursor: pointer;
-    margin-bottom: 16px;
+.classificationDiv {
+  display: grid;
+  grid-template-columns: 248px 1fr;
+  grid-gap: 16px;
 }
 
-.Steps .bntNewInformation img{
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
+.Steps .bntNewInformation {
+  background: none;
+  border: none;
+  color: var(--placeholders-buttons-dark);
+  display: flex;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 16px;
 }
 
-.Steps .functions{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
-    grid-gap: 24px;
+.Steps .bntNewInformation img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.Steps .functions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  grid-gap: 24px;
 }
