@@ -4,6 +4,7 @@ import './NewEvent.css';
 import { INITIAL_STATE } from './InitialState';
 
 import { withFirebase } from '../../Firebase';
+import { withAuthUser } from '../../Firebase/Session';
 
 import Header from '../Header/Header';
 import StepBar from './StepBar/StepBar';
@@ -124,6 +125,34 @@ class NewEvent extends Component {
     this.setState({ steps: newSteps });
   };
 
+  onSend = () => {
+    const { firebase, authUser } = this.props;
+    const { steps } = this.state;
+
+    this.setState({ sending: true });
+
+    const event = {
+      name: steps[0].name.value,
+      imageUrl: steps[0].imageUrl.value,
+      discipline: steps[0].discipline.value,
+      semester: steps[0].semester.value,
+      description: steps[0].description.value,
+      date: steps[1].date.value.toLocaleDateString('pt-BR'),
+      createdBy: authUser.uid
+    };
+
+    firebase.event
+      .create(event)
+      .then(() => {
+        console.log('Criado');
+        this.setState({ sending: false });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({ error });
+      });
+  };
+
   closeModal = () => {
     this.setState(INITIAL_STATE);
     this.props.onChangeState();
@@ -218,4 +247,4 @@ class NewEvent extends Component {
   }
 }
 
-export default withFirebase(NewEvent);
+export default withAuthUser(withFirebase(NewEvent));
