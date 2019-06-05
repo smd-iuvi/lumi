@@ -4,7 +4,7 @@ export const INITIAL_STATE = {
   errorOnImageFile: null,
   sending: false,
   error: null,
-  step: 1,
+  step: 2,
   steps: [
     {
       name: {
@@ -30,7 +30,7 @@ export const INITIAL_STATE = {
     },
     {
       date: {
-        value: null,
+        value: new Date(),
         isValid: null
       }
     }
