@@ -159,10 +159,13 @@ class NewEvent extends Component {
   };
 
   nextStep = () => {
+    const { step } = this.state;
     if (this.canChangeStep()) {
+      if (step === 2) {
+        this.onSend();
+      }
       this.setState({ step: this.state.step + 1 });
     } else {
-      console.log('PORRA');
       this.highlightInvalidFields();
     }
   };
