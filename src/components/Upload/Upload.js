@@ -53,7 +53,7 @@ class Upload extends Component {
       } else {
         this.setState({
           errorOnImageFile: {
-            message: 'Tipo de arquivo inválido. Escolha uma imagem'
+            message: 'Arquivo inválido. Escolha uma imagem'
           }
         });
       }
