@@ -8,7 +8,7 @@
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 999;
+    z-index: 100;
 }
 
 .logo{
@@ -72,11 +72,11 @@
         width: 56px;
         height: 2px;
         background-color: var(--cards);
-        margin-top: 4vh;
-        margin-bottom: 5vh;
+        margin-top: 3vh;
+        margin-bottom: 4vh;
     }
     .optionsProfile{
-        margin-bottom: 8vh;
+        margin-bottom: 5vh;
     }
     .buttonsNavbar{
         display: flex;

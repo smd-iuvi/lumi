@@ -176,6 +176,7 @@ class Search extends Component {
           title="Resultado da busca"
           tabs={this.state.tabs}
           onTabChange={this.onTabChange}
+          profileTeacher={false}
         />
         <div className="container">{container}</div>
       </>

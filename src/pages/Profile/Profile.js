@@ -173,6 +173,7 @@ class Profile extends Component {
           title="Meu perfil"
           tabs={this.state.tabs}
           onTabChange={this.onTabChange}
+          profileTeacher={this.state.profileTeacher}
         />
         <div className="container Profile">{container}</div>
       </>

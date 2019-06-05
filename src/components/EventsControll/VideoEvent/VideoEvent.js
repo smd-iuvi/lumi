@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './VideoEvent.css';
 
-import iconOptions from '../assets/options.svg';
 import iconDelete from '../assets/delete-event.svg';
 
 class VideoEvent extends Component {
@@ -34,7 +33,7 @@ class VideoEvent extends Component {
                     </div>
                     <h1 className="Small-Text-Regular">Stanley Kubrick</h1>
                     <h1 className="Small-Text-Regular">01/05/2019</h1>
-                    <img src={iconOptions} className="buttonOptions" onClick={this.handleOptions} />
+                    <article className="buttonOptions" onClick={this.handleOptions}></article>
                     {this.state.showOptions &&
                         <div className="dropdownOptions">
                             <article>

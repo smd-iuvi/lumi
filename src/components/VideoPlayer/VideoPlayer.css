@@ -5,7 +5,7 @@
   grid-area: video;
 }
 .videoPlayer .Small-Text-Bold {
-  color: var(--white);
+  color: var(--placeholders-buttons-dark);
 }
 
 .videoPlayer .optionsFilm{

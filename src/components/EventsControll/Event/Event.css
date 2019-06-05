@@ -1,7 +1,14 @@
 .EventInfo .buttonOptions{
     width: 20px;
-    height: 20px;
+    height: 15px;
     cursor: pointer;
+    background-image: url("../assets/options.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.EventInfo .buttonOptions:hover{
+    background-image: url("../assets/options-hover.svg");
 }
 
 .EventInfo .dropdownOptions{

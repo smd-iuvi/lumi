@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './Event.css';
 
-import iconOptions from '../assets/options.svg';
 import iconManage from '../assets/manage-event.svg';
 import iconDelete from '../assets/delete-event.svg';
 
@@ -38,11 +37,7 @@ class Event extends Component {
             {event.date ? event.date : 'Indisponível'}
           </h1>
           <h1 className="Small-Text-Regular">8</h1>
-          <img
-            src={iconOptions}
-            className="buttonOptions"
-            onClick={this.handleOptions}
-          />
+          <article className="buttonOptions" onClick={this.handleOptions} />
           {this.state.showOptions && (
             <div className="dropdownOptions">
               <article onClick={this.accessEvent}>
