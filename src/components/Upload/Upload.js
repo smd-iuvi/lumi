@@ -236,10 +236,11 @@ class Upload extends Component {
 
   render() {
     const { steps, uploadingImage, errorOnImageFile } = this.state;
-    console.log(steps);
+
     if (!this.props.show) {
       return null;
     }
+
     return (
       <div>
         <div className="backgroundModal" onClick={this.closeModal} />
