@@ -21,7 +21,9 @@ const CardFilm = ({ video }) => {
             {video ? video.title : 'Nome indefinido'}
           </h1>
           <h1 className="Medium-Text-Regular">
-            {video ? video.discipline : 'Disciplina indefinida'}
+            {video
+              ? `${video.discipline.substring(0, 20)}...`
+              : 'Disciplina indefinida'}
           </h1>
         </div>
       </div>
