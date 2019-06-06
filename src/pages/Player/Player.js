@@ -22,7 +22,7 @@ class Player extends Component {
       onWatchList: false,
       duration: 0,
       watched: false,
-      tabs: ["Ficha técnica", "Informações acadêmicas", "Tags"],
+      tabs: ['Ficha técnica', 'Informações acadêmicas', 'Tags'],
       selected: 0
     };
   }
@@ -85,7 +85,7 @@ class Player extends Component {
 
     firebase.video
       .clap(params.videoId)
-      .then(() => { })
+      .then(() => {})
       .catch(error => {
         this.setState({ error });
       });
@@ -116,7 +116,7 @@ class Player extends Component {
       .then(() => {
         this.checkUserWatchList();
       })
-      .catch(error => { });
+      .catch(error => {});
   };
 
   render() {
@@ -137,13 +137,13 @@ class Player extends Component {
     } else if (video != null) {
       nameLabel = video.title;
       viewsLabel = video.views;
-      url = video.url;
+      url = video.link;
       clapsLabel = video.claps;
     }
 
     return (
       <>
-        <TabBarPlayer />
+        <TabBarPlayer video={video} />
         <div className="containerPlayer">
           <div>
             <VideoPlayer
@@ -162,7 +162,7 @@ class Player extends Component {
               <CommentSection videoId={params.videoId} userId={authUser.uid} />
             )}
           </div>
-          <Datasheet />
+          <Datasheet video={video} />
           {/* <Tabs tabs={this.state.tabs} onTabChange={this.onTabChange} /> */}
           {/* <div className="containerRight">
             <SidebarPlayer />
