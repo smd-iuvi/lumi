@@ -1,5 +1,20 @@
+@font-face {
+  font-family: FontRegular;
+  src: url('../assets/fonts/Metropolis-Regular.otf');
+}
+
+@font-face {
+  font-family: FontBold;
+  src: url('../assets/fonts/Metropolis-Bold.otf');
+}
+
+@font-face {
+  font-family: FontMedium;
+  src: url('../assets/fonts/Metropolis-Medium.otf');
+}
+
 .Small-Text-Bold {
-  font-family: 'Muli', sans-serif;
+  font-family: FontBold;
   font-size: 14px;
   font-weight: 700;
   font-style: normal;
@@ -9,7 +24,7 @@
 }
 
 .Small-Text-Regular {
-  font-family: 'Muli', sans-serif;
+  font-family: FontRegular;
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
@@ -19,7 +34,7 @@
 }
 
 .Medium-Text-Regular {
-  font-family: 'Muli', sans-serif;
+  font-family: FontRegular;
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
@@ -29,7 +44,7 @@
 }
 
 .Medium-Text-Medium {
-  font-family: 'Muli', sans-serif;
+  font-family: FontMedium;
   font-size: 16px;
   font-weight: 600;
   font-style: normal;
@@ -39,7 +54,7 @@
 }
 
 .Medium-Text-Bold {
-  font-family: 'Muli', sans-serif;
+  font-family: FontBold;
   font-size: 16px;
   font-weight: 700;
   font-style: normal;
@@ -49,7 +64,7 @@
 }
 
 .Large-Text-Bold {
-  font-family: 'Muli', sans-serif;
+  font-family: FontBold;
   font-size: 20px;
   font-weight: 700;
   font-style: normal;
@@ -59,7 +74,7 @@
 }
 
 .Large-Text-Medium {
-  font-family: 'Muli', sans-serif;
+  font-family: FontMedium;
   font-size: 20px;
   font-weight: 600;
   font-style: normal;
