@@ -14,6 +14,7 @@ import Step3 from './Steps/Step3';
 
 import iconX from './assets/x.svg';
 import { ninvoke } from 'q';
+import { database } from 'firebase';
 
 class NewEvent extends Component {
   constructor(props) {
@@ -137,7 +138,8 @@ class NewEvent extends Component {
       discipline: steps[0].discipline.value,
       semester: steps[0].semester.value,
       description: steps[0].description.value,
-      date: steps[1].date.value.toLocaleDateString('pt-BR'),
+      date: steps[1].date.value.toDateString(),
+      sortableDate: steps[1].date.value.getTime(),
       createdBy: authUser.uid
     };
 
@@ -183,8 +185,6 @@ class NewEvent extends Component {
     if (!this.props.show) {
       return null;
     }
-
-    console.log(steps);
     return (
       <div className="NewEvent">
         <div className="backgroundModal" onClick={this.closeModal} />
