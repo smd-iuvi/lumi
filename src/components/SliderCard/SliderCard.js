@@ -17,7 +17,9 @@ const SliderCard = ({ video, history }) => {
       <div className="infos">
         <h1 className="addRecent Small-Text-Bold">ADICIONADO RECENTEMENTE</h1>
         <h1 className="Large-Text-Bold">{video.title}</h1>
-        <h1 className="descriptionFilm Medium-Text-Regular">{video.description}</h1>
+        <h1 className="descriptionFilm Medium-Text-Regular">
+          {video.description}
+        </h1>
         <div className="buttonsFilm">
           <button
             className="button buttonPrimary"
@@ -32,7 +34,7 @@ const SliderCard = ({ video, history }) => {
         </div>
       </div>
       <article className="containerImg">
-        <img src={birdbox} />
+        <img src={video && video.imageUrl ? video.imageUrl : birdbox} />
       </article>
     </div>
   );

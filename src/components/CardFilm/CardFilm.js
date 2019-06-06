@@ -14,16 +14,19 @@ const CardFilm = ({ video }) => {
     >
       <div className="cardFilm">
         <article className="containerImgCard">
-          <img src={card} className="imgCard" />
+          <img
+            src={video && video.imageUrl ? video.imageUrl : card}
+            className="imgCard"
+          />
         </article>
         <div className="infosCard">
           <h1 className="Medium-Text-Bold">
             {video ? video.title : 'Nome indefinido'}
           </h1>
           <h1 className="Medium-Text-Regular">
-            {video
+            {video && video.discipline
               ? `${video.discipline.substring(0, 20)}...`
-              : 'Disciplina indefinida'}
+              : 'Vídeo independente'}
           </h1>
         </div>
       </div>
