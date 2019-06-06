@@ -14,8 +14,10 @@ class Home extends Component {
     this.state = {
       loadingRecents: false,
       loadingPopulars: false,
+      loadingEvents: false,
       recentsVideos: [],
       popularsVideos: [],
+      events: null,
       error: null
     };
   }
@@ -41,6 +43,14 @@ class Home extends Component {
       .catch(error => {
         this.setState({ error, loadingPopulars: false });
       });
+
+    firebase.event
+      .getNext(3)
+      .then(events => {
+        console.log(events);
+        this.setState({ events });
+      })
+      .catch(error => this.setState({ error }));
   }
 
   componentWillUnmount() {
@@ -53,7 +63,9 @@ class Home extends Component {
       recentsVideos,
       loadingRecents,
       popularsVideos,
-      loadingPopulars
+      loadingPopulars,
+      loadingEvents,
+      events
     } = this.state;
 
     return (
@@ -61,7 +73,7 @@ class Home extends Component {
         <Carousel videos={recentsVideos} loading={loadingRecents} />
         <div className="bannersHome">
           <HomeFilms videos={popularsVideos} loading={loadingPopulars} />
-          <EventsList />
+          <EventsList events={events} loading={loadingEvents} />
         </div>
       </div>
     );

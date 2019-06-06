@@ -11,6 +11,7 @@ class Event {
     name,
     description,
     date,
+    sortableDate,
     createdBy,
     discipline,
     imageUrl
@@ -23,6 +24,7 @@ class Event {
           imageUrl,
           description,
           date,
+          sortableDate,
           createdBy,
           discipline,
           isAvailable: false
@@ -194,6 +196,32 @@ class Event {
         .catch(error => {
           reject(error);
         });
+    });
+  };
+
+  getNext = num => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('event')
+        .orderByChild('sortableDate')
+        .startAt(new Date().getTime())
+        .limitToFirst(num)
+        .once('value')
+        .then(snapshot => {
+          const value = snapshot.val();
+
+          if (value) {
+            const list = Object.keys(value).map(key => ({
+              ...value[key],
+              uid: key
+            }));
+
+            resolve(list);
+          } else {
+            resolve(null);
+          }
+        })
+        .catch(error => reject(error));
     });
   };
 }
