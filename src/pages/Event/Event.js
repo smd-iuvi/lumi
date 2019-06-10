@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import './Event.css';
+
 import TabBar from '../../components/TabBar/TabBar';
+import CardList from '../../components/CardList/CardList';
 
 import iconEventSearch from './assets/event.svg';
 
@@ -27,7 +30,18 @@ class Event extends Component {
         if (selected == 0) {
             container = (
                 <>
-                    <h1>aba 1</h1>
+                    <div className="bannerEvent">
+                        <div>
+                            <h1 className="Large-Text-Bold">Além dos portões: documentário na comunidade Planalto Pici</h1>
+                            <h1 className="Medium-Text-Regular">Trabalho realizado com moradores da comunidade Planalto Pici a partir da visão dos estudantes da disciplina sobre a dinâmica social presente na comunidade.</h1>
+                            <h1 className="Small-Text-Bold">Educomunicação</h1>
+                            <h1 className="Small-Text-Regular">Lançado em 04/05/2019</h1>
+                        </div>
+                        <article></article>
+                    </div>
+                    <article className="line"></article>
+                    <h1 className="Small-Text-Bold titleSectionEvents">TRABALHOS PUBLICADOS NESTE EVENTO</h1>
+                    <CardList videos={null} loading={false} belowTab={true} />
                 </>
             );
         } else if (selected == 1) {
@@ -38,7 +52,7 @@ class Event extends Component {
             );
         }
         return (
-            <>
+            <div className="EventPage">
                 <TabBar
                     icon={iconEventSearch}
                     title="Evento"
@@ -47,7 +61,7 @@ class Event extends Component {
                     profileTeacher={false}
                 />
                 <div className="container">{container}</div>
-            </>
+            </div>
         );
     }
 }
