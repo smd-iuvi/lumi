@@ -16,6 +16,7 @@ import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import Search from './pages/Search/Search';
 import Landing from './pages/Landing/Landing';
+import Event from './pages/Event/Event';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import { withAuthentification } from './Firebase/Session';
 
@@ -29,8 +30,8 @@ class App extends Component {
         {!location.pathname.includes(ROUTES.PLAYER) ? (
           <NavBar class="navbar" />
         ) : (
-          <NavBar class="navbar navbarComplete" />
-        )}
+            <NavBar class="navbar navbarComplete" />
+          )}
 
         <Switch>
           <Route path={ROUTES.HOME} exact component={Home} />
@@ -51,6 +52,7 @@ class App extends Component {
             exact
             component={Search}
           />
+          <Route path={ROUTES.EVENT} exact component={Event} />
         </Switch>
 
         {!location.pathname.includes(ROUTES.PLAYER) ? <Footer /> : null}
