@@ -4,19 +4,21 @@ class Comment {
   }
 
   create = ({ videoId, userId, comment }, callback) => {
-    this.database
-      .ref('comment')
-      .push({
-        videoId: videoId,
-        userId: userId,
-        comment: comment
-      })
-      .then(() => {
-        callback(null);
-      })
-      .catch(error => {
-        callback(error);
-      });
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('comment')
+        .push({
+          videoId: videoId,
+          userId: userId,
+          comment: comment
+        })
+        .then(() => {
+          resolve();
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   };
 
   get = (uid = null) => {

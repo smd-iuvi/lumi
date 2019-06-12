@@ -13,7 +13,8 @@ class CommentSection extends Component {
     super(props);
 
     this.state = {
-      commentsList: null
+      commentsList: null,
+      newComment: ''
     };
   }
 
@@ -38,6 +39,28 @@ class CommentSection extends Component {
       });
   }
 
+  onNewCommentChange = e => {
+    this.setState({ newComment: e.target.value });
+  };
+
+  onSendComment = () => {
+    const { firebase, videoId, authUser } = this.props;
+    const { newComment } = this.state;
+
+    const comment = {
+      videoId: videoId,
+      userId: authUser.uid,
+      comment: newComment
+    };
+
+    firebase.comment
+      .create(comment)
+      .then(() => {
+        console.log('Comment criado');
+      })
+      .catch(error => console.log(error));
+  };
+
   onDeleteComment = comment => {
     const { firebase, authUser } = this.props;
 
@@ -50,7 +73,7 @@ class CommentSection extends Component {
 
   render() {
     const { videoId, userId } = this.props;
-    const { commentsList } = this.state;
+    const { commentsList, newComment } = this.state;
 
     const commentStyle = {
       color: '#fff',
@@ -67,7 +90,13 @@ class CommentSection extends Component {
 
     return (
       <div className="CommentSection">
-        <NewComment videoId={videoId} userId={userId} />
+        <NewComment
+          newComment={newComment}
+          onChange={this.onNewCommentChange}
+          onSend={this.onSendComment}
+          videoId={videoId}
+          userId={userId}
+        />
         <h1 className="Small-Text-Bold">3 COMENTÁRIOS</h1>
         {commentsList &&
           commentsList.map(comment => {
@@ -88,7 +117,6 @@ class CommentSection extends Component {
           <Comment>Esse filme é incríiiiveeeeeel</Comment>
           <Comment>Esse filme é incríiiiveeeeeel</Comment>
         </div>
-
       </div>
     );
   }
