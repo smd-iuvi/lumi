@@ -109,7 +109,9 @@ class Upload extends Component {
       professor: steps[3].professor.value,
       about: steps[3].about.value,
       event: steps[3].events.value,
-      createdBy: authUser.uid
+      createdBy: authUser.uid,
+      views: 0,
+      claps: 0
     };
 
     firebase.video

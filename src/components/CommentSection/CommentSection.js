@@ -6,6 +6,7 @@ import './CommentSection.css';
 import NewComment from './NewComment/NewComment';
 import Comment from './Comment/Comment';
 import { withFirebase } from '../../Firebase';
+import { QueryableFields as CommentModel } from '../../Firebase/Models/Comment';
 import { withAuthUser } from '../../Firebase/Session';
 
 class CommentSection extends Component {
@@ -19,24 +20,7 @@ class CommentSection extends Component {
   }
 
   componentDidMount() {
-    const { firebase, videoId } = this.props;
-
-    firebase.db
-      .ref('comment')
-      .orderByChild('videoId')
-      .equalTo(`${videoId}`)
-      .on('value', snapshot => {
-        const comments = snapshot.val();
-
-        if (comments != null) {
-          const commentsList = Object.keys(comments).map(key => ({
-            ...comments[key],
-            uid: key
-          }));
-
-          this.setState({ commentsList: commentsList });
-        }
-      });
+    this.fetchComments();
   }
 
   onNewCommentChange = e => {
@@ -44,21 +28,32 @@ class CommentSection extends Component {
   };
 
   onSendComment = () => {
-    const { firebase, videoId, authUser } = this.props;
+    const { firebase, videoId, userId } = this.props;
     const { newComment } = this.state;
 
     const comment = {
       videoId: videoId,
-      userId: authUser.uid,
+      userId: userId,
       comment: newComment
     };
 
     firebase.comment
       .create(comment)
       .then(() => {
-        console.log('Comment criado');
+        this.setState({ newComment: '' });
+        this.fetchComments();
       })
       .catch(error => console.log(error));
+  };
+
+  fetchComments = () => {
+    const { firebase, videoId } = this.props;
+    firebase.comment
+      .getCommentsBy(CommentModel.VIDEO_ID, videoId)
+      .then(comments => {
+        this.setState({ commentsList: comments.reverse() });
+      })
+      .catch(error => this.setState({ error }));
   };
 
   onDeleteComment = comment => {
@@ -72,7 +67,7 @@ class CommentSection extends Component {
   };
 
   render() {
-    const { videoId, userId } = this.props;
+    const { videoId, userId, authUser } = this.props;
     const { commentsList, newComment } = this.state;
 
     const commentStyle = {
@@ -90,32 +85,32 @@ class CommentSection extends Component {
 
     return (
       <div className="CommentSection">
-        <NewComment
-          newComment={newComment}
-          onChange={this.onNewCommentChange}
-          onSend={this.onSendComment}
-          videoId={videoId}
-          userId={userId}
-        />
-        <h1 className="Small-Text-Bold">3 COMENTÁRIOS</h1>
-        {commentsList &&
-          commentsList.map(comment => {
-            return (
-              <div style={commentStyle}>
-                <p>{comment.comment}</p>{' '}
-                <button
-                  style={buttonStyle}
-                  onClick={() => this.onDeleteComment(comment)}
-                >
-                  Deletar
-                </button>
-              </div>
-            );
-          })}
+        {authUser && (
+          <NewComment
+            newComment={newComment}
+            onChange={this.onNewCommentChange}
+            onSend={this.onSendComment}
+            videoId={videoId}
+            userId={userId}
+          />
+        )}
+
+        <h1 className="Small-Text-Bold">
+          {commentsList ? commentsList.length : 'Carregando'} comentários
+        </h1>
+
         <div className="comments">
-          <Comment>Esse filme é incríiiiveeeeeel</Comment>
-          <Comment>Esse filme é incríiiiveeeeeel</Comment>
-          <Comment>Esse filme é incríiiiveeeeeel</Comment>
+          {commentsList &&
+            commentsList.map(comment => {
+              return (
+                <Comment
+                  comment={comment}
+                  onDelete={() => this.onDeleteComment(comment)}
+                >
+                  {comment.comment}
+                </Comment>
+              );
+            })}
         </div>
       </div>
     );

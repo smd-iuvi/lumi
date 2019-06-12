@@ -51,7 +51,6 @@ class User {
       return new Promise((resolve, reject) => {
         this.database.ref(`user/${uid}`).on('value', snapshot => {
           const user = snapshot.val();
-          console.log(user);
           resolve(user);
         });
       });

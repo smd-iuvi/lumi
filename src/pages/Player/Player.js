@@ -133,7 +133,7 @@ class Player extends Component {
 
     if (loading) {
       nameLabel = 'Carregando...';
-      viewsLabel = 'Carregando...';
+      viewsLabel = 'Carregando';
     } else if (video != null) {
       nameLabel = video.title;
       viewsLabel = video.views;
@@ -158,9 +158,10 @@ class Player extends Component {
               onDuration={progress => this.onDuration(progress)}
               onProgress={duration => this.onProgress(duration)}
             />
-            {authUser && (
-              <CommentSection videoId={params.videoId} userId={authUser.uid} />
-            )}
+            <CommentSection
+              videoId={params.videoId}
+              userId={authUser ? authUser.uid : null}
+            />
           </div>
           <Datasheet video={video} />
           {/* <Tabs tabs={this.state.tabs} onTabChange={this.onTabChange} /> */}

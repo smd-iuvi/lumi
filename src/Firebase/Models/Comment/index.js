@@ -1,3 +1,7 @@
+import * as QueryableFields from './QueryableFields';
+
+export { QueryableFields };
+
 class Comment {
   constructor(database) {
     this.database = database;
@@ -10,7 +14,8 @@ class Comment {
         .push({
           videoId: videoId,
           userId: userId,
-          comment: comment
+          comment: comment,
+          createdAt: new Date().toLocaleDateString()
         })
         .then(() => {
           resolve();
@@ -44,6 +49,33 @@ class Comment {
       .catch(error => {
         console.log(error);
       });
+  };
+
+  getCommentsBy = (field, value) => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref('comment')
+        .orderByChild(field)
+        .equalTo(`${value}`)
+        .once('value')
+        .then(snapshot => {
+          const val = snapshot.val();
+
+          if (val) {
+            const list = Object.keys(val).map(key => ({
+              ...val[key],
+              uid: key
+            }));
+
+            resolve(list);
+          } else {
+            resolve(null);
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   };
 }
 

@@ -5,7 +5,7 @@ import 'firebase/storage';
 
 import uuid from 'uuid';
 
-import Comment from './Models/Comment';
+import Comment from './Models/Comment/index';
 import Event from './Models/Event/index.js';
 import Gender from './Models/Gender';
 import User from './Models/User';

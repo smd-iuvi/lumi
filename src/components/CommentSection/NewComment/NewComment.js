@@ -1,13 +1,17 @@
 import React from 'react';
 import './NewComment.css';
 import Person from '../../Sidebar/assets/profile.jpg';
+import { withAuthUser } from '../../../Firebase/Session';
 
-const NewComment = ({ newComment, onChange, onSend }) => {
+const NewComment = ({ newComment, onChange, onSend, authUser }) => {
   const isSendEnabled = newComment !== '' ? true : false;
   return (
     <div className="newComment">
       <div>
-        <img src={Person} className="photoComment" />
+        <img
+          src={authUser ? authUser.photo_url : Person}
+          className="photoComment"
+        />
         <textarea
           name="newComment"
           value={newComment}
@@ -27,4 +31,4 @@ const NewComment = ({ newComment, onChange, onSend }) => {
   );
 };
 
-export default NewComment;
+export default withAuthUser(NewComment);
