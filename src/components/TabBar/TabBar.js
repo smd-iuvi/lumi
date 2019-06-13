@@ -28,6 +28,23 @@ class TabBar extends Component {
   };
 
   render() {
+    let container = null;
+
+    if (this.props.tabs !== null) {
+      container = (
+        <>
+          {this.state.profileTeacher ? (
+            <div className="tabTeacher">
+              <Tabs tabs={this.props.tabs} onTabChange={this.props.onTabChange} />
+              <button className="button buttonPrimary" onClick={this.handleModal}>Criar evento</button>
+            </div>
+          ) : (
+              <Tabs tabs={this.props.tabs} onTabChange={this.props.onTabChange} />
+            )}
+        </>
+      );
+    }
+
     return (
       <div className="tabBar">
         <NewEvent
@@ -40,14 +57,7 @@ class TabBar extends Component {
           </article>
           <Header>{this.props.title}</Header>
         </div>
-        {this.state.profileTeacher ? (
-          <div className="tabTeacher">
-            <Tabs tabs={this.props.tabs} onTabChange={this.props.onTabChange} />
-            <button className="button buttonPrimary" onClick={this.handleModal}>Criar evento</button>
-          </div>
-        ) : (
-            <Tabs tabs={this.props.tabs} onTabChange={this.props.onTabChange} />
-          )}
+        {container}
       </div>
     );
   }

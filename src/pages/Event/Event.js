@@ -30,7 +30,7 @@ class Event extends Component {
         if (selected == 0) {
             container = (
                 <>
-                    <div className="bannerEvent">
+                    <div className="categoryInfos">
                         <div>
                             <h1 className="Large-Text-Bold">Além dos portões: documentário na comunidade Planalto Pici</h1>
                             <h1 className="Medium-Text-Regular">Trabalho realizado com moradores da comunidade Planalto Pici a partir da visão dos estudantes da disciplina sobre a dinâmica social presente na comunidade.</h1>

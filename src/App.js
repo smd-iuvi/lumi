@@ -17,6 +17,7 @@ import SignUp from './pages/SignUp/SignUp';
 import Search from './pages/Search/Search';
 import Landing from './pages/Landing/Landing';
 import Event from './pages/Event/Event';
+import Category from './pages/Category/Category';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import { withAuthentification } from './Firebase/Session';
 
@@ -53,6 +54,7 @@ class App extends Component {
             component={Search}
           />
           <Route path={ROUTES.EVENT} exact component={Event} />
+          <Route path={ROUTES.CATEGORY} exact component={Category} />
         </Switch>
 
         {!location.pathname.includes(ROUTES.PLAYER) ? <Footer /> : null}

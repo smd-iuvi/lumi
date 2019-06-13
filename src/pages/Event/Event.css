@@ -1,24 +1,11 @@
-.EventPage .bannerEvent{
-    display: grid;
-    grid-template-columns: 0.8fr 1fr;
-    grid-gap: 100px;
-    color: var(--text-dark);
-    margin-top: -50px;
-}
-
-.EventPage .bannerEvent .Small-Text-Bold,
-.EventPage .bannerEvent .Small-Text-Regular{
+.EventPage .categoryInfos .Small-Text-Bold,
+.EventPage .categoryInfos .Small-Text-Regular{
     color: var(--placeholders-buttons-dark);
 }
 
-.EventPage .bannerEvent .Large-Text-Bold,
-.EventPage .bannerEvent .Medium-Text-Regular{
+.EventPage .categoryInfos .Large-Text-Bold,
+.EventPage .categoryInfos .Medium-Text-Regular{
     margin-bottom: 24px;
-}
-
-.EventPage .bannerEvent article{
-    background-color: var(--primary);
-    border-radius: 8px;
 }
 
 .EventPage .titleSectionEvents{

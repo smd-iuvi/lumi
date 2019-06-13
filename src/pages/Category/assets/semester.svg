@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1,.cls-2,.cls-4{fill:none}.cls-1,.cls-2{stroke:#c6c5d4}.cls-1{stroke-width:1.5px}.cls-3{stroke:none}
+        </style>
+    </defs>
+    <g id="relogio" transform="translate(-8 -8)">
+        <g id="Ellipse_38" class="cls-1" data-name="Ellipse 38" transform="translate(8 8)">
+            <circle cx="12" cy="12" r="12" class="cls-3"/>
+            <circle cx="12" cy="12" r="11.25" class="cls-4"/>
+        </g>
+        <path id="Line_34" d="M0 0v7" class="cls-2" data-name="Line 34" transform="translate(20 15.5)"/>
+        <path id="Line_35" d="M5 0H0" class="cls-2" data-name="Line 35" transform="translate(20 22)"/>
+    </g>
+</svg>
