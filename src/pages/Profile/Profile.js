@@ -165,7 +165,7 @@ class Profile extends Component {
           {loadingWatchList === false && watchList === null ?
             <>
               <img src={iconMyList} />
-              <EmptyLabel>Você ainda não adicionou vídeos a sua lista</EmptyLabel>
+              <EmptyLabel>Você ainda não adicionou vídeos à sua lista</EmptyLabel>
             </>
             :
             <CardList
