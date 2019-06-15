@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
+import './Search.css';
 
 import iconResultSearch from './assets/resultSearch.svg';
+import iconSearch from './assets/search.png';
 
 import { withFirebase } from '../../Firebase';
 
 import TabBar from '../../components/TabBar/TabBar';
 import CardList from '../../components/CardList/CardList';
 import CardFilm from '../../components/CardFilm/CardFilm';
+import EmptyLabel from '../../components/EmptyLabel/EmptyLabel'
 
 const pushUpStyle = {
   marginTop: '-50px'
@@ -143,29 +146,38 @@ class Search extends Component {
     if (selected == 0) {
       container = (
         <>
-          <CardList
-            videos={videosListState.list}
-            loading={videosListState.loading}
-            belowTab={true}
-          />
+          {videosListState.loading === false && videosListState.list === null ?
+            <>
+              <img src={iconSearch} />
+              <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
+            </>
+            :
+            <CardList
+              videos={videosListState.list}
+              loading={videosListState.loading}
+              belowTab={true}
+            />}
         </>
       );
     } else if (selected == 1) {
       container = (
         <>
-          <CardList videos={null} loading={false} belowTab={true} />
+          <img src={iconSearch} />
+          <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
         </>
       );
     } else if (selected == 2) {
       container = (
         <>
-          <CardList videos={null} loading={false} belowTab={true} />
+          <img src={iconSearch} />
+          <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
         </>
       );
     } else if (selected == 3) {
       container = (
         <>
-          <CardList videos={null} loading={false} belowTab={true} />
+          <img src={iconSearch} />
+          <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
         </>
       );
     }
@@ -178,7 +190,7 @@ class Search extends Component {
           onTabChange={this.onTabChange}
           profileTeacher={false}
         />
-        <div className="container">{container}</div>
+        <div className="container searchPage">{container}</div>
       </>
     );
   }

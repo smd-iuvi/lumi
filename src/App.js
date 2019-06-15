@@ -18,6 +18,8 @@ import Search from './pages/Search/Search';
 import Landing from './pages/Landing/Landing';
 import Event from './pages/Event/Event';
 import Category from './pages/Category/Category';
+import Error404 from './pages/404/404';
+import RestrictedArea from './pages/RestrictedArea/RestrictedArea';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import { withAuthentification } from './Firebase/Session';
 
@@ -55,6 +57,8 @@ class App extends Component {
           />
           <Route path={ROUTES.EVENT} exact component={Event} />
           <Route path={ROUTES.CATEGORY} exact component={Category} />
+          <Route path={ROUTES.RESTRICTED_AREA} exact component={RestrictedArea} />
+          <Route component={Error404} />
         </Switch>
 
         {!location.pathname.includes(ROUTES.PLAYER) ? <Footer /> : null}
