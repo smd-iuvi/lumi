@@ -17,10 +17,10 @@ const withAuthorization = condition => Component => {
             history.push(ROUTES.RESTRICTED_AREA);
           } else if (condition(authUser) === CONDITION.NOT_LOGGED) {
             console.log(CONDITION.NOT_LOGGED);
-            history.push(ROUTES.SIGN_IN);
+            history.push(ROUTES.RESTRICTED_AREA);
           }
         },
-        () => history.push(ROUTES.SIGN_IN)
+        () => history.push(ROUTES.RESTRICTED_AREA)
       );
     }
 

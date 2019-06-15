@@ -1,3 +1,7 @@
 .Error404{
     text-align: center;
 }
+
+.linkRedirect{
+    color: var(--primary);
+}
