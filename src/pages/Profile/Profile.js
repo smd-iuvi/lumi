@@ -178,11 +178,19 @@ class Profile extends Component {
       );
     } else if (selected == 3) {
       container = (
-        <EventsControll
-          events={myEvents}
-          loading={loadingMyEvents}
-          onDelete={this.onEventDelete}
-        />
+        <>
+          {loadingMyEvents === false && myEvents === null ?
+            <>
+              <img src={iconMyList} />
+              <EmptyLabel>Você ainda não criou nenhum evento</EmptyLabel>
+            </>
+            :
+            <EventsControll
+              events={myEvents}
+              loading={loadingMyEvents}
+              onDelete={this.onEventDelete}
+            />}
+        </>
       );
     }
 
