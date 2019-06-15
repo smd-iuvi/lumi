@@ -1,13 +1,3 @@
 .Error404{
     text-align: center;
 }
-
-.Error404 img{
-    width: 300px;
-}
-
-.Error404 h1{
-    color: var(--text-dark);
-    margin-top: 30px;
-    margin-bottom: 50px;
-}

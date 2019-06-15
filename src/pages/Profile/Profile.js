@@ -8,6 +8,8 @@ import { QueryableFields as Event } from '../../Firebase/Models/Event';
 import { withAuthorization, withAuthUser } from '../../Firebase/Session';
 
 import iconProfile from './assets/user.svg';
+import iconMyVideos from './assets/myVideos.png';
+import iconMyList from './assets/myList.png';
 
 import * as CONDITIONS from '../../constants/authorizingConditions';
 import * as ROLES from '../../constants/roles';
@@ -18,6 +20,7 @@ import ProfileLabels from '../../components/ProfileLabels/ProfileLabels';
 import CardList from '../../components/CardList/CardList';
 import TabBar from '../../components/TabBar/TabBar';
 import EventsControll from '../../components/EventsControll/EventsControll';
+import EmptyLabel from '../../components/EmptyLabel/EmptyLabel';
 
 class Profile extends Component {
   constructor(props) {
@@ -146,15 +149,32 @@ class Profile extends Component {
       );
     } else if (selected == 1) {
       container = (
-        <CardList loading={loadingMyWorks} videos={myWorks} belowTab={true} />
+        <>
+          {loadingMyWorks === false && myWorks === null ?
+            <>
+              <img src={iconMyVideos} />
+              <EmptyLabel>Você ainda não enviou vídeos</EmptyLabel>
+            </>
+            :
+            <CardList loading={loadingMyWorks} videos={myWorks} belowTab={true} />}
+        </>
       );
     } else if (selected == 2) {
       container = (
-        <CardList
-          loading={loadingWatchList}
-          videos={watchList}
-          belowTab={true}
-        />
+        <>
+          {loadingWatchList === false && watchList === null ?
+            <>
+              <img src={iconMyList} />
+              <EmptyLabel>Você ainda não adicionou vídeos a sua lista</EmptyLabel>
+            </>
+            :
+            <CardList
+              loading={loadingWatchList}
+              videos={watchList}
+              belowTab={true}
+            />}
+        </>
+
       );
     } else if (selected == 3) {
       container = (
