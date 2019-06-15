@@ -8,6 +8,11 @@
     height: 32px;
     border: 1px solid var(--cards);
     margin-top: -5px;
+    overflow: hidden;
+}
+
+.buttonProfile .imgProfile img{
+    width: 32px;
 }
 
 .buttonProfile .Medium-Text-Regular{
