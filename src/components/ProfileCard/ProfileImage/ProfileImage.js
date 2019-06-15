@@ -6,7 +6,9 @@ import camera from './assets/camera.svg';
 
 const ProfileImage = ({ imgUrl, icon }) => {
   const style = {
-    backgroundImage: `url(${imgUrl})`
+    backgroundImage: `url(${imgUrl})`,
+    backgroundSize: '200px',
+    backgroundRepeat: 'no-repeat'
   };
   return (
     <div className="ProfileImage" style={style}>

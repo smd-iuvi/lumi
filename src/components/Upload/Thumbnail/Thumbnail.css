@@ -1,6 +1,6 @@
 .containerThumb {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 216px;
   grid-gap: 24px;
   align-items: center;
   margin-bottom: 32px;

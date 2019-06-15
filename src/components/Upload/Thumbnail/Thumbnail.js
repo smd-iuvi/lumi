@@ -8,7 +8,8 @@ const Thumbnail = ({ uploading, url, isValid, onFileChange, error }) => {
   let backgroundStyle = {
     backgroundImage: `url(${url ? url : image})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center'
+    backgroundPosition: 'center',
+    backgroundSize: '216px auto'
   };
 
   let classes = '';
