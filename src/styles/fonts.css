@@ -73,6 +73,16 @@
   letter-spacing: normal;
 }
 
+.Large-Text-Regular {
+  font-family: FontRegular;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+}
+
 .Large-Text-Medium {
   font-family: FontMedium;
   font-size: 20px;
