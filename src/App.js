@@ -29,12 +29,15 @@ class App extends Component {
 
     return (
       <div>
-        {!location.pathname.includes(ROUTES.PLAYER) ? <Sidebar /> : null}
-        {!location.pathname.includes(ROUTES.PLAYER) ? (
-          <NavBar class="navbar" />
-        ) : (
-            <NavBar class="navbar navbarComplete" />
-          )}
+        {!location.pathname.includes(ROUTES.PLAYER)
+          && !location.pathname.includes(ROUTES.LANDING)
+          ? <Sidebar /> : null}
+
+
+        {!location.pathname.includes(ROUTES.LANDING)
+          ? <NavBar class="navbar" /> : null}
+        {location.pathname.includes(ROUTES.PLAYER)
+          && <NavBar class="navbar navbarComplete" />}
 
         <Switch>
           <Route path={ROUTES.HOME} exact component={Home} />
@@ -61,7 +64,9 @@ class App extends Component {
           <Route component={Error404} />
         </Switch>
 
-        {!location.pathname.includes(ROUTES.PLAYER) ? <Footer /> : null}
+        {!location.pathname.includes(ROUTES.PLAYER)
+          && !location.pathname.includes(ROUTES.LANDING)
+          ? <Footer /> : null}
       </div>
     );
   }
