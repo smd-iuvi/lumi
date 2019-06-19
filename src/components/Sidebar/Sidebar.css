@@ -6,17 +6,19 @@
     grid-template-areas: "logo iconsLeft iconsLeft iconsRight";
     grid-gap: 10px; */
     position: fixed;
-    width: 100%;
     top: 0;
     z-index: 100;
+    width: 216px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .logo{
-    width: 48px;
-    height: 23px;
     grid-column: logo;
-    margin-left: 21px;
-    margin-top: 18px;
+    width: 64px;
+    height: 31px;
+    margin: 24px 0 5vh 40px;
 }
 
 .buttonsNavbar{
@@ -26,7 +28,10 @@
     border: none;
     cursor: pointer;
     outline: none;
-    margin-top: 23px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0;
 }
 
 .icon{
@@ -41,58 +46,28 @@
 }
 
 .labelButtons{
-    display: none;
+    display: block;
 }
 
 .profile{
-    width: 39px;
-    height: 39px;
+    width: 52px;
+    height: 52px;
     border-radius: 50px;
     margin-top: 10px;
 }
 
 .optionsLogged .icon{
-    display: none;
+    display: block;
 }
 
-@media only screen and (min-width : 1224px) {
-    .sidebar{
-        width: 216px;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-    .logo{
-        width: 64px;
-        height: 31px;
-        margin: 24px 0 5vh 40px;
-    }
-    .lineSidebar{
-        align-self: center;
-        width: 56px;
-        height: 2px;
-        background-color: var(--cards);
-        margin-top: 3vh;
-        margin-bottom: 4vh;
-    }
-    .optionsProfile{
-        margin-bottom: 5vh;
-    }
-    .buttonsNavbar{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-top: 0;
-    }
-    .labelButtons{
-        display: block;
-    }
-
-    .profile{
-        width: 52px;
-        height: 52px;
-    }
-    .optionsLogged .icon{
-        display: block;
-    }
+.lineSidebar{
+    align-self: center;
+    width: 56px;
+    height: 2px;
+    background-color: var(--cards);
+    margin-top: 3vh;
+    margin-bottom: 4vh;
+}
+.optionsProfile{
+    margin-bottom: 5vh;
 }

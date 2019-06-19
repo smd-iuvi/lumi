@@ -1,7 +1,7 @@
 .container{
     padding-top: 20px;
     padding-bottom: 43px;
-    margin: 59px 21px 0 21px;
+    margin: 88px 56px 0 272px;
 }
 
 .link{
@@ -54,6 +54,6 @@
 
 @media only screen and (min-width : 1224px) {
     .container{
-      margin: 88px 56px 0 272px;
+      
     }
 }
