@@ -85,6 +85,7 @@ class App extends Component {
               <Route
                 path={`${ROUTES.SEARCH_ALL}/:searchTerm`}
                 component={Search}
+                key={uuid()}
               />
               <Route path={`${ROUTES.SEARCH}`} component={Search} />
               <Route path={ROUTES.EVENT} exact component={Event} />

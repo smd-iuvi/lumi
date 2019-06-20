@@ -172,6 +172,10 @@ class Search extends Component {
       disciplinesListState
     } = this.state;
 
+    const {
+      match: { params }
+    } = this.props;
+
     let container = null;
 
     const selected = this.getSelectedTab();
@@ -221,7 +225,7 @@ class Search extends Component {
       <>
         <TabBar
           icon={iconResultSearch}
-          title="Resultado da busca"
+          title={`Resultado da busca "${params.searchTerm}"`}
           selected={selected}
           tabs={this.state.tabs}
           onTabChange={this.onTabChange}
