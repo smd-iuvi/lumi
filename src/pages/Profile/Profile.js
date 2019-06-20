@@ -37,7 +37,7 @@ class Profile extends Component {
       loadingMyWorks: false,
       loadingMyEvents: false,
       tabs: [],
-      profileTeacher: true
+      profileTeacher: false
     };
   }
 
@@ -45,20 +45,22 @@ class Profile extends Component {
     const { authUser, location } = this.props;
 
     //Verifica se é professor e muda as opções da tabbar
-    if (authUser.role && authUser.role == ROLES.TEACHER) {
+    if (authUser.role && authUser.role === ROLES.TEACHER) {
       this.setState({
         tabs: [
           'Minhas informações',
           'Meus envios',
           'Minha lista',
           'Meus eventos'
-        ]
+        ],
+        profileTeacher: true
       });
 
       this.fetchEvents();
     } else {
       this.setState({
-        tabs: ['Minhas informações', 'Meus envios', 'Minha lista']
+        tabs: ['Minhas informações', 'Meus envios', 'Minha lista'],
+        profileTeacher: false
       });
     }
 
@@ -161,7 +163,8 @@ class Profile extends Component {
       myEvents,
       loadingMyWorks,
       loadingWatchList,
-      loadingMyEvents
+      loadingMyEvents,
+      profileTeacher
     } = this.state;
 
     let container = null;
@@ -247,7 +250,7 @@ class Profile extends Component {
           tabs={this.state.tabs}
           onTabChange={this.onTabChange}
           selected={selected}
-          profileTeacher={this.state.profileTeacher}
+          profileTeacher={profileTeacher}
         />
         <div className="container Profile">{container}</div>
       </>

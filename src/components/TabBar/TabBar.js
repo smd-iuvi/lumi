@@ -9,16 +9,10 @@ class TabBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profileTeacher: null,
       showModal: false
     };
     this.handleModal = this.handleModal.bind(this);
   }
-
-  componentDidMount() {
-    this.setState({ profileTeacher: this.props.profileTeacher });
-  }
-
   handleModal = () => {
     this.setState({ showModal: true });
   };
@@ -29,12 +23,14 @@ class TabBar extends Component {
 
   render() {
     let container = null;
-    const { selected } = this.props;
+    const { selected, profileTeacher } = this.props;
+
+    console.log(profileTeacher);
 
     if (this.props.tabs !== null) {
       container = (
         <>
-          {this.state.profileTeacher ? (
+          {profileTeacher ? (
             <div className="tabTeacher">
               <Tabs
                 tabs={this.props.tabs}
