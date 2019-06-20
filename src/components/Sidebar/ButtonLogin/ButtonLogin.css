@@ -7,3 +7,9 @@
     display: flex;
     align-items: center;
 }
+
+.divNotLogin .buttonHelp{
+    position: absolute;
+    bottom: 5vh;
+    width: 216px;
+}

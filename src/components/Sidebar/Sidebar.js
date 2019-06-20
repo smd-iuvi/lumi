@@ -122,9 +122,16 @@ class Navbar extends Component {
             </ButtonsBottom>
           </div>
         ) : (
-            <Link to={ROUTES.SIGN_IN} className="link">
-              <ButtonLogin image={userPlaceholder} />
-            </Link>
+            <div className="divNotLogin">
+              <Link to={ROUTES.SIGN_IN} className="link">
+                <ButtonLogin image={userPlaceholder} />
+              </Link>
+              <Link to={ROUTES.PROFILE} className="link buttonHelp">
+                <ButtonsBottom newClass="iconBottom iconHelp">
+                  Ajuda
+              </ButtonsBottom>
+              </Link>
+            </div>
           )}
       </div>
     );

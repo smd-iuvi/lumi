@@ -1,5 +1,5 @@
 export const ADMIN = '/admin';
-export const LANDING = '/';
+export const LANDING = '/index';
 export const HOME = '/home';
 export const VIDEO = '/video';
 export const PLAYER = `${VIDEO}/player`;
