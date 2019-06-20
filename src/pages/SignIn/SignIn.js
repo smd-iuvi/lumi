@@ -3,6 +3,7 @@ import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
 import { withFirebase } from '../../Firebase';
+import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 import './SignIn.css';
@@ -99,7 +100,9 @@ class SignIn extends Component {
 
               <article className="notRegister">
                 <h1 className="Small-Text-Regular">Ainda não tem uma conta?</h1>
-                <h1 className="Small-Text-Bold">Faça seu cadastro</h1>
+                <Link to={ROUTES.SIGN_UP} className="link">
+                  <h1 className="Small-Text-Bold">Faça seu cadastro</h1>
+                </Link>
               </article>
             </div>
           </form>
