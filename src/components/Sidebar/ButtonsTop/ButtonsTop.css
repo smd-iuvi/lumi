@@ -1,51 +1,55 @@
-.buttonsSidebar{
-    background: none;
-    border: none;
-    outline: none;
-    margin: 0 16px;
-    border-radius: 5px; 
-    display: grid;
-    grid-template-columns: 45px 139px;
-    align-items: center;
-    padding-left: 24px;
-    cursor: pointer;
-    margin-bottom: 1vh;
-    height: 40px;
+.buttonsSidebar {
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0 16px;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 45px 139px;
+  align-items: center;
+  padding-left: 24px;
+  cursor: pointer;
+  margin-bottom: 1vh;
+  height: 40px;
 }
 
-.buttonsSidebar:hover{
-    background-color: var(--cards);
+.buttonsSidebar:hover {
+  background-color: var(--cards);
 }
 
-.buttonsSidebar .labelButtons{
-    color: var(--text-dark);
-    margin-top: 10px;
+.buttonsSidebar.selected {
+  background-color: var(--cards);
 }
 
-.buttonsSidebar .iconButtonsTop{
-    width: 28px;
-    height: 28px;
-    margin-top: -7px;
+.buttonsSidebar .labelButtons {
+  color: var(--text-dark);
+  margin-top: 10px;
 }
 
-.buttonsSidebar .iconBottom{
-    margin-top: -2px;
+.buttonsSidebar .iconButtonsTop {
+  width: 28px;
+  height: 28px;
+  margin-top: -7px;
 }
 
-.buttonsSidebar .iconHome{
-    background-image: url("../assets/icons/home.svg");
-    background-position: center;
+.buttonsSidebar .iconBottom {
+  margin-top: -2px;
 }
 
-.buttonsSidebar:hover .iconHome{
-    background-image: url("../assets/icons/home-mouseover.svg");
+.buttonsSidebar .iconHome {
+  background-image: url('../assets/icons/home.svg');
+  background-position: center;
 }
 
-.buttonsSidebar .iconExplore{
-    background-image: url("../assets/icons/explore.svg");
-    background-position: center;
+.buttonsSidebar:hover .iconHome {
+  background-image: url('../assets/icons/home-mouseover.svg');
 }
 
-.buttonsSidebar:hover .iconExplore{
-    background-image: url("../assets/icons/explore-mouseover.svg");
+.buttonsSidebar .iconExplore {
+  background-image: url('../assets/icons/explore.svg');
+  background-position: center;
+}
+
+.buttonsSidebar:hover .iconExplore {
+  background-image: url('../assets/icons/explore-mouseover.svg');
 }

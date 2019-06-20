@@ -47,7 +47,7 @@ class Navbar extends Component {
   };
 
   render() {
-    const { authUser } = this.props;
+    const { authUser, location } = this.props;
     return (
       <div className="sidebar">
         <Upload
@@ -60,10 +60,18 @@ class Navbar extends Component {
         </Link>
         <div className="iconsTop">
           <Link to={ROUTES.HOME} className="link">
-            <ButtonsTop newClass="iconButtonsTop iconHome">Início</ButtonsTop>
+            <ButtonsTop
+              newClass="iconButtonsTop iconHome"
+              selected={location.pathname === ROUTES.HOME}
+            >
+              Início
+            </ButtonsTop>
           </Link>
           <Link to={ROUTES.HOME} className="link">
-            <ButtonsTop newClass="iconButtonsTop iconExplore">
+            <ButtonsTop
+              newClass="iconButtonsTop iconExplore"
+              selected={location.pathname === ROUTES.DISCOVER}
+            >
               Descobrir
             </ButtonsTop>
           </Link>
@@ -72,11 +80,11 @@ class Navbar extends Component {
         {authUser ? (
           <div className="optionsLogged">
             <div className="optionsProfile">
-              <Link to={ROUTES.PROFILE} className="link">
+              {/* <Link to={ROUTES.PROFILE} className="link">
                 <ButtonProfile image={authUser.photo_url}>
                   {authUser.name}
                 </ButtonProfile>
-              </Link>
+              </Link> */}
               <Link onClick={this.handleModal} className="showModal link">
                 <ButtonsBottom
                   className="btnShow"
@@ -86,23 +94,35 @@ class Navbar extends Component {
                 </ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom newClass="iconBottom iconUser">
+                <ButtonsBottom
+                  newClass="iconBottom iconUser"
+                  selected={location.pathname === ROUTES.PROFILE}
+                >
                   Meu perfil
                 </ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE_MY_UPLOADS} className="link">
-                <ButtonsBottom newClass="iconBottom iconMyVideos">
+                <ButtonsBottom
+                  newClass="iconBottom iconMyVideos"
+                  selected={location.pathname === ROUTES.PROFILE_MY_UPLOADS}
+                >
                   Meus envios
                 </ButtonsBottom>
               </Link>
               <Link to={ROUTES.PROFILE_MY_LIST} className="link">
-                <ButtonsBottom newClass="iconBottom iconList">
+                <ButtonsBottom
+                  newClass="iconBottom iconList"
+                  selected={location.pathname === ROUTES.PROFILE_MY_LIST}
+                >
                   Minha lista
                 </ButtonsBottom>
               </Link>
               {authUser.role === ROLES.TEACHER ? (
                 <Link to={ROUTES.PROFILE_MY_EVENTS} className="link">
-                  <ButtonsBottom newClass="iconBottom iconEvents">
+                  <ButtonsBottom
+                    newClass="iconBottom iconEvents"
+                    selected={location.pathname === ROUTES.PROFILE_MY_EVENTS}
+                  >
                     Meus eventos
                   </ButtonsBottom>
                 </Link>
