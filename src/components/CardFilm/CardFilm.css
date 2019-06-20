@@ -21,6 +21,10 @@
   margin-top: -4px;
   border-radius: 0 0 8px 8px;
   background-color: var(--cards);
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  grid-gap: 10px;
+  align-items: center;
 }
 
 .cardFilm .Medium-Text-Bold {
@@ -31,4 +35,20 @@
 .cardFilm .Medium-Text-Regular {
   margin-top: 0;
   color: var(--text-dark);
+}
+
+.cardFilm .buttonOptions{
+  width: 20px;
+  height: 15px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("./assets/options.svg");
+  margin-left: 10px;
+}
+
+.cardFilm .dropdownOptions{
+  right: auto;
+  margin-left: -168px;
+  margin-top: 10px;
 }

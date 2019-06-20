@@ -11,7 +11,7 @@
     background-image: url("../assets/options-hover.svg");
 }
 
-.EventInfo .dropdownOptions{
+.dropdownOptions{
     width: 168px;
     background-color: var(--text-dark);
     position: absolute;
@@ -22,7 +22,7 @@
     padding: 10px;
 }
 
-.EventInfo .dropdownOptions article{
+.dropdownOptions article{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -31,11 +31,11 @@
     padding: 0 5px;
 }
 
-.EventInfo .dropdownOptions article:hover{
+.dropdownOptions article:hover{
     background-color: var(--secundary-light);
 }
 
-.EventInfo .dropdownOptions .Small-Text-Regular{
+.dropdownOptions .Small-Text-Regular{
     color: var(--text-light);
     margin-left: 8px;
 }
