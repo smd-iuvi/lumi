@@ -126,12 +126,6 @@ class SignUp extends Component {
     } = this.state;
     return (
       <>
-        <div className="backgroundLogin">
-          <span className="circle1" />
-          <span className="circle2" />
-          <span className="circle3" />
-          <span className="circle4" />
-        </div>
         <div className="Login">
           <form onSubmit={this.onSubmit} className="formLogin">
             <article className="titleLogin">
