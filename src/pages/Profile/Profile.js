@@ -13,6 +13,7 @@ import iconMyList from './assets/myList.png';
 
 import * as CONDITIONS from '../../constants/authorizingConditions';
 import * as ROLES from '../../constants/roles';
+import * as ROUTES from '../../constants/routes';
 
 import './Profile.css';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
@@ -21,6 +22,7 @@ import CardList from '../../components/CardList/CardList';
 import TabBar from '../../components/TabBar/TabBar';
 import EventsControll from '../../components/EventsControll/EventsControll';
 import EmptyLabel from '../../components/EmptyLabel/EmptyLabel';
+import { auth } from 'firebase';
 
 class Profile extends Component {
   constructor(props) {
@@ -35,13 +37,12 @@ class Profile extends Component {
       loadingMyWorks: false,
       loadingMyEvents: false,
       tabs: [],
-      selected: 0,
       profileTeacher: true
     };
   }
 
   componentDidMount() {
-    const { authUser } = this.props;
+    const { authUser, location } = this.props;
 
     //Verifica se é professor e muda as opções da tabbar
     if (authUser.role && authUser.role == ROLES.TEACHER) {
@@ -68,8 +69,41 @@ class Profile extends Component {
     }
   }
 
+  getSelectedTab = () => {
+    const { location, authUser } = this.props;
+    if (location.pathname === ROUTES.PROFILE) {
+      return 0;
+    } else if (location.pathname === ROUTES.PROFILE_MY_UPLOADS) {
+      return 1;
+    } else if (location.pathname === ROUTES.PROFILE_MY_LIST) {
+      return 2;
+    } else if (
+      location.pathname === ROUTES.PROFILE_MY_EVENTS &&
+      authUser.role === ROLES.TEACHER
+    ) {
+      return 3;
+    }
+  };
+
   onTabChange = newTab => {
-    this.setState({ selected: newTab });
+    const { history } = this.props;
+
+    switch (parseInt(newTab)) {
+      case 0:
+        history.push(ROUTES.PROFILE);
+        break;
+      case 1:
+        history.push(ROUTES.PROFILE_MY_UPLOADS);
+        break;
+      case 2:
+        history.push(ROUTES.PROFILE_MY_LIST);
+        break;
+      case 3:
+        history.push(ROUTES.PROFILE_MY_EVENTS);
+        break;
+      default:
+        break;
+    }
   };
 
   onEventDelete = uid => {
@@ -127,13 +161,14 @@ class Profile extends Component {
       myEvents,
       loadingMyWorks,
       loadingWatchList,
-      loadingMyEvents,
-      selected
+      loadingMyEvents
     } = this.state;
 
     let container = null;
 
-    if (selected == 0) {
+    const selected = this.getSelectedTab();
+
+    if (selected === 0) {
       container = (
         <>
           <ProfileCard
@@ -147,55 +182,59 @@ class Profile extends Component {
           <ProfileLabels />
         </>
       );
-    } else if (selected == 1) {
+    } else if (selected === 1) {
       container = (
         <>
-          {loadingMyWorks === false && myWorks === null ?
+          {loadingMyWorks === false && myWorks === null ? (
             <>
               <img src={iconMyVideos} />
               <EmptyLabel>Você ainda não enviou vídeos</EmptyLabel>
             </>
-            :
+          ) : (
             <CardList
               loading={loadingMyWorks}
               videos={myWorks}
               belowTab={true}
               type="myVideos"
-            />}
+            />
+          )}
         </>
       );
-    } else if (selected == 2) {
+    } else if (selected === 2) {
       container = (
         <>
-          {loadingWatchList === false && watchList === null ?
+          {loadingWatchList === false && watchList === null ? (
             <>
               <img src={iconMyList} />
-              <EmptyLabel>Você ainda não adicionou vídeos à sua lista</EmptyLabel>
+              <EmptyLabel>
+                Você ainda não adicionou vídeos à sua lista
+              </EmptyLabel>
             </>
-            :
+          ) : (
             <CardList
               loading={loadingWatchList}
               videos={watchList}
               belowTab={true}
               type="myList"
-            />}
+            />
+          )}
         </>
-
       );
-    } else if (selected == 3) {
+    } else if (selected === 3) {
       container = (
         <>
-          {loadingMyEvents === false && myEvents === null ?
+          {loadingMyEvents === false && myEvents === null ? (
             <>
               <img src={iconMyList} />
               <EmptyLabel>Você ainda não criou nenhum evento</EmptyLabel>
             </>
-            :
+          ) : (
             <EventsControll
               events={myEvents}
               loading={loadingMyEvents}
               onDelete={this.onEventDelete}
-            />}
+            />
+          )}
         </>
       );
     }
@@ -207,6 +246,7 @@ class Profile extends Component {
           title="Meu perfil"
           tabs={this.state.tabs}
           onTabChange={this.onTabChange}
+          selected={selected}
           profileTeacher={this.state.profileTeacher}
         />
         <div className="container Profile">{container}</div>

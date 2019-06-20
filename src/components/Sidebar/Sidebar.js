@@ -7,6 +7,8 @@ import { withFirebase } from '../../Firebase';
 import './Sidebar.css';
 
 import * as ROUTES from '../../constants/routes';
+import * as ROLES from '../../constants/roles';
+
 import ButtonsTop from './ButtonsTop/ButtonsTop';
 import ButtonProfile from './ButtonProfile/ButtonProfile';
 import ButtonsBottom from './ButtonsBottom/ButtonsBottom';
@@ -39,9 +41,6 @@ class Navbar extends Component {
 
   onSignOut = () => {
     const { firebase, history } = this.props;
-
-    console.log('Saind..');
-
     firebase.doSignOut().then(() => {
       history.push(ROUTES.HOME);
     });
@@ -91,22 +90,23 @@ class Navbar extends Component {
                   Meu perfil
                 </ButtonsBottom>
               </Link>
-              <Link to={ROUTES.PROFILE} className="link">
+              <Link to={ROUTES.PROFILE_MY_UPLOADS} className="link">
                 <ButtonsBottom newClass="iconBottom iconMyVideos">
                   Meus envios
                 </ButtonsBottom>
               </Link>
-              <Link to={ROUTES.PROFILE} className="link">
+              <Link to={ROUTES.PROFILE_MY_LIST} className="link">
                 <ButtonsBottom newClass="iconBottom iconList">
                   Minha lista
                 </ButtonsBottom>
               </Link>
-              {/* Se for professor */}
-              <Link to={ROUTES.PROFILE} className="link">
-                <ButtonsBottom newClass="iconBottom iconEvents">
-                  Meus eventos
-                </ButtonsBottom>
-              </Link>
+              {authUser.role === ROLES.TEACHER ? (
+                <Link to={ROUTES.PROFILE_MY_EVENTS} className="link">
+                  <ButtonsBottom newClass="iconBottom iconEvents">
+                    Meus eventos
+                  </ButtonsBottom>
+                </Link>
+              ) : null}
             </div>
             <Link to={ROUTES.PROFILE} className="link">
               <ButtonsBottom newClass="iconBottom iconHelp">
@@ -122,17 +122,17 @@ class Navbar extends Component {
             </ButtonsBottom>
           </div>
         ) : (
-            <div className="divNotLogin">
-              <Link to={ROUTES.SIGN_IN} className="link">
-                <ButtonLogin image={userPlaceholder} />
-              </Link>
-              <Link to={ROUTES.PROFILE} className="link buttonHelp">
-                <ButtonsBottom newClass="iconBottom iconHelp">
-                  Ajuda
+          <div className="divNotLogin">
+            <Link to={ROUTES.SIGN_IN} className="link">
+              <ButtonLogin image={userPlaceholder} />
+            </Link>
+            <Link to={ROUTES.PROFILE} className="link buttonHelp">
+              <ButtonsBottom newClass="iconBottom iconHelp">
+                Ajuda
               </ButtonsBottom>
-              </Link>
-            </div>
-          )}
+            </Link>
+          </div>
+        )}
       </div>
     );
   }

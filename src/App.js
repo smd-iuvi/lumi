@@ -47,52 +47,58 @@ class App extends Component {
 
     return (
       <div>
-        {this.state.width > 1170 ?
-          (
-            <>
-              {!location.pathname.includes(ROUTES.PLAYER)
-                && !location.pathname.includes(ROUTES.LANDING)
-                ? <Sidebar /> : null}
+        {this.state.width > 1170 ? (
+          <>
+            {!location.pathname.includes(ROUTES.PLAYER) &&
+            !location.pathname.includes(ROUTES.LANDING) ? (
+              <Sidebar />
+            ) : null}
 
+            {!location.pathname.includes(ROUTES.LANDING) &&
+            !location.pathname.includes(ROUTES.SIGN_IN) ? (
+              <NavBar class="navbar" />
+            ) : null}
+            {location.pathname.includes(ROUTES.PLAYER) && (
+              <NavBar class="navbar navbarComplete" />
+            )}
 
-              {!location.pathname.includes(ROUTES.LANDING)
-                && !location.pathname.includes(ROUTES.SIGN_IN)
-                ? <NavBar class="navbar" /> : null}
-              {location.pathname.includes(ROUTES.PLAYER)
-                && <NavBar class="navbar navbarComplete" />}
+            <Switch>
+              <Route path={ROUTES.HOME} exact component={Home} />
+              <Route
+                path={`${ROUTES.VIDEO}/:videoId`}
+                exact
+                component={VideoInfos}
+              />
+              <Route path={`${ROUTES.PLAYER}/:videoId`} component={Player} />
+              <Route path={ROUTES.PROFILE} component={Profile} />
+              <Route path={ROUTES.UPLOAD} exact component={Upload} />
+              <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
+              <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
+              <Route path={ROUTES.LANDING} exact component={Landing} />
+              <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
+              <Route
+                path={`${ROUTES.SEARCH}/:searchTerm`}
+                exact
+                component={Search}
+              />
+              <Route path={ROUTES.EVENT} exact component={Event} />
+              <Route path={ROUTES.CATEGORY} exact component={Category} />
+              <Route
+                path={ROUTES.RESTRICTED_AREA}
+                exact
+                component={RestrictedArea}
+              />
+              <Route component={Error404} />
+            </Switch>
 
-              <Switch>
-                <Route path={ROUTES.HOME} exact component={Home} />
-                <Route
-                  path={`${ROUTES.VIDEO}/:videoId`}
-                  exact
-                  component={VideoInfos}
-                />
-                <Route path={`${ROUTES.PLAYER}/:videoId`} component={Player} />
-                <Route path={ROUTES.PROFILE} exact component={Profile} />
-                <Route path={ROUTES.UPLOAD} exact component={Upload} />
-                <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
-                <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
-                <Route path={ROUTES.LANDING} exact component={Landing} />
-                <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
-                <Route
-                  path={`${ROUTES.SEARCH}/:searchTerm`}
-                  exact
-                  component={Search}
-                />
-                <Route path={ROUTES.EVENT} exact component={Event} />
-                <Route path={ROUTES.CATEGORY} exact component={Category} />
-                <Route path={ROUTES.RESTRICTED_AREA} exact component={RestrictedArea} />
-                <Route component={Error404} />
-              </Switch>
-
-              {!location.pathname.includes(ROUTES.PLAYER)
-                && !location.pathname.includes(ROUTES.LANDING)
-                ? <Footer /> : null}
-            </>
-          ) : (
-            console.log("pagina de erro de dimensão")
-          )}
+            {!location.pathname.includes(ROUTES.PLAYER) &&
+            !location.pathname.includes(ROUTES.LANDING) ? (
+              <Footer />
+            ) : null}
+          </>
+        ) : (
+          console.log('pagina de erro de dimensão')
+        )}
       </div>
     );
   }

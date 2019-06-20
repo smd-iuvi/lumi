@@ -29,18 +29,28 @@ class TabBar extends Component {
 
   render() {
     let container = null;
+    const { selected } = this.props;
 
     if (this.props.tabs !== null) {
       container = (
         <>
           {this.state.profileTeacher ? (
             <div className="tabTeacher">
-              <Tabs tabs={this.props.tabs} onTabChange={this.props.onTabChange} />
-              <button className="button buttonPrimary" onClick={this.handleModal}>Criar evento</button>
+              <Tabs
+                tabs={this.props.tabs}
+                selected={selected}
+                onTabChange={this.props.onTabChange}
+              />
+              <button
+                className="button buttonPrimary"
+                onClick={this.handleModal}
+              >
+                Criar evento
+              </button>
             </div>
           ) : (
-              <Tabs tabs={this.props.tabs} onTabChange={this.props.onTabChange} />
-            )}
+            <Tabs tabs={this.props.tabs} onTabChange={this.props.onTabChange} />
+          )}
         </>
       );
     }
