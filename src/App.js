@@ -50,14 +50,15 @@ class App extends Component {
         {this.state.width > 1170 ? (
           <>
             {!location.pathname.includes(ROUTES.PLAYER) &&
-            !location.pathname.includes(ROUTES.LANDING) ? (
-              <Sidebar />
-            ) : null}
+              !location.pathname.includes(ROUTES.LANDING) ? (
+                <Sidebar />
+              ) : null}
 
             {!location.pathname.includes(ROUTES.LANDING) &&
-            !location.pathname.includes(ROUTES.SIGN_IN) ? (
-              <NavBar class="navbar" />
-            ) : null}
+              !location.pathname.includes(ROUTES.SIGN_IN) &&
+              !location.pathname.includes(ROUTES.SIGN_UP) ? (
+                <NavBar class="navbar" />
+              ) : null}
             {location.pathname.includes(ROUTES.PLAYER) && (
               <NavBar class="navbar navbarComplete" />
             )}
@@ -92,13 +93,13 @@ class App extends Component {
             </Switch>
 
             {!location.pathname.includes(ROUTES.PLAYER) &&
-            !location.pathname.includes(ROUTES.LANDING) ? (
-              <Footer />
-            ) : null}
+              !location.pathname.includes(ROUTES.LANDING) ? (
+                <Footer />
+              ) : null}
           </>
         ) : (
-          console.log('pagina de erro de dimensão')
-        )}
+            console.log('pagina de erro de dimensão')
+          )}
       </div>
     );
   }

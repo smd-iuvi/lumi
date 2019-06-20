@@ -1,0 +1,26 @@
+.radiosRegister{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    grid-gap: 16px;
+    margin-top: 16px;
+}
+
+.uploadDocument{
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    color: var(--placeholders-buttons-dark);
+    grid-gap: 16px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.uploadDocument input{
+    display: none;
+}
+
+.uploadDocument .button{
+    padding: 8px 10px;
+    text-align: center;
+    height: auto;
+}

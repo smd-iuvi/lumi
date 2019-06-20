@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import uuid from 'uuid';
+import './SignUp.css';
 // import PropTypes from 'prop-types';
 
 import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
+import { Link } from 'react-router-dom';
 
 import { withFirebase } from '../../Firebase';
 import { withAuthUser } from '../../Firebase/Session';
-
-const style = {
-  color: '#fff'
-};
 
 const INITIAL_STATE = {
   name: '',
@@ -25,7 +23,8 @@ const INITIAL_STATE = {
   imageFile: null,
   imageUrl: '',
   uploading: false,
-  error: null
+  error: null,
+  seeBox: false
 };
 
 class SignUp extends Component {
@@ -33,6 +32,7 @@ class SignUp extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+    this.handleBox = this.handleBox.bind(this);
   }
 
   componentWillMount() {
@@ -110,6 +110,10 @@ class SignUp extends Component {
       );
   };
 
+  handleBox = () => {
+    this.setState({ seeBox: true });
+  }
+
   render() {
     const {
       name,
@@ -121,70 +125,128 @@ class SignUp extends Component {
       imageFile
     } = this.state;
     return (
-      <div className="container" style={style}>
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            value={name}
-            name="name"
-            onChange={this.onChange}
-            placeholder="Nome"
-          />{' '}
-          <br />
-          <input
-            type="text"
-            value={username}
-            name="username"
-            onChange={this.onChange}
-            placeholder="username"
-          />{' '}
-          <br />
-          <input
-            type="text"
-            value={email}
-            name="email"
-            onChange={this.onChange}
-            placeholder="Email"
-          />{' '}
-          <br />
-          <input
-            type="password"
-            value={passwordOne}
-            name="passwordOne"
-            onChange={this.onChange}
-            placeholder="Senha"
-          />{' '}
-          <br />
-          <input
-            type="password"
-            value={passwordTwo}
-            name="passwordTwo"
-            onChange={this.onChange}
-            placeholder="Confirmar senha"
-          />{' '}
-          <br />
-          <input
-            type="date"
-            value={birthday}
-            name="birthday"
-            onChange={this.onChange}
-            placeholder="Data de nascimento"
-          />{' '}
-          <input type="file" name="imageFile" onChange={this.onFileChange} />
-          <br />
-          <select style={style} onChange={this.onChange} name="role">
-            <option select="selected" value={ROLES.USER}>
-              Usuário comum
+      <>
+        <div className="backgroundLogin">
+          <span className="circle1" />
+          <span className="circle2" />
+          <span className="circle3" />
+          <span className="circle4" />
+        </div>
+        <div className="Login">
+          <form onSubmit={this.onSubmit} className="formLogin">
+            <article className="titleLogin">
+              <h1 className="Large-Text-Bold">Faça seu cadastro. É rápido.</h1>
+            </article>
+            <div className="contentForm">
+
+              <article className="divTextInput">
+                <h1 className="Medium-Text-Regular">nome</h1>
+                <input
+                  type="text"
+                  value={name}
+                  name="name"
+                  onChange={this.onChange}
+                  className="textInputAccount Medium-Text-Regular"
+                  autoFocus
+                />
+              </article>
+              {/* <input
+                type="text"
+                value={username}
+                name="username"
+                onChange={this.onChange}
+                placeholder="username"
+              />{' '}
+              <br /> */}
+
+              <article className="divTextInput">
+                <h1 className="Medium-Text-Regular">e-mail</h1>
+                <input
+                  type="text"
+                  value={email}
+                  name="email"
+                  onChange={this.onChange}
+                  className="textInputAccount Medium-Text-Regular"
+                />
+              </article>
+
+              <article className="divTextInput">
+                <h1 className="Medium-Text-Regular">senha</h1>
+                <input
+                  type="password"
+                  value={passwordOne}
+                  name="passwordOne"
+                  onChange={this.onChange}
+                  className="textInputAccount Medium-Text-Regular"
+                />
+              </article>
+
+              <article className="divTextInput">
+                <h1 className="Medium-Text-Regular">confirme a senha</h1>
+                <input
+                  type="password"
+                  value={passwordTwo}
+                  name="passwordTwo"
+                  onChange={this.onChange}
+                  className="textInputAccount Medium-Text-Regular"
+                />
+              </article>
+
+              {/* <input
+                type="date"
+                value={birthday}
+                name="birthday"
+                onChange={this.onChange}
+                placeholder="Data de nascimento"
+              />{' '}
+              <input type="file" name="imageFile" onChange={this.onFileChange} />
+              <br /> */}
+
+              <div className="radiosRegister">
+                <article>
+                  <input type="radio" id="student" name="role" value={ROLES.STUDENT} onClick={this.handleBox} />
+                  <label className="Medium-Text-Regular" for="student">Sou aluno(a) do SMD</label>
+                </article>
+                <article>
+                  <input type="radio" id="teacher" name="role" value={ROLES.TEACHER} onClick={this.handleBox} />
+                  <label className="Medium-Text-Regular" for="teacher">Sou professor(a) do SMD</label>
+                </article>
+              </div>
+
+              {this.state.seeBox &&
+                <div className="uploadDocument">
+                  <article>
+                    <h1 className="Medium-Text-Regular">Envie-nos uma declaração ou atestado de matrícula para confirmarmos o seu vínculo com o curso.</h1>
+                  </article>
+                  <input type="file" className="file" id="file" />
+                  <label for="file" className="button buttonTerceary">
+                    Escolher arquivo
+                  </label>
+                </div>
+              }
+              {/* <select onChange={this.onChange} name="role">
+                <option select="selected" value={ROLES.USER}>
+                  Usuário comum
             </option>
-            <option value={ROLES.TEACHER}>Professor</option>
-            <option value={ROLES.STUDENT}>Aluno</option>
-          </select>{' '}
-          <br />
-          <button type="submit" style={style}>
-            Enviar
-          </button>
-        </form>
-      </div>
+                <option value={ROLES.TEACHER}>Professor</option>
+                <option value={ROLES.STUDENT}>Aluno</option>
+              </select>{' '} */}
+              <article className="buttonLogin">
+                <button type="submit" className="button buttonPrimary">
+                  Cadastrar
+                </button>
+              </article>
+
+              <article className="notRegister">
+                <h1 className="Small-Text-Regular">Já tem uma conta?</h1>
+                <Link to={ROUTES.SIGN_IN} className="link">
+                  <h1 className="Small-Text-Bold">Volte ao login</h1>
+                </Link>
+              </article>
+            </div>
+          </form>
+        </div>
+      </>
     );
   }
 }

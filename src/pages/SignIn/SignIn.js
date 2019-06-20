@@ -90,8 +90,8 @@ class SignIn extends Component {
                   value={email}
                   name="email"
                   onChange={this.onChange}
-                  placeholder="email"
-                  className="textInputLogin Medium-Text-Regular"
+                  className="textInputAccount Medium-Text-Regular"
+                  autoFocus
                 />
               </article>
 
@@ -102,8 +102,7 @@ class SignIn extends Component {
                   value={password}
                   name="password"
                   onChange={this.onChange}
-                  placeholder="senha"
-                  className="textInputLogin Medium-Text-Regular"
+                  className="textInputAccount Medium-Text-Regular"
                 />
               </article>
 
