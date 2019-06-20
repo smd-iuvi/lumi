@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import './TabBarPlayer.css';
 
 import VideoInfo from '../VideoInfo/VideoInfo';
+
+import * as ROUTES from '../../../constants/routes';
 
 import next from './assets/next.svg';
 import film from '../../../assets/birdbox.jpg';
@@ -11,7 +14,7 @@ const back = history => {
   history.goBack();
 };
 
-const TabBarPlayer = ({ video, history }) => {
+const TabBarPlayer = ({ video, nextVideo, history }) => {
   return (
     <div className="TabBarPlayer">
       <article className="iconBack" onClick={() => back(history)} />
@@ -27,9 +30,14 @@ const TabBarPlayer = ({ video, history }) => {
       <div className="containerNextFilm">
         <h1 className="Medium-Text-Bold">Assistir ao próximo vídeo</h1>
         <article className="imgNextVideo">
-          <img src={film} />
+          <img src={nextVideo ? nextVideo.imageUrl : null} />
         </article>
-        <article className="iconNext" />
+        <Link
+          to={`${ROUTES.PLAYER}/${nextVideo ? nextVideo.uid : null}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <article className="iconNext" />
+        </Link>
       </div>
     </div>
   );

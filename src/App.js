@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import uuid from 'uuid';
 
 import * as ROUTES from './constants/routes';
 
@@ -69,7 +70,12 @@ class App extends Component {
                 exact
                 component={VideoInfos}
               />
-              <Route path={`${ROUTES.PLAYER}/:videoId`} component={Player} />
+              <Route
+                path={`${ROUTES.PLAYER}/:videoId`}
+                component={Player}
+                key={uuid()}
+              />{' '}
+              />
               <Route path={ROUTES.PROFILE} component={Profile} />
               <Route path={ROUTES.UPLOAD} exact component={Upload} />
               <Route path={ROUTES.SIGN_IN} exact component={SignIn} />

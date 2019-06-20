@@ -50,6 +50,21 @@ class Video {
     }
   };
 
+  getNextVideo = uid => {
+    return new Promise((resolve, reject) => {
+      this.get()
+        .then(videos => {
+          const filteredVideos = videos.filter(video => video.uid !== uid);
+          const nextVideo =
+            filteredVideos[Math.floor(Math.random() * filteredVideos.length)];
+          resolve(nextVideo);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  };
+
   update = (uid, video) =>
     this.get(uid).set({
       ...video

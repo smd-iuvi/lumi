@@ -19,6 +19,7 @@ class Player extends Component {
     this.state = {
       loading: false,
       video: null,
+      nextVideo: null,
       onWatchList: false,
       duration: 0,
       watched: false,
@@ -39,11 +40,12 @@ class Player extends Component {
       .on('value', snapshot => {
         this.setState({ video: snapshot.val(), loading: false });
       });
-  }
 
-  onVideoEnd = () => {
-    alert('Video terminou');
-  };
+    firebase.video
+      .getNextVideo(params.videoId)
+      .then(video => this.setState({ nextVideo: video }))
+      .catch(error => this.setState({ error }));
+  }
 
   onProgress = progress => {
     const { watched, duration } = this.state;
@@ -56,9 +58,7 @@ class Player extends Component {
       this.setState({ watched: true });
       firebase.video
         .view(params.videoId)
-        .then(video => {
-          console.log('Video assitido');
-        })
+        .then(video => {})
         .catch(error => {
           console.log(error);
         });
@@ -85,7 +85,7 @@ class Player extends Component {
 
     firebase.video
       .clap(params.videoId)
-      .then(() => { })
+      .then(() => {})
       .catch(error => {
         this.setState({ error });
       });
@@ -116,11 +116,11 @@ class Player extends Component {
       .then(() => {
         this.checkUserWatchList();
       })
-      .catch(error => { });
+      .catch(error => {});
   };
 
   render() {
-    const { video, loading, onWatchList } = this.state;
+    const { video, nextVideo, loading, onWatchList } = this.state;
     const {
       authUser,
       match: { params }
@@ -143,7 +143,7 @@ class Player extends Component {
 
     return (
       <>
-        <TabBarPlayer video={video} />
+        <TabBarPlayer video={video} nextVideo={nextVideo} />
         <div className="containerPlayer">
           <div>
             <VideoPlayer
