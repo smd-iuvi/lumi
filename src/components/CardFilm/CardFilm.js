@@ -6,6 +6,7 @@ import * as ROUTES from '../../constants/routes';
 
 import card from '../../assets/birdbox.jpg';
 import iconDelete from './assets/delete.svg';
+import iconEdit from './assets/edit.svg';
 
 class CardFilm extends Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class CardFilm extends Component {
                   {type === "myVideos" && (
                     <>
                       <article>
-                        <img src={iconDelete} />
+                        <img src={iconEdit} />
                         <h1 className="Small-Text-Regular">Editar</h1>
                       </article>
                       <article>

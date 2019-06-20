@@ -194,13 +194,13 @@ class Profile extends Component {
               <EmptyLabel>Você ainda não enviou vídeos</EmptyLabel>
             </>
           ) : (
-            <CardList
-              loading={loadingMyWorks}
-              videos={myWorks}
-              belowTab={true}
-              type="myVideos"
-            />
-          )}
+              <CardList
+                loading={loadingMyWorks}
+                videos={myWorks}
+                belowTab={true}
+                type="myVideos"
+              />
+            )}
         </>
       );
     } else if (selected === 2) {
@@ -214,13 +214,13 @@ class Profile extends Component {
               </EmptyLabel>
             </>
           ) : (
-            <CardList
-              loading={loadingWatchList}
-              videos={watchList}
-              belowTab={true}
-              type="myList"
-            />
-          )}
+              <CardList
+                loading={loadingWatchList}
+                videos={watchList}
+                belowTab={true}
+                type="myList"
+              />
+            )}
         </>
       );
     } else if (selected === 3) {
@@ -232,12 +232,12 @@ class Profile extends Component {
               <EmptyLabel>Você ainda não criou nenhum evento</EmptyLabel>
             </>
           ) : (
-            <EventsControll
-              events={myEvents}
-              loading={loadingMyEvents}
-              onDelete={this.onEventDelete}
-            />
-          )}
+              <EventsControll
+                events={myEvents}
+                loading={loadingMyEvents}
+                onDelete={this.onEventDelete}
+              />
+            )}
         </>
       );
     }
