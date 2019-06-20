@@ -80,6 +80,9 @@
     color: var(--placeholders-buttons-dark);
 }
 
+.Login .notRegister .link{
+    color: var(--text-dark);
+}
 .Login .notRegister .Small-Text-Bold:hover{
     color: var(--primary);
     cursor: pointer;
