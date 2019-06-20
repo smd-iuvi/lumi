@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 
 import './CommentSection.css';
+import iconNotUser from './assets/user-placeholder.svg';
 
 import NewComment from './NewComment/NewComment';
 import Comment from './Comment/Comment';
+import EmptyLabel from '../EmptyLabel/EmptyLabel';
 import { withFirebase } from '../../Firebase';
 import { QueryableFields as CommentModel } from '../../Firebase/Models/Comment';
 import { withAuthUser } from '../../Firebase/Session';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 class CommentSection extends Component {
   constructor(props) {
@@ -85,7 +89,7 @@ class CommentSection extends Component {
 
     return (
       <div className="CommentSection">
-        {authUser && (
+        {authUser ? (
           <NewComment
             newComment={newComment}
             onChange={this.onNewCommentChange}
@@ -93,7 +97,17 @@ class CommentSection extends Component {
             videoId={videoId}
             userId={userId}
           />
-        )}
+        ) : (
+            <div className="loginForComment">
+              <img src={iconNotUser} />
+              <h1 className="Small-Text-Bold">Faça
+                <Link to={ROUTES.SIGN_IN} className="link linkRedirect"> login </Link>
+                ou
+                <Link to={ROUTES.SIGN_UP} className="link linkRedirect"> registre-se </Link>
+                para comentar
+              </h1>
+            </div>
+          )}
 
         <h1 className="Small-Text-Bold">
           {commentsList ? commentsList.length : 'Carregando'} comentários
