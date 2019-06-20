@@ -26,9 +26,9 @@ class SignIn extends Component {
   componentWillMount() {
     const { authUser, history } = this.props;
 
-    // if (authUser) {
-    //   history.push(ROUTES.HOME);
-    // }
+    if (authUser) {
+      history.push(ROUTES.HOME);
+    }
   }
 
   onSubmit = event => {
@@ -57,23 +57,20 @@ class SignIn extends Component {
     let message = null;
     if (error) {
       message = error.code;
-      if (message === 'auth/invalid-email')
-        message = "E-mail inválido";
-      else if (message === 'auth/wrong-password')
-        message = "Senha incorreta";
+      if (message === 'auth/invalid-email') message = 'E-mail inválido';
+      else if (message === 'auth/wrong-password') message = 'Senha incorreta';
       else if (message === 'auth/user-not-found')
-        message = "Usuário não cadastrado";
-      else
-        message = "Ocorreu algum erro no login";
+        message = 'Usuário não cadastrado';
+      else message = 'Ocorreu algum erro no login';
     }
 
     return (
       <>
         <div className="backgroundLogin">
-          <span className="circle1"></span>
-          <span className="circle2"></span>
-          <span className="circle3"></span>
-          <span className="circle4"></span>
+          <span className="circle1" />
+          <span className="circle2" />
+          <span className="circle3" />
+          <span className="circle4" />
         </div>
         <div className="Login">
           <form onSubmit={this.onSubmit} className="formLogin">
@@ -82,7 +79,9 @@ class SignIn extends Component {
             </article>
             <div className="contentForm">
               <h1 className="Large-Text-Bold subtitleLogin">Faça seu login</h1>
-              {error && <h1 className="Small-Text-Regular errorLogin">{message}</h1>}
+              {error && (
+                <h1 className="Small-Text-Regular errorLogin">{message}</h1>
+              )}
 
               <article className="divTextInput">
                 <h1 className="Medium-Text-Regular">e-mail</h1>
@@ -108,9 +107,13 @@ class SignIn extends Component {
                 />
               </article>
 
-              <h1 className="Small-Text-Bold forgotPassword">Esqueceu sua senha?</h1>
+              <h1 className="Small-Text-Bold forgotPassword">
+                Esqueceu sua senha?
+              </h1>
               <article className="buttonLogin">
-                <button type="submit" className="button buttonPrimary">Entrar</button>
+                <button type="submit" className="button buttonPrimary">
+                  Entrar
+                </button>
               </article>
 
               <article className="notRegister">
