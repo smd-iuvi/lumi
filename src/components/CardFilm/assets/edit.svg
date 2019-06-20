@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+    <defs>
+        <style>
+            .cls-1{fill:#756eff}.cls-2{fill:none}
+        </style>
+    </defs>
+    <g id="editar" transform="translate(-698 -560)">
+        <path id="edit001_-_E069" d="M8.044-20.966v.013a1.617 1.617 0 0 0-1.189-.5 1.661 1.661 0 0 0-1.176.5l-2.234 2.236h-11.9V-4.45H5.823v-11.926L8.044-18.6a1.651 1.651 0 0 0 0-2.366zm-.915 1.452L-1.193-11.2h-.483v-.549l8.27-8.291a.335.335 0 0 1 .261-.1.345.345 0 0 1 .274.1v.013a.355.355 0 0 1 0 .512zM4.516-5.758H-7.15v-11.651h9.289L-2.983-12.3v2.41h2.339l5.16-5.178z" class="cls-1" data-name="edit001 - E069" transform="translate(712.456 586.45)"/>
+        <path id="Rectangle_141" d="M0 0h28v28H0z" class="cls-2" data-name="Rectangle 141" transform="translate(698 560)"/>
+    </g>
+</svg>
