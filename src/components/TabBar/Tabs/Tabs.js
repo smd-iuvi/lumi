@@ -2,22 +2,6 @@ import React, { Component } from 'react';
 import './Tabs.css';
 
 class Tabs extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: 0
-    };
-  }
-
-  componentDidMount() {
-    const { selected } = this.props;
-
-    if (selected) {
-      console.log('PORRRRRA');
-      this.setState({ active: selected });
-    }
-  }
-
   handleTab = event => {
     const { onTabChange } = this.props;
     onTabChange(event.target.id);
@@ -25,11 +9,12 @@ class Tabs extends Component {
   };
 
   render() {
+    const { selected } = this.props;
     return (
       <div className="tabs">
         {this.props.tabs.map(tb => (
           <>
-            {this.props.tabs.indexOf(tb) == this.state.active ? (
+            {this.props.tabs.indexOf(tb) == selected ? (
               <article
                 className="Small-Text-Regular tab active"
                 onClick={this.handleTab}

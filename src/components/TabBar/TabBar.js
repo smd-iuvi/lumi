@@ -49,7 +49,11 @@ class TabBar extends Component {
               </button>
             </div>
           ) : (
-            <Tabs tabs={this.props.tabs} onTabChange={this.props.onTabChange} />
+            <Tabs
+              tabs={this.props.tabs}
+              selected={selected}
+              onTabChange={this.props.onTabChange}
+            />
           )}
         </>
       );
