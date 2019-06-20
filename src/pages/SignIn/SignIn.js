@@ -53,31 +53,60 @@ class SignIn extends Component {
   render() {
     const { error, email, password } = this.state;
     return (
-      <div className="container">
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            value={email}
-            name="email"
-            onChange={this.onChange}
-            placeholder="email"
-          />
-          <br />
-          <br />
-          <input
-            type="password"
-            value={password}
-            name="password"
-            onChange={this.onChange}
-            placeholder="senha"
-          />
-          <br />
-          <br />
-          <button type="submit">Entrar</button>
-        </form>
+      <>
+        <div className="backgroundLogin">
+          <span className="circle1"></span>
+          <span className="circle2"></span>
+          <span className="circle3"></span>
+          <span className="circle4"></span>
+        </div>
+        <div className="Login">
+          <form onSubmit={this.onSubmit} className="formLogin">
+            <article className="titleLogin">
+              <h1 className="Large-Text-Bold">Olá! Bem-vindo(a) de volta.</h1>
+            </article>
+            <div className="contentForm">
+              <h1 className="Large-Text-Bold subtitleLogin">Faça seu login</h1>
 
-        {error && <p>{error.message}</p>}
-      </div>
+              <article className="divTextInput">
+                <h1 className="Medium-Text-Regular">e-mail</h1>
+                <input
+                  type="text"
+                  value={email}
+                  name="email"
+                  onChange={this.onChange}
+                  placeholder="email"
+                  className="textInputLogin Medium-Text-Regular"
+                />
+              </article>
+
+              <article className="divTextInput">
+                <h1 className="Medium-Text-Regular">senha</h1>
+                <input
+                  type="password"
+                  value={password}
+                  name="password"
+                  onChange={this.onChange}
+                  placeholder="senha"
+                  className="textInputLogin Medium-Text-Regular"
+                />
+              </article>
+
+              <h1 className="Small-Text-Bold forgotPassword">Esqueceu sua senha?</h1>
+              <article className="buttonLogin">
+                <button type="submit" className="button buttonPrimary">Entrar</button>
+              </article>
+
+              <article className="notRegister">
+                <h1 className="Small-Text-Regular">Ainda não tem uma conta?</h1>
+                <h1 className="Small-Text-Bold">Faça seu cadastro</h1>
+              </article>
+            </div>
+          </form>
+
+          {error && <p>{error.message}</p>}
+        </div>
+      </>
     );
   }
 }

@@ -56,6 +56,7 @@ class App extends Component {
 
 
               {!location.pathname.includes(ROUTES.LANDING)
+                && !location.pathname.includes(ROUTES.SIGN_IN)
                 ? <NavBar class="navbar" /> : null}
               {location.pathname.includes(ROUTES.PLAYER)
                 && <NavBar class="navbar navbarComplete" />}
