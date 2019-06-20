@@ -94,46 +94,6 @@
     cursor: pointer;
 }
 
-.backgroundLogin{
-    width: 100%;
-    min-height: 100vh;
-    position: absolute;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.backgroundLogin span{
-    background-color: rgba(117, 110, 255, 0.1);
-    border-radius: 100%;
-    position: absolute;
-}
-
-.backgroundLogin .circle1{
-    width: 70vw;
-    height: 70vw;
-    margin-top: -55vw;
-}
-
-.backgroundLogin .circle2{
-    width: 35vw;
-    height: 35vw;
-    right: -15vw;
-    margin-top: -5vw;
-}
-
-.backgroundLogin .circle3{
-    width: 50vw;
-    height: 50vw;
-    bottom: -30vw;
-}
-
-.backgroundLogin .circle4{
-    width: 60vw;
-    height: 60vw;
-    bottom: -30vw;
-    right: -5vw;
-}
-
 .Login ::placeholder {
     color: var(--text-dark);
 }
