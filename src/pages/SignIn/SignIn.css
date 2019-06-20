@@ -11,7 +11,7 @@
 }
 
 .Login .formLogin{
-    width: 536px;
+    width: 550px;
     background-color: var(--cards);
     display: grid;
     grid-template-rows: 64px auto;

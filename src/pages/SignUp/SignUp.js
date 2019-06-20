@@ -197,12 +197,18 @@ class SignUp extends Component {
               <br /> */}
 
               <div className="radiosRegister">
-                <article>
+                <article className="radioOption">
                   <input type="radio" id="student" name="role" value={ROLES.STUDENT} onClick={this.handleBox} />
+                  <label for="student" className="checkbox">
+                    <article className="border"><article></article></article>
+                  </label>
                   <label className="Medium-Text-Regular" for="student">Sou aluno(a) do SMD</label>
                 </article>
-                <article>
+                <article className="radioOption">
                   <input type="radio" id="teacher" name="role" value={ROLES.TEACHER} onClick={this.handleBox} />
+                  <label for="student" className="checkbox">
+                    <article className="border"><article></article></article>
+                  </label>
                   <label className="Medium-Text-Regular" for="teacher">Sou professor(a) do SMD</label>
                 </article>
               </div>
