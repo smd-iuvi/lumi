@@ -156,7 +156,12 @@ class Profile extends Component {
               <EmptyLabel>Você ainda não enviou vídeos</EmptyLabel>
             </>
             :
-            <CardList loading={loadingMyWorks} videos={myWorks} belowTab={true} />}
+            <CardList
+              loading={loadingMyWorks}
+              videos={myWorks}
+              belowTab={true}
+              type="myVideos"
+            />}
         </>
       );
     } else if (selected == 2) {
@@ -172,6 +177,7 @@ class Profile extends Component {
               loading={loadingWatchList}
               videos={watchList}
               belowTab={true}
+              type="myList"
             />}
         </>
 
