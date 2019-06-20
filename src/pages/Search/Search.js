@@ -116,7 +116,6 @@ class Search extends Component {
           loading: false,
           list: videos
         };
-
         this.setState({ videosListState: newVideosListState });
       })
       .catch(error => {
@@ -155,7 +154,7 @@ class Search extends Component {
 
   getSelectedTab = () => {
     const { location } = this.props;
-    if (location.pathname === ROUTES.SEARCH_ALL) {
+    if (location.pathname.includes(ROUTES.SEARCH_ALL)) {
       return 0;
     } else if (location.pathname === ROUTES.SEARCH_VIDEOS) {
       return 1;
@@ -176,6 +175,7 @@ class Search extends Component {
     let container = null;
 
     const selected = this.getSelectedTab();
+    console.log(selected);
 
     if (selected === 0) {
       container = (
