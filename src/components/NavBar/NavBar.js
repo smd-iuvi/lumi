@@ -4,6 +4,7 @@ import './NavBar.css';
 import { withRouter } from 'react-router-dom';
 
 import search from './assets/search_button.svg';
+import * as ROUTES from '../../constants/routes';
 
 class NavBar extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class NavBar extends Component {
     const { searchTerm } = this.state;
 
     if (e.key === 'Enter' && searchTerm !== '') {
-      this.props.history.push(`/SEARCH/${searchTerm}`);
+      this.props.history.push(`${ROUTES.SEARCH_ALL}/${searchTerm}`);
       e.target.blur();
     }
   };

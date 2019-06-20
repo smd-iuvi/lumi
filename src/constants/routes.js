@@ -1,3 +1,5 @@
+import Search from '../pages/Search/Search';
+
 export const ADMIN = '/admin';
 export const LANDING = '/index';
 export const HOME = '/home';
@@ -11,6 +13,10 @@ export const UPLOAD = '/upload';
 export const SIGN_IN = '/sign_in';
 export const SIGN_UP = '/sign_up';
 export const SEARCH = '/search';
+export const SEARCH_ALL = `${SEARCH}/all/:searchTerm`;
+export const SEARCH_VIDEOS = `${SEARCH}/videos`;
+export const SEARCH_USERS = `${SEARCH}/users`;
+export const SEARCH_DISCIPLINES = `${SEARCH}/disciplines`;
 export const EVENT = '/event';
 export const CATEGORY = '/category';
 export const RESTRICTED_AREA = '/restricted_area';

@@ -6,12 +6,15 @@ import './Search.css';
 import iconResultSearch from './assets/resultSearch.svg';
 import iconSearch from './assets/search.png';
 
+import * as ROUTES from '../../constants/routes';
+import * as ROLES from '../../constants/roles';
+
 import { withFirebase } from '../../Firebase';
 
 import TabBar from '../../components/TabBar/TabBar';
 import CardList from '../../components/CardList/CardList';
 import CardFilm from '../../components/CardFilm/CardFilm';
-import EmptyLabel from '../../components/EmptyLabel/EmptyLabel'
+import EmptyLabel from '../../components/EmptyLabel/EmptyLabel';
 
 const pushUpStyle = {
   marginTop: '-50px'
@@ -23,7 +26,6 @@ class Search extends Component {
 
     this.state = {
       tabs: ['Tudo', 'Vídeos', 'Pessoas', 'Disciplinas'],
-      selected: 0,
       usersListState: {
         list: null,
         loading: false,
@@ -129,51 +131,85 @@ class Search extends Component {
   }
 
   onTabChange = newTab => {
-    this.setState({ selected: newTab });
+    const { history } = this.props;
+
+    console.log(newTab);
+
+    switch (parseInt(newTab)) {
+      case 0:
+        history.push(ROUTES.SEARCH_ALL);
+        break;
+      case 1:
+        history.push(ROUTES.SEARCH_VIDEOS);
+        break;
+      case 2:
+        history.push(ROUTES.SEARCH_USERS);
+        break;
+      case 3:
+        history.push(ROUTES.SEARCH_DISCIPLINES);
+        break;
+      default:
+        break;
+    }
+  };
+
+  getSelectedTab = () => {
+    const { location } = this.props;
+    if (location.pathname === ROUTES.SEARCH_ALL) {
+      return 0;
+    } else if (location.pathname === ROUTES.SEARCH_VIDEOS) {
+      return 1;
+    } else if (location.pathname === ROUTES.SEARCH_USERS) {
+      return 2;
+    } else if (location.pathname === ROUTES.SEARCH_DISCIPLINES) {
+      return 3;
+    }
   };
 
   render() {
     const {
-      selected,
       videosListState,
       usersListState,
       disciplinesListState
     } = this.state;
 
-    console.log(videosListState);
     let container = null;
 
-    if (selected == 0) {
+    const selected = this.getSelectedTab();
+
+    if (selected === 0) {
       container = (
         <>
-          {videosListState.loading === false && videosListState.list === null ?
+          {videosListState.loading === false &&
+          videosListState.list === null ? (
             <>
               <img src={iconSearch} />
               <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
             </>
-            :
+          ) : (
             <CardList
               videos={videosListState.list}
               loading={videosListState.loading}
               belowTab={true}
-            />}
+            />
+          )}
         </>
       );
-    } else if (selected == 1) {
+    } else if (selected === 1) {
       container = (
         <>
           <img src={iconSearch} />
           <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
         </>
       );
-    } else if (selected == 2) {
+    } else if (selected === 2) {
       container = (
         <>
           <img src={iconSearch} />
           <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
         </>
       );
-    } else if (selected == 3) {
+    } else if (selected === 3) {
       container = (
         <>
           <img src={iconSearch} />
@@ -186,6 +222,7 @@ class Search extends Component {
         <TabBar
           icon={iconResultSearch}
           title="Resultado da busca"
+          selected={selected}
           tabs={this.state.tabs}
           onTabChange={this.onTabChange}
           profileTeacher={false}

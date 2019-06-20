@@ -76,11 +76,7 @@ class App extends Component {
               <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
               <Route path={ROUTES.LANDING} exact component={Landing} />
               <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
-              <Route
-                path={`${ROUTES.SEARCH}/:searchTerm`}
-                exact
-                component={Search}
-              />
+              <Route path={`${ROUTES.SEARCH}/:searchTerm`} component={Search} />
               <Route path={ROUTES.EVENT} exact component={Event} />
               <Route path={ROUTES.CATEGORY} exact component={Category} />
               <Route
