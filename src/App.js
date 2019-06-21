@@ -7,6 +7,7 @@ import * as ROUTES from './constants/routes';
 import NavBar from './components/NavBar/NavBar';
 import Sidebar from './components/Sidebar/Sidebar';
 import Footer from './components/Footer/Footer';
+import SmallWidth from './pages/SmallWidth/SmallWidth';
 
 import Home from './pages/Home/Home';
 import VideoInfos from './pages/VideoInfos/VideoInfos';
@@ -107,7 +108,7 @@ class App extends Component {
               ) : null}
           </>
         ) : (
-            console.log('pagina de erro de dimensão')
+            <SmallWidth />
           )}
       </div>
     );
