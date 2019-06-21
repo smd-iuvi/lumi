@@ -66,7 +66,7 @@ class Navbar extends Component {
               Início
             </ButtonsTop>
           </Link>
-          <Link to={ROUTES.HOME} className="link">
+          <Link to={ROUTES.DISCOVER} className="link">
             <ButtonsTop
               newClass="iconButtonsTop iconExplore"
               selected={location.pathname === ROUTES.DISCOVER}

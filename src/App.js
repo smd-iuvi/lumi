@@ -19,6 +19,7 @@ import Search from './pages/Search/Search';
 import Landing from './pages/Landing/Landing';
 import Event from './pages/Event/Event';
 import Category from './pages/Category/Category';
+import Discover from './pages/Discover/Discover';
 import Error404 from './pages/404/404';
 import RestrictedArea from './pages/RestrictedArea/RestrictedArea';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
@@ -82,6 +83,7 @@ class App extends Component {
               <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
               <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
               <Route path={ROUTES.LANDING} exact component={Landing} />
+              <Route path={ROUTES.DISCOVER} exact component={Discover} />
               <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
               <Route
                 path={`${ROUTES.SEARCH_ALL}/:searchTerm`}

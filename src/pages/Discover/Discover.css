@@ -1,0 +1,45 @@
+.discover{
+    color: var(--text-dark);
+}
+
+.carouselRandom .slider {
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.carouselRandom div{
+    margin-right: 16px;
+}
+
+.discover .categories{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 80px;
+    margin-top: 72px;
+}
+
+.discover .categories .containerCategories{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-gap: 24px;
+}
+
+.discover .category{
+    background-color: var(--cards);
+    padding: 20px 16px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.discover .category:hover{
+    background-color: var(--primary);
+}
+
+.discover .categories .line{
+    margin-top: 0;
+    margin-bottom: 20px;
+}
