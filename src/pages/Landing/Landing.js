@@ -19,7 +19,8 @@ const Landing = () => {
 
       <div className="landingContent">
         <img src={logo} className="landingLogo" />
-        <h1 className="Large-Text-Regular">Frase topperson sobre o lumi</h1>
+        <h1 className="Large-Text-Regular">Repositório de Audiovisual</h1>
+        <h2 className="Large-Text-Regular">Sistemas e Mídias Digitais</h2>
         <Link to={ROUTES.HOME} className="link">
           <button className="button buttonPrimary">Conheça agora</button>
         </Link>

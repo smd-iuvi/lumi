@@ -50,7 +50,7 @@ class App extends Component {
 
     return (
       <div>
-        {this.state.width > 1170 ? (
+        {this.state.width > 950 ? (
           <>
             {!location.pathname.includes(ROUTES.PLAYER) &&
               !location.pathname.includes(ROUTES.LANDING) ? (
