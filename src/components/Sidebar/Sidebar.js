@@ -79,19 +79,16 @@ class Navbar extends Component {
         {authUser ? (
           <div className="optionsLogged">
             <div className="optionsProfile">
-              {/* <Link to={ROUTES.PROFILE} className="link">
-                <ButtonProfile image={authUser.photo_url}>
-                  {authUser.name}
-                </ButtonProfile>
-              </Link> */}
-              <Link onClick={this.handleModal} className="showModal link">
-                <ButtonsBottom
-                  className="btnShow"
-                  newClass="iconBottom iconNewVideo"
-                >
-                  Enviar vídeo
-                </ButtonsBottom>
-              </Link>
+              {authUser.role !== ROLES.USER ? (
+                <Link onClick={this.handleModal} className="showModal link">
+                  <ButtonsBottom
+                    className="btnShow"
+                    newClass="iconBottom iconNewVideo"
+                  >
+                    Enviar vídeo
+                  </ButtonsBottom>
+                </Link>
+              ) : null}
               <Link to={ROUTES.PROFILE} className="link">
                 <ButtonsBottom
                   newClass="iconBottom iconUser"
@@ -128,9 +125,7 @@ class Navbar extends Component {
               ) : null}
             </div>
             {/* <Link to={ROUTES.PROFILE} className="link"> */}
-            <ButtonsBottom newClass="iconBottom iconHelp">
-              Ajuda
-              </ButtonsBottom>
+            <ButtonsBottom newClass="iconBottom iconHelp">Ajuda</ButtonsBottom>
             {/* </Link> */}
 
             <ButtonsBottom
@@ -141,17 +136,17 @@ class Navbar extends Component {
             </ButtonsBottom>
           </div>
         ) : (
-            <div className="divNotLogin">
-              <Link to={ROUTES.SIGN_IN} className="link">
-                <ButtonLogin />
-              </Link>
-              <Link className="link buttonHelp">
-                <ButtonsBottom newClass="iconBottom iconHelp">
-                  Ajuda
+          <div className="divNotLogin">
+            <Link to={ROUTES.SIGN_IN} className="link">
+              <ButtonLogin />
+            </Link>
+            <Link className="link buttonHelp">
+              <ButtonsBottom newClass="iconBottom iconHelp">
+                Ajuda
               </ButtonsBottom>
-              </Link>
-            </div>
-          )}
+            </Link>
+          </div>
+        )}
       </div>
     );
   }
