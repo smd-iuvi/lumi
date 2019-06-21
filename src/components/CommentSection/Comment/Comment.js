@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Comment.css';
-import Person from '../../Sidebar/assets/profile.jpg';
+import Person from '../assets/user-placeholder.svg';
 import { withFirebase } from '../../../Firebase';
 
 class Comment extends Component {

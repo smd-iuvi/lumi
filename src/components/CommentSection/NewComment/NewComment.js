@@ -1,6 +1,6 @@
 import React from 'react';
 import './NewComment.css';
-import Person from '../../Sidebar/assets/profile.jpg';
+import Person from '../assets/user-placeholder.svg';
 import { withAuthUser } from '../../../Firebase/Session';
 
 const NewComment = ({ newComment, onChange, onSend, authUser }) => {
@@ -9,7 +9,7 @@ const NewComment = ({ newComment, onChange, onSend, authUser }) => {
     <div className="newComment">
       <div>
         <img
-          src={authUser ? authUser.photo_url : Person}
+          src={authUser.photo_url ? authUser.photo_url : Person}
           className="photoComment"
         />
         <textarea

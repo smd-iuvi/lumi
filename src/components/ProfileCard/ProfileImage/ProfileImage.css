@@ -3,7 +3,6 @@
   height: 200px;
   clip-path: circle();
   color: var(--text-dark);
-  border: solid 1px #2f3146;
 }
 
 .ProfileImage .editIcon {

@@ -3,10 +3,11 @@ import React from 'react';
 import './ProfileImage.css';
 
 import camera from './assets/camera.svg';
+import placeholder from './assets/user-placeholder.svg';
 
 const ProfileImage = ({ imgUrl, icon }) => {
   const style = {
-    backgroundImage: `url(${imgUrl})`,
+    backgroundImage: `url(${imgUrl ? imgUrl : placeholder})`,
     backgroundSize: '200px',
     backgroundRepeat: 'no-repeat'
   };
