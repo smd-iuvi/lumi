@@ -6,7 +6,7 @@ import { maxHeaderSize } from 'http';
 const initialPosition = 0;
 const gap = 16;
 const cardWidth = 160;
-const MAX_SPEED = 20;
+const MAX_SPEED = 30;
 
 class Roulette extends Component {
   constructor(props) {
@@ -41,23 +41,24 @@ class Roulette extends Component {
       isBreaking,
       counter
     } = this.state;
-    let newVelocity = 0;
+    let newVelocity = velocity;
 
     if (isAccelerating) {
       newVelocity = velocity + accelearation;
 
       if (newVelocity > MAX_SPEED) {
         this.setState({ isAccelerating: false });
-        console.log('Ola');
         newVelocity = MAX_SPEED;
       }
     } else if (!isBreaking && !isAccelerating) {
       let newCounter = counter + 1;
 
-      if (newCounter > 120) {
+      if (newCounter > 240) {
         newCounter = 0;
         this.setState({ isBreaking: true, counter: newCounter });
       }
+
+      this.setState({ counter: newCounter });
     } else if (isBreaking) {
       newVelocity = velocity - accelearation;
 
