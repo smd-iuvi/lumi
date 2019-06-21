@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="background-2" width="1440" height="1098" data-name="background" viewBox="0 0 1440 1098">
+    <defs>
+        <style>
+            .cls-1{fill:#15161c}.cls-2{clip-path:url(#clip-path)}.cls-3{fill:rgba(117,110,255,.1)}
+        </style>
+        <clipPath id="clip-path">
+            <path id="background" d="M0 0h1440v1098H0z" class="cls-1"/>
+        </clipPath>
+    </defs>
+    <path id="background-3" d="M0 0h1440v1098H0z" class="cls-1" data-name="background"/>
+    <g id="Mask_Group_4" class="cls-2" data-name="Mask Group 4">
+        <circle id="Ellipse_39" cx="407.5" cy="407.5" r="407.5" class="cls-3" data-name="Ellipse 39" transform="translate(-110 446)"/>
+        <circle id="Ellipse_42" cx="407.5" cy="407.5" r="407.5" class="cls-3" data-name="Ellipse 42" transform="translate(1199 -249)"/>
+        <circle id="Ellipse_40" cx="484" cy="484" r="484" class="cls-3" data-name="Ellipse 40" transform="translate(560 293)"/>
+        <circle id="Ellipse_41" cx="484" cy="484" r="484" class="cls-3" data-name="Ellipse 41" transform="translate(35 -700)"/>
+    </g>
+</svg>

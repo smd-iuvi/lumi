@@ -26,9 +26,9 @@ const Landing = () => {
       </div>
 
       <div className="landingNetworks">
-        <article><i class="fab fa-facebook-f"></i></article>
-        <article><i class="fab fa-instagram"></i></article>
-        <article><i class="fas fa-globe"></i></article>
+        <a href="https://www.facebook.com/SMDUFC/" target="blink"><article><i class="fab fa-facebook-f"></i></article></a>
+        <a href="https://www.instagram.com/ca.smd/" target="blink"><article><i class="fab fa-instagram"></i></article></a>
+        <a href="http://www.smd.ufc.br/pt/" target="blink"><article><i class="fas fa-globe"></i></article></a>
       </div>
     </div>
   );

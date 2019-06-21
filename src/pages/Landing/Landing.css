@@ -1,3 +1,9 @@
+.landing{
+    background-image: url('./assets/background.svg');
+    height: 100vh;
+    overflow-y: none;
+}
+
 .landingNavbar{
     display: flex;
     justify-content: flex-end;
