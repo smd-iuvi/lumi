@@ -53,15 +53,15 @@ class App extends Component {
         {this.state.width > 950 ? (
           <>
             {!location.pathname.includes(ROUTES.PLAYER) &&
-              !location.pathname.includes(ROUTES.LANDING) ? (
-                <Sidebar />
-              ) : null}
+            !location.pathname.includes(ROUTES.LANDING) ? (
+              <Sidebar />
+            ) : null}
 
             {!location.pathname.includes(ROUTES.LANDING) &&
-              !location.pathname.includes(ROUTES.SIGN_IN) &&
-              !location.pathname.includes(ROUTES.SIGN_UP) ? (
-                <NavBar class="navbar" />
-              ) : null}
+            !location.pathname.includes(ROUTES.SIGN_IN) &&
+            !location.pathname.includes(ROUTES.SIGN_UP) ? (
+              <NavBar class="navbar" />
+            ) : null}
             {location.pathname.includes(ROUTES.PLAYER) && (
               <NavBar class="navbar navbarComplete" />
             )}
@@ -93,7 +93,11 @@ class App extends Component {
               />
               <Route path={`${ROUTES.SEARCH}`} component={Search} />
               <Route path={ROUTES.EVENT} exact component={Event} />
-              <Route path={ROUTES.CATEGORY} exact component={Category} />
+              <Route
+                path={`${ROUTES.CATEGORY}/:name`}
+                exact
+                component={Category}
+              />
               <Route
                 path={ROUTES.RESTRICTED_AREA}
                 exact
@@ -103,13 +107,13 @@ class App extends Component {
             </Switch>
 
             {!location.pathname.includes(ROUTES.PLAYER) &&
-              !location.pathname.includes(ROUTES.LANDING) ? (
-                <Footer />
-              ) : null}
+            !location.pathname.includes(ROUTES.LANDING) ? (
+              <Footer />
+            ) : null}
           </>
         ) : (
-            <SmallWidth />
-          )}
+          <SmallWidth />
+        )}
       </div>
     );
   }
