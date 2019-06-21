@@ -8,8 +8,8 @@ import placeholder from './assets/user-placeholder.svg';
 const ProfileImage = ({ imgUrl, icon }) => {
   const style = {
     backgroundImage: `url(${imgUrl ? imgUrl : placeholder})`,
-    backgroundSize: '200px',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
   };
   return (
     <div className="ProfileImage" style={style}>

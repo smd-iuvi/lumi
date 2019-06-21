@@ -5,12 +5,17 @@ import { withAuthUser } from '../../../Firebase/Session';
 
 const NewComment = ({ newComment, onChange, onSend, authUser }) => {
   const isSendEnabled = newComment !== '' ? true : false;
+  const style = {
+    backgroundImage: `url(${authUser.photo_url ? authUser.photo_url : Person})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  };
   return (
     <div className="newComment">
       <div>
-        <img
-          src={authUser.photo_url ? authUser.photo_url : Person}
+        <article
           className="photoComment"
+          style={style}
         />
         <textarea
           name="newComment"

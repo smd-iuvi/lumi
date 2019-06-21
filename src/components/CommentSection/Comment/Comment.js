@@ -24,12 +24,17 @@ class Comment extends Component {
   render() {
     const { children, comment } = this.props;
     const { userName, userPhoto } = this.state;
+    const style = {
+      backgroundImage: `url(${userPhoto ? userPhoto : Person})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover'
+    };
     return (
       <div className="Comment">
         <div className="infosUser">
-          <img
-            src={userPhoto ? userPhoto : Person}
+          <article
             className="imgUserComment"
+            style={style}
           />
           <h1 className="Small-Text-Bold">{userName}</h1>
           <h1 className="Small-Text-Regular">
