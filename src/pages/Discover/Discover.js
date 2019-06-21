@@ -10,6 +10,7 @@ import { withFirebase } from '../../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 import img from '../../assets/birdbox.jpg';
+import Roulette from '../../components/Roulette/Roulette';
 
 class Discover extends Component {
   constructor(props) {
@@ -62,48 +63,7 @@ class Discover extends Component {
         <h1 className="Large-Text-Bold">
           Não sabe o que assistir? A gente escolhe por você.
         </h1>
-        <Carousel
-          showStatus={false}
-          showIndicators={false}
-          showThumbs={false}
-          centerMode
-          centerSlidePercentage={20}
-          showArrows={false}
-          infiniteLoop
-          autoPlay={this.state.autoplay}
-          transitionTime={300}
-          interval={300}
-          selectedItem={3}
-          className="carouselRandom"
-        >
-          <div>
-            <img src={img} />
-          </div>
-          <div>
-            <img src={img} />
-          </div>
-          <div>
-            <img src={img} />
-          </div>
-          <div>
-            <img src={img} />
-          </div>
-          <div>
-            <img src={img} />
-          </div>
-          <div>
-            <img src={img} />
-          </div>
-          <div>
-            <img src={img} />
-          </div>
-          <div>
-            <img src={img} />
-          </div>
-          <div>
-            <img src={img} />
-          </div>
-        </Carousel>
+        <Roulette />
         <button className="button buttonPrimary" onClick={this.randomVideos}>
           Iniciar
         </button>
