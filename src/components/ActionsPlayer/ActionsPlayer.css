@@ -51,3 +51,19 @@
 .Actions div:hover .iconList{
   background-image: url('./assets/add_list_hover.svg');
 }
+
+.Actions .addClap:hover .valueClaps{
+  display: block;
+}
+
+.Actions .valueClaps{
+  padding: 6px;
+  border-radius: 6px;
+  background-color: var(--primary);
+  width: max-content;
+  color: var(--text-dark) !important;
+  position: absolute;
+  margin-top: 38px;
+  margin-left: 8px;
+  display: none;
+}

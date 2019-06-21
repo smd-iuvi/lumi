@@ -5,9 +5,10 @@ const ActionsPlayer = ({ didClap, claps, didAddToWatchlist, onWatchList }) => {
   console.log(onWatchList);
   return (
     <div className="Actions ActionsPlayer">
-      <div onClick={didClap}>
+      <div onClick={didClap} className="addClap">
         <article className="Icons iconAplause"></article>
         <h1 className="Small-Text-Bold">Aplaudir</h1>
+        <article className="valueClaps Small-Text-Regular">{claps} aplausos</article>
       </div>
       <div onClick={didAddToWatchlist}>
         <article className="Icons iconList"></article>
