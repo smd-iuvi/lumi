@@ -124,7 +124,7 @@ class SignUp extends Component {
                     type="radio"
                     id="student"
                     name="role"
-                    value={ROLES.USER}
+                    value={ROLES.STUDENT}
                     onClick={this.handleBox}
                   />
                   <label for="student" className="checkbox">
