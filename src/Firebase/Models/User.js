@@ -4,20 +4,14 @@ class User {
     this.auth = auth;
   }
 
-  create = (
-    { name, email, password, username, role, birthday, photo_url },
-    callback
-  ) => {
+  create = ({ name, email, password, role }, callback) => {
     this.auth
       .createUserWithEmailAndPassword(email, password)
       .then(authUser => {
         this.database.ref(`user/${authUser.user.uid}`).set({
           name: name,
           email: email,
-          username: username,
-          role: role,
-          birthday: birthday,
-          photo_url: photo_url
+          role: role
         });
       })
       .then(user => {

@@ -14,15 +14,10 @@ import { withAuthUser } from '../../Firebase/Session';
 
 const INITIAL_STATE = {
   name: '',
-  username: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
   role: ROLES.USER,
-  birthday: '2010-01-01',
-  imageFile: null,
-  imageUrl: '',
-  uploading: false,
   error: null,
   seeBox: false
 };
@@ -47,20 +42,15 @@ class SignUp extends Component {
     event.preventDefault();
     const { firebase, history } = this.props;
 
-    this.onUploadImage(url => {
-      const user = {
-        name: this.state.name,
-        username: this.state.username,
-        email: this.state.email,
-        password: this.state.passwordOne,
-        role: this.state.role,
-        birthday: this.state.birthday,
-        photo_url: url
-      };
+    const user = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.passwordOne,
+      role: this.state.role
+    };
 
-      firebase.user.create(user, (user, error) => {
-        history.push(ROUTES.HOME);
-      });
+    firebase.user.create(user, (user, error) => {
+      history.push(ROUTES.HOME);
     });
   };
 
@@ -69,61 +59,13 @@ class SignUp extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  onFileChange = event => {
-    if (event.target.files[0]) {
-      const image = event.target.files[0];
-      this.setState({ imageFile: image });
-    }
-  };
-
-  onUploadImage = async callback => {
-    const { firebase } = this.props;
-    const { imageFile } = this.state;
-    this.setState({ uploading: true });
-    const imageName = uuid();
-
-    await firebase.storage
-      .ref(`profile_photo/${imageName}`)
-      .put(imageFile)
-      .on(
-        'state_changed',
-        snapshot => {
-          console.log(snapshot);
-        },
-        error => {
-          this.setState({ error: error });
-        },
-        completion => {
-          this.setState({ uploading: false });
-          console.log('Finished');
-          firebase.storage
-            .ref('profile_photo')
-            .child(imageName)
-            .getDownloadURL()
-            .then(url => {
-              callback(url);
-            })
-            .catch(error => {
-              this.setState({ error: error });
-            });
-        }
-      );
-  };
-
-  handleBox = () => {
+  handleBox = event => {
+    this.setState({ [event.target.name]: event.target.value });
     this.setState({ seeBox: true });
-  }
+  };
 
   render() {
-    const {
-      name,
-      username,
-      email,
-      passwordOne,
-      passwordTwo,
-      birthday,
-      imageFile
-    } = this.state;
+    const { name, email, passwordOne, passwordTwo } = this.state;
     return (
       <>
         <div className="Login">
@@ -132,7 +74,6 @@ class SignUp extends Component {
               <h1 className="Large-Text-Bold">Faça seu cadastro. É rápido.</h1>
             </article>
             <div className="contentForm">
-
               <article className="divTextInput">
                 <h1 className="Medium-Text-Regular">nome</h1>
                 <input
@@ -144,15 +85,6 @@ class SignUp extends Component {
                   autoFocus
                 />
               </article>
-              {/* <input
-                type="text"
-                value={username}
-                name="username"
-                onChange={this.onChange}
-                placeholder="username"
-              />{' '}
-              <br /> */}
-
               <article className="divTextInput">
                 <h1 className="Medium-Text-Regular">e-mail</h1>
                 <input
@@ -186,52 +118,59 @@ class SignUp extends Component {
                 />
               </article>
 
-              {/* <input
-                type="date"
-                value={birthday}
-                name="birthday"
-                onChange={this.onChange}
-                placeholder="Data de nascimento"
-              />{' '}
-              <input type="file" name="imageFile" onChange={this.onFileChange} />
-              <br /> */}
-
               <div className="radiosRegister">
                 <article className="radioOption">
-                  <input type="radio" id="student" name="role" value={ROLES.STUDENT} onClick={this.handleBox} />
+                  <input
+                    type="radio"
+                    id="student"
+                    name="role"
+                    value={ROLES.USER}
+                    onClick={this.handleBox}
+                  />
                   <label for="student" className="checkbox">
-                    <article className="border"><article></article></article>
+                    <article className="border">
+                      <article />
+                    </article>
                   </label>
-                  <label className="Medium-Text-Regular" for="student">Sou aluno(a) do SMD</label>
+                  <label className="Medium-Text-Regular" for="student">
+                    Sou aluno(a) do SMD
+                  </label>
                 </article>
                 <article className="radioOption">
-                  <input type="radio" id="teacher" name="role" value={ROLES.TEACHER} onClick={this.handleBox} />
+                  <input
+                    type="radio"
+                    id="teacher"
+                    name="role"
+                    value={ROLES.TEACHER}
+                    onClick={this.handleBox}
+                  />
                   <label for="student" className="checkbox">
-                    <article className="border"><article></article></article>
+                    <article className="border">
+                      <article />
+                    </article>
                   </label>
-                  <label className="Medium-Text-Regular" for="teacher">Sou professor(a) do SMD</label>
+                  <label className="Medium-Text-Regular" for="teacher">
+                    Sou professor(a) do SMD
+                  </label>
                 </article>
               </div>
 
-              {this.state.seeBox &&
+              {this.state.seeBox && (
                 <div className="uploadDocument">
                   <article>
-                    <h1 className="Medium-Text-Regular">Envie-nos uma declaração ou atestado de matrícula para confirmarmos o seu vínculo com o curso.</h1>
+                    <h1 className="Medium-Text-Regular">
+                      Envie-nos uma declaração ou atestado de matrícula para
+                      confirmarmos o seu vínculo com o curso.
+                    </h1>
                   </article>
                   <input type="file" className="file" id="file" />
                   <label for="file" className="button buttonTerceary">
                     Escolher arquivo
                   </label>
                 </div>
-              }
-              {/* <select onChange={this.onChange} name="role">
-                <option select="selected" value={ROLES.USER}>
-                  Usuário comum
-            </option>
-                <option value={ROLES.TEACHER}>Professor</option>
-                <option value={ROLES.STUDENT}>Aluno</option>
-              </select>{' '} */}
-              <article className="buttonLogin">
+              )}
+
+              <article className="buttonLogin" onClick={this.onSubmit}>
                 <button type="submit" className="button buttonPrimary">
                   Cadastrar
                 </button>
