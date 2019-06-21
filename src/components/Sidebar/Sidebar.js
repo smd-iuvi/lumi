@@ -145,11 +145,11 @@ class Navbar extends Component {
               <Link to={ROUTES.SIGN_IN} className="link">
                 <ButtonLogin />
               </Link>
-              {/* <Link to={ROUTES.PROFILE} className="link buttonHelp"> */}
-              <ButtonsBottom newClass="iconBottom iconHelp">
-                Ajuda
+              <Link className="link buttonHelp">
+                <ButtonsBottom newClass="iconBottom iconHelp">
+                  Ajuda
               </ButtonsBottom>
-              {/* </Link> */}
+              </Link>
             </div>
           )}
       </div>
