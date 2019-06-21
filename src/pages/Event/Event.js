@@ -47,7 +47,7 @@ class Event extends Component {
         } else if (selected == 1) {
             container = (
                 <>
-                    <h1>aba 2</h1>
+                    <h1></h1>
                 </>
             );
         }
@@ -59,6 +59,7 @@ class Event extends Component {
                     tabs={this.state.tabs}
                     onTabChange={this.onTabChange}
                     profileTeacher={false}
+                    selected={selected}
                 />
                 <div className="container">{container}</div>
             </div>

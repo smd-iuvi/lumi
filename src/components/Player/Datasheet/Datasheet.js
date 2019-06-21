@@ -145,7 +145,7 @@ class Datasheet extends Component {
     }
     return (
       <div className="datasheet">
-        <Tabs tabs={this.state.tabs} onTabChange={this.onTabChange} />
+        <Tabs tabs={this.state.tabs} selected={selected} onTabChange={this.onTabChange} />
         <div className="contentTab">{container}</div>
       </div>
     );
