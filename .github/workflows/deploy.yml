@@ -1,9 +1,6 @@
 name: Deploy
 
-on:
-  push:
-    tags:
-      - release-production-*
+on: [push]
 
 jobs:
   deploy_to_firebase_hosting:
