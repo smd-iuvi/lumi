@@ -1,9 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const Header = styled.div`
+  color: ${props => (props.theme.primary ? props.theme.primary : 'black')};
+`
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>App</h1>
+      <Header>App</Header>
     </div>
   )
 }
