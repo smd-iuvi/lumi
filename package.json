@@ -46,6 +46,12 @@
     "@babel/core": "^7.7.5",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/react": "^5.2.8",
-    "babel-loader": "^8.0.6"
+    "@types/enzyme": "^3.10.4",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
+    "ts-jest": "^24.2.0"
   }
 }
