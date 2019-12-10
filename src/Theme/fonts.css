@@ -1,0 +1,14 @@
+@font-face {
+  font-family: Regular;
+  src: url('../assets/fonts/Metropolis-Regular.otf');
+}
+
+@font-face {
+  font-family: Bold;
+  src: url('../assets/fonts/Metropolis-Bold.otf');
+}
+
+@font-face {
+  font-family: Medium;
+  src: url('../assets/fonts/Metropolis-Medium.otf');
+}

@@ -4,15 +4,14 @@ import './index.css'
 import App from './App'
 
 import { ThemeProvider } from 'styled-components'
+
 import * as theme from './Theme/theme'
 
 import * as serviceWorker from './serviceWorker'
 
-console.log(theme)
-
 ReactDOM.render(
   <ThemeProvider theme={theme.default}>
-    <App />,
+    <App />
   </ThemeProvider>,
   document.getElementById('root')
 )
