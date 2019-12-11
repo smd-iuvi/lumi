@@ -5,12 +5,12 @@ import App from './App'
 
 import { ThemeProvider } from 'styled-components'
 
-import * as theme from './Theme/theme'
+import theme from './Theme/theme'
 
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
-  <ThemeProvider theme={theme.default}>
+  <ThemeProvider theme={theme}>
     <App />
   </ThemeProvider>,
   document.getElementById('root')

@@ -26,7 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "eject": "react-scripts",
     "storybook": "start-storybook"
   },
   "eslintConfig": {
@@ -50,10 +50,13 @@
     "@storybook/react": "^5.2.8",
     "@types/enzyme": "^3.10.4",
     "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/react-test-renderer": "^16.9.1",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
+    "jest-styled-components": "^6.3.4",
+    "react-test-renderer": "^16.12.0",
     "ts-jest": "^24.2.0"
   }
 }
