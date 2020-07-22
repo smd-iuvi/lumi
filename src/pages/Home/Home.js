@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 
 import { withFirebase } from '../../Firebase';
@@ -7,77 +7,65 @@ import HomeFilms from '../../components/HomeFilms/HomeFilms';
 import Carousel from '../../components/Carousel/Carousel';
 import EventsList from '../../components/EventsList/EventsList';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
+function Home(props) {
+  const [loadingRecents, setLoadingRecents] = useState(false);
+  const [loadingPopulars, setLoadingPopulars] = useState(false);
+  const [loadingEvents, setLoadingEvents] = useState(false);
+  const [recentsVideos, setRecentsVideos] = useState([]);
+  const [popularsVideos, setPopularsVideos] = useState([]);
+  const [events, setEvents] = useState(null);
+  const [error, setError] = useState(null);
 
-    this.state = {
-      loadingRecents: false,
-      loadingPopulars: false,
-      loadingEvents: false,
-      recentsVideos: [],
-      popularsVideos: [],
-      events: null,
-      error: null
-    };
-  }
+  useEffect(() => {
+    setLoadingRecents(true);
+    setLoadingPopulars(true);
 
-  componentDidMount() {
-    this.setState({ loadingRecents: true, loadingPopulars: true });
-    const { firebase } = this.props;
+    const { firebase } = props;
 
     firebase.video
       .get()
       .then(videos => {
-        this.setState({ recentsVideos: videos, loadingRecents: false });
+        setRecentsVideos(videos);
+        setLoadingRecents(false);
       })
       .catch(error => {
-        this.setState({ error, loadingRecents: false });
+        setError(error);
+        setLoadingRecents(false);
       });
 
     firebase.video
       .getPopulars(4)
       .then(videos => {
-        this.setState({ popularsVideos: videos, loadingPopulars: false });
+        setPopularsVideos(videos);
+        setLoadingPopulars(false);
       })
       .catch(error => {
-        this.setState({ error, loadingPopulars: false });
+        setError(error);
+        setLoadingPopulars(false);
       });
 
     firebase.event
       .getNext(3)
       .then(events => {
-        console.log(events);
-        this.setState({ events });
+        setEvents(events);
       })
-      .catch(error => this.setState({ error }));
-  }
+      .catch(error => setError(error));
 
-  componentWillUnmount() {
-    const { firebase } = this.props;
-    firebase.video.turnOff();
-  }
+    return () => {
+      const { firebase } = props;
+      firebase.video.turnOff();
+    }
+  }, []);
 
-  render() {
-    const {
-      recentsVideos,
-      loadingRecents,
-      popularsVideos,
-      loadingPopulars,
-      loadingEvents,
-      events
-    } = this.state;
-
-    return (
-      <div className="container">
-        <Carousel videos={recentsVideos} loading={loadingRecents} />
-        <div className="bannersHome">
-          <HomeFilms videos={popularsVideos} loading={loadingPopulars} />
-          <EventsList events={events} loading={loadingEvents} />
-        </div>
+  return (
+    <div className="container">
+      <Carousel videos={recentsVideos} loading={loadingRecents} />
+      <div className="bannersHome">
+        <HomeFilms videos={popularsVideos} loading={loadingPopulars} />
+        <EventsList events={events} loading={loadingEvents} />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default withFirebase(Home);
