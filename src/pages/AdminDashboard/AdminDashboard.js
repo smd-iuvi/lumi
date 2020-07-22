@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { compose } from 'recompose';
 
 import { withAuthorization } from '../../Firebase/Session';
@@ -7,10 +7,8 @@ import { withFirebase } from '../../Firebase';
 import * as ROLES from '../../constants/roles';
 import * as CONDITIONS from '../../constants/authorizingConditions';
 
-class AdminDashboard extends Component {
-  render() {
-    return <div />;
-  }
+function AdminDashboard(props) {
+  return <div />;
 }
 
 const condition = authUser => {
