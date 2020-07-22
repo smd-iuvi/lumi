@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import uuid from 'uuid';
 import './SignUp.css';
-// import PropTypes from 'prop-types';
 
 import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
@@ -18,7 +16,6 @@ function SignUp(props) {
   const [passwordOne, setPasswordOne] = useState('');
   const [passwordTwo, setPasswordTwo] = useState('');
   const [role, setRole] = useState(ROLES.USER);
-  const [error, setError] = useState(null);
   const [seeBox, setSeeBox] = useState(false);
 
   useEffect(() => {

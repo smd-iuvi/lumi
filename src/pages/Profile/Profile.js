@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
@@ -22,57 +22,46 @@ import CardList from '../../components/CardList/CardList';
 import TabBar from '../../components/TabBar/TabBar';
 import EventsControll from '../../components/EventsControll/EventsControll';
 import EmptyLabel from '../../components/EmptyLabel/EmptyLabel';
-import { auth } from 'firebase';
 
-class Profile extends Component {
-  constructor(props) {
-    super(props);
+function Profile(props) {
+  const [watchList, setWatchList] = useState(null);
+  const [myWorks, setMyWorks] = useState(null);
+  const [myEvents, setMyEvents] = useState(null);
+  const [error, setError] = useState(null);
+  const [loadingWatchList, setLoadingWatchList] = useState(false);
+  const [loadingMyWorks, setLoadingMyWorks] = useState(false);
+  const [loadingMyEvents, setLoadingMyEvents] = useState(false);
+  const [tabs, setTabs] = useState([ROLES.USER]);
+  const [profileTeacher, setProfileTeacher] = useState(false);
 
-    this.state = {
-      watchList: null,
-      myWorks: null,
-      myEvents: null,
-      error: null,
-      loadingWatchList: false,
-      loadingMyWorks: false,
-      loadingMyEvents: false,
-      tabs: [],
-      profileTeacher: false
-    };
-  }
-
-  componentDidMount() {
-    const { authUser, location } = this.props;
+  useEffect(() => {
+    const { authUser, location } = props;
 
     //Verifica se é professor e muda as opções da tabbar
     if (authUser.role && authUser.role === ROLES.TEACHER) {
-      this.setState({
-        tabs: [
-          'Minhas informações',
-          'Meus envios',
-          'Minha lista',
-          'Meus eventos'
-        ],
-        profileTeacher: true
-      });
+      setTabs([
+        'Minhas informações',
+        'Meus envios',
+        'Minha lista',
+        'Meus eventos'
+      ]);
+      setProfileTeacher(true);
 
-      this.fetchEvents();
+      fetchEvents();
     } else {
-      this.setState({
-        tabs: ['Minhas informações', 'Meus envios', 'Minha lista'],
-        profileTeacher: false
-      });
+      setTabs(['Minhas informações', 'Meus envios', 'Minha lista']);
+      setProfileTeacher(false);
     }
 
-    this.fetchMyWorks();
+    fetchMyWorks();
 
     if (authUser.watchList) {
-      this.fetchMyWatchList();
+      fetchMyWatchList();
     }
-  }
+  }, []);
 
-  getSelectedTab = () => {
-    const { location, authUser } = this.props;
+  function getSelectedTab() {
+    const { location, authUser } = props;
     if (location.pathname === ROUTES.PROFILE) {
       return 0;
     } else if (location.pathname === ROUTES.PROFILE_MY_UPLOADS) {
@@ -87,8 +76,8 @@ class Profile extends Component {
     }
   };
 
-  onTabChange = newTab => {
-    const { history } = this.props;
+  function onTabChange(newTab) {
+    const { history } = props;
 
     switch (parseInt(newTab)) {
       case 0:
@@ -108,159 +97,153 @@ class Profile extends Component {
     }
   };
 
-  onEventDelete = uid => {
-    const { firebase } = this.props;
-    firebase.event.delete(uid).catch(error => this.setState({ error }));
-    this.fetchEvents();
+  function onEventDelete(uid) {
+    const { firebase } = props;
+    firebase.event.delete(uid).catch(error => setError(error));
+    fetchEvents();
   };
 
-  fetchEvents = () => {
-    const { firebase, authUser } = this.props;
-    this.setState({ loadingMyEvents: true });
+  function fetchEvents() {
+    const { firebase, authUser } = props;
+    setLoadingMyEvents(true);
 
     firebase.event
       .getEventsBy(Event.CREATED_BY, authUser.uid)
-      .then(myEvents => this.setState({ myEvents, loadingMyEvents: false }))
-      .catch(error => this.setState({ error }));
+      .then(myEvents => {
+        setMyEvents(myEvents);
+        setLoadingMyEvents(false)
+      })
+      .catch(error => setError(error));
   };
 
-  fetchMyWorks = () => {
-    const { firebase, authUser } = this.props;
-    this.setState({ loadingMyWorks: true });
+  function fetchMyWorks() {
+    const { firebase, authUser } = props;
+    setLoadingMyWorks(true);
 
     firebase.video
       .getVideosBy(Video.CREATED_BY, authUser.uid)
       .then(videos => {
-        this.setState({ myWorks: videos, loadingMyWorks: false });
+        setMyWorks(videos);
+        setLoadingMyWorks(false)
       })
       .catch(error => {
-        this.setState({ error, loadingMyWorks: false });
+        setError(error);
+        setLoadingMyWorks(false);
       });
   };
 
-  fetchMyWatchList = () => {
-    const { firebase, authUser } = this.props;
-    this.setState({ loadingWatchList: true });
+  function fetchMyWatchList() {
+    const { firebase, authUser } = props;
+    setLoadingWatchList(true);
     firebase.video
       .get()
       .then(videos => {
         const newWatchList = videos.filter(video => {
           return authUser.watchList.includes(video.uid);
         });
-
-        this.setState({ watchList: newWatchList, loadingWatchList: false });
+        setWatchList(newWatchList);
+        setLoadingWatchList(false);
       })
       .catch(error => {
-        this.setState({ error, loadingWatchList: false });
+        setError(error);
+        setLoadingWatchList(false);
       });
   };
 
-  render() {
-    const { authUser } = this.props;
-    const {
-      watchList,
-      myWorks,
-      myEvents,
-      loadingMyWorks,
-      loadingWatchList,
-      loadingMyEvents,
-      profileTeacher
-    } = this.state;
+  const { authUser } = props;
 
-    let container = null;
+  let container = null;
 
-    const selected = this.getSelectedTab();
+  const selected = getSelectedTab();
 
-    if (selected === 0) {
-      container = (
-        <>
-          <ProfileCard
-            name={authUser.name}
-            imgUrl={authUser.photo_url}
-            role={authUser.role}
-            className="ProfileCard"
-            profileTeacher={this.state.profileTeacher}
-          />
-          <article className="lineSidebar" />
-          <ProfileLabels />
-        </>
-      );
-    } else if (selected === 1) {
-      container = (
-        <>
-          {loadingMyWorks === false && myWorks === null ? (
-            <>
-              <img src={iconMyVideos} />
-              <EmptyLabel>Você ainda não enviou vídeos</EmptyLabel>
-            </>
-          ) : (
-              <CardList
-                loading={loadingMyWorks}
-                videos={myWorks}
-                belowTab={true}
-                type="myVideos"
-              />
-            )}
-        </>
-      );
-    } else if (selected === 2) {
-      container = (
-        <>
-          {loadingWatchList === false && watchList === null ? (
-            <>
-              <img src={iconMyList} />
-              <EmptyLabel>
-                Você ainda não adicionou vídeos à sua lista
-              </EmptyLabel>
-            </>
-          ) : (
-              <CardList
-                loading={loadingWatchList}
-                videos={watchList}
-                belowTab={true}
-                type="myList"
-              />
-            )}
-        </>
-      );
-    } else if (selected === 3) {
-      container = (
-        <>
-          {loadingMyEvents === false && myEvents === null ? (
-            <>
-              <img src={iconMyList} />
-              <EmptyLabel>Você ainda não criou nenhum evento</EmptyLabel>
-            </>
-          ) : (
-              <EventsControll
-                events={myEvents}
-                loading={loadingMyEvents}
-                onDelete={this.onEventDelete}
-              />
-            )}
-        </>
-      );
-    }
-
-    return (
+  if (selected === 0) {
+    container = (
       <>
-        <TabBar
-          icon={iconProfile}
-          title="Meu perfil"
-          tabs={this.state.tabs}
-          onTabChange={this.onTabChange}
-          selected={selected}
+        <ProfileCard
+          name={authUser.name}
+          imgUrl={authUser.photo_url}
+          role={authUser.role}
+          className="ProfileCard"
           profileTeacher={profileTeacher}
         />
-        <div className="container Profile">{container}</div>
+        <article className="lineSidebar" />
+        <ProfileLabels />
+      </>
+    );
+  } else if (selected === 1) {
+    container = (
+      <>
+        {loadingMyWorks === false && myWorks === null ? (
+          <>
+            <img src={iconMyVideos} />
+            <EmptyLabel>Você ainda não enviou vídeos</EmptyLabel>
+          </>
+        ) : (
+            <CardList
+              loading={loadingMyWorks}
+              videos={myWorks}
+              belowTab={true}
+              type="myVideos"
+            />
+          )}
+      </>
+    );
+  } else if (selected === 2) {
+    container = (
+      <>
+        {loadingWatchList === false && watchList === null ? (
+          <>
+            <img src={iconMyList} />
+            <EmptyLabel>
+              Você ainda não adicionou vídeos à sua lista
+            </EmptyLabel>
+          </>
+        ) : (
+            <CardList
+              loading={loadingWatchList}
+              videos={watchList}
+              belowTab={true}
+              type="myList"
+            />
+          )}
+      </>
+    );
+  } else if (selected === 3) {
+    container = (
+      <>
+        {loadingMyEvents === false && myEvents === null ? (
+          <>
+            <img src={iconMyList} />
+            <EmptyLabel>Você ainda não criou nenhum evento</EmptyLabel>
+          </>
+        ) : (
+            <EventsControll
+              events={myEvents}
+              loading={loadingMyEvents}
+              onDelete={onEventDelete}
+            />
+          )}
       </>
     );
   }
+
+  return (
+    <>
+      <TabBar
+        icon={iconProfile}
+        title="Meu perfil"
+        tabs={tabs}
+        onTabChange={onTabChange}
+        selected={selected}
+        profileTeacher={profileTeacher}
+      />
+      <div className="container Profile">{container}</div>
+    </>
+  );
 }
 
 const condition = authUser => {
   if (authUser == null) {
-    console.log(CONDITIONS.NOT_LOGGED);
     return CONDITIONS.NOT_LOGGED;
   } else {
     return CONDITIONS.AUTHORIZED;
