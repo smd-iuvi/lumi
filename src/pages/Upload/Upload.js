@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Upload.css';
 
 import { withFirebase } from '../../Firebase';
@@ -12,43 +12,40 @@ import AddTags from '../../components/Upload/AddTags/AddTags';
 import SelectBox from '../../components/Upload/SelectBox/SelectBox';
 import NewInformation from '../../components/Upload/NewInformation/NewInformation';
 
-const FORM_INITIAL_STATE = {
-  title: '',
-  description: '',
-  genre: 'Animação',
-  tags: [],
-  url: '',
-  parentalRating: 'Livre',
-  discipline: 'Nenhuma',
-  semester: '2019.1',
-  content: '',
-  professor: '',
-  about: '',
-  userId: 1
-};
+function Upload(props) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [genre, setGenre] = useState('Animação');
+  const [tags, setTags] = useState([]);
+  const [url, setUrl] = useState('');
+  const [parentalRating, setParentalRating] = useState('Livre');
+  const [discipline, setDiscipline] = useState('Nenhuma');
+  const [semester, setSemester] = useState('2020.1');
+  const [content, setContent] = useState('');
+  const [professor, setProfessor] = useState('');
+  const [about, setAbout] = useState('');
+  const [userId, setUserId] = useState(1);
 
-class Upload extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...FORM_INITIAL_STATE };
-    this.addInformation = this.addInformation.bind(this);
-  }
-
-  addInformation = () => {
+  function addInformation() {
     //adicionar novo NewInformation
   };
 
-  onChange = e => {
-    e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
-  };
-
-  onSubmit = () => {
-    const { firebase } = this.props;
+  function onSubmit() {
+    const { firebase } = props;
 
     const video = {
-      ...this.state
+      title,
+      description,
+      genre,
+      tags,
+      url,
+      parentalRating,
+      discipline,
+      semester,
+      content,
+      professor,
+      about,
+      userId
     };
 
     firebase.video.create(video, error => {
@@ -60,26 +57,22 @@ class Upload extends Component {
     });
   };
 
-  reset = () => {
-    this.setState({ form: FORM_INITIAL_STATE });
-    console.log(this.state);
+  function reset() {
+    setTitle('');
+    setDescription('');
+    setGenre('Animação');
+    setTags([]);
+    setUrl('');
+    setParentalRating('Livre');
+    setDiscipline('Nenhuma');
+    setSemester('2019.1');
+    setContent('');
+    setProfessor('');
+    setAbout('');
+    setUserId(1);
   };
 
-  isFormInvalid = () => {
-    const {
-      title,
-      description,
-      genre,
-      tags,
-      url,
-      parentalRating,
-      discipline,
-      semester,
-      content,
-      professor,
-      about
-    } = this.state;
-
+  function isFormInvalid() {
     const isInvalid =
       title === '' ||
       description === '' ||
@@ -95,122 +88,106 @@ class Upload extends Component {
     return isInvalid;
   };
 
-  render() {
-    const {
-      title,
-      description,
-      genre,
-      tags,
-      url,
-      parentalRating,
-      discipline,
-      semester,
-      content,
-      professor,
-      about
-    } = this.state;
+  return (
+    <div className="container uploadContainer">
+      <div className="topContainer">
+        <div>
+          <Header>Enviar vídeo</Header>
+          <TextAreaInformation
+            name="description"
+            onChange={e => setDescription(e.target.value)}
+            value={description}
+          >
+            Sinopse/Descrição
+          </TextAreaInformation>
 
-    return (
-      <div className="container uploadContainer">
-        <div className="topContainer">
-          <div>
-            <Header>Enviar vídeo</Header>
-            <TextAreaInformation
-              name="description"
-              onChange={this.onChange}
-              value={description}
-            >
-              Sinopse/Descrição
-            </TextAreaInformation>
-
-            <SelectBox
-              name="genre"
-              label="Gênero"
-              onChange={this.onChange}
-              value={genre}
-            />
-          </div>
-          <div>
-            <button className="button buttonSecundary" onClick={this.reset}>
-              DESFAZER ALTERAÇÕES
-            </button>
-            <button className="button buttonPrimary" onClick={this.onSubmit}>
-              SALVAR
-            </button>
-            <TextFieldInformation
-              name="url"
-              label="Link para o vídeo"
-              onChange={this.onChange}
-              value={url}
-            />
-            <TextFieldInformation
-              name="title"
-              label="Título"
-              onChange={this.onChange}
-              value={title}
-            />
-            <Thumbnail />
-          </div>
-          <div>
-            <AddTags />
-
-            <SelectBox
-              name="parentalRating"
-              label="Classificação"
-              onChange={this.onChange}
-              value={parentalRating}
-            />
-
-            <TextFieldInformation
-              name="content"
-              label="Conteúdo"
-              onChange={this.onChange}
-              value={content}
-            />
-          </div>
+          <SelectBox
+            name="genre"
+            label="Gênero"
+            onChange={e => setGenre(e.target.value)}
+            value={genre}
+          />
         </div>
-        <div className="bottomContainer">
-          <div className="leftContainer">
-            <SectionTitle>Ficha Técnica</SectionTitle>
-            <button className="Context-Button addInfo">
-              ADICIONAR INFORMAÇÃO
-            </button>
-            <NewInformation />
-          </div>
-          <div>
-            <SectionTitle>Informações Acadêmicas</SectionTitle>
+        <div>
+          <button className="button buttonSecundary" onClick={reset}>
+            DESFAZER ALTERAÇÕES
+          </button>
+          <button className="button buttonPrimary" onClick={onSubmit}>
+            SALVAR
+          </button>
+          <TextFieldInformation
+            name="url"
+            label="Link para o vídeo"
+            onChange={e => setUrl(e.target.value)}
+            value={url}
+          />
+          <TextFieldInformation
+            name="title"
+            label="Título"
+            onChange={e => setTitle(e.target.value)}
+            value={title}
+          />
+          <Thumbnail />
+        </div>
+        <div>
+          <AddTags />
 
-            <SelectBox
-              name="discipline"
-              label="Disciplina"
-              onChange={this.onChange}
-              value={discipline}
-            />
+          <SelectBox
+            name="parentalRating"
+            label="Classificação"
+            onChange={e => setParentalRating(e.target.value)}
+            value={parentalRating}
+          />
 
-            <TextFieldInformation
-              name="professor"
-              label="Professor"
-              onChange={this.onChange}
-              value={professor}
-            />
-            <SelectBox
-              name="semester"
-              label="Semestre"
-              onChange={this.onChange}
-              value={semester}
-            />
-            <TextAreaInformation
-              name="about"
-              onChange={this.onChange}
-              value={about}
-            >
-              Sobre o trabalho
-            </TextAreaInformation>
-          </div>
+          <TextFieldInformation
+            name="content"
+            label="Conteúdo"
+            onChange={e => setContent(e.target.value)}
+            value={content}
+          />
         </div>
       </div>
-    );
-  }
+      <div className="bottomContainer">
+        <div className="leftContainer">
+          <SectionTitle>Ficha Técnica</SectionTitle>
+          <button className="Context-Button addInfo">
+            ADICIONAR INFORMAÇÃO
+          </button>
+          <NewInformation />
+        </div>
+        <div>
+          <SectionTitle>Informações Acadêmicas</SectionTitle>
+
+          <SelectBox
+            name="discipline"
+            label="Disciplina"
+            onChange={e => setDiscipline(e.target.value)}
+            value={discipline}
+          />
+
+          <TextFieldInformation
+            name="professor"
+            label="Professor"
+            onChange={e => setProfessor(e.target.value)}
+            value={professor}
+          />
+          <SelectBox
+            name="semester"
+            label="Semestre"
+            onChange={e => setSemester(e.target.value)}
+            value={semester}
+          />
+          <TextAreaInformation
+            name="about"
+            onChange={e => setAbout(e.target.value)}
+            value={about}
+          >
+            Sobre o trabalho
+          </TextAreaInformation>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default withFirebase(Upload);

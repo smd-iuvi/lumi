@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import uuid from 'uuid';
 
@@ -26,97 +26,91 @@ import RestrictedArea from './pages/RestrictedArea/RestrictedArea';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import { withAuthentification } from './Firebase/Session';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { width: 0 };
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+function App(props) {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    updateWindowDimensions();
+    window.addEventListener('resize', updateWindowDimensions);
+
+    return () => {
+      window.removeEventListener('resize', updateWindowDimensions);
+    }
+  }, []);
+
+  function updateWindowDimensions() {
+    setWidth(window.innerWidth);
   }
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
+  const { location } = props;
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth });
-  }
-  render() {
-    const { location } = this.props;
-
-    return (
-      <div>
-        {this.state.width > 950 ? (
-          <>
-            {!location.pathname.includes(ROUTES.PLAYER) &&
+  return (
+    <div>
+      {width > 950 ? (
+        <>
+          {!location.pathname.includes(ROUTES.PLAYER) &&
             !location.pathname.includes(ROUTES.LANDING) ? (
               <Sidebar />
             ) : null}
 
-            {!location.pathname.includes(ROUTES.LANDING) &&
+          {!location.pathname.includes(ROUTES.LANDING) &&
             !location.pathname.includes(ROUTES.SIGN_IN) &&
             !location.pathname.includes(ROUTES.SIGN_UP) ? (
               <NavBar class="navbar" />
             ) : null}
-            {location.pathname.includes(ROUTES.PLAYER) && (
-              <NavBar class="navbar navbarComplete" />
-            )}
+          {location.pathname.includes(ROUTES.PLAYER) && (
+            <NavBar class="navbar navbarComplete" />
+          )}
 
-            <Switch>
-              <Route path={ROUTES.HOME} exact component={Home} />
-              <Route
-                path={`${ROUTES.VIDEO}/:videoId`}
-                exact
-                component={VideoInfos}
-              />
-              <Route
-                path={`${ROUTES.PLAYER}/:videoId`}
-                component={Player}
-                key={uuid()}
-              />{' '}
-              />
-              <Route path={ROUTES.PROFILE} component={Profile} />
-              <Route path={ROUTES.UPLOAD} exact component={Upload} />
-              <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
-              <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
-              <Route path={ROUTES.LANDING} exact component={Landing} />
-              <Route path={ROUTES.DISCOVER} exact component={Discover} />
-              <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
-              <Route
-                path={`${ROUTES.SEARCH_ALL}/:searchTerm`}
-                component={Search}
-                key={uuid()}
-              />
-              <Route path={`${ROUTES.SEARCH}`} component={Search} />
-              <Route path={ROUTES.EVENT} exact component={Event} />
-              <Route
-                path={`${ROUTES.CATEGORY}/:name`}
-                exact
-                component={Category}
-              />
-              <Route
-                path={ROUTES.RESTRICTED_AREA}
-                exact
-                component={RestrictedArea}
-              />
-              <Route component={Error404} />
-            </Switch>
+          <Switch>
+            <Route path={ROUTES.HOME} exact component={Home} />
+            <Route
+              path={`${ROUTES.VIDEO}/:videoId`}
+              exact
+              component={VideoInfos}
+            />
+            <Route
+              path={`${ROUTES.PLAYER}/:videoId`}
+              component={Player}
+              key={uuid()}
+            />{' '}
+            <Route path={ROUTES.PROFILE} component={Profile} />
+            <Route path={ROUTES.UPLOAD} exact component={Upload} />
+            <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
+            <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
+            <Route path={ROUTES.LANDING} exact component={Landing} />
+            <Route path={ROUTES.DISCOVER} exact component={Discover} />
+            <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
+            <Route
+              path={`${ROUTES.SEARCH_ALL}/:searchTerm`}
+              component={Search}
+              key={uuid()}
+            />
+            <Route path={`${ROUTES.SEARCH}`} component={Search} />
+            <Route path={ROUTES.EVENT} exact component={Event} />
+            <Route
+              path={`${ROUTES.CATEGORY}/:name`}
+              exact
+              component={Category}
+            />
+            <Route
+              path={ROUTES.RESTRICTED_AREA}
+              exact
+              component={RestrictedArea}
+            />
+            <Route component={Error404} />
+          </Switch>
 
-            {!location.pathname.includes(ROUTES.PLAYER) &&
+          {!location.pathname.includes(ROUTES.PLAYER) &&
             !location.pathname.includes(ROUTES.LANDING) ? (
               <Footer />
             ) : null}
-          </>
-        ) : (
+        </>
+      ) : (
           <SmallWidth />
         )}
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default withRouter(withAuthentification(App));
