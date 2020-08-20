@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import x from '../../assets/x.svg';
 import './Tag.css';
 
-class Tag extends Component {
-    removeTag = () => {
-        this.props.deleteTag(this.props.children);
+function Tag(props) {
+    function removeTag() {
+        props.deleteTag(props.children);
     }
-    render() {
-        return (
-            <div className="Tag">
-                <article className="tagLabel Small-Text-Regular">{this.props.children}<img src={x} onClick={this.removeTag} /></article>
-            </div>
-        );
-    }
+
+    return (
+        <div className="Tag">
+            <article className="tagLabel Small-Text-Regular">{props.children}<img src={x} onClick={removeTag} /></article>
+        </div>
+    );
 }
 
 export default Tag

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './NavBar.css';
 
 import { withRouter } from 'react-router-dom';
@@ -6,44 +6,31 @@ import { withRouter } from 'react-router-dom';
 import search from './assets/search_button.svg';
 import * as ROUTES from '../../constants/routes';
 
-class NavBar extends Component {
-  constructor(props) {
-    super(props);
+function NavBar(props) {
+  const [searchTerm, setSearchTerm] = useState('');
 
-    this.state = { searchTerm: '' };
-  }
-  onKeyDown = e => {
-    const { searchTerm } = this.state;
-
+  function onKeyDown(e) {
     if (e.key === 'Enter' && searchTerm !== '') {
-      this.setState({ searchTerm: '' });
-      this.props.history.push(`${ROUTES.SEARCH_ALL}/${searchTerm}`);
+      setSearchTerm('');
+      props.history.push(`${ROUTES.SEARCH_ALL}/${searchTerm}`);
       e.target.blur();
     }
   };
 
-  onChange = e => {
-    e.preventDefault();
-    this.setState({ searchTerm: e.target.value });
-  };
+  return (
+    <div className={props.class}>
+      <img src={search} className="iconNavbar" />
 
-  render() {
-    const { searchTerm } = this.state;
-    return (
-      <div className={this.props.class}>
-        <img src={search} className="iconNavbar" />
-
-        <input
-          type="text"
-          className="inputSearch Small-Text-Regular"
-          placeholder="Busque por vídeos, disciplinas, gêneros…"
-          value={searchTerm}
-          onChange={this.onChange}
-          onKeyDown={this.onKeyDown}
-        />
-      </div>
-    );
-  }
+      <input
+        type="text"
+        className="inputSearch Small-Text-Regular"
+        placeholder="Busque por vídeos, disciplinas, gêneros…"
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+        onKeyDown={onKeyDown}
+      />
+    </div>
+  );
 }
 
 export default withRouter(NavBar);

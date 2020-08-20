@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
@@ -20,122 +20,115 @@ import logo from './assets/icons/lumi.svg';
 import { Link } from 'react-router-dom';
 import { withAuthUser } from '../../Firebase/Session';
 
-class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      logged: true,
-      showModal: false
-    };
-    this.handleModal = this.handleModal.bind(this);
-  }
+function Navbar(props) {
+  const [logged, setLogged] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
-  handleModal = () => {
-    this.setState({ showModal: true });
+  function handleModal() {
+    setShowModal(true);
   };
 
-  onChangeState = () => {
-    this.setState({ showModal: false });
+  function onChangeState() {
+    setShowModal(false);
   };
 
-  onSignOut = () => {
-    const { firebase, history } = this.props;
+  function onSignOut() {
+    const { firebase, history } = props;
     firebase.doSignOut().then(() => {
       history.push(ROUTES.HOME);
     });
   };
 
-  render() {
-    const { authUser, location } = this.props;
-    return (
-      <div className="sidebar">
-        <Upload
-          show={this.state.showModal}
-          onChangeState={this.onChangeState}
-        />
+  const { authUser, location } = props;
+  return (
+    <div className="sidebar">
+      <Upload
+        show={showModal}
+        onChangeState={onChangeState}
+      />
 
+      <Link to={ROUTES.HOME} className="link">
+        <img src={logo} alt="Logo" className="logo" />
+      </Link>
+      <div className="iconsTop">
         <Link to={ROUTES.HOME} className="link">
-          <img src={logo} alt="Logo" className="logo" />
+          <ButtonsTop
+            newClass="iconButtonsTop iconHome"
+            selected={location.pathname === ROUTES.HOME}
+          >
+            Início
+          </ButtonsTop>
         </Link>
-        <div className="iconsTop">
-          <Link to={ROUTES.HOME} className="link">
-            <ButtonsTop
-              newClass="iconButtonsTop iconHome"
-              selected={location.pathname === ROUTES.HOME}
-            >
-              Início
-            </ButtonsTop>
-          </Link>
-          <Link to={ROUTES.DISCOVER} className="link">
-            <ButtonsTop
-              newClass="iconButtonsTop iconExplore"
-              selected={location.pathname === ROUTES.DISCOVER}
-            >
-              Descobrir
-            </ButtonsTop>
-          </Link>
-        </div>
-        <article className="lineSidebar" />
-        {authUser ? (
-          <div className="optionsLogged">
-            <div className="optionsProfile">
-              {authUser.role !== ROLES.USER ? (
-                <Link onClick={this.handleModal} className="showModal link">
-                  <ButtonsBottom
-                    className="btnShow"
-                    newClass="iconBottom iconNewVideo"
-                  >
-                    Enviar vídeo
-                  </ButtonsBottom>
-                </Link>
-              ) : null}
-              <Link to={ROUTES.PROFILE} className="link">
+        <Link to={ROUTES.DISCOVER} className="link">
+          <ButtonsTop
+            newClass="iconButtonsTop iconExplore"
+            selected={location.pathname === ROUTES.DISCOVER}
+          >
+            Descobrir
+          </ButtonsTop>
+        </Link>
+      </div>
+      <article className="lineSidebar" />
+      {authUser ? (
+        <div className="optionsLogged">
+          <div className="optionsProfile">
+            {authUser.role !== ROLES.USER ? (
+              <Link onClick={handleModal} className="showModal link">
                 <ButtonsBottom
-                  newClass="iconBottom iconUser"
-                  selected={location.pathname === ROUTES.PROFILE}
+                  className="btnShow"
+                  newClass="iconBottom iconNewVideo"
                 >
-                  Meu perfil
+                  Enviar vídeo
                 </ButtonsBottom>
               </Link>
-              <Link to={ROUTES.PROFILE_MY_UPLOADS} className="link">
+            ) : null}
+            <Link to={ROUTES.PROFILE} className="link">
+              <ButtonsBottom
+                newClass="iconBottom iconUser"
+                selected={location.pathname === ROUTES.PROFILE}
+              >
+                Meu perfil
+              </ButtonsBottom>
+            </Link>
+            <Link to={ROUTES.PROFILE_MY_UPLOADS} className="link">
+              <ButtonsBottom
+                newClass="iconBottom iconMyVideos"
+                selected={location.pathname === ROUTES.PROFILE_MY_UPLOADS}
+              >
+                Meus envios
+              </ButtonsBottom>
+            </Link>
+            <Link to={ROUTES.PROFILE_MY_LIST} className="link">
+              <ButtonsBottom
+                newClass="iconBottom iconList"
+                selected={location.pathname === ROUTES.PROFILE_MY_LIST}
+              >
+                Minha lista
+              </ButtonsBottom>
+            </Link>
+            {authUser.role === ROLES.TEACHER ? (
+              <Link to={ROUTES.PROFILE_MY_EVENTS} className="link">
                 <ButtonsBottom
-                  newClass="iconBottom iconMyVideos"
-                  selected={location.pathname === ROUTES.PROFILE_MY_UPLOADS}
+                  newClass="iconBottom iconEvents"
+                  selected={location.pathname === ROUTES.PROFILE_MY_EVENTS}
                 >
-                  Meus envios
+                  Meus eventos
                 </ButtonsBottom>
               </Link>
-              <Link to={ROUTES.PROFILE_MY_LIST} className="link">
-                <ButtonsBottom
-                  newClass="iconBottom iconList"
-                  selected={location.pathname === ROUTES.PROFILE_MY_LIST}
-                >
-                  Minha lista
-                </ButtonsBottom>
-              </Link>
-              {authUser.role === ROLES.TEACHER ? (
-                <Link to={ROUTES.PROFILE_MY_EVENTS} className="link">
-                  <ButtonsBottom
-                    newClass="iconBottom iconEvents"
-                    selected={location.pathname === ROUTES.PROFILE_MY_EVENTS}
-                  >
-                    Meus eventos
-                  </ButtonsBottom>
-                </Link>
-              ) : null}
-            </div>
-            {/* <Link to={ROUTES.PROFILE} className="link"> */}
-            <ButtonsBottom newClass="iconBottom iconHelp">Ajuda</ButtonsBottom>
-            {/* </Link> */}
-
-            <ButtonsBottom
-              newClass="iconBottom iconLogout"
-              click={this.onSignOut}
-            >
-              Sair
-            </ButtonsBottom>
+            ) : null}
           </div>
-        ) : (
+          {/* <Link to={ROUTES.PROFILE} className="link"> */}
+          <ButtonsBottom newClass="iconBottom iconHelp">Ajuda</ButtonsBottom>
+          {/* </Link> */}
+
+          <ButtonsBottom
+            newClass="iconBottom iconLogout"
+            click={onSignOut}
+          >
+            Sair
+          </ButtonsBottom>
+        </div>
+      ) : (
           <div className="divNotLogin">
             <Link to={ROUTES.SIGN_IN} className="link">
               <ButtonLogin />
@@ -143,13 +136,12 @@ class Navbar extends Component {
             <Link className="link buttonHelp">
               <ButtonsBottom newClass="iconBottom iconHelp">
                 Ajuda
-              </ButtonsBottom>
+            </ButtonsBottom>
             </Link>
           </div>
         )}
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default compose(

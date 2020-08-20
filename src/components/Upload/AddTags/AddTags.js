@@ -1,31 +1,20 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import './AddTags.css';
 
 import Tag from './Tag/Tag';
 
-class AddTags extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-      users: [
-        'Gleislla Monteiro',
-        'Mateus Santos',
-        'Paulo José',
-        'Rebecca Dantas'
-      ]
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.keyPress = this.keyPress.bind(this);
-  }
+function AddTags(props) {
+  const [value, setValue] = useState([]);
+  const [users, setUsers] = useState([
+    'Gleislla Monteiro',
+    'Mateus Santos',
+    'Paulo José',
+    'Rebecca Dantas'
+  ]);
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  }
-
-  keyPress(e) {
-    const { onChange, name, value } = this.props;
+  function keyPress(e) {
+    const { onChange, name, value } = props;
     if (e.keyCode == 13) {
       if (
         e.target.value != null &&
@@ -41,13 +30,13 @@ class AddTags extends Component {
           }
         };
         onChange(event);
-        this.setState({ value: '' });
+        setValue([]);
       }
     }
   }
 
-  deleteTag = e => {
-    const { onChange, name, value } = this.props;
+  function deleteTag(e) {
+    const { onChange, name, value } = props;
     let aux = value;
     for (let i = 0; i < aux.length; i++) {
       if (aux[i] == e) {
@@ -63,36 +52,33 @@ class AddTags extends Component {
     }
   };
 
-  render() {
-    const { value } = this.props;
-    return (
-      <div className="AddTags infosContainer">
-        {this.props.list && (
-          <datalist id="users">
-            {this.state.users.map(user => (
-              <option>{user}</option>
-            ))}
-          </datalist>
-        )}
-        <input
-          type="text"
-          list="users"
-          placeholder={this.props.placeholder}
-          value={this.state.value}
-          onKeyDown={this.keyPress}
-          onChange={this.handleChange}
-          className="Small-Text-Regular"
-        />
-        {
-          <div className="tags">
-            {value.map(tag => (
-              <Tag deleteTag={this.deleteTag}>{tag}</Tag>
-            ))}
-          </div>
-        }
-      </div>
-    );
-  }
+  return (
+    <div className="AddTags infosContainer">
+      {props.list && (
+        <datalist id="users">
+          {users.map(user => (
+            <option>{user}</option>
+          ))}
+        </datalist>
+      )}
+      <input
+        type="text"
+        list="users"
+        placeholder={props.placeholder}
+        value={value}
+        onKeyDown={keyPress}
+        onChange={e => setValue(e.target.value)}
+        className="Small-Text-Regular"
+      />
+      {
+        <div className="tags">
+          {value.map(tag => (
+            <Tag deleteTag={deleteTag}>{tag}</Tag>
+          ))}
+        </div>
+      }
+    </div>
+  );
 }
 
 export default AddTags;

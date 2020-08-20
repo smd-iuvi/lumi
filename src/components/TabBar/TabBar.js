@@ -1,76 +1,67 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './TabBar.css';
 
 import Header from '../Header/Header';
 import Tabs from './Tabs/Tabs';
 import NewEvent from '../NewEvent/NewEvent';
 
-class TabBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showModal: false
-    };
-    this.handleModal = this.handleModal.bind(this);
-  }
-  handleModal = () => {
-    this.setState({ showModal: true });
+function TabBar(props) {
+  const [showModal, setShowModal] = useState(false);
+
+  function handleModal() {
+    setShowModal(true);
   };
 
-  onChangeState = () => {
-    this.setState({ showModal: false });
+  function onChangeState() {
+    setShowModal(false);
   };
 
-  render() {
-    let container = null;
-    const { selected, profileTeacher } = this.props;
+  let container = null;
+  const { selected, profileTeacher } = props;
 
-    console.log(profileTeacher);
-
-    if (this.props.tabs !== null) {
-      container = (
-        <>
-          {profileTeacher ? (
-            <div className="tabTeacher">
-              <Tabs
-                tabs={this.props.tabs}
-                selected={selected}
-                onTabChange={this.props.onTabChange}
-              />
-              <button
-                className="button buttonPrimary"
-                onClick={this.handleModal}
-              >
-                Criar evento
-              </button>
-            </div>
-          ) : (
+  if (props.tabs !== null) {
+    container = (
+      <>
+        {profileTeacher ? (
+          <div className="tabTeacher">
             <Tabs
-              tabs={this.props.tabs}
+              tabs={props.tabs}
               selected={selected}
-              onTabChange={this.props.onTabChange}
+              onTabChange={props.onTabChange}
+            />
+            <button
+              className="button buttonPrimary"
+              onClick={handleModal}
+            >
+              Criar evento
+            </button>
+          </div>
+        ) : (
+            <Tabs
+              tabs={props.tabs}
+              selected={selected}
+              onTabChange={props.onTabChange}
             />
           )}
-        </>
-      );
-    }
-
-    return (
-      <div className="tabBar">
-        <NewEvent
-          show={this.state.showModal}
-          onChangeState={this.onChangeState}
-        />
-        <div className="titleTabBar">
-          <article>
-            <img src={this.props.icon} />
-          </article>
-          <Header>{this.props.title}</Header>
-        </div>
-        {container}
-      </div>
+      </>
     );
   }
+
+  return (
+    <div className="tabBar">
+      <NewEvent
+        show={showModal}
+        onChangeState={onChangeState}
+      />
+      <div className="titleTabBar">
+        <article>
+          <img src={props.icon} />
+        </article>
+        <Header>{props.title}</Header>
+      </div>
+      {container}
+    </div>
+  );
 }
 
 export default TabBar;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import './Upload.css';
 
@@ -17,14 +17,16 @@ import Step5 from './Steps/Step5';
 
 import { INITIAL_STATE } from './InitialState';
 
-class Upload extends Component {
-  constructor(props) {
-    super(props);
-    this.state = INITIAL_STATE;
-  }
+function Upload(props) {
+  const [step, setStep] = useState(INITIAL_STATE.step);
+  const [uploadingImage, setUploadingImage] = useState(INITIAL_STATE.uploadingImage);
+  const [fileToUpload, setFileToUpload] = useState(INITIAL_STATE.fileToUpload);
+  const [errorOnImageFile, setErrorOnImageFile] = useState(INITIAL_STATE.errorOnImageFile);
+  const [sending, setSending] = useState(INITIAL_STATE.sending);
+  const [error, setError] = useState(INITIAL_STATE.error);
+  const [steps, setSteps] = useState(INITIAL_STATE.steps);
 
-  onChange = e => {
-    const { steps, step } = this.state;
+  function onChange(e) {
     const currentStepState = steps[step - 1];
     const newCurrentStepState = {
       ...currentStepState,
@@ -33,40 +35,35 @@ class Upload extends Component {
           e.target.name === 'shouldVerifyEvents'
             ? e.target.checked
             : e.target.value,
-        isValid: this.isValid(e)
+        isValid: isValid(e)
       }
     };
     const newSteps = [...steps];
     newSteps[step - 1] = newCurrentStepState;
-    this.setState({ steps: newSteps });
+    setSteps(newSteps);
   };
 
-  onFileChange = event => {
+  function onFileChange(event) {
     if (event.target.files[0]) {
       const image = event.target.files[0];
       if (image.type.includes('image')) {
-        this.setState({
-          fileToUpload: image,
-          uploadingImage: true,
-          errorOnImageFile: null
-        });
-        this.onUpload(image);
+        setFileToUpload(image);
+        setUploadingImage(true);
+        setErrorOnImageFile(null);
+        onUpload(image);
       } else {
-        this.setState({
-          errorOnImageFile: {
-            message: 'Arquivo inválido. Escolha uma imagem'
-          }
+        setErrorOnImageFile({
+          message: 'Arquivo inválido. Escolha uma imagem'
         });
       }
     }
   };
 
-  onUpload = image => {
-    const { firebase } = this.props;
+  function onUpload(image) {
+    const { firebase } = props;
     firebase
       .upload(image, 'thumbnail', snapshot => console.log(snapshot))
       .then(url => {
-        const { steps, step } = this.state;
         const currentStepState = steps[step - 1];
         const newCurrentStepState = {
           ...currentStepState,
@@ -75,22 +72,21 @@ class Upload extends Component {
         const newSteps = [...steps];
         newSteps[step - 1] = newCurrentStepState;
 
-        this.setState({ steps: newSteps });
+        setSteps(newSteps);
       })
       .catch(error => console.log(error));
   };
 
-  cleanMembersUUIDKeys = members => {
+  function cleanMembersUUIDKeys(members) {
     return members.map(member => {
       return { role: member.role, name: member.name };
     });
   };
 
-  onSend = () => {
-    const { firebase, authUser } = this.props;
-    const { steps } = this.state;
+  function onSend() {
+    const { firebase, authUser } = props;
 
-    this.setState({ sending: true });
+    setSending(true);
 
     const video = {
       title: steps[0].title.value,
@@ -102,7 +98,7 @@ class Upload extends Component {
       content: steps[0].content.value,
       tags: steps[0].tags.value,
       cast: steps[1].cast.value,
-      members: this.cleanMembersUUIDKeys(steps[1].members.value),
+      members: cleanMembersUUIDKeys(steps[1].members.value),
       isIndependent: steps[2].isIndependent.value,
       discipline: steps[3].discipline.value,
       semester: steps[3].semester.value,
@@ -118,15 +114,15 @@ class Upload extends Component {
       .create(video)
       .then(() => {
         console.log('Criado');
-        this.setState({ sending: false });
+        setSending(false);
       })
       .catch(error => {
         console.log(error);
-        this.setState({ error });
+        setError(error);
       });
   };
 
-  isValid = e => {
+  function isValid(e) {
     if (e.target.name === 'link') {
       if (
         e.target.value.startsWith('https://www.youtube.com/watch?v=') ||
@@ -161,8 +157,7 @@ class Upload extends Component {
     return false;
   };
 
-  canChangeStep = () => {
-    const { steps, step } = this.state;
+  function canChangeStep() {
     const currentStepState = steps[step - 1];
 
     let shouldVerifyEvents = false;
@@ -182,30 +177,28 @@ class Upload extends Component {
       }, true);
   };
 
-  closeModal = () => {
-    this.setState(INITIAL_STATE);
-    this.props.onChangeState();
+  function closeModal() {
+    resetSteps();
+    props.onChangeState();
   };
 
-  nextStep = () => {
-    const { step, steps } = this.state;
-    if (this.canChangeStep()) {
+  function nextStep() {
+    if (canChangeStep()) {
       if (step === 3 && steps[2].isIndependent.value) {
-        this.onSend();
-        this.setState({ step: this.state.step + 2 });
+        onSend();
+        setStep(step + 2);
       } else if (step === 4) {
-        this.onSend();
-        this.setState({ step: this.state.step + 1 });
+        onSend();
+        setStep(step + 1);
       } else {
-        this.setState({ step: this.state.step + 1 });
+        setStep(step + 1);
       }
     } else {
-      this.highlightInvalidFields();
+      highlightInvalidFields();
     }
   };
 
-  highlightInvalidFields = () => {
-    const { steps, step } = this.state;
+  function highlightInvalidFields() {
     const currentStepState = steps[step - 1];
 
     const newCurrentStepStateArr = Object.keys(currentStepState).map(key => {
@@ -227,93 +220,95 @@ class Upload extends Component {
 
     const newSteps = [...steps];
     newSteps[step - 1] = newCurrentStepState;
-    this.setState({ steps: newSteps });
+    setSteps(newSteps);
   };
 
-  returnStep = () => {
-    this.setState({ step: this.state.step - 1 });
+  function returnStep() {
+    setStep(step - 1);
   };
 
-  resetSteps = () => {
-    this.setState(INITIAL_STATE);
+  function resetSteps() {
+    setStep(INITIAL_STATE.step);
+    setUploadingImage(INITIAL_STATE.uploadingImage);
+    setFileToUpload(INITIAL_STATE.fileToUpload);
+    setErrorOnImageFile(INITIAL_STATE.errorOnImageFile);
+    setSending(INITIAL_STATE.sending);
+    setError(INITIAL_STATE.error);
+    setSteps(INITIAL_STATE.steps);
   };
 
-  render() {
-    const { steps, uploadingImage, errorOnImageFile } = this.state;
+  if (!props.show) {
+    return null;
+  }
 
-    if (!this.props.show) {
-      return null;
-    }
-
-    return (
-      <div>
-        <div className="backgroundModal" onClick={this.closeModal} />
-        <div className="modalUpload">
-          <div className="labelModal">
-            <Header>Enviar vídeo</Header>
-            <img
-              src={iconX}
-              className="closeModal"
-              alt="Botão para fechar modal"
-              onClick={this.closeModal}
-            />
+  return (
+    <div>
+      <div className="backgroundModal" onClick={closeModal} />
+      <div className="modalUpload">
+        <div className="labelModal">
+          <Header>Enviar vídeo</Header>
+          <img
+            src={iconX}
+            className="closeModal"
+            alt="Botão para fechar modal"
+            onClick={closeModal}
+          />
+        </div>
+        {step <= 5 && (
+          <div className="contentModal">
+            {step < 5 && <StepBar step={step} />}
+            {step === 1 && (
+              <Step1
+                stepState={steps[0]}
+                onChange={onChange}
+                onFileChange={onFileChange}
+                error={errorOnImageFile}
+                uploading={uploadingImage}
+              />
+            )}
+            {step === 2 && (
+              <Step2 stepState={steps[1]} onChange={onChange} />
+            )}
+            {step === 3 && (
+              <Step3 stepState={steps[2]} onChange={onChange} />
+            )}
+            {step === 4 && (
+              <Step4 stepState={steps[3]} onChange={onChange} />
+            )}
+            {step === 5 && <Step5 resetSteps={resetSteps} />}
           </div>
-          {this.state.step <= 5 && (
-            <div className="contentModal">
-              {this.state.step < 5 && <StepBar step={this.state.step} />}
-              {this.state.step === 1 && (
-                <Step1
-                  stepState={steps[0]}
-                  onChange={this.onChange}
-                  onFileChange={this.onFileChange}
-                  error={errorOnImageFile}
-                  uploading={uploadingImage}
-                />
-              )}
-              {this.state.step === 2 && (
-                <Step2 stepState={steps[1]} onChange={this.onChange} />
-              )}
-              {this.state.step === 3 && (
-                <Step3 stepState={steps[2]} onChange={this.onChange} />
-              )}
-              {this.state.step === 4 && (
-                <Step4 stepState={steps[3]} onChange={this.onChange} />
-              )}
-              {this.state.step === 5 && <Step5 resetSteps={this.resetSteps} />}
-            </div>
+        )}
+        <div className="handleSteps">
+          {step > 1 && step < 5 && (
+            <button
+              className="button buttonSecundary"
+              onClick={returnStep}
+            >
+              Anterior
+            </button>
           )}
-          <div className="handleSteps">
-            {this.state.step > 1 && this.state.step < 5 && (
-              <button
-                className="button buttonSecundary"
-                onClick={this.returnStep}
-              >
-                Anterior
-              </button>
-            )}
-            {this.state.step < 4 && (
-              <button className="button buttonPrimary" onClick={this.nextStep}>
-                Próximo
-              </button>
-            )}
-            {this.state.step === 4 && (
-              <button className="button buttonPrimary" onClick={this.nextStep}>
-                Concluir
-              </button>
-            )}
-            {this.state.step === 5 && (
-              <button
-                className="button buttonPrimary"
-                onClick={this.closeModal}
-              >
-                Ok
-              </button>
-            )}
-          </div>
+          {step < 4 && (
+            <button className="button buttonPrimary" onClick={nextStep}>
+              Próximo
+            </button>
+          )}
+          {step === 4 && (
+            <button className="button buttonPrimary" onClick={nextStep}>
+              Concluir
+            </button>
+          )}
+          {step === 5 && (
+            <button
+              className="button buttonPrimary"
+              onClick={closeModal}
+            >
+              Ok
+            </button>
+          )}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default withAuthUser(withFirebase(Upload));

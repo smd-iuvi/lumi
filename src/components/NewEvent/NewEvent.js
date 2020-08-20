@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './NewEvent.css';
 
 import { INITIAL_STATE } from './InitialState';
@@ -16,38 +16,36 @@ import iconX from './assets/x.svg';
 import { ninvoke } from 'q';
 import { database } from 'firebase';
 
-class NewEvent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = INITIAL_STATE;
-  }
+function NewEvent(props) {
+  const [uploadingImage, setUploadingImage] = useState(INITIAL_STATE.uploadingImage);
+  const [fileToUpload, setFileToUpload] = useState(INITIAL_STATE.fileToUpload);
+  const [errorOnImageFile, setErrorOnImageFile] = useState(INITIAL_STATE.errorOnImageFile);
+  const [sending, setSending] = useState(INITIAL_STATE.sending);
+  const [error, setError] = useState(INITIAL_STATE.error);
+  const [step, setStep] = useState(INITIAL_STATE.step);
+  const [steps, setSteps] = useState(INITIAL_STATE.steps);
 
-  onFileChange = event => {
+  function onFileChange(event) {
     if (event.target.files[0]) {
       const image = event.target.files[0];
       if (image.type.includes('image')) {
-        this.setState({
-          fileToUpload: image,
-          uploadingImage: true,
-          errorOnImageFile: null
-        });
-        this.onUpload(image);
+        setFileToUpload(image);
+        setUploadingImage(true);
+        setErrorOnImageFile(null);
+        onUpload(image);
       } else {
-        this.setState({
-          errorOnImageFile: {
-            message: 'Arquivo inválido. Escolha uma imagem'
-          }
+        setErrorOnImageFile({
+          message: 'Arquivo inválido. Escolha uma imagem'
         });
       }
     }
   };
 
-  onUpload = image => {
-    const { firebase } = this.props;
+  function onUpload(image) {
+    const { firebase } = props;
     firebase
       .upload(image, 'event', snapshot => console.log(snapshot))
       .then(url => {
-        const { steps, step } = this.state;
         const currentStepState = steps[step - 1];
         const newCurrentStepState = {
           ...currentStepState,
@@ -56,27 +54,26 @@ class NewEvent extends Component {
         const newSteps = [...steps];
         newSteps[step - 1] = newCurrentStepState;
 
-        this.setState({ steps: newSteps });
+        setSteps(newSteps);
       })
       .catch(error => console.log(error));
   };
 
-  onChange = e => {
-    const { steps, step } = this.state;
+  function onChange(e) {
     const currentStepState = steps[step - 1];
     const newCurrentStepState = {
       ...currentStepState,
       [e.target.name]: {
         value: e.target.value,
-        isValid: this.isValid(e)
+        isValid: isValid(e)
       }
     };
     const newSteps = [...steps];
     newSteps[step - 1] = newCurrentStepState;
-    this.setState({ steps: newSteps });
+    setSteps(newSteps);
   };
 
-  isValid = e => {
+  function isValid(e) {
     if (
       e.target.value !== null &&
       e.target.value !== undefined &&
@@ -87,8 +84,7 @@ class NewEvent extends Component {
     return false;
   };
 
-  canChangeStep = () => {
-    const { steps, step } = this.state;
+  function canChangeStep() {
     const currentStepState = steps[step - 1];
 
     return Object.keys(currentStepState)
@@ -100,8 +96,7 @@ class NewEvent extends Component {
       }, true);
   };
 
-  highlightInvalidFields = () => {
-    const { steps, step } = this.state;
+  function highlightInvalidFields() {
     const currentStepState = steps[step - 1];
 
     const newCurrentStepStateArr = Object.keys(currentStepState).map(key => {
@@ -123,14 +118,13 @@ class NewEvent extends Component {
 
     const newSteps = [...steps];
     newSteps[step - 1] = newCurrentStepState;
-    this.setState({ steps: newSteps });
+    setSteps(newSteps);
   };
 
-  onSend = () => {
-    const { firebase, authUser } = this.props;
-    const { steps } = this.state;
+  function onSend() {
+    const { firebase, authUser } = props;
 
-    this.setState({ sending: true });
+    setSending(true);
 
     const event = {
       name: steps[0].name.value,
@@ -147,107 +141,116 @@ class NewEvent extends Component {
       .create(event)
       .then(() => {
         console.log('Criado');
-        this.setState({ sending: false });
+        setSending(false);
       })
       .catch(error => {
         console.log(error);
-        this.setState({ error });
+        setError(error);
       });
   };
 
-  closeModal = () => {
-    this.setState(INITIAL_STATE);
-    this.props.onChangeState();
+  function closeModal() {
+    setUploadingImage(INITIAL_STATE.uploadingImage);
+    setFileToUpload(INITIAL_STATE.fileToUpload);
+    setErrorOnImageFile(INITIAL_STATE.errorOnImageFile);
+    setSending(INITIAL_STATE.sending);
+    setError(INITIAL_STATE.error);
+    setStep(INITIAL_STATE.step);
+    setSteps(INITIAL_STATE.steps);
+    props.onChangeState();
   };
 
-  nextStep = () => {
-    const { step } = this.state;
-    if (this.canChangeStep()) {
+  function nextStep() {
+    if (canChangeStep()) {
       if (step === 2) {
-        this.onSend();
+        onSend();
       }
-      this.setState({ step: this.state.step + 1 });
+      setStep(step + 1);
     } else {
-      this.highlightInvalidFields();
+      highlightInvalidFields();
     }
   };
 
-  returnStep = () => {
-    this.setState({ step: this.state.step - 1 });
+  function returnStep() {
+    setStep(step - 1);
   };
 
-  resetSteps = () => {
-    this.setState(INITIAL_STATE);
+  function resetSteps() {
+    setUploadingImage(INITIAL_STATE.uploadingImage);
+    setFileToUpload(INITIAL_STATE.fileToUpload);
+    setErrorOnImageFile(INITIAL_STATE.errorOnImageFile);
+    setSending(INITIAL_STATE.sending);
+    setError(INITIAL_STATE.error);
+    setStep(INITIAL_STATE.step);
+    setSteps(INITIAL_STATE.steps);
   };
 
-  render() {
-    const { steps, uploadingImage, errorOnImageFile } = this.state;
-    if (!this.props.show) {
-      return null;
-    }
-    return (
-      <div className="NewEvent">
-        <div className="backgroundModal" onClick={this.closeModal} />
-        <div className="modalUpload">
-          <div className="labelModal">
-            <Header>Criar evento</Header>
-            <img
-              src={iconX}
-              className="closeModal"
-              alt="Botão para fechar modal"
-              onClick={this.closeModal}
-            />
+  if (!props.show) {
+    return null;
+  }
+
+  return (
+    <div className="NewEvent">
+      <div className="backgroundModal" onClick={closeModal} />
+      <div className="modalUpload">
+        <div className="labelModal">
+          <Header>Criar evento</Header>
+          <img
+            src={iconX}
+            className="closeModal"
+            alt="Botão para fechar modal"
+            onClick={closeModal}
+          />
+        </div>
+        {step <= 3 && (
+          <div className="contentModal">
+            {step < 3 && <StepBar step={step} />}
+            {step === 1 && (
+              <Step1
+                stepState={steps[0]}
+                onChange={(e) => onChange(e)}
+                onFileChange={onFileChange}
+                error={errorOnImageFile}
+                uploading={uploadingImage}
+              />
+            )}
+            {step === 2 && (
+              <Step2 stepState={steps[1]} onChange={(e) => onChange(e)} />
+            )}
+            {step === 3 && <Step3 resetSteps={resetSteps} />}
           </div>
-          {this.state.step <= 3 && (
-            <div className="contentModal">
-              {this.state.step < 3 && <StepBar step={this.state.step} />}
-              {this.state.step === 1 && (
-                <Step1
-                  stepState={steps[0]}
-                  onChange={this.onChange}
-                  onFileChange={this.onFileChange}
-                  error={errorOnImageFile}
-                  uploading={uploadingImage}
-                />
-              )}
-              {this.state.step === 2 && (
-                <Step2 stepState={steps[1]} onChange={this.onChange} />
-              )}
-              {this.state.step === 3 && <Step3 resetSteps={this.resetSteps} />}
-            </div>
+        )}
+        <div className="handleSteps">
+          {step === 2 && (
+            <button
+              className="button buttonSecundary"
+              onClick={returnStep}
+            >
+              Anterior
+            </button>
           )}
-          <div className="handleSteps">
-            {this.state.step === 2 && (
-              <button
-                className="button buttonSecundary"
-                onClick={this.returnStep}
-              >
-                Anterior
-              </button>
-            )}
-            {this.state.step === 1 && (
-              <button className="button buttonPrimary" onClick={this.nextStep}>
-                Próximo
-              </button>
-            )}
-            {this.state.step === 2 && (
-              <button className="button buttonPrimary" onClick={this.nextStep}>
-                Concluir
-              </button>
-            )}
-            {this.state.step === 3 && (
-              <button
-                className="button buttonPrimary"
-                onClick={this.closeModal}
-              >
-                Ok
-              </button>
-            )}
-          </div>
+          {step === 1 && (
+            <button className="button buttonPrimary" onClick={nextStep}>
+              Próximo
+            </button>
+          )}
+          {step === 2 && (
+            <button className="button buttonPrimary" onClick={nextStep}>
+              Concluir
+            </button>
+          )}
+          {step === 3 && (
+            <button
+              className="button buttonPrimary"
+              onClick={closeModal}
+            >
+              Ok
+            </button>
+          )}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default withAuthUser(withFirebase(NewEvent));
