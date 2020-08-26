@@ -1,0 +1,38 @@
+.accordion {
+    background-color: var(--cards);
+    color: var(--placeholders-buttons-dark);
+    cursor: pointer;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion div{
+    margin: 18px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 15px;
+    align-items: center;
+}
+
+.accordion:hover{
+    background-color: var(--primary);
+}
+
+.accordion i{
+    margin-right: 18px;
+    font-size: 1.5em;
+}
+
+.accordion .Medium-Text-Bold{
+    color: var(--text-dark);
+}
+
+.body {
+    margin-top: 2px;
+    padding: 18px;
+    background-color: var(--cards);
+    border-radius: 0 0 10px 10px;
+}

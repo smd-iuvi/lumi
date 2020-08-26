@@ -1,9 +1,9 @@
 export const methods = {
-    POST: 'post',
-    GET: 'get',
-    DELETE: 'delete',
-    PUT: 'put',
-    UPDATE: 'update'
+    POST: 'POST',
+    GET: 'GET',
+    DELETE: 'DELETE',
+    PUT: 'PUT',
+    UPDATE: 'UPDATE'
 }
 
 export function Category({ name, endpoints }) {
@@ -37,7 +37,7 @@ export function Endpoint({
 export function Parameter({
     name,
     description,
-    value }) {
+    value = "" }) {
     return {
         name: name,
         description: description,
@@ -48,7 +48,7 @@ export function Parameter({
 export function Response({
     code,
     description,
-    value }) {
+    value = "" }) {
     return {
         code: code,
         description: description,

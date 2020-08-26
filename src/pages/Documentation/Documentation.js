@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import './Documentation.css';
+
 import Sidebar from './Sidebar/Sidebar';
+import Accordion from '../../components/Accordion/Accordion';
 
 function Documentation(props) {
-    const [body, setBody] = useState("ola");
+    const [body, setBody] = useState();
 
     function changeBody(value) {
         setBody(value);
     }
     return <div>
         <Sidebar changeBody={changeBody} />
-        <h1>{body}</h1>
+        <div className="Documentation container">
+            {body}
+        </div>
     </div>
 }
 

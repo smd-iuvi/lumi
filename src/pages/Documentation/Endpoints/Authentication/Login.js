@@ -3,10 +3,10 @@ import { methods, Endpoint, Parameter, Response } from '../constants';
 
 export default Endpoint(
     {
-        title: 'Cadastro',
-        method: methods.POST,
+        title: 'Login',
+        method: methods.GET,
         url: '/register/',
-        description: 'Endpoint de cadastrar usuário',
+        description: 'Endpoint de login de usuário',
         useCases: [
             'Caso de uso 1',
             'Caso de uso 2'

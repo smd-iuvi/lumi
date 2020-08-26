@@ -1,5 +1,3 @@
-.SidebarDocumentation{
-    width: 25vw;
-    height: 100vh;
-    background-color: var(--searchBar);
+.SidebarDocumentation .Small-Text-Regular{
+    color: var(--placeholders-buttons-dark);
 }

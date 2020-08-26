@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Sidebar.css';
 
 import endpoints from '../Endpoints/export';
+import Content from '../Content/Content';
 
 function Sidebar(props) {
-    return <div className="SidebarDocumentation">
+    useEffect(() => {
+        updateBody(endpoints[0]);
+    }, []);
+
+    function updateBody(endpoint) {
+        props.changeBody(<Content endpoint={endpoint} />)
+    }
+
+    return <div className="sidebar SidebarDocumentation">
         {endpoints.map((item) =>
-            <button onClick={() => props.changeBody("OLAAAA")}>{item.name.toString()}</button>
+            <h1 className="Small-Text-Regular"
+                onClick={() => updateBody(item)}>
+                {item.name}
+            </h1>
         )}
     </div>
 }
