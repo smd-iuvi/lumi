@@ -1,4 +1,8 @@
-.accordion {
+.accordion{
+    margin-bottom: 20px;
+}
+
+.accordion .titleBar {
     background-color: var(--cards);
     color: var(--placeholders-buttons-dark);
     cursor: pointer;
@@ -9,7 +13,7 @@
     align-items: center;
 }
 
-.accordion div{
+.accordion .titleBar div{
     margin: 18px;
     display: grid;
     grid-template-columns: auto 1fr;
@@ -17,16 +21,16 @@
     align-items: center;
 }
 
-.accordion:hover{
+.accordion .titleBar:hover{
     background-color: var(--primary);
 }
 
-.accordion i{
+.accordion .titleBar i{
     margin-right: 18px;
     font-size: 1.5em;
 }
 
-.accordion .Medium-Text-Bold{
+.accordion .titleBar .Medium-Text-Bold{
     color: var(--text-dark);
 }
 

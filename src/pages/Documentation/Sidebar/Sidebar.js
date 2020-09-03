@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './Sidebar.css';
 
+import logo from './assets/lumi.svg';
 import endpoints from '../Endpoints/export';
 import Content from '../Content/Content';
 
@@ -14,8 +15,9 @@ function Sidebar(props) {
     }
 
     return <div className="sidebar SidebarDocumentation">
+        <img src={logo} />
         {endpoints.map((item) =>
-            <h1 className="Small-Text-Regular"
+            <h1 className="buttonsSidebar Medium-Text-Regular"
                 onClick={() => updateBody(item)}>
                 {item.name}
             </h1>

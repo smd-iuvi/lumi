@@ -10,8 +10,8 @@ function Accordion(props) {
 
     var style = { borderRadius: isOpen ? '10px 10px 0 0' : '10px' };
 
-    return <div>
-        <article className="accordion" style={style} onClick={handleIsOpen}>
+    return <div className="accordion">
+        <article className="titleBar" style={style} onClick={handleIsOpen}>
             <div>
                 <p className="Medium-Text-Bold">{props.title}</p>
                 <p className="Medium-Text-Regular">{props.subtitle}</p>

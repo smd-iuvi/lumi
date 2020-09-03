@@ -136,17 +136,17 @@ class Navbar extends Component {
             </ButtonsBottom>
           </div>
         ) : (
-          <div className="divNotLogin">
-            <Link to={ROUTES.SIGN_IN} className="link">
-              <ButtonLogin />
-            </Link>
-            <Link className="link buttonHelp">
-              <ButtonsBottom newClass="iconBottom iconHelp">
-                Ajuda
+            <div className="divNotLogin">
+              <Link to={ROUTES.SIGN_IN} className="link">
+                <ButtonLogin />
+              </Link>
+              <Link className="link buttonHelp">
+                <ButtonsBottom newClass="iconBottom iconHelp">
+                  Ajuda
               </ButtonsBottom>
-            </Link>
-          </div>
-        )}
+              </Link>
+            </div>
+          )}
       </div>
     );
   }
