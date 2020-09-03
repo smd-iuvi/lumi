@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { compose } from 'recompose';
 
 import './CommentSection.css';
@@ -13,27 +13,16 @@ import { withAuthUser } from '../../Firebase/Session';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
-class CommentSection extends Component {
-  constructor(props) {
-    super(props);
+function CommentSection(props) {
+  const [commentsList, setCommentsList] = useState(null);
+  const [newComment, setNewComment] = useState('');
 
-    this.state = {
-      commentsList: null,
-      newComment: ''
-    };
-  }
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
-  componentDidMount() {
-    this.fetchComments();
-  }
-
-  onNewCommentChange = e => {
-    this.setState({ newComment: e.target.value });
-  };
-
-  onSendComment = () => {
-    const { firebase, videoId, userId } = this.props;
-    const { newComment } = this.state;
+  function onSendComment() {
+    const { firebase, videoId, userId } = props;
 
     const comment = {
       videoId: videoId,
@@ -44,24 +33,24 @@ class CommentSection extends Component {
     firebase.comment
       .create(comment)
       .then(() => {
-        this.setState({ newComment: '' });
-        this.fetchComments();
+        setNewComment('');
+        fetchComments();
       })
       .catch(error => console.log(error));
   };
 
-  fetchComments = () => {
-    const { firebase, videoId } = this.props;
+  function fetchComments() {
+    const { firebase, videoId } = props;
     firebase.comment
       .getCommentsBy(CommentModel.VIDEO_ID, videoId)
       .then(comments => {
-        this.setState({ commentsList: comments.reverse() });
+        setCommentsList(comments.reverse());
       })
       .catch(error => this.setState({ error }));
   };
 
-  onDeleteComment = comment => {
-    const { firebase, authUser } = this.props;
+  function onDeleteComment(comment) {
+    const { firebase, authUser } = props;
 
     if (comment.userId === authUser.uid) {
       firebase.comment.delete(comment.uid, error => {
@@ -70,65 +59,62 @@ class CommentSection extends Component {
     }
   };
 
-  render() {
-    const { videoId, userId, authUser } = this.props;
-    const { commentsList, newComment } = this.state;
+  const { videoId, userId, authUser } = props;
 
-    const commentStyle = {
-      color: '#fff',
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gridRowGap: '16px',
-      margin: '16px'
-    };
+  const commentStyle = {
+    color: '#fff',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridRowGap: '16px',
+    margin: '16px'
+  };
 
-    const buttonStyle = {
-      color: '#000',
-      backgroundColor: '#fff'
-    };
+  const buttonStyle = {
+    color: '#000',
+    backgroundColor: '#fff'
+  };
 
-    return (
-      <div className="CommentSection">
-        {authUser ? (
-          <NewComment
-            newComment={newComment}
-            onChange={this.onNewCommentChange}
-            onSend={this.onSendComment}
-            videoId={videoId}
-            userId={userId}
-          />
-        ) : (
-            <div className="loginForComment">
-              <img src={iconNotUser} />
-              <h1 className="Small-Text-Bold">Faça
-                <Link to={ROUTES.SIGN_IN} className="link linkRedirect"> login </Link>
-                ou
-                <Link to={ROUTES.SIGN_UP} className="link linkRedirect"> registre-se </Link>
-                para comentar
-              </h1>
-            </div>
-          )}
+  return (
+    <div className="CommentSection">
+      {authUser ? (
+        <NewComment
+          newComment={newComment}
+          onChange={e => setNewComment(e.target.value)}
+          onSend={onSendComment}
+          videoId={videoId}
+          userId={userId}
+        />
+      ) : (
+          <div className="loginForComment">
+            <img src={iconNotUser} />
+            <h1 className="Small-Text-Bold">Faça
+              <Link to={ROUTES.SIGN_IN} className="link linkRedirect"> login </Link>
+              ou
+              <Link to={ROUTES.SIGN_UP} className="link linkRedirect"> registre-se </Link>
+              para comentar
+            </h1>
+          </div>
+        )}
 
-        <h1 className="Small-Text-Bold">
-          {commentsList ? commentsList.length : 'Carregando'} comentários
-        </h1>
+      <h1 className="Small-Text-Bold">
+        {commentsList ? commentsList.length : 'Carregando'} comentários
+      </h1>
 
-        <div className="comments">
-          {commentsList &&
-            commentsList.map(comment => {
-              return (
-                <Comment
-                  comment={comment}
-                  onDelete={() => this.onDeleteComment(comment)}
-                >
-                  {comment.comment}
-                </Comment>
-              );
-            })}
-        </div>
+      <div className="comments">
+        {commentsList &&
+          commentsList.map(comment => {
+            return (
+              <Comment
+                comment={comment}
+                onDelete={() => onDeleteComment(comment)}
+              >
+                {comment.comment}
+              </Comment>
+            );
+          })}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default compose(

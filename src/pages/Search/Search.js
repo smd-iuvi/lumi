@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import './Search.css';
@@ -20,119 +20,98 @@ const pushUpStyle = {
   marginTop: '-50px'
 };
 
-class Search extends Component {
-  constructor(props) {
-    super(props);
+function Search(props) {
+  const [tabs, settabs] = useState(['Tudo', 'Vídeos', 'Pessoas', 'Disciplinas']);
+  const [usersListState, setUsersListState] = useState({
+    list: null,
+    loading: false,
+    error: null
+  });
+  const [videosListState, setVideosListState] = useState({
+    list: null,
+    loading: false,
+    error: null
+  });
+  const [disciplinesListState, setDisciplinesListState] = useState({
+    list: null,
+    loading: false,
+    error: null
+  });
 
-    this.state = {
-      tabs: ['Tudo', 'Vídeos', 'Pessoas', 'Disciplinas'],
-      usersListState: {
-        list: null,
-        loading: false,
-        error: null
-      },
-      videosListState: {
-        list: null,
-        loading: false,
-        error: null
-      },
-      disciplinesListState: {
-        list: null,
-        loading: false,
-        error: null
-      }
-    };
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     const {
       firebase,
       match: { params }
-    } = this.props;
-    const {
-      usersListState,
-      disciplinesListState,
-      videosListState
-    } = this.state;
+    } = props;
 
     const newVideosListState = { ...usersListState, loading: true };
     const newDisciplinesListState = { ...disciplinesListState, loading: true };
     const newUserListState = { ...videosListState, loading: true };
 
-    this.setState({
-      usersListState: newUserListState,
-      videosListState: newVideosListState,
-      disciplinesListState: newDisciplinesListState
-    });
+    setUsersListState(newUserListState);
+    setVideosListState(newVideosListState);
+    setDisciplinesListState(newDisciplinesListState);
 
     firebase.user
       .getByName(params.searchTerm)
       .then(users => {
-        const { usersListState } = this.state;
         const newUserListState = {
           ...usersListState,
           loading: false,
           list: users
         };
-        this.setState({ usersListState: newUserListState });
+        setUsersListState(newUserListState);
       })
       .catch(error => {
-        const { usersListState } = this.state;
         const newUserListState = {
           ...usersListState,
           loading: false,
           error: error
         };
-        this.setState({ usersListState: newUserListState });
+        setUsersListState(newUserListState);
       });
 
     firebase.discipline
       .getByName(params.searchTerm)
       .then(disciplines => {
-        const { disciplinesListState } = this.state;
         const newDisciplinesListState = {
           ...disciplinesListState,
           loading: false,
           list: disciplines
         };
-        this.setState({ disciplinesListState: newDisciplinesListState });
+        setDisciplinesListState(newDisciplinesListState);
       })
       .catch(error => {
-        const { disciplinesListState } = this.state;
         const newDisciplinesListState = {
           ...disciplinesListState,
           loading: false,
           error: error
         };
-        this.setState({ disciplinesListState: newDisciplinesListState });
+        setDisciplinesListState(newDisciplinesListState);
       });
 
     firebase.video
       .getByTitle(params.searchTerm)
       .then(videos => {
-        const { videosListState } = this.state;
         const newVideosListState = {
           ...videosListState,
           loading: false,
           list: videos
         };
-        this.setState({ videosListState: newVideosListState });
+        setVideosListState(newVideosListState);
       })
       .catch(error => {
-        const { videosListState } = this.state;
         const newVideosListState = {
           ...videosListState,
           loading: false,
           error: error
         };
-        this.setState({ videosListState: newVideosListState });
+        setVideosListState(newVideosListState);
       });
-  }
+  }, []);
 
-  onTabChange = newTab => {
-    const { history } = this.props;
-
-    console.log(newTab);
+  function onTabChange(newTab) {
+    const { history } = props;
 
     switch (parseInt(newTab)) {
       case 0:
@@ -152,8 +131,8 @@ class Search extends Component {
     }
   };
 
-  getSelectedTab = () => {
-    const { location } = this.props;
+  function getSelectedTab() {
+    const { location } = props;
     if (location.pathname.includes(ROUTES.SEARCH_ALL)) {
       return 0;
     } else if (location.pathname === ROUTES.SEARCH_VIDEOS) {
@@ -165,26 +144,18 @@ class Search extends Component {
     }
   };
 
-  render() {
-    const {
-      videosListState,
-      usersListState,
-      disciplinesListState
-    } = this.state;
+  const {
+    match: { params }
+  } = props;
 
-    const {
-      match: { params }
-    } = this.props;
+  let container = null;
 
-    let container = null;
+  const selected = getSelectedTab();
 
-    const selected = this.getSelectedTab();
-    console.log(selected);
-
-    if (selected === 0) {
-      container = (
-        <>
-          {videosListState.loading === false &&
+  if (selected === 0) {
+    container = (
+      <>
+        {videosListState.loading === false &&
           videosListState.list === null ? (
             <>
               <img src={iconSearch} />
@@ -197,44 +168,43 @@ class Search extends Component {
               belowTab={true}
             />
           )}
-        </>
-      );
-    } else if (selected === 1) {
-      container = (
-        <>
-          <img src={iconSearch} />
-          <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
-        </>
-      );
-    } else if (selected === 2) {
-      container = (
-        <>
-          <img src={iconSearch} />
-          <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
-        </>
-      );
-    } else if (selected === 3) {
-      container = (
-        <>
-          <img src={iconSearch} />
-          <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
-        </>
-      );
-    }
-    return (
+      </>
+    );
+  } else if (selected === 1) {
+    container = (
       <>
-        <TabBar
-          icon={iconResultSearch}
-          title={`Resultado da busca "${params.searchTerm}"`}
-          selected={selected}
-          tabs={this.state.tabs}
-          onTabChange={this.onTabChange}
-          profileTeacher={false}
-        />
-        <div className="container searchPage">{container}</div>
+        <img src={iconSearch} />
+        <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
+      </>
+    );
+  } else if (selected === 2) {
+    container = (
+      <>
+        <img src={iconSearch} />
+        <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
+      </>
+    );
+  } else if (selected === 3) {
+    container = (
+      <>
+        <img src={iconSearch} />
+        <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
       </>
     );
   }
+  return (
+    <>
+      <TabBar
+        icon={iconResultSearch}
+        title={`Resultado da busca "${params.searchTerm}"`}
+        selected={selected}
+        tabs={tabs}
+        onTabChange={onTabChange}
+        profileTeacher={false}
+      />
+      <div className="container searchPage">{container}</div>
+    </>
+  );
 }
 
 export default compose(
