@@ -2,20 +2,10 @@
     color: var(--text-dark);
 }
 
-.carouselRandom .slider {
-    height: 120px;
-    margin-bottom: 20px;
-}
-
-.carouselRandom div{
-    margin-right: 16px;
-}
-
 .discover .categories{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 80px;
-    margin-top: 72px;
 }
 
 .discover .categories .containerCategories{

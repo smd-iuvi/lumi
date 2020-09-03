@@ -3,17 +3,10 @@ import { Link } from 'react-router-dom';
 import './Discover.css';
 
 import 'react-responsive-carousel/lib/styles/carousel.css';
-import { Carousel } from 'react-responsive-carousel';
-
 import { withFirebase } from '../../Firebase';
-
 import * as ROUTES from '../../constants/routes';
 
-import img from '../../assets/birdbox.jpg';
-import Roulette from '../../components/Roulette/Roulette';
-
 function Discover(props) {
-  const [autoplay, setAutoplay] = useState(false);
   const [disciplineDataSource, setDisciplineDataSource] = useState([]);
   const [semesterDataSource, setSemesterDataSource] = useState([]);
   const [error, setError] = useState(null);
@@ -42,24 +35,8 @@ function Discover(props) {
       });
   }, []);
 
-  function randomVideos() {
-    setAutoplay(true);
-    setTimeout(
-      function () {
-        setAutoplay(false);
-      }, 3000);
-  };
-
   return (
     <div className="container discover">
-      <h1 className="Large-Text-Bold">
-        Não sabe o que assistir? A gente escolhe por você.
-      </h1>
-      <Roulette />
-      <button className="button buttonPrimary" onClick={randomVideos}>
-        Iniciar
-      </button>
-
       <div className="categories">
         <div>
           <h1 className="Large-Text-Bold">Disciplinas</h1>
