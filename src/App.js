@@ -24,6 +24,7 @@ import Discover from './pages/Discover/Discover';
 import Error404 from './pages/404/404';
 import RestrictedArea from './pages/RestrictedArea/RestrictedArea';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
+import Documentation from './pages/Documentation/Documentation';
 import { withAuthentification } from './Firebase/Session';
 
 function App(props) {
@@ -49,13 +50,15 @@ function App(props) {
       {width > 950 ? (
         <>
           {!location.pathname.includes(ROUTES.PLAYER) &&
-            !location.pathname.includes(ROUTES.LANDING) ? (
+            !location.pathname.includes(ROUTES.LANDING) &&
+            !location.pathname.includes(ROUTES.DOCUMENTATION) ? (
               <Sidebar />
             ) : null}
 
           {!location.pathname.includes(ROUTES.LANDING) &&
             !location.pathname.includes(ROUTES.SIGN_IN) &&
-            !location.pathname.includes(ROUTES.SIGN_UP) ? (
+            !location.pathname.includes(ROUTES.SIGN_UP) &&
+            !location.pathname.includes(ROUTES.DOCUMENTATION) ? (
               <NavBar class="navbar" />
             ) : null}
           {location.pathname.includes(ROUTES.PLAYER) && (
@@ -97,6 +100,11 @@ function App(props) {
               path={ROUTES.RESTRICTED_AREA}
               exact
               component={RestrictedArea}
+            />
+            <Route
+              path={ROUTES.DOCUMENTATION}
+              exact
+              component={Documentation}
             />
             <Route component={Error404} />
           </Switch>

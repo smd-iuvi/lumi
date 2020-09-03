@@ -21,3 +21,4 @@ export const EVENT = '/event';
 export const CATEGORY = '/category';
 export const RESTRICTED_AREA = '/restricted_area';
 export const DISCOVER = '/discover';
+export const DOCUMENTATION = '/documentation';

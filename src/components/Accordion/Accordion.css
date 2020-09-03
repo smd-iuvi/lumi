@@ -1,0 +1,42 @@
+.accordion{
+    margin-bottom: 20px;
+}
+
+.accordion .titleBar {
+    background-color: var(--cards);
+    color: var(--placeholders-buttons-dark);
+    cursor: pointer;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion .titleBar div{
+    margin: 18px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 15px;
+    align-items: center;
+}
+
+.accordion .titleBar:hover{
+    background-color: var(--primary);
+}
+
+.accordion .titleBar i{
+    margin-right: 18px;
+    font-size: 1.5em;
+}
+
+.accordion .titleBar .Medium-Text-Bold{
+    color: var(--text-dark);
+}
+
+.body {
+    margin-top: 2px;
+    padding: 18px;
+    background-color: var(--cards);
+    border-radius: 0 0 10px 10px;
+}

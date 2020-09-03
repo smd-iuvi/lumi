@@ -1,0 +1,29 @@
+.contentDocumentation .Medium-Text-Bold{
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.contentDocumentation .Small-Text-Regular{
+    margin: 5px 0;
+    color: var(--placeholders-buttons-dark);
+}
+
+.contentDocumentation .value{
+    margin: 5px 20px;
+    color: var(--placeholders-buttons-dark);
+}
+
+.contentDocumentation .block{
+    margin-bottom: 20px;
+}
+
+.contentDocumentation .block article{
+    display: flex;
+}
+
+pre code {
+    background-color: var(--secundary);
+    color: var(--text-dark);
+    display: block;
+    padding: 20px;
+}
