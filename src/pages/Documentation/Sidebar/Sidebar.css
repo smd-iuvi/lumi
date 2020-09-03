@@ -1,0 +1,9 @@
+.SidebarDocumentation .Medium-Text-Regular{
+    color: var(--placeholders-buttons-dark);
+}
+
+.SidebarDocumentation img{
+    width: 64px;
+    height: 31px;
+    margin: 24px 0 5vh 40px;
+}

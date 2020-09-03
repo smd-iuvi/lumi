@@ -24,6 +24,7 @@ import Discover from './pages/Discover/Discover';
 import Error404 from './pages/404/404';
 import RestrictedArea from './pages/RestrictedArea/RestrictedArea';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
+import Documentation from './pages/Documentation/Documentation';
 import { withAuthentification } from './Firebase/Session';
 
 class App extends Component {
@@ -53,15 +54,17 @@ class App extends Component {
         {this.state.width > 950 ? (
           <>
             {!location.pathname.includes(ROUTES.PLAYER) &&
-            !location.pathname.includes(ROUTES.LANDING) ? (
-              <Sidebar />
-            ) : null}
+              !location.pathname.includes(ROUTES.LANDING) &&
+              !location.pathname.includes(ROUTES.DOCUMENTATION) ? (
+                <Sidebar />
+              ) : null}
 
             {!location.pathname.includes(ROUTES.LANDING) &&
-            !location.pathname.includes(ROUTES.SIGN_IN) &&
-            !location.pathname.includes(ROUTES.SIGN_UP) ? (
-              <NavBar class="navbar" />
-            ) : null}
+              !location.pathname.includes(ROUTES.SIGN_IN) &&
+              !location.pathname.includes(ROUTES.SIGN_UP) &&
+              !location.pathname.includes(ROUTES.DOCUMENTATION) ? (
+                <NavBar class="navbar" />
+              ) : null}
             {location.pathname.includes(ROUTES.PLAYER) && (
               <NavBar class="navbar navbarComplete" />
             )}
@@ -78,7 +81,6 @@ class App extends Component {
                 component={Player}
                 key={uuid()}
               />{' '}
-              />
               <Route path={ROUTES.PROFILE} component={Profile} />
               <Route path={ROUTES.UPLOAD} exact component={Upload} />
               <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
@@ -103,17 +105,22 @@ class App extends Component {
                 exact
                 component={RestrictedArea}
               />
+              <Route
+                path={ROUTES.DOCUMENTATION}
+                exact
+                component={Documentation}
+              />
               <Route component={Error404} />
             </Switch>
 
             {!location.pathname.includes(ROUTES.PLAYER) &&
-            !location.pathname.includes(ROUTES.LANDING) ? (
-              <Footer />
-            ) : null}
+              !location.pathname.includes(ROUTES.LANDING) ? (
+                <Footer />
+              ) : null}
           </>
         ) : (
-          <SmallWidth />
-        )}
+            <SmallWidth />
+          )}
       </div>
     );
   }

@@ -39,6 +39,9 @@ const Footer = () => {
         </div>
         <div>
           <h1 className="Medium-Text-Bold">Suporte</h1>
+          <Link to={ROUTES.DOCUMENTATION} className="link">
+            <h1 className="Medium-Text-Regular">Documentação</h1>
+          </Link>
           <h1 className="Medium-Text-Regular">Preciso de ajuda</h1>
           <h1 className="Medium-Text-Regular">Relatar um problema</h1>
         </div>
