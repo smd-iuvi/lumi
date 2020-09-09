@@ -133,42 +133,60 @@ function Datasheet(props) {
   } else if (selected == 1) {
     container = (
       <>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">Disciplina</h1>
-          <h1 className="Medium-Text-Regular">
-            {video && video.discipline
-              ? video.discipline
-              : 'Video independente'}
-          </h1>
-        </div>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">Semestre</h1>
-          <h1 className="Medium-Text-Regular">
-            {video && video.semester ? video.semester : 'Indisponível'}
-          </h1>
-        </div>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">Professor(es)</h1>
-          <h1 className="Medium-Text-Regular">
-            {video && video.professor ? video.professor : 'Indisponível'}
-          </h1>
-        </div>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">
-            Sobre o trabalho
-          </h1>
-          <h1 className="Medium-Text-Regular">
-            {video && video.about ? video.about : 'Indisponível'}
-          </h1>
-        </div>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">
-            Evento de disciplina
-          </h1>
-          <h1 className="Medium-Text-Regular">
-            {video && video.event ? video.event : 'Não faz parte de evento'}
-          </h1>
-        </div>
+        {video && video.discipline &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">Disciplina</h1>
+            <h1 className="Medium-Text-Regular">
+              {video.discipline}
+            </h1>
+          </div>
+        }
+        {video && video.semester &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">Semestre</h1>
+            <h1 className="Medium-Text-Regular">
+              {video.semester}
+            </h1>
+          </div>
+        }
+        {video && video.professor &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">Professor(es)</h1>
+            <h1 className="Medium-Text-Regular">
+              {video.professor}
+            </h1>
+          </div>
+        }
+        {video && video.about &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">
+              Sobre o trabalho
+            </h1>
+            <h1 className="Medium-Text-Regular">
+              {video.about}
+            </h1>
+          </div>
+        }
+        {video && video.event &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">
+              Evento de disciplina
+            </h1>
+            <h1 className="Medium-Text-Regular">
+              {video.event}
+            </h1>
+          </div>
+        }
+        {video &&
+          !video.discipline &&
+          !video.semester &&
+          !video.professor &&
+          !video.about &&
+          !video.event &&
+          <div className="contentCast">
+            <h1 className="Medium-Text-Regular titleFunction">Sem informações acadêmicas</h1>
+          </div>
+        }
       </>
     );
   } else if (selected == 2) {
