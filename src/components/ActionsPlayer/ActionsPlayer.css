@@ -28,6 +28,10 @@
   width: max-content;
 }
 
+.ActionsPlayer div:hover .Small-Text-Bold{
+  color: var(--primary);
+}
+
 .Actions .iconAplause{
   background-image: url('./assets/clap.svg');
 }

@@ -72,6 +72,8 @@ function Player(props) {
   };
 
   useEffect(() => {
+    if (authUser.watchList && authUser.watchList.includes(params.videoId))
+      setOnWatchList(true);
     return () => {
       const {
         firebase,
@@ -95,19 +97,6 @@ function Player(props) {
       });
   };
 
-  function checkUserWatchList() {
-    const {
-      authUser,
-      match: { params }
-    } = props;
-
-    if (authUser.watchList && authUser.watchList.includes(params.videoId)) {
-      setOnWatchList(true);
-    } else {
-      setOnWatchList(false);
-    }
-  };
-
   function didAddToWatchlist() {
     const {
       firebase,
@@ -117,9 +106,7 @@ function Player(props) {
     if (authUser) {
       firebase.user
         .addVideoToList(authUser.uid, params.videoId)
-        .then(() => {
-          checkUserWatchList();
-        })
+        .then(() => { })
         .catch(error => { });
     } else {
       handleModal();
