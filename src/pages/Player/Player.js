@@ -112,13 +112,16 @@ function Player(props) {
       authUser,
       match: { params }
     } = props;
-
-    firebase.user
-      .addVideoToList(authUser.uid, params.videoId)
-      .then(() => {
-        checkUserWatchList();
-      })
-      .catch(error => { });
+    if (authUser) {
+      firebase.user
+        .addVideoToList(authUser.uid, params.videoId)
+        .then(() => {
+          checkUserWatchList();
+        })
+        .catch(error => { });
+    } else {
+      props.history.push('/sign_in');
+    }
   };
 
   const {
@@ -164,15 +167,6 @@ function Player(props) {
           />
         </div>
         <Datasheet video={video} />
-        {/* <Tabs tabs={this.state.tabs} onTabChange={this.onTabChange} /> */}
-        {/* <div className="containerRight">
-          <SidebarPlayer />
-        </div>
-        <div className="ContainerBottom">
-          {authUser && (
-            <CommentSection videoId={params.videoId} userId={authUser.uid} />
-          )}
-        </div> */}
       </div>
     </>
   );
