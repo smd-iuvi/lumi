@@ -3,9 +3,10 @@ import { compose } from 'recompose';
 
 import TabBarPlayer from '../../components/Player/TabBarPlayer/TabBarPlayer';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
-import SidebarPlayer from '../../components/SidebarPlayer/SidebarPlayer';
+import Modal from '../../components/Modal/Modal';
 import CommentSection from '../../components/CommentSection/CommentSection';
 import Datasheet from '../../components/Player/Datasheet/Datasheet';
+import * as ROUTES from '../../constants/routes';
 
 import { withFirebase } from '../../Firebase';
 import { withAuthUser } from '../../Firebase/Session';
@@ -22,6 +23,7 @@ function Player(props) {
   const [tabs, setTabs] = useState(['Ficha técnica', 'Informações acadêmicas', 'Tags']);
   const [selected, setSelected] = useState(false);
   const [error, setError] = useState(null);
+  const [isVisibleModalLogin, setIsVisibleModalLogin] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -120,9 +122,31 @@ function Player(props) {
         })
         .catch(error => { });
     } else {
-      props.history.push('/sign_in');
+      handleModal();
     }
   };
+
+  function getContentModal() {
+    return <h1 className="Medium-Text-Regular">Faça já seu cadastro no Lumi e tenha acesso a todos os recursos!</h1>;
+  }
+
+  function getOptionsModal() {
+    return <div>
+      <button
+        className="button buttonSecundary"
+        onClick={() => props.history.push(ROUTES.SIGN_IN)}
+      >
+        Login
+      </button>
+      <button className="button buttonPrimary" onClick={() => props.history.push(ROUTES.SIGN_UP)}>
+        Cadastre-se
+      </button>
+    </div>
+  }
+
+  function handleModal() {
+    setIsVisibleModalLogin(!isVisibleModalLogin);
+  }
 
   const {
     authUser,
@@ -146,6 +170,13 @@ function Player(props) {
 
   return (
     <>
+      {isVisibleModalLogin && <Modal
+        title="É necessário fazer login"
+        width={'30vw'}
+        content={getContentModal()}
+        options={getOptionsModal()}
+        closeModal={handleModal}
+      />}
       <TabBarPlayer video={video} nextVideo={nextVideo} />
       <div className="containerPlayer">
         <div>

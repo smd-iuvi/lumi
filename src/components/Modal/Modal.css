@@ -1,4 +1,13 @@
-.Upload .backgroundModal{
+.Modal{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Modal .backgroundModal{
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -7,20 +16,17 @@
     z-index: 110;
 }
 
-.Upload .modalUpload{
+.Modal .bodyModal{
     position: absolute;
-    width: 60vw;
     display: grid;
-    grid-template-rows: 64px 70vh 70px;
+    grid-template-rows: 64px auto 70px;
     background-color: var(--text-dark);
-    /* overflow-y: auto; */
     border-radius: 8px;
-    margin-left: 20vw;
-    margin-top: 30px;
+    margin-top: -100px;
     z-index: 120;
 }
 
-.Upload .modalUpload .labelModal{
+.Modal .bodyModal .labelModal{
     height: 64px;
     background-color: var(--primary);
     padding: 0 40px;
@@ -31,16 +37,16 @@
     border-radius: 8px 8px 0 0;
 }
 
-.Upload .closeModal{
+.Modal .closeModal{
     cursor: pointer;
 }
 
-.Upload .contentModal{
+.Modal .contentModal{
     padding: 16px 40px;
     overflow-y: auto;
 }
 
-.Upload .handleSteps{
+.Modal .options{
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
@@ -50,6 +56,6 @@
     box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.16);
 }
 
-.Upload .handleSteps .buttonSecundary{
+.Modal .options .buttonSecundary{
     margin-right: 16px;
 }
