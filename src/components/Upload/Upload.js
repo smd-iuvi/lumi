@@ -242,7 +242,7 @@ function Upload(props) {
   }
 
   return (
-    <div>
+    <div className="Upload">
       <div className="backgroundModal" onClick={closeModal} />
       <div className="modalUpload">
         <div className="labelModal">
