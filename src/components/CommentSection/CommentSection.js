@@ -16,6 +16,7 @@ import * as ROUTES from '../../constants/routes';
 function CommentSection(props) {
   const [commentsList, setCommentsList] = useState(null);
   const [newComment, setNewComment] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     fetchComments();
@@ -46,7 +47,7 @@ function CommentSection(props) {
       .then(comments => {
         setCommentsList(comments.reverse());
       })
-      .catch(error => this.setState({ error }));
+      .catch(error => setError(error));
   };
 
   function onDeleteComment(comment) {

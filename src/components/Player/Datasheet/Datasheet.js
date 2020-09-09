@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Datasheet.css';
 
 import Tabs from '../../TabBar/Tabs/Tabs';
@@ -7,6 +7,53 @@ import Tags from '../../Tags/Tags';
 function Datasheet(props) {
   const [tabs, setTabs] = useState(['Ficha técnica', 'Informações acadêmicas', 'Tags']);
   const [selected, setSelected] = useState(0);
+  const [direction, setDirection] = useState([]);
+  const [photography, setPhotography] = useState([]);
+  const [edition, setEdition] = useState([]);
+  const [artDirection, setArtDirection] = useState([]);
+  const [soundtrack, setSoundtrack] = useState([]);
+  const [cast, setCast] = useState([]);
+
+  useEffect(() => {
+    const { video } = props;
+    if (video && video.members) {
+      const listDirection = [];
+      const listPhotography = [];
+      const listEdition = [];
+      const listArtDirection = [];
+      const listSoundtrack = [];
+
+      video.members.map(member => {
+        if (member.role == 'Direção') {
+          setDirection(listDirection.push(member.name));
+        }
+        else if (member.role == 'Fotografia') {
+          setDirection(listPhotography.push(member.name));
+        }
+        else if (member.role == 'Edição') {
+          setDirection(listEdition.push(member.name));
+        }
+        else if (member.role == 'Direção de arte') {
+          setDirection(listArtDirection.push(member.name));
+        }
+        else if (member.role == 'Trilha sonora') {
+          setDirection(listSoundtrack.push(member.name));
+        }
+      });
+      setDirection(listDirection);
+      setPhotography(listPhotography);
+      setEdition(listEdition);
+      setArtDirection(listArtDirection);
+      setSoundtrack(listSoundtrack);
+    }
+    if (video && video.cast) {
+      const listCast = [];
+      video.cast.map(c => {
+        listCast.push(c);
+      });
+      setCast(listCast);
+    }
+  }, props.video);
 
   function onTabChange(newTab) {
     setSelected(newTab);
@@ -18,74 +65,69 @@ function Datasheet(props) {
   if (selected == 0) {
     container = (
       <>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">Direção</h1>
-          {video &&
-            video.members &&
-            video.members.map(member => {
-              if (member.role == 'Direção') {
-                return <h1 className="Medium-Text-Regular">{member.name}</h1>;
-              }
+        {direction.length !== 0 &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">Direção</h1>
+            {direction.map(member => {
+              return <h1 className="Medium-Text-Regular">{member.name}</h1>;
             })}
-        </div>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">Fotografia</h1>
-          {video &&
-            video.members &&
-            video.members.map(member => {
-              if (member.role == 'Fotografia') {
-                return <h1 className="Medium-Text-Regular">{member.name}</h1>;
-              }
+          </div>
+        }
+        {photography.length !== 0 &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">Fotografia</h1>
+            {photography.map(member => {
+              return <h1 className="Medium-Text-Regular">{member.name}</h1>;
             })}
-        </div>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">Edição</h1>
-          {video &&
-            video.members &&
-            video.members.map(member => {
-              if (member.role == 'Edição') {
-                return <h1 className="Medium-Text-Regular">{member.name}</h1>;
-              }
+          </div>
+        }
+        {edition.length !== 0 &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">Edição</h1>
+            {edition.map(member => {
+              return <h1 className="Medium-Text-Regular">{member.name}</h1>;
             })}
-        </div>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">
-            Direção de arte
-          </h1>
-          {video &&
-            video.members &&
-            video.members.map(member => {
-              if (member.role == 'Direção de arte') {
-                return <h1 className="Medium-Text-Regular">{member.name}</h1>;
-              }
+          </div>
+        }
+        {artDirection.length !== 0 &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">
+              Direção de arte
+            </h1>
+            {artDirection.map(member => {
+              return <h1 className="Medium-Text-Regular">{member.name}</h1>;
             })}
-        </div>
-        <div className="contentFunction">
-          <h1 className="Medium-Text-Regular titleFunction">Trilha sonora</h1>
-          {video &&
-            video.members &&
-            video.members.map(member => {
-              if (member.role == 'Trilha sonora') {
-                return <h1 className="Medium-Text-Regular">{member.name}</h1>;
-              }
+          </div>
+        }
+        {soundtrack.length !== 0 &&
+          <div className="contentFunction">
+            <h1 className="Medium-Text-Regular titleFunction">Trilha sonora</h1>
+            {soundtrack.map(member => {
+              return <h1 className="Medium-Text-Regular">{member.name}</h1>;
             })}
-        </div>
-        <div className="contentCast">
-          <h1 className="Medium-Text-Regular titleFunction">Elenco</h1>
-          <div>
-            {video &&
-              video.cast &&
-              video.cast.map(c => {
-                return <h1 className="Medium-Text-Regular">{c}</h1>;
+          </div>
+        }
+        {cast.length !== 0 &&
+          <div className="contentCast">
+            <h1 className="Medium-Text-Regular titleFunction">Elenco</h1>
+            <div>
+              {cast.map(c => {
+                return <h1 className="Medium-Text-Regular">{c}</h1>
               })}
+            </div>
           </div>
-          <div>
-            {/* <h1 className="Medium-Text-Regular">Fulaninho de Tal</h1>
-            <h1 className="Medium-Text-Regular">Fulaninho de Tal</h1>
-            <h1 className="Medium-Text-Regular">Fulaninho de Tal</h1>
-            <h1 className="Medium-Text-Regular">Fulaninho de Tal</h1> */}
+        }
+
+        {direction.length === 0 &&
+          photography.length === 0 &&
+          edition.length === 0 &&
+          artDirection.length === 0 &&
+          soundtrack.length === 0 &&
+          cast.length === 0 &&
+          <div className="contentCast">
+            <h1 className="Medium-Text-Regular titleFunction">Não há ficha técnica</h1>
           </div>
-        </div>
+        }
       </>
     );
   } else if (selected == 1) {
