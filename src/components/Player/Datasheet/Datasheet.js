@@ -192,7 +192,11 @@ function Datasheet(props) {
   } else if (selected == 2) {
     container = (
       <div className="contentFunction">
-        <Tags tags={video.tags} />
+        {video.tags ?
+          <Tags tags={video.tags} />
+          :
+          <h1 className="Medium-Text-Regular titleFunction">Nenhuma tag</h1>
+        }
       </div>
     );
   }
