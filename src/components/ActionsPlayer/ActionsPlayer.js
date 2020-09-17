@@ -2,7 +2,6 @@ import React from 'react';
 import './ActionsPlayer.css';
 
 const ActionsPlayer = ({ didClap, claps, didAddToWatchlist, onWatchList }) => {
-  console.log(onWatchList);
   return (
     <div className="Actions ActionsPlayer">
       <div onClick={didClap} className="addClap">
@@ -11,8 +10,17 @@ const ActionsPlayer = ({ didClap, claps, didAddToWatchlist, onWatchList }) => {
         <article className="valueClaps Small-Text-Regular">{claps} aplausos</article>
       </div>
       <div onClick={didAddToWatchlist}>
-        <article className="Icons iconList"></article>
-        <h1 className="Small-Text-Bold myList">Minha lista</h1>
+        {onWatchList ?
+          <>
+            <article className="Icons iconRemoveList"></article>
+            <h1 className="Small-Text-Bold myList">Remover da lista</h1>
+          </>
+          :
+          <>
+            <article className="Icons iconAddList"></article>
+            <h1 className="Small-Text-Bold myList">Minha lista</h1>
+          </>
+        }
       </div>
       <div>
         <article className="Icons iconShare"></article>

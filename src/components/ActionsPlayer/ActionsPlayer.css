@@ -28,6 +28,10 @@
   width: max-content;
 }
 
+.ActionsPlayer div:hover .Small-Text-Bold{
+  color: var(--primary);
+}
+
 .Actions .iconAplause{
   background-image: url('./assets/clap.svg');
 }
@@ -36,8 +40,14 @@
   background-image: url('./assets/share.svg');
 }
 
-.Actions .iconList{
+.Actions .iconAddList{
   background-image: url('./assets/add_list.svg');
+}
+
+.Actions .iconRemoveList{
+  width: 35px;
+  height: 28px;
+  background-image: url('./assets/remove_list.svg');
 }
 
 .Actions div:hover .iconAplause{
@@ -48,8 +58,12 @@
   background-image: url('./assets/share_hover.svg');
 }
 
-.Actions div:hover .iconList{
+.Actions div:hover .iconAddList{
   background-image: url('./assets/add_list_hover.svg');
+}
+
+.Actions div:hover .iconRemoveList{
+  background-image: url('./assets/remove_list_hover.svg');
 }
 
 .Actions .addClap:hover .valueClaps{
