@@ -1,17 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
 import './SliderCard.css';
 
 import birdbox from '../../assets/birdbox.jpg';
-import addList from '../Carousel/assets/add-list.svg';
+import addList from '../Carousel/assets/add_list.svg';
+import removeList from '../Carousel/assets/remove_list.svg';
 import * as ROUTES from '../../constants/routes';
+
+import { withFirebase } from '../../Firebase';
+import { withAuthUser } from '../../Firebase/Session';
 
 const onWatch = (uid, history) => {
   history.push(`${ROUTES.PLAYER}/${uid}`);
 };
 
-const SliderCard = ({ video, history }) => {
+function SliderCard(props) {
+  const [isVisibleModalLogin, setIsVisibleModalLogin] = useState(false);
+  const [onWatchList, setOnWatchList] = useState(false);
+
+  useEffect(() => {
+    const {
+      authUser,
+      firebase
+    } = props;
+    if (authUser.watchList && authUser.watchList.includes(video.uid))
+      setOnWatchList(true);
+    return () => {
+      firebase.db.ref(`video/${video.uid}`).off();
+    }
+  }, []);
+
+  function didAddToWatchlist() {
+    const {
+      firebase,
+      authUser
+    } = props;
+    if (authUser) {
+      firebase.user
+        .addVideoToList(authUser.uid, video.uid)
+        .then(() => { setOnWatchList(!onWatchList); })
+        .catch(error => { });
+    } else {
+      handleModal();
+    }
+  };
+
+  function handleModal() {
+    setIsVisibleModalLogin(!isVisibleModalLogin);
+  }
+
+  const {
+    video,
+    history
+  } = props;
+
   return (
     <div className="SliderCard">
       <div className="infos">
@@ -27,9 +71,16 @@ const SliderCard = ({ video, history }) => {
           >
             Assistir
           </button>
-          <article className="addList Medium-Text-Bold">
-            <img src={addList} />
-            Minha lista
+          <article className="addList Medium-Text-Bold" onClick={didAddToWatchlist}>
+            {!onWatchList ?
+              <>
+                <img src={addList} />
+                Minha Lista
+              </> :
+              <>
+                <img src={removeList} />
+                Remover da lista
+              </>}
           </article>
         </div>
       </div>
@@ -40,4 +91,8 @@ const SliderCard = ({ video, history }) => {
   );
 };
 
-export default withRouter(SliderCard);
+export default compose(
+  withRouter,
+  withFirebase,
+  withAuthUser
+)(SliderCard);

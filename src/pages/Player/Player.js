@@ -38,6 +38,16 @@ function Player(props) {
       .getNextVideo(params.videoId)
       .then(video => setNextVideo(video))
       .catch(error => setError(error));
+
+    if (authUser.watchList && authUser.watchList.includes(params.videoId))
+      setOnWatchList(true);
+    return () => {
+      const {
+        firebase,
+        match: { params }
+      } = props;
+      firebase.db.ref(`video/${params.videoId}`).off();
+    }
   }, []);
 
   function eventListener() {
@@ -72,15 +82,7 @@ function Player(props) {
   };
 
   useEffect(() => {
-    if (authUser.watchList && authUser.watchList.includes(params.videoId))
-      setOnWatchList(true);
-    return () => {
-      const {
-        firebase,
-        match: { params }
-      } = props;
-      firebase.db.ref(`video/${params.videoId}`).off();
-    }
+
   }, []);
 
   function didClap() {
