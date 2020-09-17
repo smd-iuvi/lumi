@@ -12,12 +12,12 @@ const ActionsPlayer = ({ didClap, claps, didAddToWatchlist, onWatchList }) => {
       <div onClick={didAddToWatchlist}>
         {onWatchList ?
           <>
-            <article className="Icons iconList"></article>
+            <article className="Icons iconRemoveList"></article>
             <h1 className="Small-Text-Bold myList">Remover da lista</h1>
           </>
           :
           <>
-            <article className="Icons iconList"></article>
+            <article className="Icons iconAddList"></article>
             <h1 className="Small-Text-Bold myList">Minha lista</h1>
           </>
         }
