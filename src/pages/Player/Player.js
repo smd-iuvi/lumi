@@ -39,7 +39,7 @@ function Player(props) {
       .then(video => setNextVideo(video))
       .catch(error => setError(error));
 
-    if (authUser.watchList && authUser.watchList.includes(params.videoId))
+    if (authUser != null && authUser.watchList && authUser.watchList.includes(params.videoId))
       setOnWatchList(true);
     return () => {
       const {

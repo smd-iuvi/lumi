@@ -25,7 +25,7 @@ function SliderCard(props) {
       authUser,
       firebase
     } = props;
-    if (authUser.watchList && authUser.watchList.includes(video.uid))
+    if (authUser != null && authUser.watchList != null && authUser.watchList.includes(video.uid))
       setOnWatchList(true);
     return () => {
       firebase.db.ref(`video/${video.uid}`).off();
