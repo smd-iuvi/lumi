@@ -19,17 +19,17 @@ const Label = ({ editing, type, isPassword, value }) => {
   if (isPassword) {
     label = (
       <div style={style}>
-        <p>{value}</p>
+        <p className="Medium-Text-Regular">{value}</p>
         <SecondaryButton>Mudar Senha</SecondaryButton>
       </div>
     );
   } else {
-    label = <p>{value}</p>;
+    label = <p className="Medium-Text-Regular">{value}</p>;
   }
   return (
     <div className="Label">
-      <p className="Medium-Text-Regular">{type}</p>
-      {editing ? <input /> : label}
+      <h5 className="Medium-Text-Regular">{type}</h5>
+      {label}
     </div>
   );
 };

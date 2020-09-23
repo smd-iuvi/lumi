@@ -1,6 +1,6 @@
 .Label {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  display: flex;
+  padding: 0 16px;
   background-color: var(--searchBar);
   border-radius: 8px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
@@ -10,4 +10,12 @@
   text-align: center;
   align-items: center;
   color: var(--placeholders-buttons-dark);
+}
+
+.Label .Medium-Text-Regular{
+  padding-right: 16px;
+}
+
+.Label p{
+  color: var(--text-dark);
 }
