@@ -45,7 +45,7 @@ function CommentSection(props) {
     firebase.comment
       .getCommentsBy(CommentModel.VIDEO_ID, videoId)
       .then(comments => {
-        setCommentsList(comments.reverse());
+        setCommentsList(comments ? comments.reverse() : []);
       })
       .catch(error => setError(error));
   };
