@@ -25,10 +25,10 @@ const ParentalRating = (props) => {
   }
   return (
     <div className="ParentalRating">
-      <div className="age" style={color}>
+      {props.age && <div className="age" style={color}>
         <h1 className="Small-Text-Regular ageParental">{value}</h1>
-      </div>
-      <h1 className="Small-Text-Regular descriptionParental">{props.content}</h1>
+      </div>}
+      {props.content && <h1 className="Small-Text-Regular descriptionParental">{props.content}</h1>}
     </div>
   );
 }

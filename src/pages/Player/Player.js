@@ -81,10 +81,6 @@ function Player(props) {
     setDuration(d);
   };
 
-  useEffect(() => {
-
-  }, []);
-
   function didClap() {
     const {
       firebase,

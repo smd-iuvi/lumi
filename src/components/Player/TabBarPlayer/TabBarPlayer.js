@@ -7,9 +7,6 @@ import VideoInfo from '../VideoInfo/VideoInfo';
 
 import * as ROUTES from '../../../constants/routes';
 
-import next from './assets/next.svg';
-import film from '../../../assets/birdbox.jpg';
-
 const back = history => {
   history.goBack();
 };
@@ -25,6 +22,7 @@ const TabBarPlayer = ({ video, nextVideo, history }) => {
           semester={video ? video.semester : null}
           genre={video ? video.genre : null}
           parentalRating={video ? video.parentalRating : null}
+          content={video ? video.content : null}
         />
       </div>
       <div className="containerNextFilm">
