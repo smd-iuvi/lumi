@@ -167,7 +167,7 @@ function Profile(props) {
           profileTeacher={profileTeacher}
         />
         <article className="lineSidebar" />
-        <ProfileLabels />
+        <ProfileLabels email={authUser.email} birthday={authUser.birthday} />
       </>
     );
   } else if (selected === 1) {
