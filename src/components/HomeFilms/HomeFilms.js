@@ -20,10 +20,10 @@ const HomeFilms = ({ videos, loading }) => {
   return (
     <div className="HomeFilms">
       <div className="titleHomeFilms">
-        <Header>O que há de novo</Header>
+        <Header>Os mais assistidos</Header>
         <Link to={{
           pathname: ROUTES.VIDEOS_LIST,
-          state: { videos: videos, title: 'O que há de novo' }
+          state: { videos: videos, title: 'Os mais assistidos' }
         }}>
           <button className="button buttonSeeMore">Ver todos</button>
         </Link>
