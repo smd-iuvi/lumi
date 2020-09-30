@@ -21,6 +21,7 @@ import Landing from './pages/Landing/Landing';
 import Event from './pages/Event/Event';
 import Category from './pages/Category/Category';
 import Discover from './pages/Discover/Discover';
+import VideosList from './pages/VideosList/VideosList';
 import Error404 from './pages/404/404';
 import RestrictedArea from './pages/RestrictedArea/RestrictedArea';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
@@ -77,6 +78,7 @@ function App(props) {
               component={Player}
               key={uuid()}
             />{' '}
+            <Route path={ROUTES.VIDEOS_LIST} component={VideosList} />
             <Route path={ROUTES.PROFILE} component={Profile} />
             <Route path={ROUTES.UPLOAD} exact component={Upload} />
             <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
