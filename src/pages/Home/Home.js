@@ -34,7 +34,7 @@ function Home(props) {
       });
 
     firebase.video
-      .getPopulars(4)
+      .getPopulars(10)
       .then(videos => {
         setPopularsVideos(videos);
         setLoadingPopulars(false);
