@@ -1,0 +1,9 @@
+.EmptyState{
+    text-align: center;
+    margin: 30px 0;
+}
+
+.EmptyState .Small-Text-Regular{
+    margin-top: 16px;
+    color: var(--placeholders-light);
+}
