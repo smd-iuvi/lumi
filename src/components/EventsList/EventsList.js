@@ -2,8 +2,10 @@ import React from 'react';
 
 import Event from './Event/Event';
 import Header from '../Header/Header';
+import EventEmptyState from './assets/event_empty_state.svg';
 
 import './EventsList.css';
+import EmptyState from '../EmptyState/EmptyState';
 
 const EventsList = ({ events }) => {
   let firstList = null;
@@ -38,8 +40,17 @@ const EventsList = ({ events }) => {
         <button className="button buttonPrimary">Ver todos</button>
       </div>
       <article className="line" />
-      <h1 className="Month Small-Text-Bold">NESTE MÊS</h1>
-      {firstList && firstList.map(event => <Event event={event} />)}
+
+      {firstList && firstList.length !== 0 ?
+        <>
+          <h1 className="Month Small-Text-Bold">NESTE MÊS</h1>
+          {firstList.map(event => <Event event={event} />)}
+        </>
+        :
+        <EmptyState image={EventEmptyState} description={
+          <h1 className="Small-Text-Regular">Eventos são como os trabalhos de disciplinas criados por professores. No momento não há nenhum evento agendado.</h1>
+        } />
+      }
       {secondList && secondList.length > 0 && (
         <h1 className="Month Small-Text-Bold">PRÓXIMOS MESES</h1>
       )}
