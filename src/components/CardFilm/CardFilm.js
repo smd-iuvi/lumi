@@ -39,7 +39,7 @@ function CardFilm(props) {
           >
             <div>
               <h1 className="Medium-Text-Bold">
-                {video ? video.title : 'Nome indefinido'}
+                {video ? `${video.title.substring(0, 40)}...` : 'Nome indefinido'}
               </h1>
               <h1 className="Medium-Text-Regular">
                 {video && video.discipline
