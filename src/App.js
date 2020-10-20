@@ -32,6 +32,7 @@ function App(props) {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
+    if (props.location.pathname === '/') props.history.push('/index')
     updateWindowDimensions();
     window.addEventListener('resize', updateWindowDimensions);
 
