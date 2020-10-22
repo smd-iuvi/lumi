@@ -1,69 +1,72 @@
-.Footer{
-  background-color: var(--searchBar);
-  margin-bottom: 0;
-  padding: 40px 30px 30px 288px;
-}
-
-.optionsFooter{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr;
-}
-
-.optionsFooter .Medium-Text-Bold{
-  line-height: 0.63;
-  color: var(--placeholders-buttons-dark);
-  margin-bottom: 25px;
-}
-
-.optionsFooter .Medium-Text-Regular{
-  line-height: 0.63;
-  color: var(--placeholders-buttons-dark);
-  margin-bottom: 15px;
-  cursor: pointer;
-}
-
-.optionsFooter .logos{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 64px;
-  align-items: center;
-}
-
-.optionsFooter .logos .logoImg{
-  height: 50px;
-  margin-bottom: 36px;
-}
-
-.networks article{
-  display: flex;
-  flex-direction: row;
-}
-
-.networks .titleNetwork{
-  margin-left: 8px;
-}
-
-.line{
-  background-color: var(--cards);
-  margin-top: 34px;
-  margin-bottom: 24px;
-}
-
-.footerBottom{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.footerBottom .textFooter{
-  font-family: FontRegular;
-  font-size: 12px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.75;
-  letter-spacing: -0.3px;
-  color: var(--placeholders-buttons-dark);
-  margin-right: 16px;
-  margin-bottom: 0;
+@media (min-width: 800px){
+  .Footer{
+    background-color: var(--searchBar);
+    margin-bottom: 0;
+    padding: 40px 30px 30px 288px;
+  }
+  
+  .optionsFooter{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+  }
+  
+  .optionsFooter .Medium-Text-Bold{
+    line-height: 0.63;
+    color: var(--placeholders-buttons-dark);
+    margin-bottom: 25px;
+  }
+  
+  .optionsFooter .Medium-Text-Regular{
+    line-height: 0.63;
+    color: var(--placeholders-buttons-dark);
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+  
+  .optionsFooter .logos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 64px;
+    align-items: center;
+  }
+  
+  .optionsFooter .logos .logoImg{
+    height: 50px;
+    margin-bottom: 36px;
+  }
+  
+  .networks article{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .networks .titleNetwork{
+    margin-left: 8px;
+  }
+  
+  .line{
+    background-color: var(--cards);
+    margin-top: 34px;
+    margin-bottom: 24px;
+  }
+  
+  .footerBottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .footerBottom .textFooter{
+    font-family: FontRegular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.75;
+    letter-spacing: -0.3px;
+    color: var(--placeholders-buttons-dark);
+    margin-right: 16px;
+    margin-bottom: 0;
+  }
+  
 }
