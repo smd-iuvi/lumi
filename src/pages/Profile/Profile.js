@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
-import { withFirebase } from '../../Firebase';
-import { QueryableFields as Video } from '../../Firebase/Models/Video';
-import { QueryableFields as Event } from '../../Firebase/Models/Event';
-import { withAuthorization, withAuthUser } from '../../Firebase/Session';
+import { withServiceManager } from '../../services';
+import { QueryableFields as Video } from '../../services/Models/Video';
+import { QueryableFields as Event } from '../../services/Models/Event';
+import { withAuthorization, withAuthUser } from '../../services/Session';
 
 import iconProfile from './assets/user.svg';
 import iconMyVideos from './assets/myVideos.png';
@@ -98,16 +98,16 @@ function Profile(props) {
   };
 
   function onEventDelete(uid) {
-    const { firebase } = props;
-    firebase.event.delete(uid).catch(error => setError(error));
+    const { serviceManager } = props;
+    serviceManager.event.delete(uid).catch(error => setError(error));
     fetchEvents();
   };
 
   function fetchEvents() {
-    const { firebase, authUser } = props;
+    const { serviceManager, authUser } = props;
     setLoadingMyEvents(true);
 
-    firebase.event
+    serviceManager.event
       .getEventsBy(Event.CREATED_BY, authUser.uid)
       .then(myEvents => {
         setMyEvents(myEvents);
@@ -117,10 +117,10 @@ function Profile(props) {
   };
 
   function fetchMyWorks() {
-    const { firebase, authUser } = props;
+    const { serviceManager, authUser } = props;
     setLoadingMyWorks(true);
 
-    firebase.video
+    serviceManager.video
       .getVideosBy(Video.CREATED_BY, authUser.uid)
       .then(videos => {
         setMyWorks(videos);
@@ -133,9 +133,9 @@ function Profile(props) {
   };
 
   function fetchMyWatchList() {
-    const { firebase, authUser } = props;
+    const { serviceManager, authUser } = props;
     setLoadingWatchList(true);
-    firebase.video
+    serviceManager.video
       .get()
       .then(videos => {
         const newWatchList = videos.filter(video => {
@@ -253,6 +253,6 @@ const condition = authUser => {
 export default compose(
   withAuthorization(condition),
   withAuthUser,
-  withFirebase,
+  withServiceManager,
   withRouter
 )(Profile);

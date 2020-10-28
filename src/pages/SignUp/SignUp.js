@@ -7,8 +7,8 @@ import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom';
 
-import { withFirebase } from '../../Firebase';
-import { withAuthUser } from '../../Firebase/Session';
+import { withServiceManager } from '../../services';
+import { withAuthUser } from '../../services/Session';
 
 function SignUp(props) {
   const [name, setName] = useState('');
@@ -29,7 +29,7 @@ function SignUp(props) {
 
   async function onSubmit(event) {
     event.preventDefault();
-    const { firebase, history } = props;
+    const { serviceManager, history } = props;
 
     const user = {
       name: name,
@@ -38,7 +38,7 @@ function SignUp(props) {
       role: role
     };
 
-    firebase.user.create(user, (user, error) => {
+    serviceManager.user.create(user, (user, error) => {
       history.push(ROUTES.HOME);
     });
   };
@@ -172,7 +172,7 @@ function SignUp(props) {
 }
 
 export default compose(
-  withFirebase,
+  withServiceManager,
   withRouter,
   withAuthUser
 )(SignUp);

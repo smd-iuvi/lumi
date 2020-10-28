@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 import './SignIn.css';
-import { withAuthUser } from '../../Firebase/Session';
+import { withAuthUser } from '../../services/Session';
 
 
 function SignIn(props) {
@@ -25,10 +25,10 @@ function SignIn(props) {
   }, []);
 
   function onSubmit(event) {
-    const { firebase, history } = props;
+    const { serviceManager, history } = props;
     event.preventDefault();
 
-    firebase
+    serviceManager
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         setEmail(email);
@@ -110,6 +110,6 @@ function SignIn(props) {
 
 export default compose(
   withRouter,
-  withFirebase,
+  withServiceManager,
   withAuthUser
 )(SignIn);

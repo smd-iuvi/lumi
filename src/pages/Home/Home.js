@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 
 import HomeFilms from '../../components/HomeFilms/HomeFilms';
 import Carousel from '../../components/Carousel/Carousel';
@@ -20,9 +20,9 @@ function Home(props) {
     setLoadingRecents(true);
     setLoadingPopulars(true);
 
-    const { firebase } = props;
+    const { serviceManager } = props;
 
-    firebase.video
+    serviceManager.video
       .get()
       .then(videos => {
         setRecentsVideos(videos);
@@ -33,7 +33,7 @@ function Home(props) {
         setLoadingRecents(false);
       });
 
-    firebase.video
+    serviceManager.video
       .getPopulars(10)
       .then(videos => {
         setPopularsVideos(videos);
@@ -44,7 +44,7 @@ function Home(props) {
         setLoadingPopulars(false);
       });
 
-    firebase.event
+    serviceManager.event
       .getNext(3)
       .then(events => {
         setEvents(events);
@@ -52,8 +52,8 @@ function Home(props) {
       .catch(error => setError(error));
 
     return () => {
-      const { firebase } = props;
-      firebase.video.turnOff();
+      const { serviceManager } = props;
+      serviceManager.video.turnOff();
     }
   }, []);
 
@@ -68,4 +68,4 @@ function Home(props) {
   );
 }
 
-export default withFirebase(Home);
+export default withServiceManager(Home);

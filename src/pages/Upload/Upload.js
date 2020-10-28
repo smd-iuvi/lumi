@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Upload.css';
 
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 
 import Header from '../../components/Header/Header';
 import SectionTitle from '../../components/SessionTitle/SessionTitle';
@@ -31,7 +31,7 @@ function Upload(props) {
   };
 
   function onSubmit() {
-    const { firebase } = props;
+    const { serviceManager } = props;
 
     const video = {
       title,
@@ -48,7 +48,7 @@ function Upload(props) {
       userId
     };
 
-    firebase.video.create(video, error => {
+    serviceManager.video.create(video, error => {
       if (error == null) {
         alert('Video enviado com sucesso');
       } else {
@@ -190,4 +190,4 @@ function Upload(props) {
   );
 }
 
-export default withFirebase(Upload);
+export default withServiceManager(Upload);

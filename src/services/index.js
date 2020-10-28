@@ -1,6 +1,6 @@
-import FirebaseContext, { withFirebase } from './context';
-import Firebase from './firebase';
+import ServiceManagerContext, { withServiceManager } from './context';
+import ServiceManager from './ServiceManager';
 
-export default Firebase;
+export default ServiceManager;
 
-export { FirebaseContext, withFirebase };
+export { ServiceManagerContext, withServiceManager };

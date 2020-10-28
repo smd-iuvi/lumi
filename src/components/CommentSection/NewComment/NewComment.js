@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewComment.css';
 import Person from '../assets/user-placeholder.svg';
-import { withAuthUser } from '../../../Firebase/Session';
+import { withAuthUser } from '../../../services/Session';
 
 const NewComment = ({ newComment, onChange, onSend, authUser }) => {
   const isSendEnabled = newComment !== '' ? true : false;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { compose } from 'recompose';
 
-import { withAuthorization } from '../../Firebase/Session';
-import { withFirebase } from '../../Firebase';
+import { withAuthorization } from '../../services/Session';
+import { withServiceManager } from '../../services';
 
 import * as ROLES from '../../constants/roles';
 import * as CONDITIONS from '../../constants/authorizingConditions';
@@ -21,5 +21,5 @@ const condition = authUser => {
 
 export default compose(
   withAuthorization(condition),
-  withFirebase
+  withServiceManager
 )(AdminDashboard);

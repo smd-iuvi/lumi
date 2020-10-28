@@ -11,7 +11,7 @@ import Tags from '../../components/Tags/Tags';
 import SessionTitle from '../../components/SessionTitle/SessionTitle';
 import Info from '../../components/VideoInfo/VideoInfo';
 
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 
 function VideoInfos(props) {
   const [video, setVideo] = useState(null);
@@ -20,11 +20,11 @@ function VideoInfos(props) {
   useEffect(() => {
     setLoading(true);
     const {
-      firebase,
+      serviceManager,
       match: { params }
     } = props;
 
-    firebase.video
+    serviceManager.video
       .get(params.videoId)
       .then(video => {
         setVideo(video);
@@ -135,4 +135,4 @@ function VideoInfos(props) {
   );
 }
 
-export default withFirebase(VideoInfos);
+export default withServiceManager(VideoInfos);

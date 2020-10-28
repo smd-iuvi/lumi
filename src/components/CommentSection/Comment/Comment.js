@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Comment.css';
 import Person from '../assets/user-placeholder.svg';
-import { withFirebase } from '../../../Firebase';
+import { withServiceManager } from '../../../services';
 
 class Comment extends Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class Comment extends Component {
   }
 
   componentDidMount() {
-    const { firebase, comment } = this.props;
-    firebase.user
+    const { serviceManager, comment } = this.props;
+    serviceManager.user
       .get(comment.userId)
       .then(user =>
         this.setState({ userName: user.name, userPhoto: user.photo_url })
@@ -47,4 +47,4 @@ class Comment extends Component {
   }
 }
 
-export default withFirebase(Comment);
+export default withServiceManager(Comment);

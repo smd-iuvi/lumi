@@ -4,8 +4,8 @@ import './Upload.css';
 
 import iconX from './assets/x.svg';
 
-import { withFirebase } from '../../Firebase';
-import { withAuthUser } from '../../Firebase/Session';
+import { withServiceManager } from '../../services';
+import { withAuthUser } from '../../services/Session';
 
 import Header from '../Header/Header';
 import StepBar from './StepBar/StepBar';
@@ -60,8 +60,8 @@ function Upload(props) {
   };
 
   function onUpload(image) {
-    const { firebase } = props;
-    firebase
+    const { serviceManager } = props;
+    serviceManager
       .upload(image, 'thumbnail', snapshot => console.log(snapshot))
       .then(url => {
         const currentStepState = steps[step - 1];
@@ -84,7 +84,7 @@ function Upload(props) {
   };
 
   function onSend() {
-    const { firebase, authUser } = props;
+    const { serviceManager, authUser } = props;
 
     setSending(true);
 
@@ -110,7 +110,7 @@ function Upload(props) {
       claps: 0
     };
 
-    firebase.video
+    serviceManager.video
       .create(video)
       .then(() => {
         console.log('Criado');
@@ -311,4 +311,4 @@ function Upload(props) {
   );
 }
 
-export default withAuthUser(withFirebase(Upload));
+export default withAuthUser(withServiceManager(Upload));

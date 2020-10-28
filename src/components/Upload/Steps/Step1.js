@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './Steps.css';
 
-import { withFirebase } from '../../../Firebase';
+import { withServiceManager } from '../../../services';
 
 import Thumbnail from '../Thumbnail/Thumbnail';
 import TextFieldInformation from '../TextFieldInformation/TextFieldInformation';
@@ -24,9 +24,9 @@ function Step1(props) {
   ]);
 
   useEffect(() => {
-    const { firebase } = props;
+    const { serviceManager } = props;
 
-    firebase.genre
+    serviceManager.genre
       .get()
       .then(genreDataSource => {
         const genreNames = genreDataSource.map(genre => genre.name);
@@ -107,4 +107,4 @@ function Step1(props) {
   );
 }
 
-export default withFirebase(Step1);
+export default withServiceManager(Step1);

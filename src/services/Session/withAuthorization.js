@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import AuthUserContext from './context';
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 import * as ROUTES from '../../constants/routes';
 import * as CONDITION from '../../constants/authorizingConditions';
 
@@ -41,7 +41,7 @@ const withAuthorization = condition => Component => {
     }
   }
 
-  return withRouter(withFirebase(WithAuthorization));
+  return withRouter(withServiceManager(WithAuthorization));
 };
 
 export default withAuthorization;

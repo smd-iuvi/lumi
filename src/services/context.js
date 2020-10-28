@@ -1,11 +1,11 @@
 import React from 'react';
 
-const FirebaseContext = React.createContext(null);
+const ServiceManagerContext = React.createContext(null);
 
-export const withFirebase = Component => props => (
-  <FirebaseContext.Consumer>
-    {firebase => <Component {...props} firebase={firebase} />}
-  </FirebaseContext.Consumer>
+export const withServiceManager = Component => props => (
+  <ServiceManagerContext.Consumer>
+    {serviceManager => <Component {...props} serviceManager={serviceManager} />}
+  </ServiceManagerContext.Consumer>
 );
 
-export default FirebaseContext;
+export default ServiceManagerContext;

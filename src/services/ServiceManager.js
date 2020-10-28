@@ -25,7 +25,7 @@ const config = {
   appId: '1:337072262344:web:4c8f73e8ad2e8e3a'
 };
 
-class Firebase {
+class ServiceManager {
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
@@ -117,4 +117,4 @@ class Firebase {
   };
 }
 
-export default Firebase;
+export default ServiceManager;
