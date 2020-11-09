@@ -1,81 +1,69 @@
 import * as QueryableFields from './QueryableFields';
 
+import { ENDPOINT } from '../../ApiManager'
+import ApiManager from '../../ApiManager'
+
 export { QueryableFields };
 
 class Comment {
-  constructor(database) {
-    this.database = database;
+  constructor() {
+    this.apiManager = new ApiManager();
   }
 
   create = ({ videoId, userId, comment }, callback) => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('comment')
-        .push({
-          videoId: videoId,
-          userId: userId,
-          comment: comment,
-          createdAt: new Date().toLocaleDateString()
-        })
-        .then(() => {
-          resolve();
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+      this.apiManager.post(`${ENDPOINT.COMMENTS}/${videoId}`, {
+        text: comment
+      })
+        .then(() => resolve())
+        .catch()
+    })
   };
 
   get = (uid = null) => {
     if (uid == null) {
-      this.database.ref('comment');
+      this.apiManager.get(ENDPOINT.COMMENTS);
     } else {
-      this.database.ref(`comment/${uid}`);
+      // TODO Implemenet get comment by id
+      this.apiManager.get(`${ENDPOINT.COMMENTS}/${uid}`)
     }
   };
 
-  update = (uid, comment) =>
+  update = (uid, comment) => {
+    this.apiManager.post(`${ENDPOINT.COMMENTS}/${uid}`, {
+      text: comment
+    })
+      .then(response => { })
+      .catch(err => { })
     this.get(uid).set({
       ...comment
     });
+  }
 
   delete = (uid, callback) => {
-    this.database
-      .ref(`comment/${uid}`)
-      .remove()
-      .then(() => {
-        callback(null);
+    this.apiManager.delete(`${ENDPOINT.COMMENTS}/${uid}`)
+      .then(response => {
+        callback(null)
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(err => console.log(err))
   };
 
   getCommentsBy = (field, value) => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('comment')
-        .orderByChild(field)
-        .equalTo(`${value}`)
-        .once('value')
-        .then(snapshot => {
-          const val = snapshot.val();
-
-          if (val) {
-            const list = Object.keys(val).map(key => ({
-              ...val[key],
-              uid: key
-            }));
-
-            resolve(list);
-          } else {
-            resolve(null);
-          }
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+      switch (field) {
+        case QueryableFields.USER_ID:
+          // TODO Implement user comments endpoint
+          this.apiManager.get(`${ENDPOINT.USERS} / ${value} / ${ENDPOINT.COMMENTS}`)
+            .then(comments => resolve(comments))
+            .catch(err => reject(err))
+          break
+        case QueryableFields.VIDEO_ID:
+          this.apiManager.get(`${ENDPOINT.VIDEOS} / ${value} / ${ENDPOINT.COMMENTS}`)
+            .then((comments) => resolve(comments))
+            .catch(err => reject(err))
+          break
+      }
+    })
   };
 }
 
