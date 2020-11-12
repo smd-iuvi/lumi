@@ -1,227 +1,130 @@
 import * as QueryableFields from './QueryableFields';
+import { ENDPOINT } from '../../ApiManager'
+import ApiManager from '../../ApiManager'
 
 export { QueryableFields };
 
 class Event {
-  constructor(database) {
-    this.database = database;
+  constructor() {
+    this.apiManager = new ApiManager();
   }
 
   create = async ({
     name,
     description,
     date,
-    sortableDate,
-    createdBy,
-    discipline,
-    imageUrl
+    course,
   }) => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('event')
-        .push({
-          name,
-          imageUrl,
-          description,
-          date,
-          sortableDate,
-          createdBy,
-          discipline,
-          isAvailable: false
-        })
-        .then(() => {
-          resolve();
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+      this.apiManager.post(`${ENDPOINT.EVENTS}`, {
+        name,
+        description,
+        date,
+        course
+      })
+        .then(() => resolve())
+        .catch((err) => reject(err))
+    })
   };
 
   get = (uid = null) => {
     if (uid == null) {
-      return new Promise((resolve, reject) => {
-        this.database
-          .ref('event')
-          .once('value')
-          .then(snapshot => {
-            const value = snapshot.val();
-
-            if (value != null) {
-              const valueList = Object.keys(value).map(key => ({
-                ...value[key],
-                uid: key
-              }));
-
-              resolve(valueList);
-            } else {
-              resolve(null);
-            }
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
+      this.apiManager.get(ENDPOINT.EVENTS);
     } else {
-      return new Promise((resolve, reject) => {
-        this.database
-          .ref(`event/${uid}`)
-          .once('value')
-          .then(snapshot => {
-            resolve(snapshot.val());
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
+      // TODO Implemenet get comment by id
+      this.apiManager.get(`${ENDPOINT.EVENTS}/${uid}`)
     }
   };
 
-  update = (uid, event) => {
-    return new Promise((resolve, reject) => {
-      this.database
-        .ref(`event/${uid}`)
-        .set({
-          ...event
-        })
-        .then(() => {
-          resolve();
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+  update = (uid, eventNewInfo) => {
+    this.apiManager.put(`${ENDPOINT.COMMENTS}/${uid}`, eventNewInfo)
+      .then(response => { })
+      .catch(err => { })
   };
 
-  delete = uid => this.database.ref(`event/${uid}`).remove();
+  delete = (uid, callback) => {
+    this.apiManager.delete(`${ENDPOINT.EVENTS}/${uid}`)
+      .then(response => {
+        callback(null)
+      })
+      .catch(err => console.log(err))
+  };
 
   launch = uid => {
-    return new Promise((resolve, reject) => {
-      this.database
-        .ref(`event/${uid}`)
-        .once('value')
-        .then(snapshot => {
-          const newEventState = { ...snapshot.val() };
-          newEventState.isAvailable = true;
+    // TODO Implement endpoint to launch event
 
-          this.update(uid, newEventState)
-            .then(() => {
-              resolve();
-            })
-            .catch(error => {
-              reject(error);
-            });
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.database
+    //     .ref(`event/${uid}`)
+    //     .once('value')
+    //     .then(snapshot => {
+    //       const newEventState = { ...snapshot.val() };
+    //       newEventState.isAvailable = true;
+
+    //       this.update(uid, newEventState)
+    //         .then(() => {
+    //           resolve();
+    //         })
+    //         .catch(error => {
+    //           reject(error);
+    //         });
+    //     })
+    //     .catch(error => {
+    //       reject(error);
+    //     });
+    // });
   };
 
   addVideo = (eventId, videoId) => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref(`event/${eventId}`)
-        .once('value')
-        .then(snapshot => {
-          const newEventState = { ...snapshot.val() };
-
-          if (newEventState.videos && !newEventState.videos.includes(videoId)) {
-            newEventState.videos.push(videoId);
-          } else {
-            newEventState.videos = [videoId];
-          }
-
-          this.update(eventId, newEventState)
-            .then(() => {
-              resolve();
-            })
-            .catch(error => {
-              reject(error);
-            });
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+      this.apiManager.post(`${ENDPOINT.EVENTS}/${eventId}/${ENDPOINT.VIDEOS}/${videoId}`, {})
+        .then(() => resolve())
+        .catch((err) => reject(err))
+    })
   };
 
   removeVideo = (eventId, videoId) => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref(`event/${eventId}`)
-        .once('value')
-        .then(snapshot => {
-          const event = { ...snapshot.val() };
-          const videos = event.videos;
-
-          if (videos && videos.includes(videoId)) {
-            const newVideos = videos.filter(video => video !== videoId);
-            const newEvent = { ...event, videos: newVideos };
-
-            this.update(eventId, newEvent)
-              .then(() => resolve())
-              .catch(error => reject(error));
-          } else {
-            resolve();
-          }
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+      this.apiManager.delete(`${ENDPOINT.EVENTS}/${eventId}/${ENDPOINT.VIDEOS}/${videoId}`, {})
+        .then(() => resolve())
+        .catch((err) => reject(err))
+    })
   };
 
   getEventsBy = (field, value) => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('event')
-        .orderByChild(field)
-        .equalTo(`${value}`)
-        .once('value')
-        .then(snapshot => {
-          const videos = snapshot.val();
-
-          if (videos) {
-            const videoList = Object.keys(videos).map(key => ({
-              ...videos[key],
-              uid: key
-            }));
-
-            resolve(videoList);
-          } else {
-            resolve(null);
-          }
-        })
-        .catch(error => {
-          reject(error);
-        });
+      switch (field) {
+        case QueryableFields.CREATED_BY:
+          // TODO implement endpoint to get events of a teacher
+          this.apiManager.get()
+      }
     });
   };
 
   getNext = num => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('event')
-        .orderByChild('sortableDate')
-        .startAt(new Date().getTime())
-        .limitToFirst(num)
-        .once('value')
-        .then(snapshot => {
-          const value = snapshot.val();
+      //TODO Implement a endpoint to get next event
+      // this.database
+      //   .ref('event')
+      //   .orderByChild('sortableDate')
+      //   .startAt(new Date().getTime())
+      //   .limitToFirst(num)
+      //   .once('value')
+      //   .then(snapshot => {
+      //     const value = snapshot.val();
 
-          if (value) {
-            const list = Object.keys(value).map(key => ({
-              ...value[key],
-              uid: key
-            }));
+      //     if (value) {
+      //       const list = Object.keys(value).map(key => ({
+      //         ...value[key],
+      //         uid: key
+      //       }));
 
-            resolve(list);
-          } else {
-            resolve(null);
-          }
-        })
-        .catch(error => reject(error));
+      //       resolve(list);
+      //     } else {
+      //       resolve(null);
+      //     }
+      //   })
+      //   .catch(error => reject(error));
     });
   };
 }
