@@ -6,13 +6,13 @@ import ApiManager from '../../ApiManager'
 export { QueryableFields };
 
 class Video {
-  constructor(database) {
-    this.database = database;
+  constructor() {
+    this.apiManager = new ApiManager();
   }
 
   create = video => {
     return new Promise((resolve, reject) => {
-      this.apiManager.post(`${ENDPOINT.VIDEOS}`, video)
+      this.ç.post(`${ENDPOINT.VIDEOS}`, video)
         .then(() => resolve())
         .catch((err) => reject(err))
     })
@@ -55,6 +55,7 @@ class Video {
       .catch(err => { })
   }
 
+  //TODO Implement Promises on update and delete from all classes
   delete = uid => {
     this.apiManager.delete(`${ENDPOINT.VIDEOS}/${uid}`)
       .then(response => {
