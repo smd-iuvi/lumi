@@ -22,10 +22,18 @@ class Comment {
 
   get = (uid = null) => {
     if (uid == null) {
-      this.apiManager.get(ENDPOINT.COMMENTS);
+      return new Promise((resolve, reject) => {
+        this.apiManager.get(ENDPOINT.COMMENTS)
+          .then(comments => resolve(comments))
+          .catch(err => reject(err))
+      })
     } else {
-      // TODO Implemenet get comment by id
-      this.apiManager.get(`${ENDPOINT.COMMENTS}/${uid}`)
+      //Implement get comment by ID
+      return new Promise((resolve, reject) => {
+        this.apiManager.get(`${ENDPOINT.COMMENTS} / ${uid}`)
+          .then(comments => resolve(comments))
+          .catch(err => reject(err))
+      })
     }
   };
 

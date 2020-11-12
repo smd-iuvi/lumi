@@ -29,10 +29,17 @@ class Event {
 
   get = (uid = null) => {
     if (uid == null) {
-      this.apiManager.get(ENDPOINT.EVENTS);
+      return new Promise((resolve, reject) => {
+        this.apiManager.get(ENDPOINT.EVENTS)
+          .then(events => resolve(events))
+          .catch(err => reject(err))
+      })
     } else {
-      // TODO Implemenet get comment by id
-      this.apiManager.get(`${ENDPOINT.EVENTS}/${uid}`)
+      return new Promise((resolve, reject) => {
+        this.apiManager.get(`${ENDPOINT.EVENTS} / ${uid}`)
+          .then(events => resolve(events))
+          .catch(err => reject(err))
+      })
     }
   };
 
