@@ -30,14 +30,11 @@ class Comment {
   };
 
   update = (uid, comment) => {
-    this.apiManager.post(`${ENDPOINT.COMMENTS}/${uid}`, {
+    this.apiManager.put(`${ENDPOINT.COMMENTS}/${uid}`, {
       text: comment
     })
       .then(response => { })
       .catch(err => { })
-    this.get(uid).set({
-      ...comment
-    });
   }
 
   delete = (uid, callback) => {
