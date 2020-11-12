@@ -1,58 +1,49 @@
+import { ENDPOINT } from '../ApiManager'
+import ApiManager from '../ApiManager'
+
 class Gender {
-  constructor(database) {
-    this.database = database;
+  constructor() {
+    this.apiManager = new ApiManager();
   }
 
-  create = gender =>
-    this.get().push({
-      ...gender
-    });
+  create = gender => {
+    return new Promise((resolve, reject) => {
+      this.apiManager.post(`${ENDPOINT.GENRE}`, gender)
+        .then(() => resolve())
+        .catch((err) => reject(err))
+    })
+  }
 
   get = (uid = null) => {
     if (uid == null) {
       return new Promise((resolve, reject) => {
-        this.database
-          .ref('genre')
-          .once('value')
-          .then(snapshot => {
-            const value = snapshot.val();
-
-            if (value != null) {
-              const valueList = Object.keys(value).map(key => ({
-                ...value[key],
-                uid: key
-              }));
-
-              resolve(valueList);
-            } else {
-              resolve(null);
-            }
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
+        this.apiManager.get(ENDPOINT.GENRE)
+          .then(genres => resolve(genres))
+          .catch(err => reject(err))
+      })
     } else {
       return new Promise((resolve, reject) => {
-        this.database
-          .ref('genre')
-          .once('value')
-          .then(snapshot => {
-            resolve(snapshot.val());
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
+        this.apiManager.get(`${ENDPOINT.GENRE} / ${uid}`)
+          .then(genres => resolve(genres))
+          .catch(err => reject(err))
+      })
     }
   };
 
-  update = (uid, gender) =>
-    this.get(uid).set({
-      ...gender
-    });
+  update = (uid, genre) => {
+    this.apiManager.put(`${ENDPOINT.GENRE}/${uid}`, genre)
+      .then(response => { })
+      .catch(err => { })
+  }
 
-  delete = uid => this.get(uid).remove();
+  delete = uid => {
+    this.apiManager.delete(`${ENDPOINT.GENRE}/${uid}`)
+      .then(response => {
+        callback(null)
+      })
+      .catch(err => console.log(err))
+  }
+
 }
 
 export default Gender;
