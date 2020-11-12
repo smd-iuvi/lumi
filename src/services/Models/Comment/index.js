@@ -12,7 +12,7 @@ class Comment {
 
   create = ({ videoId, userId, comment }, callback) => {
     return new Promise((resolve, reject) => {
-      this.apiManager.post(`${ENDPOINT.COMMENTS}/${videoId}`, {
+      this.apiManager.post(`${ENDPOINT.VIDEOS}/${videoId}/ ${ENDPOINT.COMMENTS}`, {
         text: comment
       })
         .then(() => resolve())
