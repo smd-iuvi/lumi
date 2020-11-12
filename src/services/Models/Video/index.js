@@ -1,5 +1,8 @@
 import * as QueryableFields from './QueryableFields';
 
+import { ENDPOINT } from '../../ApiManager'
+import ApiManager from '../../ApiManager'
+
 export { QueryableFields };
 
 class Video {
@@ -9,50 +12,31 @@ class Video {
 
   create = video => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('video')
-        .push(video)
+      this.apiManager.post(`${ENDPOINT.VIDEOS}`, video)
         .then(() => resolve())
-        .catch(error => reject(error));
-    });
+        .catch((err) => reject(err))
+    })
   };
 
   get = (uid = null) => {
     if (uid == null) {
       return new Promise((resolve, reject) => {
-        this.database.ref('video').on('value', snapshot => {
-          const videos = snapshot.val();
-
-          if (videos != null) {
-            const videosList = Object.keys(videos).map(key => ({
-              ...videos[key],
-              uid: key
-            }));
-
-            resolve(videosList);
-          } else {
-            resolve(null);
-          }
-        });
-      });
+        this.apiManager.get(ENDPOINT.VIDEOS)
+          .then(videos => resolve(videos))
+          .catch(err => reject(err))
+      })
     } else {
       return new Promise((resolve, reject) => {
-        this.database
-          .ref(`video/${uid}`)
-          .once('value')
-          .then(snapshot => {
-            resolve(snapshot.val());
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
+        this.apiManager.get(`${ENDPOINT.VIDEOS} / ${uid}`)
+          .then(videos => resolve(videos))
+          .catch(err => reject(err))
+      })
     }
   };
 
   getNextVideo = uid => {
     return new Promise((resolve, reject) => {
-      this.get()
+      this.apiManager.get(ENDPOINT.VIDEOS)
         .then(videos => {
           const filteredVideos = videos.filter(video => video.uid !== uid);
           const nextVideo =
@@ -65,14 +49,22 @@ class Video {
     });
   };
 
-  update = (uid, video) =>
-    this.get(uid).set({
-      ...video
-    });
+  update = (uid, video) => {
+    this.apiManager.put(`${ENDPOINT.VIDEOS}/${uid}`, video)
+      .then(response => { })
+      .catch(err => { })
+  }
 
-  delete = uid => this.get(uid).remove();
+  delete = uid => {
+    this.apiManager.delete(`${ENDPOINT.VIDEOS}/${uid}`)
+      .then(response => {
+        callback(null)
+      })
+      .catch(err => console.log(err))
+  }
 
   clap = uid => {
+    // TODO implement claps
     return new Promise((resolve, reject) => {
       let currentClaps = null;
 
@@ -99,6 +91,7 @@ class Video {
   };
 
   view = uid => {
+    // TODO implements video view on API
     return new Promise((resolve, reject) => {
       let currentViews = null;
 
@@ -124,61 +117,68 @@ class Video {
   };
 
   turnOff = () => {
-    this.database.ref('video').off();
+    // Implement turn off video on API
+    // this.database.ref('video').off();
   };
 
   getPopulars = num => {
+    // Implement get populars on API
+
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('video')
-        .orderByChild('views')
-        .limitToFirst(num)
-        .once('value')
-        .then(snapshot => {
-          const videos = snapshot.val();
+      // this.database
+      //   .ref('video')
+      //   .orderByChild('views')
+      //   .limitToFirst(num)
+      //   .once('value')
+      //   .then(snapshot => {
+      //     const videos = snapshot.val();
 
-          if (videos) {
-            const videoList = Object.keys(videos).map(key => ({
-              ...videos[key],
-              uid: key
-            }));
+      //     if (videos) {
+      //       const videoList = Object.keys(videos).map(key => ({
+      //         ...videos[key],
+      //         uid: key
+      //       }));
 
-            resolve(videoList);
-          } else {
-            resolve(null);
-          }
-        })
-        .catch(error => {
-          reject(error);
-        });
+      //       resolve(videoList);
+      //     } else {
+      //       resolve(null);
+      //     }
+      //   })
+      //   .catch(error => {
+      //     reject(error);
+      //   });
     });
   };
 
   getVideosBy = (field, value) => {
+    // TODO Refactor these URLs to match the url to search for title using query params
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('video')
-        .orderByChild(field)
-        .equalTo(`${value}`)
-        .once('value')
-        .then(snapshot => {
-          const videos = snapshot.val();
+      switch (field) {
+        case QueryableFields.CREATED_BY:
+          //TODO implement get videos of user on API
+          this.apiManager.get(`${ENDPOINT.USERS}/${value} / ${ENDPOINT.VIDEOS}`)
+            .then(videos => resolve(videos))
+            .catch(err => reject(err))
+          break
+        case QueryableFields.DISCIPLINE:
+          this.apiManager.get(`${ENDPOINT.COURSER}/${value} / ${ENDPOINT.VIDEOS}`)
+            .then(videos => resolve(videos))
+            .catch(err => reject(err))
+          break
+        case QueryableFields.GENRE:
+          this.apiManager.get(`${ENDPOINT.EVENTS}/${value} / ${ENDPOINT.VIDEOS}`)
+            .then(videos => resolve(videos))
+            .catch(err => reject(err))
+          break
+        case QueryableFields.SEMESTER:
+          //TODO implement get videos of semester on API
+          this.apiManager.get(`${ENDPOINT.SEMESTER}/${value} / ${ENDPOINT.VIDEOS}`)
+            .then(videos => resolve(videos))
+            .catch(err => reject(err))
+          break
+      }
+    })
 
-          if (videos) {
-            const videoList = Object.keys(videos).map(key => ({
-              ...videos[key],
-              uid: key
-            }));
-
-            resolve(videoList);
-          } else {
-            resolve(null);
-          }
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
   };
 
   // getVideosByUser = userId => {
@@ -237,31 +237,10 @@ class Video {
 
   getByTitle = title => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('video')
-        .once('value')
-        .then(snapshot => {
-          const videos = snapshot.val();
-
-          if (videos != null) {
-            const videosList = Object.keys(videos).map(key => ({
-              ...videos[key],
-              uid: key
-            }));
-
-            const videosToReturn = videosList.filter(user => {
-              return user.title.toLowerCase().includes(title.toLowerCase());
-            });
-
-            resolve(videosToReturn.length == 0 ? null : videosToReturn);
-          } else {
-            resolve(null);
-          }
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+      this.apiManager.get(`${ENDPOINT.VIDEOS} / ${uid}?title=${title}`)
+        .then(videos => resolve(videos))
+        .catch(err => reject(err))
+    })
   };
 }
 
