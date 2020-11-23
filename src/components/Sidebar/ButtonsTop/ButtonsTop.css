@@ -2,7 +2,7 @@
   background: none;
   border: none;
   outline: none;
-  margin: 0 16px;
+  margin: 0 5vw;
   border-radius: 5px;
   display: grid;
   grid-template-columns: 45px 139px;
@@ -76,16 +76,10 @@
 
 @media (min-width: 800px){
   .buttonsSidebar {
-    background: none;
-    border: none;
-    outline: none;
     margin: 0 16px;
-    border-radius: 5px;
     display: grid;
     grid-template-columns: 45px 139px;
-    align-items: center;
     padding-left: 24px;
-    cursor: pointer;
     margin-bottom: 1vh;
     height: 40px;
     width: auto;

@@ -1,5 +1,7 @@
 .container{
     min-height: 80vh;
+    margin: 0 16px;
+    padding-top: 80px;
 }
 
 .link{

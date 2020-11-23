@@ -1,12 +1,17 @@
 .SliderCard {
   margin-right: 10px;
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-areas: 'IMAGE' 'INFOS';
   grid-gap: 20px;
 }
 
 .SliderCard .infos{
-  padding: 50px;
+  padding: 10px;
+  grid-area: INFOS;
+}
+
+.SliderCard .containerImg{
+  grid-area: IMAGE;
 }
 
 .SliderCard .addRecent{
@@ -22,6 +27,10 @@
 .SliderCard .descriptionFilm{
   text-align: left;
   color: var(--text-dark);
+  max-height: 80px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 27px;
 }
 
 .SliderCard .buttonsFilm{
@@ -45,6 +54,14 @@
   margin-right: 5px;
 }
 
+@media (min-width: 800px){
+  .SliderCard {
+    grid-template-areas: 'INFOS IMAGE';
+  }
+  .SliderCard .infos{
+    padding: 50px;
+  }
+}
 
 @media only screen and (min-width: 1224px) {
   .SliderCard {

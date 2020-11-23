@@ -28,6 +28,7 @@ const Carousels = ({ videos, loading }) => {
       showStatus={false}
       showIndicators={false}
       showThumbs={false}
+      showArrows={false}
       width="100%"
       className="carousel"
     >
