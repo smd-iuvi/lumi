@@ -5,10 +5,15 @@
     position: fixed;
     top: 0;
     z-index: 20;
-    padding-left: 272px;
+    padding: 0 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.navbar .logo{
+    width: 50px;
+    margin-right: 24px;
 }
 
 .navbarComplete{
@@ -22,9 +27,22 @@
 }
 
 .navbar .inputSearch{
-    width: 35%;
+    width: 60vw;
     color: var(--placeholders-buttons-dark);
     background: none;
     border: none;
     outline: none;
 }
+
+@media (min-width: 800px){
+    .navbar{
+        padding-left: 272px;
+        padding-right: 0;
+    }
+    .navbar .inputSearch{
+        width: 35%;
+    }
+    .navbar .logo{
+        display: none;
+    }
+  }

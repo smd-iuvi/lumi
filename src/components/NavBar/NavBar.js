@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './NavBar.css';
 
-import { withRouter } from 'react-router-dom';
-
+import { Link, withRouter } from 'react-router-dom';
+import logo from './assets/lumi.svg';
 import search from './assets/search_button.svg';
 import * as ROUTES from '../../constants/routes';
 
@@ -19,6 +19,10 @@ function NavBar(props) {
 
   return (
     <div className={props.class}>
+      <Link to={ROUTES.HOME} className="link">
+        <img src={logo} alt="Logo" className="logo" />
+      </Link>
+
       <img src={search} className="iconNavbar" />
 
       <input

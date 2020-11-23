@@ -13,7 +13,7 @@ const HomeFilms = ({ videos, loading }) => {
   if (loading) {
     children = <EmptyLabel>Carregando...</EmptyLabel>;
   } else if (videos !== null) {
-    children = <CardList videos={videos.slice(0, 4)} loading={loading} />;
+    children = <CardList videos={videos.slice(0, 4)} loading={loading} isScrollable={window.innerWidth < 800} />;
   } else {
     children = <EmptyLabel>Não há videos nesta lista</EmptyLabel>;
   }

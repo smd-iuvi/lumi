@@ -1,12 +1,13 @@
 .Footer{
   background-color: var(--searchBar);
-  margin-bottom: 0;
-  padding: 40px 30px 30px 288px;
+  margin-bottom: 70px;
+  padding: 16px;
+  margin-top: 30px;
 }
 
 .optionsFooter{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .optionsFooter .Medium-Text-Bold{
@@ -16,7 +17,6 @@
 }
 
 .optionsFooter .Medium-Text-Regular{
-  line-height: 0.63;
   color: var(--placeholders-buttons-dark);
   margin-bottom: 15px;
   cursor: pointer;
@@ -24,8 +24,8 @@
 
 .optionsFooter .logos{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 64px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
   align-items: center;
 }
 
@@ -66,4 +66,16 @@
   color: var(--placeholders-buttons-dark);
   margin-right: 16px;
   margin-bottom: 0;
+}
+
+@media (min-width: 800px){
+  .Footer{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 40px 30px 30px 288px;
+  }
+  
+  .optionsFooter{
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+  }  
 }

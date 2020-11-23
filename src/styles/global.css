@@ -1,8 +1,7 @@
 .container{
-    padding-top: 20px;
-    padding-bottom: 43px;
-    margin: 88px 56px 0 272px;
     min-height: 80vh;
+    margin: 0 16px;
+    padding-top: 80px;
 }
 
 .link{
@@ -55,4 +54,12 @@
 
 a{
   text-decoration: none;
+}
+
+@media (min-width: 800px){
+  .container{
+      padding-top: 20px;
+      padding-bottom: 43px;
+      margin: 88px 56px 0 272px;
+  }
 }

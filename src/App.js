@@ -49,77 +49,71 @@ function App(props) {
 
   return (
     <div>
-      {width > 950 ? (
-        <>
-          {!location.pathname.includes(ROUTES.PLAYER) &&
-            !location.pathname.includes(ROUTES.LANDING) &&
-            !location.pathname.includes(ROUTES.DOCUMENTATION) ? (
-              <Sidebar />
-            ) : null}
+      {!location.pathname.includes(ROUTES.PLAYER) &&
+        !location.pathname.includes(ROUTES.LANDING) &&
+        !location.pathname.includes(ROUTES.DOCUMENTATION) ? (
+          <Sidebar />
+        ) : null}
 
-          {!location.pathname.includes(ROUTES.LANDING) &&
-            !location.pathname.includes(ROUTES.SIGN_IN) &&
-            !location.pathname.includes(ROUTES.SIGN_UP) &&
-            !location.pathname.includes(ROUTES.DOCUMENTATION) ? (
-              <NavBar class="navbar" />
-            ) : null}
-          {location.pathname.includes(ROUTES.PLAYER) && (
-            <NavBar class="navbar navbarComplete" />
-          )}
+      {!location.pathname.includes(ROUTES.LANDING) &&
+        !location.pathname.includes(ROUTES.SIGN_IN) &&
+        !location.pathname.includes(ROUTES.SIGN_UP) &&
+        !location.pathname.includes(ROUTES.DOCUMENTATION) ? (
+          <NavBar class="navbar" />
+        ) : null}
+      {location.pathname.includes(ROUTES.PLAYER) && (
+        <NavBar class="navbar navbarComplete" />
+      )}
 
-          <Switch>
-            <Route path={ROUTES.HOME} exact component={Home} />
-            <Route
-              path={`${ROUTES.VIDEO}/:videoId`}
-              exact
-              component={VideoInfos}
-            />
-            <Route
-              path={`${ROUTES.PLAYER}/:videoId`}
-              component={Player}
-              key={uuid()}
-            />{' '}
-            <Route path={ROUTES.VIDEOS_LIST} component={VideosList} />
-            <Route path={ROUTES.PROFILE} component={Profile} />
-            <Route path={ROUTES.UPLOAD} exact component={Upload} />
-            <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
-            <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
-            <Route path={ROUTES.LANDING} exact component={Landing} />
-            <Route path={ROUTES.DISCOVER} exact component={Discover} />
-            <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
-            <Route
-              path={`${ROUTES.SEARCH_ALL}/:searchTerm`}
-              component={Search}
-              key={uuid()}
-            />
-            <Route path={`${ROUTES.SEARCH}`} component={Search} />
-            <Route path={ROUTES.EVENT} exact component={Event} />
-            <Route
-              path={`${ROUTES.CATEGORY}/:name`}
-              exact
-              component={Category}
-            />
-            <Route
-              path={ROUTES.RESTRICTED_AREA}
-              exact
-              component={RestrictedArea}
-            />
-            <Route
-              path={ROUTES.DOCUMENTATION}
-              exact
-              component={Documentation}
-            />
-            <Route component={Error404} />
-          </Switch>
+      <Switch>
+        <Route path={ROUTES.HOME} exact component={Home} />
+        <Route
+          path={`${ROUTES.VIDEO}/:videoId`}
+          exact
+          component={VideoInfos}
+        />
+        <Route
+          path={`${ROUTES.PLAYER}/:videoId`}
+          component={Player}
+          key={uuid()}
+        />{' '}
+        <Route path={ROUTES.VIDEOS_LIST} component={VideosList} />
+        <Route path={ROUTES.PROFILE} component={Profile} />
+        <Route path={ROUTES.UPLOAD} exact component={Upload} />
+        <Route path={ROUTES.SIGN_IN} exact component={SignIn} />
+        <Route path={ROUTES.SIGN_UP} exact component={SignUp} />
+        <Route path={ROUTES.LANDING} exact component={Landing} />
+        <Route path={ROUTES.DISCOVER} exact component={Discover} />
+        <Route path={ROUTES.ADMIN} exact component={AdminDashboard} />
+        <Route
+          path={`${ROUTES.SEARCH_ALL}/:searchTerm`}
+          component={Search}
+          key={uuid()}
+        />
+        <Route path={`${ROUTES.SEARCH}`} component={Search} />
+        <Route path={ROUTES.EVENT} exact component={Event} />
+        <Route
+          path={`${ROUTES.CATEGORY}/:name`}
+          exact
+          component={Category}
+        />
+        <Route
+          path={ROUTES.RESTRICTED_AREA}
+          exact
+          component={RestrictedArea}
+        />
+        <Route
+          path={ROUTES.DOCUMENTATION}
+          exact
+          component={Documentation}
+        />
+        <Route component={Error404} />
+      </Switch>
 
-          {!location.pathname.includes(ROUTES.PLAYER) &&
-            !location.pathname.includes(ROUTES.LANDING) ? (
-              <Footer />
-            ) : null}
-        </>
-      ) : (
-          <SmallWidth />
-        )}
+      {!location.pathname.includes(ROUTES.PLAYER) &&
+        !location.pathname.includes(ROUTES.LANDING) ? (
+          <Footer />
+        ) : null}
     </div>
   );
 }

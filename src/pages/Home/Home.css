@@ -1,6 +1,8 @@
-.bannersHome{
-    display: grid;
-    grid-template-columns: 1fr 0.8fr;
-    grid-gap: 56px;
-    margin-top: 60px;
+@media (min-width: 800px){
+    .bannersHome{
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        grid-gap: 56px;
+        margin-top: 60px;
+    }
 }

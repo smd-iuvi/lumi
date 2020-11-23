@@ -58,6 +58,9 @@ function SliderCard(props) {
 
   return (
     <div className="SliderCard">
+      <article className="containerImg">
+        <img src={video && video.imageUrl ? video.imageUrl : birdbox} />
+      </article>
       <div className="infos">
         <h1 className="addRecent Small-Text-Bold">ADICIONADO RECENTEMENTE</h1>
         <h1 className="Large-Text-Bold">{video.title}</h1>
@@ -84,9 +87,6 @@ function SliderCard(props) {
           </article>
         </div>
       </div>
-      <article className="containerImg">
-        <img src={video && video.imageUrl ? video.imageUrl : birdbox} />
-      </article>
     </div>
   );
 };
