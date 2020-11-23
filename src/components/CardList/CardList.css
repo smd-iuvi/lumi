@@ -3,3 +3,14 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 24px;
 }
+
+.CardListScrollable{
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  margin-bottom: 30px;
+}
+
+.CardMargin{
+  margin-right: 16px;
+}

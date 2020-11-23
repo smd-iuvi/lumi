@@ -1,7 +1,7 @@
 .EventsList{
     background-color: var(--cards);
     border-radius: 8px;
-    padding: 0 16px;
+    padding: 16px;
 }
 
 .titleEventsFilms{
