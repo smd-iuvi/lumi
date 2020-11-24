@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   color: var(--text-dark);
+  padding: 1rem;
 }
 
 .ProfileCard .roleContainer {
