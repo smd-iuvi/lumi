@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  padding-top: 0;
+  padding-top: 1rem;
+  box-sizing: border-box;
 }
 
 .lineSidebar {
