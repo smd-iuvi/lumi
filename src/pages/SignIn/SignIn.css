@@ -1,5 +1,15 @@
+@media (min-width: 800px){
+    .Login{
+        padding-left: 216px;
+    }
+
+    .Login .formLogin {
+        width: 550px;
+    }
+}
+
+
 .Login{
-    padding-left: 216px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -8,16 +18,16 @@
     color: var(--text-dark);
     background-image: url('./assets/background.svg');
     background-size: auto;
+    width: 100%;
 }
 
 .Login .formLogin{
-    width: 550px;
     background-color: var(--cards);
     display: grid;
     grid-template-rows: 64px auto;
     border-radius: 8px;
     z-index: 2;
-    margin: 50px 0;
+    margin: 1rem;
 }
 
 .Login .titleLogin{
@@ -25,11 +35,11 @@
     display: flex;
     align-items: center;
     border-radius: 8px 8px 0 0;
-    padding: 0 40px;
+    padding: 0 1.5rem;
 }
 
 .Login .contentForm{
-    padding: 40px;
+    padding: 1.5rem;
 }
 
 .Login .subtitleLogin{
