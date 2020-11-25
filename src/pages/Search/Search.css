@@ -1,4 +1,9 @@
 .searchPage{
     text-align: center;
-    padding-top: 0;
+}
+
+@media (max-width: 800px) {
+    .searchPage .emptyStateImage {
+        width: 70%;
+    }
 }

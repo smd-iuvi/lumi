@@ -158,7 +158,7 @@ function Search(props) {
         {videosListState.loading === false &&
           videosListState.list === null ? (
             <>
-              <img src={iconSearch} />
+              <img className="emptyStateImage" src={iconSearch} />
               <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
             </>
           ) : (
@@ -173,21 +173,21 @@ function Search(props) {
   } else if (selected === 1) {
     container = (
       <>
-        <img src={iconSearch} />
+        <img className="emptyStateImage" src={iconSearch} />
         <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
       </>
     );
   } else if (selected === 2) {
     container = (
       <>
-        <img src={iconSearch} />
+        <img className="emptyStateImage" src={iconSearch} />
         <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
       </>
     );
   } else if (selected === 3) {
     container = (
       <>
-        <img src={iconSearch} />
+        <img className="emptyStateImage" src={iconSearch} />
         <EmptyLabel>Nenhum resultado encontrado :(</EmptyLabel>
       </>
     );
