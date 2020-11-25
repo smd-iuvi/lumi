@@ -7,25 +7,19 @@
 }
 
 .cardFilm .containerImgCard {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
+  height: 150px;
   border-radius: 8px 8px 0 0;
 }
 
-.cardFilm .imgCard {
-  height: 150px;
-}
-
 .cardFilm .infosCard {
-  padding: 5px 16px;
+  padding: 2px 8px;
   margin-top: -4px;
   border-radius: 0 0 8px 8px;
   background-color: var(--cards);
-  display: grid;
-  grid-template-columns: 1fr 20px;
-  grid-gap: 10px;
   align-items: center;
   height: 90px;
 }
@@ -54,4 +48,10 @@
   right: auto;
   margin-left: -168px;
   margin-top: 10px;
+}
+
+@media (min-width: 800px) {
+  .cardFilm .infosCard {
+    padding: 5px 16px;
+  }
 }
