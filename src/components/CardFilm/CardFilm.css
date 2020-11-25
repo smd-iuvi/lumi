@@ -1,5 +1,6 @@
 .cardFilm {
   cursor: pointer;
+  min-width: 200px;
 }
 
 .cardFilm:hover .infosCard {
