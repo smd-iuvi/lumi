@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  padding-top: 1rem;
+  padding-top: 5rem;
   box-sizing: border-box;
 }
 
@@ -10,4 +10,10 @@
   width: 56px;
   height: 2px;
   background-color: var(--cards);
+}
+
+@media (min-width: 800px) {
+  .Profile {
+    padding-top: 1rem;
+  }
 }

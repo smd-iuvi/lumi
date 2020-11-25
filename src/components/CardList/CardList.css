@@ -1,7 +1,8 @@
 .CardList {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 16px;
 }
 
 .CardListScrollable{
@@ -13,4 +14,12 @@
 
 .CardMargin{
   margin-right: 16px;
+}
+
+@media (min-width: 800px) {
+  .CardList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 24px;
+  }
 }
