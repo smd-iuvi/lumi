@@ -24,3 +24,18 @@
 .Category .titleSectionSemester{
     margin-top: -50px;
 }
+
+@media (max-width: 800px) {
+    .categoryInfos{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+        color: var(--text-dark);
+        margin-top: -50px;
+        align-items: center;
+    }
+    
+    .categoryInfos article {
+        grid-row: 1;
+    }
+}
