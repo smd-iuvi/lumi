@@ -29,12 +29,6 @@ function TabBar(props) {
               selected={selected}
               onTabChange={props.onTabChange}
             />
-            <button
-              className="button buttonPrimary"
-              onClick={handleModal}
-            >
-              Criar evento
-            </button>
           </div>
         ) : (
             <Tabs
@@ -58,6 +52,12 @@ function TabBar(props) {
           <img src={props.icon} />
         </article>
         <Header>{props.title}</Header>
+        <button
+          className="button buttonPrimary"
+          onClick={handleModal}
+        >
+          Criar evento
+        </button>
       </div>
       {container}
     </div>
