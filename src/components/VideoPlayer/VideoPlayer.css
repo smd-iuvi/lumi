@@ -3,14 +3,3 @@
   width: 100%;
   grid-area: video;
 }
-
-.videoPlayer .Small-Text-Bold {
-  color: var(--placeholders-buttons-dark);
-}
-
-.videoPlayer .optionsFilm{
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-}

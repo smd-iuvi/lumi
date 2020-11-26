@@ -7,6 +7,7 @@ import Modal from '../../components/Modal/Modal';
 import CommentSection from '../../components/CommentSection/CommentSection';
 import Datasheet from '../../components/Player/Datasheet/Datasheet';
 import * as ROUTES from '../../constants/routes';
+import ActionsPlayer from '../../components/ActionsPlayer/ActionsPlayer';
 
 import { withFirebase } from '../../Firebase';
 import { withAuthUser } from '../../Firebase/Session';
@@ -166,17 +167,21 @@ function Player(props) {
       <div className="containerPlayer">
         <div>
           <VideoPlayer
-            didClap={didClap}
-            didAddToWatchlist={() => didAddToWatchlist()}
             name={nameLabel}
             url={url}
-            views={viewsLabel}
             videoId={params.videoId}
-            claps={clapsLabel}
-            onWatchList={onWatchList}
             onDuration={progress => onDuration(progress)}
             onProgress={duration => onProgress(duration)}
           />
+          <div className="optionsFilm">
+            <h1 className="Small-Text-Bold views">{viewsLabel} visualizações</h1>
+            <ActionsPlayer
+              didClap={didClap}
+              didAddToWatchlist={() => didAddToWatchlist()}
+              claps={clapsLabel}
+              onWatchList={onWatchList}
+            />
+          </div>
           <CommentSection
             videoId={params.videoId}
             userId={authUser ? authUser.uid : null}

@@ -1,6 +1,5 @@
 .datasheet{
-    display: flex;
-    flex-direction: column;
+    display: none;
 }
 
 .datasheet .tabs{
@@ -40,4 +39,11 @@
     padding: 8px 16px;
     border-bottom: 2px solid var(--text-light);
     color: var(--text-dark);
+}
+
+@media (min-width: 800px){
+    .datasheet{
+        display: flex;
+        flex-direction: column;
+    }
 }
