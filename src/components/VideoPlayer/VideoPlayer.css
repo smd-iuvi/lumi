@@ -1,9 +1,9 @@
 .player {
   margin-top: 29px;
   width: 100%;
-  height: 60vh;
   grid-area: video;
 }
+
 .videoPlayer .Small-Text-Bold {
   color: var(--placeholders-buttons-dark);
 }

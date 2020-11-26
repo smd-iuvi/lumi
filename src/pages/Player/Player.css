@@ -1,6 +1,12 @@
 .containerPlayer {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  grid-gap: 72px;
-  margin: 0 0 29px 104px;
+  margin-top: 64px;
+}
+
+@media (min-width: 800px){
+  .containerPlayer {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-gap: 72px;
+    margin: 0 0 29px 104px;
+  }
 }

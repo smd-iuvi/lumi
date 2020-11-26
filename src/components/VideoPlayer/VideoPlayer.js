@@ -36,7 +36,7 @@ const VideoPlayer = ({
         onDuration={onDuration}
         className="player"
         width="100%"
-        height="60vh"
+        height={window.innerWidth < 800 ? "35vh" : "60vh"}
       />
       <div className="optionsFilm">
         <h1 className="Small-Text-Bold">{views} visualizações</h1>

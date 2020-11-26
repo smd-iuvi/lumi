@@ -1,13 +1,5 @@
 .TabBarPlayer{
-    margin-top: 64px;
-    height: 144px;
-    width: 100%;
-    background-color: var(--text-light);
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
-    display: grid;
-    grid-template-columns: 68px 1fr 1fr;
-    grid-gap: 40px;
-    align-items: center;
+    display: none;
 }
 
 .TabBarPlayer .iconBack{
@@ -57,4 +49,18 @@
 
 .containerNextFilm .imgNextVideo img{
     height: 84px;
+}
+
+@media (min-width: 800px){
+    .TabBarPlayer{
+        margin-top: 64px;
+        height: 144px;
+        width: 100%;
+        background-color: var(--text-light);
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
+        display: grid;
+        grid-template-columns: 68px 1fr 1fr;
+        grid-gap: 40px;
+        align-items: center;
+    }
 }
