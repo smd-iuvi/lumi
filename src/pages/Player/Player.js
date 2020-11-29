@@ -163,9 +163,10 @@ function Player(props) {
         options={getOptionsModal()}
         closeModal={handleModal}
       />}
-      <TabBarPlayer video={video} nextVideo={nextVideo} />
+      {window.innerWidth >= 800 && <TabBarPlayer video={video} nextVideo={nextVideo} viewsLabel={viewsLabel} />}
       <div className="containerPlayer">
-        <div>
+        <div className="playerWithActions">
+          {window.innerWidth < 800 && <TabBarPlayer video={video} nextVideo={nextVideo} viewsLabel={viewsLabel} />}
           <VideoPlayer
             name={nameLabel}
             url={url}

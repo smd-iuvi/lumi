@@ -11,11 +11,13 @@ const VideoInfo = ({
   semester,
   genre,
   parentalRating,
-  content
+  content,
+  viewsLabel
 }) => {
   return (
     <div className="VideoInfo">
       <h1 className="Large-Text-Bold">{title}</h1>
+      <h1 className="Small-Text-Bold views">{viewsLabel} visualizações</h1>
       <div>
         {discipline && <Link
           to={`${ROUTES.CATEGORY}/${discipline}`}

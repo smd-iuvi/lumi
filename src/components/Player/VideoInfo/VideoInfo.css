@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+.VideoInfo .views{
+    display: block;
+}
+
 .VideoInfo .Large-Text-Bold{
     color: var(--text-dark);
     margin-bottom: 0;
@@ -27,4 +31,10 @@
 .VideoInfo .Small-Text-Regular{
     color: var(--placeholders-buttons-dark);
     margin-right: 24px;
+}
+
+@media (min-width: 800px){
+    .VideoInfo .views{
+        display: none;
+    }    
 }

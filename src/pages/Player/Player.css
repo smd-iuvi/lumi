@@ -1,5 +1,5 @@
 .containerPlayer {
-  margin-top: 64px;
+  margin-top: 38px;
 }
 
 .containerPlayer .Small-Text-Bold {
@@ -15,12 +15,38 @@
   display: none;
 }
 
+.containerPlayer .TabBarPlayer{
+  grid-area: TabBarPlayer;
+}
+
+.containerPlayer .player{
+  grid-area: player;
+}
+
+.containerPlayer .optionsFilm{
+  grid-area: optionsFilm;
+}
+
+.containerPlayer .CommentSection{
+  grid-area: CommentSection;
+}
+
+.containerPlayer .playerWithActions{
+  display: grid;
+  grid-template-areas: 'player' 'TabBarPlayer' 'optionsFilm' 'CommentSection';
+}
+
 @media (min-width: 800px){
   .containerPlayer {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     grid-gap: 72px;
     margin: 0 0 29px 104px;
+  }
+
+  .containerPlayer .playerWithActions{
+    display: grid;
+    grid-template-areas: 'player' 'optionsFilm' 'CommentSection';
   }
 
   .containerPlayer .optionsFilm{
