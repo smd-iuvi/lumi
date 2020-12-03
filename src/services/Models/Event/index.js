@@ -44,42 +44,31 @@ class Event {
   };
 
   update = (uid, eventNewInfo) => {
-    this.apiManager.put(`${ENDPOINT.COMMENTS}/${uid}`, eventNewInfo)
-      .then(response => { })
-      .catch(err => { })
+    return new Promise((resolve, reject) => {
+      this.apiManager.put(`${ENDPOINT.COMMENTS}/${uid}`, eventNewInfo)
+      .then(response => resolve())
+      .catch(err => reject(err))
+    })
   };
 
-  delete = (uid, callback) => {
-    this.apiManager.delete(`${ENDPOINT.EVENTS}/${uid}`)
+  delete = (uid) => {
+    return new Promise((resolve, reject) => {
+      this.apiManager.delete(`${ENDPOINT.EVENTS}/${uid}`)
       .then(response => {
-        callback(null)
+        resolve()
       })
-      .catch(err => console.log(err))
+      .catch(err => reject(err))
+    })
   };
 
   launch = uid => {
-    // TODO Implement endpoint to launch event
-
-    // return new Promise((resolve, reject) => {
-    //   this.database
-    //     .ref(`event/${uid}`)
-    //     .once('value')
-    //     .then(snapshot => {
-    //       const newEventState = { ...snapshot.val() };
-    //       newEventState.isAvailable = true;
-
-    //       this.update(uid, newEventState)
-    //         .then(() => {
-    //           resolve();
-    //         })
-    //         .catch(error => {
-    //           reject(error);
-    //         });
-    //     })
-    //     .catch(error => {
-    //       reject(error);
-    //     });
-    // });
+    return new Promise((resolve, reject) => {
+      this.apiManager.put(`${ENDPOINT.EVENTS}/${uid}/launch`, {})
+      .then(response => {
+        resolve()
+      })
+      .catch(err => reject(err))
+    })
   };
 
   addVideo = (eventId, videoId) => {
@@ -92,7 +81,7 @@ class Event {
 
   removeVideo = (eventId, videoId) => {
     return new Promise((resolve, reject) => {
-      this.apiManager.delete(`${ENDPOINT.EVENTS}/${eventId}/${ENDPOINT.VIDEOS}/${videoId}`, {})
+      this.apiManager.delete(`${ENDPOINT.EVENTS}/${eventId}/${ENDPOINT.VIDEOS}/${videoId}`)
         .then(() => resolve())
         .catch((err) => reject(err))
     })
@@ -102,37 +91,26 @@ class Event {
     return new Promise((resolve, reject) => {
       switch (field) {
         case QueryableFields.CREATED_BY:
-          // TODO implement endpoint to get events of a teacher
-          this.apiManager.get()
+            this.apiManager.get(ENDPOINT.EVENTS)
+              .then(events => {
+                const filteredEvents = events.filter(e => e.teacher === value)
+                resolve(filteredEvents)
+              })
+              .catch(err => reject(err))
+            break
+        default:
+          reject()
+          break
       }
     });
   };
 
   getNext = num => {
     return new Promise((resolve, reject) => {
-      //TODO Implement a endpoint to get next event
-      // this.database
-      //   .ref('event')
-      //   .orderByChild('sortableDate')
-      //   .startAt(new Date().getTime())
-      //   .limitToFirst(num)
-      //   .once('value')
-      //   .then(snapshot => {
-      //     const value = snapshot.val();
-
-      //     if (value) {
-      //       const list = Object.keys(value).map(key => ({
-      //         ...value[key],
-      //         uid: key
-      //       }));
-
-      //       resolve(list);
-      //     } else {
-      //       resolve(null);
-      //     }
-      //   })
-      //   .catch(error => reject(error));
-    });
+      this.apiManager.get(`${ENDPOINT.EVENTS}`)
+        .then(events => resolve(events.slice(0, num)))
+        .catch(err => reject(err))
+    })
   };
 }
 
