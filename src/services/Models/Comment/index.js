@@ -57,7 +57,6 @@ class Comment {
     return new Promise((resolve, reject) => {
       switch (field) {
         case QueryableFields.USER_ID:
-          // TODO Implement user comments endpoint
           this.apiManager.get(`${ENDPOINT.USERS} / ${value} / ${ENDPOINT.COMMENTS}`)
             .then(comments => resolve(comments))
             .catch(err => reject(err))
