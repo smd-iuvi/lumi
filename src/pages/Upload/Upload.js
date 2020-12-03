@@ -48,8 +48,10 @@ function Upload(props) {
       userId
     };
 
-    serviceManager.video.create(video, error => {
-      if (error == null) {
+    serviceManager.video.create(video)
+    .then(response => {})
+    .catch(err => {
+      if (err == null) {
         alert('Video enviado com sucesso');
       } else {
         alert('Houve algum erro ao enviar o vídeo');
