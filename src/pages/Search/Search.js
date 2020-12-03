@@ -6,6 +6,8 @@ import './Search.css';
 import iconResultSearch from './assets/resultSearch.svg';
 import iconSearch from './assets/search.png';
 
+import { QueryableFields as Video } from '../../services/Models/Video';
+
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
@@ -91,7 +93,7 @@ function Search(props) {
       });
 
     serviceManager.video
-      .getByTitle(params.searchTerm)
+      .getVideosBy(Video.TITLE, params.searchTerm)
       .then(videos => {
         const newVideosListState = {
           ...videosListState,
