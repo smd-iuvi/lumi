@@ -10,7 +10,7 @@ class Comment {
     this.apiManager = new ApiManager();
   }
 
-  create = ({ videoId, userId, comment }, callback) => {
+  create = ({ videoId, userId, comment }) => {
     return new Promise((resolve, reject) => {
       this.apiManager.post(`${ENDPOINT.VIDEOS}/${videoId}/ ${ENDPOINT.COMMENTS}`, {
         text: comment
@@ -38,19 +38,23 @@ class Comment {
   };
 
   update = (uid, comment) => {
-    this.apiManager.put(`${ENDPOINT.COMMENTS}/${uid}`, {
-      text: comment
+    return new Promise((resolve, reject) => {
+      this.apiManager.put(`${ENDPOINT.COMMENTS}/${uid}`, {
+        text: comment
+      })
+        .then(response => resolve())
+        .catch(err => reject(err))
     })
-      .then(response => { })
-      .catch(err => { })
   }
 
-  delete = (uid, callback) => {
-    this.apiManager.delete(`${ENDPOINT.COMMENTS}/${uid}`)
+  delete = (uid) => {
+    return new Promise((resolve, reject) =>  {
+      this.apiManager.delete(`${ENDPOINT.COMMENTS}/${uid}`)
       .then(response => {
-        callback(null)
+        resolve()
       })
-      .catch(err => console.log(err))
+      .catch(err => reject(err))
+    })
   };
 
   getCommentsBy = (field, value) => {

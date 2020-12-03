@@ -54,9 +54,9 @@ function CommentSection(props) {
     const { serviceManager, authUser } = props;
 
     if (comment.userId === authUser.uid) {
-      serviceManager.comment.delete(comment.uid, error => {
-        console.log(error);
-      });
+      serviceManager.comment.delete(comment.uid)
+        .then()
+        .catch(err => {})
     }
   };
 
