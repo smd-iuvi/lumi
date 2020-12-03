@@ -7,14 +7,14 @@ import './styles/global.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import services, { FirebaseContext } from './services';
+import services, { ServiceManagerContext } from './services';
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={new services()}>
+  <ServiceManagerContext.Provider value={new services()}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </FirebaseContext.Provider>,
+  </ServiceManagerContext.Provider>,
   document.getElementById('root')
 );
 
