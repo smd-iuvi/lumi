@@ -5,13 +5,15 @@ import './AddTags.css';
 import Tag from './Tag/Tag';
 
 function AddTags(props) {
-  const [value, setValue] = useState([]);
+  const [inputValue, setInputValue] = useState('')
   const [users, setUsers] = useState([
     'Gleislla Monteiro',
     'Mateus Santos',
     'Paulo José',
     'Rebecca Dantas'
   ]);
+
+  const { value } = props
 
   function keyPress(e) {
     const { onChange, name, value } = props;
@@ -21,7 +23,7 @@ function AddTags(props) {
         e.target.value != '' &&
         e.target.value != ' '
       ) {
-        const getTags = value;
+        const getTags = [...value];
         getTags.push(e.target.value);
         const event = {
           target: {
@@ -30,7 +32,7 @@ function AddTags(props) {
           }
         };
         onChange(event);
-        setValue([]);
+        setInputValue('')
       }
     }
   }
@@ -40,11 +42,11 @@ function AddTags(props) {
     let aux = value;
     for (let i = 0; i < aux.length; i++) {
       if (aux[i] == e) {
-        aux.splice(i, 1);
+        const newTags = [...aux.splice(i, 1)];
         const event = {
           target: {
             name: name,
-            value: aux
+            value: newTags
           }
         };
         onChange(event);
@@ -65,9 +67,9 @@ function AddTags(props) {
         type="text"
         list="users"
         placeholder={props.placeholder}
-        value={value}
+        value={inputValue}
         onKeyDown={keyPress}
-        onChange={e => setValue(e.target.value)}
+        onChange={e => setInputValue(e.target.value)}
         className="Small-Text-Regular"
       />
       {
