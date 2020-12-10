@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import uuid from 'uuid';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as ROUTES from './constants/routes';
 
 import NavBar from './components/NavBar/NavBar';
@@ -49,6 +52,8 @@ function App(props) {
 
   return (
     <div>
+      <ToastContainer />
+      
       {!location.pathname.includes(ROUTES.PLAYER) &&
         !location.pathname.includes(ROUTES.LANDING) &&
         !location.pathname.includes(ROUTES.DOCUMENTATION) ? (
