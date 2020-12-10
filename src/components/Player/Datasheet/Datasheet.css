@@ -1,13 +1,18 @@
 .datasheet{
+    margin: 0 16px;
     display: flex;
     flex-direction: column;
 }
 
+.datasheet .button{
+    width: max-content;
+    margin: 8px 0;
+}
+
 .datasheet .tabs{
     background-color: var(--searchBar);
-    height: 48px;
+    height: 65px;
     width: 100%;
-    padding: 0 19px;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
@@ -40,4 +45,21 @@
     padding: 8px 16px;
     border-bottom: 2px solid var(--text-light);
     color: var(--text-dark);
+}
+
+@media (min-width: 367px){
+    .datasheet .tabs{
+        background-color: var(--searchBar);
+        height: 48px;
+    }
+}
+
+@media (min-width: 800px){
+    .datasheet{
+        margin: 0;
+    }
+
+    .datasheet .tabs{
+        padding: 0 19px;
+    }
 }

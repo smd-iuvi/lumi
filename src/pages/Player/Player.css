@@ -1,6 +1,68 @@
 .containerPlayer {
+  margin-top: 38px;
+}
+
+.containerPlayer .Small-Text-Bold {
+  color: var(--placeholders-buttons-dark);
+}
+
+.containerPlayer .optionsFilm{
+  margin-top: 10px;
+  align-items: center;
+}
+
+.containerPlayer .optionsFilm .views{
+  display: none;
+}
+
+.containerPlayer .TabBarPlayer{
+  grid-area: TabBarPlayer;
+}
+
+.containerPlayer .player{
+  grid-area: player;
+}
+
+.containerPlayer .optionsFilm{
+  grid-area: optionsFilm;
+}
+
+.containerPlayer .CommentSection{
+  grid-area: CommentSection;
+}
+
+.containerPlayer .datasheet{
+  grid-area: datasheet;
+}
+
+.containerPlayer .playerWithActions{
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  grid-gap: 72px;
-  margin: 0 0 29px 104px;
+  grid-template-areas: 'player' 'TabBarPlayer' 'optionsFilm' 'datasheet' 'CommentSection';
+}
+
+@media (min-width: 800px){
+  .containerPlayer .datasheet{
+    grid-area: unset;
+  }
+
+  .containerPlayer {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-gap: 72px;
+    margin: 0 0 29px 104px;
+  }
+
+  .containerPlayer .playerWithActions{
+    display: grid;
+    grid-template-areas: 'player' 'optionsFilm' 'CommentSection';
+  }
+
+  .containerPlayer .optionsFilm{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .containerPlayer .optionsFilm .views{
+    display: block;
+  }
 }

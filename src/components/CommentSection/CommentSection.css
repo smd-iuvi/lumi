@@ -1,5 +1,5 @@
 .CommentSection{
-    margin-top: 30px;
+    margin: 16px;
 }
 
 .CommentSection .Small-Text-Bold{
@@ -25,4 +25,10 @@
 
 .CommentSection .loginForComment h1{
     margin-top: 10px;
+}
+
+@media (min-width: 800px){
+    .CommentSection{
+        margin: 30px 0;
+    }
 }

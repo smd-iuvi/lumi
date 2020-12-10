@@ -11,7 +11,7 @@ const back = history => {
   history.goBack();
 };
 
-const TabBarPlayer = ({ video, nextVideo, history }) => {
+const TabBarPlayer = ({ video, nextVideo, history, viewsLabel }) => {
   return (
     <div className="TabBarPlayer">
       <article className="iconBack" onClick={() => back(history)} />
@@ -23,6 +23,7 @@ const TabBarPlayer = ({ video, nextVideo, history }) => {
           genre={video ? video.genre : null}
           parentalRating={video ? video.parentalRating : null}
           content={video ? video.content : null}
+          viewsLabel={viewsLabel}
         />
       </div>
       <div className="containerNextFilm">

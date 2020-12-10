@@ -16,10 +16,6 @@
     margin-right: 24px;
 }
 
-.navbarComplete{
-    padding-left: 56px !important;
-}
-
 .navbar .iconNavbar{
     width: 18px;
     height: 29px;
@@ -44,5 +40,8 @@
     }
     .navbar .logo{
         display: none;
+    }
+    .navbarComplete{
+        padding-left: 56px !important;
     }
   }
