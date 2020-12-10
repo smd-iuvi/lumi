@@ -48,6 +48,19 @@ function SignUp(props) {
     setSeeBox(true);
   };
 
+  function validateFields() {
+    return validatePassword(passwordOne, passwordTwo) && validateEmail(email) && name !== ""
+  }
+
+  function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return re.test(String(email).toLowerCase());
+  }
+
+  function validatePassword(passwordOne, passwordTwo) {
+    return passwordOne.length >= 8 && passwordOne === passwordTwo
+  }
+
   return (
     <>
       <div className="Login">
@@ -153,9 +166,16 @@ function SignUp(props) {
             )}
 
             <article className="buttonLogin" onClick={onSubmit}>
-              <button type="submit" className="button buttonPrimary">
+              {validateFields() ? 
+                <button type="submit" className="button buttonPrimary">
                 Cadastrar
-              </button>
+                </button>
+              :
+                <button type="submit" className="button buttonPrimary" disabled>
+                Cadastrar
+                </button>
+              }
+
             </article>
 
             <article className="notRegister">
