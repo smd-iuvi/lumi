@@ -187,8 +187,9 @@ function Player(props) {
             videoId={params.videoId}
             userId={authUser ? authUser.uid : null}
           />
+          {window.innerWidth < 800 && <Datasheet video={video} />}
         </div>
-        <Datasheet video={video} />
+        {window.innerWidth >= 800 && <Datasheet video={video} />}
       </div>
     </>
   );

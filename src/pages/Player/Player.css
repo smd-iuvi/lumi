@@ -31,12 +31,20 @@
   grid-area: CommentSection;
 }
 
+.containerPlayer .datasheet{
+  grid-area: datasheet;
+}
+
 .containerPlayer .playerWithActions{
   display: grid;
-  grid-template-areas: 'player' 'TabBarPlayer' 'optionsFilm' 'CommentSection';
+  grid-template-areas: 'player' 'TabBarPlayer' 'optionsFilm' 'datasheet' 'CommentSection';
 }
 
 @media (min-width: 800px){
+  .containerPlayer .datasheet{
+    grid-area: unset;
+  }
+
   .containerPlayer {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
