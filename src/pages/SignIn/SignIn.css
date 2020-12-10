@@ -1,117 +1,120 @@
-@media (min-width: 800px){
-    .Login{
-        padding-left: 216px;
-    }
+@media (min-width: 800px) {
+  .Login {
+    padding-left: 216px;
+  }
 
-    .Login .formLogin {
-        width: 550px;
-    }
+  .Login .formLogin {
+    width: 550px;
+  }
 }
 
-
-.Login{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--text-dark);
-    background-image: url('./assets/background.svg');
-    background-size: auto;
-    width: 100%;
+.Login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-dark);
+  background-image: url('./assets/background.svg');
+  background-size: auto;
+  width: 100%;
 }
 
-.Login .formLogin{
-    background-color: var(--cards);
-    display: grid;
-    grid-template-rows: 64px auto;
-    border-radius: 8px;
-    z-index: 2;
-    margin: 1rem;
+.Login .formLogin {
+  background-color: var(--cards);
+  display: grid;
+  grid-template-rows: 64px auto;
+  border-radius: 8px;
+  z-index: 2;
+  margin: 1rem;
 }
 
-.Login .titleLogin{
-    background-color: var(--primary);
-    display: flex;
-    align-items: center;
-    border-radius: 8px 8px 0 0;
-    padding: 0 1.5rem;
+.Login .titleLogin {
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+  padding: 0 1.5rem;
 }
 
-.Login .contentForm{
-    padding: 1.5rem;
+.Login .contentForm {
+  padding: 1.5rem;
 }
 
-.Login .subtitleLogin{
-    margin: 0 0 32px 0;
+.Login .subtitleLogin {
+  margin: 0 0 32px 0;
 }
 
-.Login .errorLogin{
-    color: var(--negative-feedback);
+.Login .errorLogin {
+  color: var(--negative-feedback);
 }
 
-.divTextInput{
-    height: 64px;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-    background-color: var(--cards);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-gap: 22px;
-    align-items: center;
-    margin-bottom: 16px;
+.divTextInput {
+  height: 64px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  background-color: var(--cards);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 22px;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-.divTextInput h1{
-    color: var(--placeholders-buttons-dark);
-    margin-left: 16px;
+.divTextInput h1 {
+  color: var(--placeholders-buttons-dark);
+  margin-left: 16px;
 }
 
-.textInputAccount{
-    border: none;
-    outline: none;
-    background: none;
-    margin-right: 16px;
-    color: var(--text-dark);
+.textInputAccount {
+  border: none;
+  outline: none;
+  background: none;
+  margin-right: 16px;
+  color: var(--text-dark);
 }
 
-.Login .forgotPassword{
-    color: var(--placeholders-buttons-dark);
-    cursor: pointer;
+.Login .forgotPassword {
+  color: var(--placeholders-buttons-dark);
+  cursor: pointer;
 }
 
-.Login .buttonLogin{
-    width: 100%;
-    justify-content: center;
-    margin-top: 28px;
-    margin-bottom: 32px;
+.Login .buttonLogin {
+  width: 100%;
+  justify-content: center;
+  margin-top: 28px;
+  margin-bottom: 32px;
 }
 
-.Login .notRegister{
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-gap: 8px;
-    align-items: center;
-    color: var(--placeholders-buttons-dark);
+.Login .buttonLogin :disabled {
+  background-color: grey;
 }
 
-.Login .notRegister .link{
-    color: var(--text-dark);
+.Login .notRegister {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 8px;
+  align-items: center;
+  color: var(--placeholders-buttons-dark);
 }
-.Login .notRegister .Small-Text-Bold:hover{
-    color: var(--primary);
-    cursor: pointer;
+
+.Login .notRegister .link {
+  color: var(--text-dark);
+}
+.Login .notRegister .Small-Text-Bold:hover {
+  color: var(--primary);
+  cursor: pointer;
 }
 
 .Login ::placeholder {
-    color: var(--text-dark);
+  color: var(--text-dark);
 }
 
 .Login :-ms-input-placeholder {
-    color: var(--text-dark);
+  color: var(--text-dark);
 }
 
 .Login ::-ms-input-placeholder {
-    color: var(--text-dark);
+  color: var(--text-dark);
 }
