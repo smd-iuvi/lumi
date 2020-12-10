@@ -84,15 +84,21 @@ function Player(props) {
   function didClap() {
     const {
       firebase,
+      authUser,
       match: { params }
     } = props;
 
-    firebase.video
+    if (authUser) {
+      firebase.video
       .clap(params.videoId)
       .then(() => { })
       .catch(error => {
         setError(error);
       });
+    } else {
+      handleModal()
+    }
+
   };
 
   function didAddToWatchlist() {
