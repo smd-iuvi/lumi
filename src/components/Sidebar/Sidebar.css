@@ -1,142 +1,146 @@
-.sidebar{
-    background-color: var(--sidebar-footer);
-    z-index: 100;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height: 70px;
-    width: 100%;
+.sidebar {
+  background-color: var(--sidebar-footer);
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
 }
 
-.sidebar .logo{
-    display: none;
+.sidebar .logo {
+  display: none;
 }
 
-.sidebar .buttonsNavbar{
-    display: none;
+.sidebar .buttonsNavbar {
+  display: none;
 }
 
-.sidebar .icon{
-    display: none;
+.sidebar .icon {
+  display: none;
 }
 
-.sidebar .home{
-    display: none;
+.sidebar .home {
+  display: none;
 }
 
-.sidebar .labelButtons{
-    display: none;
+.sidebar .labelButtons {
+  display: none;
 }
 
-.sidebar .profile{
-    display: none;
+.sidebar .profile {
+  display: none;
 }
 
-.sidebar .optionsLogged .icon{
-    display: none;
+.sidebar .optionsLogged .icon {
+  display: none;
 }
 
-.sidebar .lineSidebar{
-    display: none;
+.sidebar .lineSidebar {
+  display: none;
 }
 
-.sidebar .optionsProfile{
-    display: none;
+.sidebar .optionsProfile {
+  display: none;
 }
 
-.sidebar .iconsTop{
+.sidebar .iconsTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+}
+
+.sidebar .optionsLogged {
+  display: none;
+}
+
+.sidebar .divNotLogin {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .sidebar {
+    top: 0;
+    width: 216px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar .logo {
+    display: block;
+    grid-column: logo;
+    width: 64px;
+    height: 31px;
+    margin: 24px 0 5vh 40px;
+  }
+  .sidebar .buttonsNavbar {
+    color: var(--text-dark);
+    background: none;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    outline: none;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    height: 70px;
-}
+    margin-top: 0;
+  }
 
-.sidebar .optionsLogged{
-    display: none;
-}
+  .sidebar .icon {
+    height: 14px;
+    width: auto;
+    margin-right: 10px;
+    cursor: pointer;
+  }
 
-.sidebar .divNotLogin{
-    display: none;
-}
+  .sidebar .home {
+    margin-right: 20px;
+  }
 
-@media (min-width: 800px){
-    .sidebar{
-        top: 0;
-        width: 216px;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-    .sidebar .logo{
-        display: block;
-        grid-column: logo;
-        width: 64px;
-        height: 31px;
-        margin: 24px 0 5vh 40px;
-    }
-    .sidebar .buttonsNavbar{
-        color: var(--text-dark);
-        background: none;
-        width: 30px;
-        border: none;
-        cursor: pointer;
-        outline: none;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-top: 0;
-    }
-    
-    .sidebar .icon{
-        height: 14px;
-        width: auto;
-        margin-right: 10px;
-        cursor: pointer;
-    }
-    
-    .sidebar .home{
-        margin-right: 20px;
-    }
-    
-    .sidebar .labelButtons{
-        display: block;
-    }
-    
-    .sidebar .profile{
-        width: 52px;
-        height: 52px;
-        border-radius: 50px;
-        margin-top: 10px;
-    }
-    
-    .sidebar .optionsLogged .icon{
-        display: block;
-    }
-    
-    .sidebar .lineSidebar{
-        display: block;
-        align-self: center;
-        width: 56px;
-        height: 2px;
-        background-color: var(--cards);
-        margin-top: 3vh;
-        margin-bottom: 4vh;
-    }
-    .sidebar .optionsProfile{
-        margin-bottom: 5vh;
-    }
+  .sidebar .labelButtons {
+    display: block;
+  }
 
-    .sidebar .iconsTop{
-        display: block;
-        height: auto;
-    }
+  .sidebar .profile {
+    width: 52px;
+    height: 52px;
+    border-radius: 50px;
+    margin-top: 10px;
+  }
 
-    .sidebar .optionsLogged{
-        display: block;
-    }
-    
-    .sidebar .divNotLogin{
-        display: block;
-    }
+  .sidebar .optionsProfile {
+    display: block;
+  }
+
+  .sidebar .optionsLogged .icon {
+    display: block;
+  }
+
+  .sidebar .lineSidebar {
+    display: block;
+    align-self: center;
+    width: 56px;
+    height: 2px;
+    background-color: var(--cards);
+    margin-top: 3vh;
+    margin-bottom: 4vh;
+  }
+  .sidebar .optionsProfile {
+    margin-bottom: 5vh;
+  }
+
+  .sidebar .iconsTop {
+    display: block;
+    height: auto;
+  }
+
+  .sidebar .optionsLogged {
+    display: block;
+  }
+
+  .sidebar .divNotLogin {
+    display: block;
+  }
 }
