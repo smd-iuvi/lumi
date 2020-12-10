@@ -5,6 +5,7 @@ class User {
   }
 
   create = ({ name, email, password, role }, callback) => {
+    console.log(name)
     this.auth
       .createUserWithEmailAndPassword(email, password)
       .then(authUser => {
@@ -19,6 +20,7 @@ class User {
         callback(user, null);
       })
       .catch(error => {
+        console.log(error)
         callback(null, error);
       });
   };
