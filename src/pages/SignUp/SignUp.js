@@ -51,6 +51,8 @@ function SignUp(props) {
         if (error !== null) {
           if (error.code === "auth/email-already-in-use") {
             errorNotify("Email já em uso")
+          } else {
+            errorNotify("Ocorreu um erro. Tente novamente.")
           }
         } else {
           sucessNotify("Conta criada com sucesso!")
