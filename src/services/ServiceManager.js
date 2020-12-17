@@ -45,7 +45,7 @@ class ServiceManager {
 
 
 
-  doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
+  // doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
   // doSignOut = () => this.auth.signOut();
 

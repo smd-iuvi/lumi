@@ -30,7 +30,13 @@ export default class ApiManager {
                 },
                 referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (response.status < 200 && response >= 300) {
+                        reject(response.json())
+                    } else {
+                        return response.json()
+                    }
+                })
                 .then(data => resolve(data))
                 .catch(err => reject(err))
         })
@@ -38,18 +44,25 @@ export default class ApiManager {
 
     post = (endpoint, data) => {
         return new Promise((resolve, reject) => {
-            console.log(data)
+            const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoSUQiOiI3NzcyMTMzM20yMzIzNzMyIiwiaWF0IjoxNjA1MTA0MzQ1fQ.baRgQrbg1OsOhZjOvEVTIOzlFtbJVkeiuIktk1PMGeM'
             fetch(this.url + endpoint, {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
                 body: JSON.stringify(data) // body data type must match "Content-Type" header
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (response.status < 200 && response >= 300) {
+                        reject(response.json())
+                    } else {
+                        return response.json()
+                    }
+                })
                 .then(data => resolve(data))
                 .catch(err => reject(err))
         })
@@ -67,7 +80,13 @@ export default class ApiManager {
                 referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
                 body: JSON.stringify(data) // body data type must match "Content-Type" header
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (response.status < 200 && response >= 300) {
+                        reject(response.json())
+                    } else {
+                        return response.json()
+                    }
+                })
                 .then(data => resolve(data))
                 .catch(err => reject(err))
         })
@@ -84,7 +103,13 @@ export default class ApiManager {
                 },
                 referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (response.status < 200 && response >= 300) {
+                        reject(response.json())
+                    } else {
+                        return response.json()
+                    }
+                })
                 .then(data => resolve(data))
                 .catch(err => reject(err))
         })

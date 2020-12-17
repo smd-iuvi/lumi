@@ -14,9 +14,12 @@ class Video {
 
   create = video => {
     return new Promise((resolve, reject) => {
+      console.log(video)
       this.apiManager.post(`${ENDPOINT.VIDEOS}`, video)
         .then(() => resolve())
-        .catch((err) => reject(err))
+        .catch((err) => {
+          reject(err)
+        })
     })
   };
 
