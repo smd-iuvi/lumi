@@ -9,8 +9,8 @@ import * as CONDITION from '../../constants/authorizingConditions';
 const withAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
     componentWillMount() {
-      const { firebase, history } = this.props;
-      this.listener = firebase.onAuthUserListener(
+      const { serviceManager, history } = this.props;
+      this.listener = serviceManager.onAuthUserListener(
         authUser => {
           if (condition(authUser) === CONDITION.NOT_AUTHORIZED) {
             console.log(CONDITION.NOT_AUTHORIZED);
