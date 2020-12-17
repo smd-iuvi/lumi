@@ -58,13 +58,13 @@ function Home(props) {
   }, []);
 
   return (
-    <div className="container">
+    < div className="container" >
       <Carousel videos={recentsVideos} loading={loadingRecents} />
       <div className="bannersHome">
         <HomeFilms videos={popularsVideos} loading={loadingPopulars} />
         <EventsList events={events} loading={loadingEvents} />
       </div>
-    </div>
+    </div >
   );
 }
 

@@ -52,12 +52,17 @@ function Player(props) {
   }, []);
 
   function eventListener() {
-    props.serviceManager.db
-      .ref(`video/${params.videoId}`)
-      .on('value', snapshot => {
-        setVideo(snapshot.val());
+    const {
+      serviceManager,
+      match: { params }
+    } = props;
+
+    serviceManager.video.get(params.videoId)
+      .then(video => {
+        console.log(video)
+        setVideo(video);
         setLoading(false);
-      });
+      })
   }
 
 
@@ -156,7 +161,7 @@ function Player(props) {
   } else if (video != null) {
     nameLabel = video.title;
     viewsLabel = video.views;
-    url = video.link;
+    url = video.url;
     clapsLabel = video.claps;
   }
 

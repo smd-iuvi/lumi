@@ -3,6 +3,8 @@ import React from 'react';
 import AuthUserContext from './context';
 import { withServiceManager } from '../../services';
 
+import * as ROUTES from '../../constants/routes';
+
 const withAuthentification = Component => {
   class WithAuthentification extends React.Component {
     constructor(props) {
@@ -14,21 +16,27 @@ const withAuthentification = Component => {
     }
 
     componentDidMount() {
-      const { serviceManager } = this.props;
-      this.listener = serviceManager.user.onAuthUserListener(
-        authUser => {
+      const { serviceManager, history } = this.props;
+      this.listener = (authUser) => {
+        console.log(authUser)
+
+        if (authUser) {
           localStorage.setItem('authUser', JSON.stringify(authUser));
           this.setState({ authUser: authUser });
-        },
-        () => {
+        } else {
           localStorage.removeItem('authUser');
           this.setState({ authUser: null });
         }
-      );
+
+        history.push(ROUTES.HOME)
+      }
+
+      serviceManager.user.addListener(this.listener)
     }
 
     componentWillUnmount() {
-      // this.listener();
+      const { serviceManager } = this.props;
+      serviceManager.user.removeListener(this.listener)
     }
 
     render() {

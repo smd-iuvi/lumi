@@ -9,60 +9,103 @@ class User {
   constructor(auth) {
     this.apiManager = new ApiManager();
     this.auth = auth;
+
+    this.authListeners = []
   }
 
-  create = ({ name, lastName, email, password, role }, callback) => {
-    this.auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(authUser => {
+  create = ({ name, email, password, role }) => {
+    return new Promise((resolve, reject) => {
+      this.auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(authUser => {
+          console.log(authUser.user)
 
-        const payload = {
-          authID: authUser.user.uid,
-          lastName: 'lastname',
-          firstName: name,
-          email: email,
-          registrationNumber: uuidv4(),
-          role: role
-        }
+          const payload = {
+            authID: authUser.user.uid,
+            lastName: 'lastname',
+            firstName: name,
+            email: email,
+            registrationNumber: uuidv4(),
+            role: role
+          }
 
-        this.apiManager.post(ENDPOINT.REGISTER, payload)
-          .then(response => {
-            callback(normalizeID(response.user), null);
-          })
-      })
+          this.apiManager.post(ENDPOINT.REGISTER, payload)
+            .then(response => {
+              const userToSaveToLocal = {
+                uid: response.user._id,
+                emailVerified: authUser.emailVerified,
+                providerData: authUser.providerData,
+                accessToken: response.accessToken,
+                ...response.user
+              }
 
-      .catch(error => {
-        callback(null, error);
-      });
+              console.log(userToSaveToLocal)
+              this.notifyListeners(userToSaveToLocal)
+              resolve()
+            })
+            .catch(err => reject(err))
+        })
+        .catch(error => {
+          reject(error)
+        });
+    })
   };
 
   signIn = (email, password) => {
-    return this.auth.signInWithEmailAndPassword(email, password)
+    return new Promise((resolve, reject) => {
+      this.auth.signInWithEmailAndPassword(email, password)
+        .then(authUser => {
+          console.log(authUser.user)
+
+          const payload = {
+            authID: authUser.user.uid,
+            email: email
+          }
+
+          this.apiManager.post(ENDPOINT.LOGIN, payload)
+            .then(response => {
+              console.log(response)
+              const userToSaveToLocal = {
+                uid: response.user._id,
+                emailVerified: authUser.emailVerified,
+                providerData: authUser.providerData,
+                accessToken: response.accessToken,
+                ...response.user
+              }
+
+              this.notifyListeners(userToSaveToLocal)
+              resolve()
+            })
+            .catch(err => {
+              console.log(err)
+              reject(err)
+            })
+        })
+        .catch(error => {
+          reject(error)
+        });
+    })
   };
 
-  onAuthUserListener = (next, fallback) => {
-    this.auth.onAuthStateChanged(authUser => {
-      if (authUser) {
-        const payload = {
-          authID: authUser.uid,
-          email: authUser.email
-        }
+  signOut = () => {
+    return new Promise((resolve, reject) => {
+      this.auth.signOut().then(authUser => {
+        console.log(authUser)
+        this.notifyListeners(null)
+      })
+    })
+  }
 
-        this.apiManager.post(ENDPOINT.LOGIN, payload)
-          .then(response => {
-            authUser = {
-              uid: response.user._id,
-              emailVerified: authUser.emailVerified,
-              providerData: authUser.providerData,
-              ...response.user
-            }
+  addListener = (listener) => {
+    this.authListeners = [...this.authListeners, listener]
+  }
 
-            next(authUser, response.accessToken)
-          })
-      } else {
-        fallback();
-      }
-    });
+  removeListener = (listener) => {
+    this.authListeners = this.authListeners.filter(l => l != listener)
+  }
+
+  notifyListeners = (authUser) => {
+    this.authListeners.forEach(listener => listener(authUser))
   }
 
 

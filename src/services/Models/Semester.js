@@ -17,7 +17,7 @@ class Semester {
       })
     } else {
       return new Promise((resolve, reject) => {
-        this.apiManager.get(`${ENDPOINT.SEMESTER} / ${uid}`)
+        this.apiManager.get(`${ENDPOINT.SEMESTER}/${uid}`)
           .then(semesters => resolve(normalizeID(semesters)))
           .catch(err => reject(err))
       })

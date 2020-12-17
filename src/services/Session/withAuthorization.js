@@ -10,22 +10,25 @@ const withAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
     componentWillMount() {
       const { serviceManager, history } = this.props;
-      this.listener = serviceManager.user.onAuthUserListener(
-        authUser => {
+
+      this.listener = (authUser) => {
+        if (authUser) {
           if (condition(authUser) === CONDITION.NOT_AUTHORIZED) {
-            console.log(CONDITION.NOT_AUTHORIZED);
             history.push(ROUTES.RESTRICTED_AREA);
           } else if (condition(authUser) === CONDITION.NOT_LOGGED) {
-            console.log(CONDITION.NOT_LOGGED);
             history.push(ROUTES.RESTRICTED_AREA);
           }
-        },
-        () => history.push(ROUTES.RESTRICTED_AREA)
-      );
+        } else {
+          history.push(ROUTES.RESTRICTED_AREA)
+        }
+      }
+
+      serviceManager.user.addListener(this.listener)
     }
 
     componentWillUnmount() {
-      // this.listener();
+      const { serviceManager } = this.props;
+      serviceManager.user.removeListener(this.listener)
     }
 
     render() {

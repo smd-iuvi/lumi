@@ -92,7 +92,7 @@ function Upload(props) {
     const video = {
       title: steps[0].title.value,
       imageUrl: steps[0].imageUrl.value,
-      link: steps[0].link.value,
+      url: steps[0].link.value,
       description: steps[0].description.value,
       genre: steps[0].genre.value,
       parentalRating: steps[0].parentalRating.value,

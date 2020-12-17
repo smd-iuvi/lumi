@@ -34,7 +34,7 @@ function Navbar(props) {
 
   function onSignOut() {
     const { serviceManager, history } = props;
-    serviceManager.doSignOut().then(() => {
+    serviceManager.user.signOut().then(() => {
       history.push(ROUTES.HOME);
     });
   };

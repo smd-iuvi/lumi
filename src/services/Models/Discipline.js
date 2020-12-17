@@ -16,7 +16,7 @@ class Discipline {
       })
     } else {
       return new Promise((resolve, reject) => {
-        this.apiManager.get(`${ENDPOINT.COURSER} / ${uid}`)
+        this.apiManager.get(`${ENDPOINT.COURSER}/${uid}`)
           .then(disciplines => resolve(normalizeID(disciplines)))
           .catch(err => reject(err))
       })

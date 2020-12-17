@@ -32,7 +32,7 @@ class Comment {
     } else {
       //Implement get comment by ID
       return new Promise((resolve, reject) => {
-        this.apiManager.get(`${ENDPOINT.COMMENTS} / ${uid}`)
+        this.apiManager.get(`${ENDPOINT.COMMENTS}/${uid}`)
           .then(comments => resolve(normalizeID(comments)))
           .catch(err => reject(err))
       })
@@ -63,12 +63,12 @@ class Comment {
     return new Promise((resolve, reject) => {
       switch (field) {
         case QueryableFields.USER_ID:
-          this.apiManager.get(`${ENDPOINT.USERS} / ${value} / ${ENDPOINT.COMMENTS}`)
+          this.apiManager.get(`${ENDPOINT.USERS}/${value}/${ENDPOINT.COMMENTS}`)
             .then(comments => resolve(normalizeID(comments)))
             .catch(err => reject(err))
           break
         case QueryableFields.VIDEO_ID:
-          this.apiManager.get(`${ENDPOINT.VIDEOS} / ${value} / ${ENDPOINT.COMMENTS}`)
+          this.apiManager.get(`${ENDPOINT.VIDEOS}/${value}/${ENDPOINT.COMMENTS}`)
             .then(comments => resolve(normalizeID(comments)))
             .catch(err => reject(err))
           break

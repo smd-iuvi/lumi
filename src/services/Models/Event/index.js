@@ -38,7 +38,7 @@ class Event {
       })
     } else {
       return new Promise((resolve, reject) => {
-        this.apiManager.get(`${ENDPOINT.EVENTS} / ${uid}`)
+        this.apiManager.get(`${ENDPOINT.EVENTS}/${uid}`)
           .then(events => resolve(normalizeID(events)))
           .catch(err => reject(err))
       })

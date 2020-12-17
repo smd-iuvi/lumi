@@ -17,7 +17,7 @@ class Gender {
       })
     } else {
       return new Promise((resolve, reject) => {
-        this.apiManager.get(`${ENDPOINT.GENRE} / ${uid}`)
+        this.apiManager.get(`${ENDPOINT.GENRE}/${uid}`)
           .then(genres => resolve(normalizeID(genres)))
           .catch(err => reject(err))
       })

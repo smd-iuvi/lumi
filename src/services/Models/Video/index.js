@@ -29,7 +29,9 @@ class Video {
       })
     } else {
       return new Promise((resolve, reject) => {
-        this.apiManager.get(`${ENDPOINT.VIDEOS} / ${uid}`)
+        const url = `${ENDPOINT.VIDEOS}/${uid}`
+        console.log(url)
+        this.apiManager.get(url)
           .then(videos => resolve(normalizeID(videos)))
           .catch(err => reject(err))
       })
