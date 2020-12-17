@@ -1,6 +1,8 @@
 import { ENDPOINT } from '../ApiManager'
 import ApiManager from '../ApiManager'
 
+import normalizeID from './normalizeID'
+
 class Semester {
   constructor() {
     this.apiManager = new ApiManager();
@@ -10,13 +12,13 @@ class Semester {
     if (uid == null) {
       return new Promise((resolve, reject) => {
         this.apiManager.get(ENDPOINT.SEMESTER)
-          .then(semesters => resolve(semesters))
+          .then(semesters => resolve(normalizeID(semesters)))
           .catch(err => reject(err))
       })
     } else {
       return new Promise((resolve, reject) => {
         this.apiManager.get(`${ENDPOINT.SEMESTER} / ${uid}`)
-          .then(semesters => resolve(semesters))
+          .then(semesters => resolve(normalizeID(semesters)))
           .catch(err => reject(err))
       })
     }

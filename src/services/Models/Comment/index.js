@@ -3,6 +3,8 @@ import * as QueryableFields from './QueryableFields';
 import { ENDPOINT } from '../../ApiManager'
 import ApiManager from '../../ApiManager'
 
+import normalizeID from '../normalizeID'
+
 export { QueryableFields };
 
 class Comment {
@@ -24,14 +26,14 @@ class Comment {
     if (uid == null) {
       return new Promise((resolve, reject) => {
         this.apiManager.get(ENDPOINT.COMMENTS)
-          .then(comments => resolve(comments))
+          .then(comments => resolve(normalizeID(comments)))
           .catch(err => reject(err))
       })
     } else {
       //Implement get comment by ID
       return new Promise((resolve, reject) => {
         this.apiManager.get(`${ENDPOINT.COMMENTS} / ${uid}`)
-          .then(comments => resolve(comments))
+          .then(comments => resolve(normalizeID(comments)))
           .catch(err => reject(err))
       })
     }
@@ -48,12 +50,12 @@ class Comment {
   }
 
   delete = (uid) => {
-    return new Promise((resolve, reject) =>  {
+    return new Promise((resolve, reject) => {
       this.apiManager.delete(`${ENDPOINT.COMMENTS}/${uid}`)
-      .then(response => {
-        resolve()
-      })
-      .catch(err => reject(err))
+        .then(response => {
+          resolve()
+        })
+        .catch(err => reject(err))
     })
   };
 
@@ -62,12 +64,12 @@ class Comment {
       switch (field) {
         case QueryableFields.USER_ID:
           this.apiManager.get(`${ENDPOINT.USERS} / ${value} / ${ENDPOINT.COMMENTS}`)
-            .then(comments => resolve(comments))
+            .then(comments => resolve(normalizeID(comments)))
             .catch(err => reject(err))
           break
         case QueryableFields.VIDEO_ID:
           this.apiManager.get(`${ENDPOINT.VIDEOS} / ${value} / ${ENDPOINT.COMMENTS}`)
-            .then((comments) => resolve(comments))
+            .then(comments => resolve(normalizeID(comments)))
             .catch(err => reject(err))
           break
       }

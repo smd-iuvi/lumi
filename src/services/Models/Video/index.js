@@ -3,6 +3,8 @@ import * as QueryableFields from './QueryableFields';
 import { ENDPOINT } from '../../ApiManager'
 import ApiManager from '../../ApiManager'
 
+import normalizeID from '../normalizeID'
+
 export { QueryableFields };
 
 class Video {
@@ -22,13 +24,13 @@ class Video {
     if (uid == null) {
       return new Promise((resolve, reject) => {
         this.apiManager.get(ENDPOINT.VIDEOS)
-          .then(videos => resolve(videos))
+          .then(videos => resolve(normalizeID(videos)))
           .catch(err => reject(err))
       })
     } else {
       return new Promise((resolve, reject) => {
         this.apiManager.get(`${ENDPOINT.VIDEOS} / ${uid}`)
-          .then(videos => resolve(videos))
+          .then(videos => resolve(normalizeID(videos)))
           .catch(err => reject(err))
       })
     }
@@ -41,7 +43,7 @@ class Video {
           const filteredVideos = videos.filter(video => video.uid !== uid);
           const nextVideo =
             filteredVideos[Math.floor(Math.random() * filteredVideos.length)];
-          resolve(nextVideo);
+          resolve(normalizeID(nextVideo));
         })
         .catch(error => {
           reject(error);
@@ -52,8 +54,8 @@ class Video {
   update = (uid, video) => {
     return new Promise((resolve, reject) => {
       this.apiManager.put(`${ENDPOINT.VIDEOS}/${uid}`, video)
-      .then(response => resolve())
-      .catch(err => reject())
+        .then(response => resolve())
+        .catch(err => reject())
     })
 
   }
@@ -61,10 +63,10 @@ class Video {
   delete = uid => {
     return new Promise((resolve, reject) => {
       this.apiManager.delete(`${ENDPOINT.VIDEOS}/${uid}`)
-      .then(response => {
-        resolve()
-      })
-      .catch(err => reject())
+        .then(response => {
+          resolve()
+        })
+        .catch(err => reject())
     })
   }
 
@@ -88,7 +90,7 @@ class Video {
   getPopulars = num => {
     return new Promise((resolve, reject) => {
       this.apiManager.get(ENDPOINT.VIDEOS)
-        .then(videos => resolve(videos.splice(0, num)))
+        .then(videos => resolve(normalizeID(videos.splice(0, num))))
         .catch(err => reject(err))
     })
   };
@@ -98,28 +100,28 @@ class Video {
       switch (field) {
         case QueryableFields.CREATED_BY:
           this.apiManager.get(`${ENDPOINT.USERS}/${value} / ${ENDPOINT.VIDEOS}`)
-            .then(videos => resolve(videos))
+            .then(videos => resolve(normalizeID(videos)))
             .catch(err => reject(err))
           break
         case QueryableFields.DISCIPLINE:
           this.apiManager.get(`${ENDPOINT.COURSER}/${value} / ${ENDPOINT.VIDEOS}`)
-            .then(videos => resolve(videos))
+            .then(videos => resolve(normalizeID(videos)))
             .catch(err => reject(err))
           break
         case QueryableFields.GENRE:
           this.apiManager.get(`${ENDPOINT.EVENTS}/${value} / ${ENDPOINT.VIDEOS}`)
-            .then(videos => resolve(videos))
+            .then(videos => resolve(normalizeID(videos)))
             .catch(err => reject(err))
           break
         case QueryableFields.SEMESTER:
           this.apiManager.get(`${ENDPOINT.SEMESTER}/${value} / ${ENDPOINT.VIDEOS}`)
-            .then(videos => resolve(videos))
+            .then(videos => resolve(normalizeID(videos)))
             .catch(err => reject(err))
           break
         case QueryableFields.TITLE:
           this.apiManager.get(`${ENDPOINT.VIDEOS}?title=${value}`)
-          .then(videos => resolve(videos))
-          .catch(err => reject(err))
+            .then(videos => resolve(normalizeID(videos)))
+            .catch(err => reject(err))
           break
         default:
           reject()

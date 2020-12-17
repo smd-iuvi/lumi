@@ -3,6 +3,8 @@ import ApiManager from '../ApiManager'
 
 import { v4 as uuidv4 } from 'uuid';
 
+import normalizeID from './normalizeID'
+
 class User {
   constructor(auth) {
     this.apiManager = new ApiManager();
@@ -24,14 +26,12 @@ class User {
         }
 
         this.apiManager.post(ENDPOINT.REGISTER, payload)
-          .then(user => {
-            console.log(user.accessToken);
-            callback(user, null);
+          .then(response => {
+            callback(normalizeID(response.user), null);
           })
       })
 
       .catch(error => {
-        console.log(error)
         callback(null, error);
       });
   };
@@ -43,7 +43,6 @@ class User {
   onAuthUserListener = (next, fallback) => {
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
-        console.log(authUser)
         const payload = {
           authID: authUser.uid,
           email: authUser.email
@@ -51,7 +50,6 @@ class User {
 
         this.apiManager.post(ENDPOINT.LOGIN, payload)
           .then(response => {
-            console.log(response)
             authUser = {
               uid: response.user._id,
               emailVerified: authUser.emailVerified,
@@ -72,13 +70,13 @@ class User {
     if (uid == null) {
       return new Promise((resolve, reject) => {
         this.apiManager.get(ENDPOINT.USERS)
-          .then(users => resolve(users))
+          .then(users => resolve(normalizeID(users)))
           .catch(err => reject(err))
       })
     } else {
       return new Promise((resolve, reject) => {
         this.apiManager.get(`${ENDPOINT.USERS} / ${uid}`)
-          .then(users => resolve(users))
+          .then(users => resolve(normalizeID(users)))
           .catch(err => reject(err))
       })
     }
@@ -114,7 +112,7 @@ class User {
   getByName = name => {
     return new Promise((resolve, reject) => {
       this.apiManager.get(`${ENDPOINT.USERS}?name=${name}`)
-        .then(users => resolve(users))
+        .then(users => resolve(normalizeID(users)))
         .catch(err => reject(err))
     });
   };

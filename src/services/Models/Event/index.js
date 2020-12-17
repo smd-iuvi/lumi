@@ -2,6 +2,8 @@ import * as QueryableFields from './QueryableFields';
 import { ENDPOINT } from '../../ApiManager'
 import ApiManager from '../../ApiManager'
 
+import normalizeID from '../normalizeID'
+
 export { QueryableFields };
 
 class Event {
@@ -31,13 +33,13 @@ class Event {
     if (uid == null) {
       return new Promise((resolve, reject) => {
         this.apiManager.get(ENDPOINT.EVENTS)
-          .then(events => resolve(events))
+          .then(events => resolve(normalizeID(events)))
           .catch(err => reject(err))
       })
     } else {
       return new Promise((resolve, reject) => {
         this.apiManager.get(`${ENDPOINT.EVENTS} / ${uid}`)
-          .then(events => resolve(events))
+          .then(events => resolve(normalizeID(events)))
           .catch(err => reject(err))
       })
     }
@@ -46,28 +48,28 @@ class Event {
   update = (uid, eventNewInfo) => {
     return new Promise((resolve, reject) => {
       this.apiManager.put(`${ENDPOINT.COMMENTS}/${uid}`, eventNewInfo)
-      .then(response => resolve())
-      .catch(err => reject(err))
+        .then(response => resolve())
+        .catch(err => reject(err))
     })
   };
 
   delete = (uid) => {
     return new Promise((resolve, reject) => {
       this.apiManager.delete(`${ENDPOINT.EVENTS}/${uid}`)
-      .then(response => {
-        resolve()
-      })
-      .catch(err => reject(err))
+        .then(response => {
+          resolve()
+        })
+        .catch(err => reject(err))
     })
   };
 
   launch = uid => {
     return new Promise((resolve, reject) => {
       this.apiManager.put(`${ENDPOINT.EVENTS}/${uid}/launch`, {})
-      .then(response => {
-        resolve()
-      })
-      .catch(err => reject(err))
+        .then(response => {
+          resolve()
+        })
+        .catch(err => reject(err))
     })
   };
 
@@ -91,13 +93,13 @@ class Event {
     return new Promise((resolve, reject) => {
       switch (field) {
         case QueryableFields.CREATED_BY:
-            this.apiManager.get(ENDPOINT.EVENTS)
-              .then(events => {
-                const filteredEvents = events.filter(e => e.teacher === value)
-                resolve(filteredEvents)
-              })
-              .catch(err => reject(err))
-            break
+          this.apiManager.get(ENDPOINT.EVENTS)
+            .then(events => {
+              const filteredEvents = events.filter(e => e.teacher === value)
+              resolve(normalizeID(filteredEvents))
+            })
+            .catch(err => reject(err))
+          break
         default:
           reject()
           break
@@ -108,7 +110,7 @@ class Event {
   getNext = num => {
     return new Promise((resolve, reject) => {
       this.apiManager.get(`${ENDPOINT.EVENTS}`)
-        .then(events => resolve(events.slice(0, num)))
+        .then(events => resolve(normalizeID(events.slice(0, num))))
         .catch(err => reject(err))
     })
   };
