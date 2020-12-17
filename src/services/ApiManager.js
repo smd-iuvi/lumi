@@ -8,12 +8,15 @@ export const ENDPOINT = {
     TAG: "tag",
     TEACHER: "teachers",
     VIDEOS: "videos",
-    USERS: "users"
+    USERS: "users",
+    REGISTER: 'auth/register',
+    LOGIN: 'auth/login'
 }
 
 export default class ApiManager {
     constructor() {
-        this.url = "http://lumibox.centralus.cloudapp.azure.com/api/"
+        // this.url = "http://lumibox.centralus.cloudapp.azure.com/api/"
+        this.url = 'http://localhost:8080/api/'
     }
 
     get = (endpoint) => {

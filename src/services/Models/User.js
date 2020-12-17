@@ -1,126 +1,121 @@
+import { ENDPOINT } from '../ApiManager'
+import ApiManager from '../ApiManager'
+
+import { v4 as uuidv4 } from 'uuid';
+
 class User {
-  constructor(database, auth) {
-    this.database = database;
+  constructor(auth) {
+    this.apiManager = new ApiManager();
     this.auth = auth;
   }
 
-  create = ({ name, email, password, role }, callback) => {
-    console.log(name)
+  create = ({ name, lastName, email, password, role }, callback) => {
     this.auth
       .createUserWithEmailAndPassword(email, password)
       .then(authUser => {
-        this.database.ref(`user/${authUser.user.uid}`).set({
-          name: name,
+
+        const payload = {
+          authID: authUser.user.uid,
+          lastName: 'lastname',
+          firstName: name,
           email: email,
+          registrationNumber: uuidv4(),
           role: role
-        });
+        }
+
+        this.apiManager.post(ENDPOINT.REGISTER, payload)
+          .then(user => {
+            console.log(user.accessToken);
+            callback(user, null);
+          })
       })
-      .then(user => {
-        console.log('Created');
-        callback(user, null);
-      })
+
       .catch(error => {
         console.log(error)
         callback(null, error);
       });
   };
 
+  signIn = (email, password) => {
+    return this.auth.signInWithEmailAndPassword(email, password)
+  };
+
+  onAuthUserListener = (next, fallback) => {
+    this.auth.onAuthStateChanged(authUser => {
+      if (authUser) {
+        console.log(authUser)
+        const payload = {
+          authID: authUser.uid,
+          email: authUser.email
+        }
+
+        this.apiManager.post(ENDPOINT.LOGIN, payload)
+          .then(response => {
+            console.log(response)
+            authUser = {
+              uid: response.user._id,
+              emailVerified: authUser.emailVerified,
+              providerData: authUser.providerData,
+              ...response.user
+            }
+
+            next(authUser, response.accessToken)
+          })
+      } else {
+        fallback();
+      }
+    });
+  }
+
+
   get = (uid = null) => {
     if (uid == null) {
       return new Promise((resolve, reject) => {
-        this.database.ref('user').on('value', snapshot => {
-          const users = snapshot.val();
-
-          if (users != null) {
-            const usersList = Object.keys(users).map(key => ({
-              ...users[key],
-              uid: key
-            }));
-
-            resolve(usersList);
-          } else {
-            resolve([]);
-          }
-        });
-      });
+        this.apiManager.get(ENDPOINT.USERS)
+          .then(users => resolve(users))
+          .catch(err => reject(err))
+      })
     } else {
       return new Promise((resolve, reject) => {
-        this.database.ref(`user/${uid}`).on('value', snapshot => {
-          const user = snapshot.val();
-          resolve(user);
-        });
-      });
+        this.apiManager.get(`${ENDPOINT.USERS} / ${uid}`)
+          .then(users => resolve(users))
+          .catch(err => reject(err))
+      })
     }
   };
 
-  update = (uid, user) =>
-    this.get(uid).set({
-      ...user
-    });
+  update = (uid, user) => {
+    return new Promise((resolve, reject) => {
+      this.apiManager.put(`${ENDPOINT.USERS}/${uid}`, user)
+        .then(response => resolve())
+        .catch(err => reject())
+    })
 
-  delete = uid => this.get(uid).remove();
+  }
+
+  delete = uid => {
+    return new Promise((resolve, reject) => {
+      this.apiManager.delete(`${ENDPOINT.USERS}/${uid}`)
+        .then(response => {
+          resolve()
+        })
+        .catch(err => reject())
+    })
+  }
 
   addVideoToList = (uid, videoId) => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref(`user/${uid}`)
-        .once('value')
-        .then(snapshot => {
-          const user = snapshot.val();
-
-          let newList = [];
-
-          if (user.watchList == null || user.watchList.length === 0) {
-            newList.push(videoId);
-          } else {
-            if (user.watchList.includes(videoId)) {
-              newList = user.watchList.filter(item => item !== videoId);
-            } else {
-              newList = [...user.watchList, videoId];
-            }
-          }
-
-          this.database
-            .ref(`user/${uid}`)
-            .update({
-              watchList: newList
-            })
-            .then(user => {
-              resolve();
-            })
-            .catch(error => {
-              reject(error);
-            });
-        });
+      this.apiManager.post(`${ENDPOINT.VIDEOS}/${videoId}/favorite`)
+        .then(response => resolve())
+        .catch(err => reject(err))
     });
   };
 
   getByName = name => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref('user')
-        .once('value')
-        .then(snapshot => {
-          const users = snapshot.val();
-
-          if (users != null) {
-            const usersList = Object.keys(users).map(key => ({
-              ...users[key],
-              uid: key
-            }));
-
-            const usersToReturn = usersList.filter(user => {
-              return user.name.includes(name);
-            });
-
-            resolve(usersToReturn.lenght == 0 ? null : usersToReturn);
-          } else {
-            resolve(null);
-          }
-        })
-        .catch(error => {
-          reject(error);
-        });
+      this.apiManager.get(`${ENDPOINT.USERS}?name=${name}`)
+        .then(users => resolve(users))
+        .catch(err => reject(err))
     });
   };
 }

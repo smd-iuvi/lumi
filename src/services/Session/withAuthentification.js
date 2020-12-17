@@ -15,7 +15,7 @@ const withAuthentification = Component => {
 
     componentDidMount() {
       const { serviceManager } = this.props;
-      this.listener = serviceManager.onAuthUserListener(
+      this.listener = serviceManager.user.onAuthUserListener(
         authUser => {
           localStorage.setItem('authUser', JSON.stringify(authUser));
           this.setState({ authUser: authUser });
@@ -28,7 +28,7 @@ const withAuthentification = Component => {
     }
 
     componentWillUnmount() {
-      this.listener();
+      // this.listener();
     }
 
     render() {

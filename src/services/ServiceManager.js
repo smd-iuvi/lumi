@@ -34,57 +34,30 @@ class ServiceManager {
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
 
-    this.event = new Event(this.db);
-    this.comment = new Comment(this.db);
-    this.discipline = new Discipline(this.db);
-    this.semester = new Semester(this.db);
-    this.genre = new Gender(this.db);
-    this.user = new User(this.db, this.auth);
-    this.video = new Video(this.db);
+    this.event = new Event();
+    this.comment = new Comment();
+    this.discipline = new Discipline();
+    this.semester = new Semester();
+    this.genre = new Gender();
+    this.user = new User(this.auth);
+    this.video = new Video();
   }
 
-  doSignInWithEmailAndPassword = (email, password) => {
-    return this.auth.signInWithEmailAndPassword(email, password);
-  };
+
 
   doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
   doSignOut = () => this.auth.signOut();
 
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+  // doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
-  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+  // doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
-  doSendEmailVerification = () => {
-    this.auth.currentUser.sendEmailVerification({
-      url: 'http://localhost:3000'
-    });
-  };
-
-  onAuthUserListener = (next, fallback) =>
-    this.auth.onAuthStateChanged(authUser => {
-      if (authUser) {
-        this.db.ref(`user/${authUser.uid}`).on('value', snapshot => {
-          const dbUser = snapshot.val();
-
-          if (!dbUser.role) {
-            dbUser.role = ROLES.STUDENT;
-          }
-
-          authUser = {
-            uid: authUser.uid,
-            email: authUser.email,
-            emailVerified: authUser.emailVerified,
-            providerData: authUser.providerData,
-            ...dbUser
-          };
-
-          next(authUser);
-        });
-      } else {
-        fallback();
-      }
-    });
+  // doSendEmailVerification = () => {
+  //   this.auth.currentUser.sendEmailVerification({
+  //     url: 'http://localhost:3000'
+  //   });
+  // };
 
   upload = (image, path, callback) => {
     const imageName = uuid.v4();

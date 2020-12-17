@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
@@ -29,7 +29,8 @@ function SignIn(props) {
     event.preventDefault();
 
     serviceManager
-      .doSignInWithEmailAndPassword(email, password)
+      .user
+      .signIn(email, password)
       .then(() => {
         setEmail(email);
         setPassword(password);
@@ -100,12 +101,12 @@ function SignIn(props) {
             </h1>
             <article className="buttonLogin">
               {validateEmail(email) && validatePassword(password) ?
-               <button type="submit" className="button buttonPrimary">
-                 Entrar
+                <button type="submit" className="button buttonPrimary">
+                  Entrar
                </button>
-               :
-               <button type="submit" className="button buttonPrimary" disabled>                 
-               Entrar
+                :
+                <button type="submit" className="button buttonPrimary" disabled>
+                  Entrar
                </button>
               }
             </article>
