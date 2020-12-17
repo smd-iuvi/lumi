@@ -13,6 +13,7 @@ function Datasheet(props) {
   const [artDirection, setArtDirection] = useState([]);
   const [soundtrack, setSoundtrack] = useState([]);
   const [cast, setCast] = useState([]);
+  const [showDatasheet, setShowDatasheet] = useState(false);
 
   useEffect(() => {
     const { video } = props;
@@ -202,8 +203,16 @@ function Datasheet(props) {
   }
   return (
     <div className="datasheet">
-      <Tabs tabs={tabs} selected={selected} onTabChange={onTabChange} />
-      <div className="contentTab">{container}</div>
+      {window.innerWidth < 800 &&
+        <button type="submit" class="button buttonPrimary" onClick={() => setShowDatasheet(!showDatasheet)}>
+          {showDatasheet ? 'Esconder ficha técnica' : 'Ver ficha técnica'}
+        </button>
+      }
+      {window.innerWidth >= 800 || showDatasheet ?
+        <>
+          <Tabs tabs={tabs} selected={selected} onTabChange={onTabChange} />
+          <div className="contentTab">{container}</div>
+        </> : <></>}
     </div>
   );
 }

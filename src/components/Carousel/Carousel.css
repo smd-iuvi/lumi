@@ -1,10 +1,9 @@
 .carousel .slide{
   background: none !important;
 }
+
 .carousel .slider {
-  margin-bottom: 40px;
   width: 110%;
-  height: 288px;
 }
 
 .carousel .thumbs-wrapper{
@@ -18,6 +17,9 @@
   border: none !important;
 }
 
-@media only screen and (min-width: 1224px) {
-
+@media (min-width: 800px){
+  .carousel .slider {
+    height: 288px;
+    margin-bottom: 40px;
+  }
 }

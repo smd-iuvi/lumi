@@ -202,7 +202,7 @@ function Profile(props) {
             <CardList
               loading={loadingWatchList}
               videos={watchList}
-              belowTab={true}
+              belowTab={false}
               type="myList"
             />
           )}

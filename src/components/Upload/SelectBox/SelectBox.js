@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './SelectBox.css';
 
 function SelectBox(props) {
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
   const [options, setOptions] = useState([]);
 
   function onChange(e) {
@@ -12,7 +12,7 @@ function SelectBox(props) {
     onChange(e);
   };
 
-  const { value, isValid, dataSource = [] } = props;
+  const { name, value, isValid, dataSource = [] } = props;
 
   let classes = '';
   if (isValid || isValid == null) {

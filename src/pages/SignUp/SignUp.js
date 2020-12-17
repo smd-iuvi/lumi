@@ -3,6 +3,9 @@ import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import './SignUp.css';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom';
@@ -15,6 +18,7 @@ function SignUp(props) {
   const [email, setEmail] = useState('');
   const [passwordOne, setPasswordOne] = useState('');
   const [passwordTwo, setPasswordTwo] = useState('');
+  const [file, setFile] = useState(null)
   const [role, setRole] = useState(ROLES.USER);
   const [seeBox, setSeeBox] = useState(false);
 
@@ -27,6 +31,10 @@ function SignUp(props) {
     }
   }, []);
 
+  const errorNotify = (message) => toast.error(message)
+  const sucessNotify = (message) => toast.success(message);
+
+
   async function onSubmit(event) {
     event.preventDefault();
     const { serviceManager, history } = props;
@@ -38,15 +46,60 @@ function SignUp(props) {
       role: role
     };
 
-    serviceManager.user.create(user, (user, error) => {
-      history.push(ROUTES.HOME);
-    });
+    if (validFile(role, file)) {
+      serviceManager.user.create(user, (user, error) => {
+        if (error !== null) {
+          if (error.code === "auth/email-already-in-use") {
+            errorNotify("Email já em uso")
+          } else {
+            errorNotify("Ocorreu um erro. Tente novamente.")
+          }
+        } else {
+          sucessNotify("Conta criada com sucesso!")
+          history.push(ROUTES.HOME);
+        }
+      });
+    }
+
+  };
+
+  function onFileChange(event) {
+    if (event.target.files[0]) {
+      const file = event.target.files[0];
+      setFile(file)
+    }
   };
 
   function handleBox(event) {
     setRole(event.target.value);
     setSeeBox(true);
   };
+
+  function validateFields() {
+    return validatePassword(passwordOne, passwordTwo) && validateEmail(email) && name !== ""
+  }
+
+  function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return re.test(String(email).toLowerCase());
+  }
+
+  function validatePassword(passwordOne, passwordTwo) {
+    return passwordOne.length >= 8 && passwordOne === passwordTwo
+  }
+
+  function validFile(role, file) {
+    if (role === ROLES.STUDENT || role === ROLES.TEACHER) {
+      if (file == null) {
+        errorNotify("Escolha um arquivo de comprovante")
+        return false
+      } else {
+        return true
+      }
+    } else {
+      return true
+    }
+  }
 
   return (
     <>
@@ -145,7 +198,7 @@ function SignUp(props) {
                     confirmarmos o seu vínculo com o curso.
                   </h1>
                 </article>
-                <input type="file" className="file" id="file" />
+                <input type="file" className="file" id="file" onChange={onFileChange} accept="image/*,.pdf" />
                 <label for="file" className="button buttonTerceary">
                   Escolher arquivo
                 </label>
@@ -153,9 +206,15 @@ function SignUp(props) {
             )}
 
             <article className="buttonLogin" onClick={onSubmit}>
-              <button type="submit" className="button buttonPrimary">
-                Cadastrar
-              </button>
+              {validateFields() ?
+                <button type="submit" className="button buttonPrimary">
+                  Cadastrar
+                </button>
+                :
+                <button type="submit" className="button buttonPrimary" disabled>
+                  Cadastrar
+                </button>
+              }
             </article>
 
             <article className="notRegister">

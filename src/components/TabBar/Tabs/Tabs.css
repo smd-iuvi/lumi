@@ -1,15 +1,35 @@
-.tabs{
-    display: flex;
-    flex-direction: row;
+@media (max-width: 800px) {
+  .tabs {
+    justify-content: space-between;
+  }
+
+  .tabs .tab {
+    margin: 0rem
+  }
 }
 
-.tabs .tab{
+@media (min-width: 800px) {
+  .tabs {
+    justify-content: start;
+  }
+
+  .tabs .tab {
     margin-right: 35px;
-    color: var(--text-dark);
-    padding: 8px 3px;
-    cursor: pointer;
+  }
 }
 
-.tabs .active{
-    border-bottom: 3px solid var(--primary); 
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tabs .tab {
+  color: var(--text-dark);
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+}
+
+.tabs .active {
+  border-bottom: 3px solid var(--primary);
 }

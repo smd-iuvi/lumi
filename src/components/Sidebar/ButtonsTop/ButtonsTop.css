@@ -2,15 +2,14 @@
   background: none;
   border: none;
   outline: none;
-  margin: 0 16px;
+  margin: 0 5vw;
   border-radius: 5px;
   display: grid;
   grid-template-columns: 45px 139px;
   align-items: center;
-  padding-left: 24px;
   cursor: pointer;
-  margin-bottom: 1vh;
-  height: 40px;
+  height: 50px;
+  width: 60px;
 }
 
 .buttonsSidebar:hover {
@@ -39,6 +38,10 @@
 .buttonsSidebar .iconHome {
   background-image: url('../assets/icons/home.svg');
   background-position: center;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
 }
 
 .buttonsSidebar:hover .iconHome {
@@ -48,8 +51,45 @@
 .buttonsSidebar .iconExplore {
   background-image: url('../assets/icons/explore.svg');
   background-position: center;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
 }
 
 .buttonsSidebar:hover .iconExplore {
   background-image: url('../assets/icons/explore-mouseover.svg');
+}
+
+.buttonsSidebar .iconUser {
+  background-image: url('../assets/icons/user.svg');
+  background-position: center;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+}
+
+.buttonsSidebar:hover .iconUser {
+  background-image: url('../assets/icons/user-mouseover.svg');
+}
+
+@media (min-width: 800px){
+  .buttonsSidebar {
+    margin: 0 16px;
+    display: grid;
+    grid-template-columns: 45px 139px;
+    padding-left: 24px;
+    margin-bottom: 1vh;
+    height: 40px;
+    width: auto;
+  }
+
+  .buttonsSidebar .iconHome,
+  .buttonsSidebar .iconExplore,
+  .buttonsSidebar .iconUser {
+    background-size: 25px;
+    width: 30px;
+    height: 30px;
+  }
 }

@@ -1,45 +1,54 @@
 .tabBar {
-    background-color: var(--text-light);
-   
-    height: 144px;
-    margin-top: 64px;
-    margin-left: 216px;
-    padding: 0 56px;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
+  background-color: var(--text-light);
+  height: 144px;
+  margin: 5em 1rem 0 1rem;
+  box-sizing: border-box;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
 }
 
-.tabBar .titleTabBar{
-    padding-top: 40px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 12.5px;
+.tabBar .titleTabBar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 12.5px;
 }
 
-.tabBar .titleTabBar article{
-    width: 40px;
-    height: 40px;
-    background-color: var(--searchBar);
-    border-radius: 4px;
-    margin-right: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.tabBar .titleTabBar article {
+  width: 40px;
+  height: 40px;
+  background-color: var(--searchBar);
+  border-radius: 4px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.tabBar .titleTabBar article img{
-    width: 25px;
-    height: 25px;
+.tabBar .titleTabBar article img {
+  width: 25px;
+  height: 25px;
 }
 
-.tabBar .tabTeacher{
-    display: grid;
-    grid-template-columns: auto 1fr;
+.tabBar .tabTeacher {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
 }
 
-.tabBar .tabTeacher button{
-    width: max-content;
-    padding: 0 15px;
-    justify-self: right;
-    margin-top: -5px;
+.tabBar .tabTeacher button {
+  display: none;
+  width: max-content;
+  padding: 0 15px;
+  justify-self: right;
+}
+
+@media (min-width: 800px) {
+  .tabBar {
+    margin-left: 272px;
+  }
+
+  .tabBar .tabTeacher button {
+    display: block;
+  }
 }

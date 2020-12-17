@@ -2,11 +2,18 @@
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  padding-top: 0;
+  padding-top: 5rem;
+  box-sizing: border-box;
 }
 
 .lineSidebar {
   width: 56px;
   height: 2px;
   background-color: var(--cards);
+}
+
+@media (min-width: 800px) {
+  .Profile {
+    padding-top: 1rem;
+  }
 }

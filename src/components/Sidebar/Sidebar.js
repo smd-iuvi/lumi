@@ -67,6 +67,14 @@ function Navbar(props) {
             Descobrir
           </ButtonsTop>
         </Link>
+        <Link to={ROUTES.PROFILE} className="link">
+          <ButtonsTop
+            newClass="iconButtonsTop iconUser"
+            selected={location.pathname === ROUTES.PROFILE}
+          >
+            Meu Perfil
+          </ButtonsTop>
+        </Link>
       </div>
       <article className="lineSidebar" />
       {authUser ? (

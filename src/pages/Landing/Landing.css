@@ -35,6 +35,7 @@
     margin-top: 10vh;
 }
 
+
 .landingContent h1{
     font-size: 30px;
     color: var(--text-dark);
@@ -75,4 +76,47 @@
 
 .landingNetworks article:hover{
     opacity: .8;
+}
+
+@media (max-width: 800px) {
+    .landingLogo{
+        width: 50%;
+    }
+
+
+    .landingContent{
+        text-align: center;
+        margin-top: 2vh;
+    }
+
+    .landingNetworks{
+        position: absolute;
+        bottom: 0px;
+    }
+
+    .landingContent button{
+        margin-top: 5vh;
+        font-size: 1em;
+        height: 40px;
+        padding: 0 20px;
+        width: 50%;
+    }
+
+    .landingNetworks article{
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        margin: 15px 20px;
+        font-size: 20px;
+    }
+
+    .landingNavbar{
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem 1rem;
+    }
+
+    .landingNavbar h1{
+        font-size: 1rem;
+    }
 }

@@ -1,21 +1,10 @@
 .TabBarPlayer{
-    margin-top: 64px;
-    height: 144px;
-    width: 100%;
-    background-color: var(--text-light);
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
-    display: grid;
-    grid-template-columns: 68px 1fr 1fr;
-    grid-gap: 40px;
-    align-items: center;
+    overflow: hidden;
+    margin: 0 16px;
 }
 
 .TabBarPlayer .iconBack{
-    width: 12px;
-    height: 21px;
-    background-image: url(./assets/back.svg);
-    margin-left: 56px;
-    cursor: pointer;
+    display: none;
 }
 
 .TabBarPlayer .iconBack:hover{
@@ -34,12 +23,7 @@
 }
 
 .TabBarPlayer .containerNextFilm{
-    display: grid;
-    grid-template-columns: 140px 128px 1fr;
-    grid-gap: 16px;
-    align-items: center;
-    justify-self: right;
-    margin-right: 56px;
+    display: none;
 }
 
 .containerNextFilm .Medium-Text-Bold{
@@ -57,4 +41,36 @@
 
 .containerNextFilm .imgNextVideo img{
     height: 84px;
+}
+
+@media (min-width: 800px){
+    .TabBarPlayer{
+        margin-top: 64px;
+        height: 144px;
+        width: 100%;
+        background-color: var(--text-light);
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
+        display: grid;
+        grid-template-columns: 68px 1fr 1fr;
+        grid-gap: 40px;
+        align-items: center;
+    }
+
+    .TabBarPlayer .containerNextFilm{
+        display: grid;
+        grid-template-columns: 140px 128px 1fr;
+        grid-gap: 16px;
+        align-items: center;
+        justify-self: right;
+        margin-right: 56px;
+    }
+
+    .TabBarPlayer .iconBack{
+        display: block;
+        width: 12px;
+        height: 21px;
+        background-image: url(./assets/back.svg);
+        margin-left: 56px;
+        cursor: pointer;
+    }
 }

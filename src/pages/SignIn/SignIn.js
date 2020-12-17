@@ -40,6 +40,15 @@ function SignIn(props) {
       });
   };
 
+  function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return re.test(String(email).toLowerCase());
+  }
+
+  function validatePassword(password) {
+    return password.length >= 8
+  }
+
   let message = null;
   if (error) {
     message = error.code;
@@ -90,9 +99,15 @@ function SignIn(props) {
               Esqueceu sua senha?
             </h1>
             <article className="buttonLogin">
-              <button type="submit" className="button buttonPrimary">
-                Entrar
-              </button>
+              {validateEmail(email) && validatePassword(password) ?
+               <button type="submit" className="button buttonPrimary">
+                 Entrar
+               </button>
+               :
+               <button type="submit" className="button buttonPrimary" disabled>                 
+               Entrar
+               </button>
+              }
             </article>
 
             <article className="notRegister">

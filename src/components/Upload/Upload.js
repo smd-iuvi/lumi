@@ -40,6 +40,7 @@ function Upload(props) {
     };
     const newSteps = [...steps];
     newSteps[step - 1] = newCurrentStepState;
+    console.log(newCurrentStepState)
     setSteps(newSteps);
   };
 

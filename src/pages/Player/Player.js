@@ -7,6 +7,7 @@ import Modal from '../../components/Modal/Modal';
 import CommentSection from '../../components/CommentSection/CommentSection';
 import Datasheet from '../../components/Player/Datasheet/Datasheet';
 import * as ROUTES from '../../constants/routes';
+import ActionsPlayer from '../../components/ActionsPlayer/ActionsPlayer';
 
 import { withServiceManager } from '../../services';
 import { withAuthUser } from '../../services/Session';
@@ -84,15 +85,21 @@ function Player(props) {
   function didClap() {
     const {
       serviceManager,
+      authUser,
       match: { params }
     } = props;
 
-    serviceManager.video
-      .clap(params.videoId)
-      .then(() => { })
-      .catch(error => {
-        setError(error);
-      });
+    if (authUser) {
+      serviceManager.video
+        .clap(params.videoId)
+        .then(() => { })
+        .catch(error => {
+          setError(error);
+        });
+    } else {
+      handleModal()
+    }
+
   };
 
   function didAddToWatchlist() {
@@ -162,27 +169,33 @@ function Player(props) {
         options={getOptionsModal()}
         closeModal={handleModal}
       />}
-      <TabBarPlayer video={video} nextVideo={nextVideo} />
+      {window.innerWidth >= 800 && <TabBarPlayer video={video} nextVideo={nextVideo} viewsLabel={viewsLabel} />}
       <div className="containerPlayer">
-        <div>
+        <div className="playerWithActions">
+          {window.innerWidth < 800 && <TabBarPlayer video={video} nextVideo={nextVideo} viewsLabel={viewsLabel} />}
           <VideoPlayer
-            didClap={didClap}
-            didAddToWatchlist={() => didAddToWatchlist()}
             name={nameLabel}
             url={url}
-            views={viewsLabel}
             videoId={params.videoId}
-            claps={clapsLabel}
-            onWatchList={onWatchList}
             onDuration={progress => onDuration(progress)}
             onProgress={duration => onProgress(duration)}
           />
+          <div className="optionsFilm">
+            <h1 className="Small-Text-Bold views">{viewsLabel} visualizações</h1>
+            <ActionsPlayer
+              didClap={didClap}
+              didAddToWatchlist={() => didAddToWatchlist()}
+              claps={clapsLabel}
+              onWatchList={onWatchList}
+            />
+          </div>
           <CommentSection
             videoId={params.videoId}
             userId={authUser ? authUser.uid : null}
           />
+          {window.innerWidth < 800 && <Datasheet video={video} />}
         </div>
-        <Datasheet video={video} />
+        {window.innerWidth >= 800 && <Datasheet video={video} />}
       </div>
     </>
   );
