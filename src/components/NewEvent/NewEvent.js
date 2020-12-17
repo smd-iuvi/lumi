@@ -13,8 +13,6 @@ import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 
 import iconX from './assets/x.svg';
-import { ninvoke } from 'q';
-import { database } from 'serviceManager';
 
 function NewEvent(props) {
   const [uploadingImage, setUploadingImage] = useState(INITIAL_STATE.uploadingImage);
