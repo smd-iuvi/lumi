@@ -91,7 +91,7 @@ function Step4(props) {
         onChange={onChange}
         placeholder="Sobre o trabalho"
       />
-      <h1 className="Medium-Text-Medium">Evento de disciplina</h1>
+      {/* <h1 className="Medium-Text-Medium">Evento de disciplina</h1>
       <div className="checkDiscipline">
         <input
           type="checkbox"
@@ -114,7 +114,7 @@ function Step4(props) {
           onChange={onChange}
           placeholder="Selecione o evento"
         />
-      )}
+      )} */}
     </div>
   );
 }

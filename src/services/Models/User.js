@@ -73,6 +73,8 @@ class User {
                 ...response.user
               }
 
+              console.log(response)
+
               this.notifyListeners(userToSaveToLocal)
               resolve()
             })

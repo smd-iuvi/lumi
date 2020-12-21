@@ -27,6 +27,7 @@ function Upload(props) {
   const [steps, setSteps] = useState(INITIAL_STATE.steps);
 
   function onChange(e) {
+    console.log(e.target.value)
     const currentStepState = steps[step - 1];
     const newCurrentStepState = {
       ...currentStepState,

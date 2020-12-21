@@ -25,7 +25,12 @@ function Home(props) {
     serviceManager.video
       .get()
       .then(videos => {
-        setRecentsVideos(videos);
+        const sortedVideos = videos.sort((a, b) => {
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+        setRecentsVideos(sortedVideos.slice(0, 5));
         setLoadingRecents(false);
       })
       .catch(error => {
@@ -34,7 +39,7 @@ function Home(props) {
       });
 
     serviceManager.video
-      .getPopulars(10)
+      .get()
       .then(videos => {
         setPopularsVideos(videos);
         setLoadingPopulars(false);
@@ -62,7 +67,7 @@ function Home(props) {
       <Carousel videos={recentsVideos} loading={loadingRecents} />
       <div className="bannersHome">
         <HomeFilms videos={popularsVideos} loading={loadingPopulars} />
-        <EventsList events={events} loading={loadingEvents} />
+        {/* <EventsList events={events} loading={loadingEvents} /> */}
       </div>
     </div >
   );

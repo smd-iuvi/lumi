@@ -29,8 +29,9 @@ function Step1(props) {
     serviceManager.genre
       .get()
       .then(genreDataSource => {
+        console.log(genreDataSource)
         const genreNames = genreDataSource.map(genre => genre.name);
-        setGenreDataSource(genreNames);
+        setGenreDataSource(genreDataSource);
       })
       .catch(error => {
         setError(error);
