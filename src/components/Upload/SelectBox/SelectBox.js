@@ -34,11 +34,16 @@ function SelectBox(props) {
         <option value="" disabled selected hidden>
           {props.placeholder}
         </option>
-        {dataSource.map(op => (
-          <option value={op.uid}>{op.name}</option>
-        ))}
+        {dataSource.map(op => {
+          if (op.name && op.uid) {
+            return < option value={op.uid}>{op.name}</option>
+          } else {
+            return <option value={op}>{op}</option>
+          }
+        })
+        }
       </select>
-    </div>
+    </div >
   );
 }
 
