@@ -10,19 +10,18 @@ export const ENDPOINT = {
     VIDEOS: "videos",
     USERS: "users",
     REGISTER: 'auth/register',
-    LOGIN: 'auth/login'
+    LOGIN: 'auth/login',
+    WATCHLIST: 'users/me/watchlist'
 }
 
 export default class ApiManager {
     constructor() {
-        // this.url = "http://lumibox.centralus.cloudapp.azure.com/api/"
-        this.url = 'http://localhost:8080/api/'
+        this.url = "http://lumibox.centralus.cloudapp.azure.com/api/"
+        // this.url = 'http://localhost:8080/api/'
     }
 
     get = (endpoint) => {
         const authUser = JSON.parse(localStorage.getItem('authUser'))
-
-        console.log(authUser.accessToken)
 
         return new Promise((resolve, reject) => {
             fetch(this.url + endpoint, {
@@ -51,7 +50,6 @@ export default class ApiManager {
 
         return new Promise((resolve, reject) => {
             const authUser = JSON.parse(localStorage.getItem('authUser'))
-            console.log(authUser)
 
             fetch(this.url + endpoint, {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.

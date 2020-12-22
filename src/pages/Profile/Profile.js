@@ -54,10 +54,8 @@ function Profile(props) {
     }
 
     fetchMyWorks();
+    fetchMyWatchList();
 
-    if (authUser.watchList) {
-      fetchMyWatchList();
-    }
   }, []);
 
   function getSelectedTab() {
@@ -133,18 +131,17 @@ function Profile(props) {
   };
 
   function fetchMyWatchList() {
-    const { serviceManager, authUser } = props;
+    const { serviceManager } = props;
     setLoadingWatchList(true);
     serviceManager.video
-      .get()
+      .getWatchlist()
       .then(videos => {
-        const newWatchList = videos.filter(video => {
-          return authUser.watchList.includes(video.uid);
-        });
-        setWatchList(newWatchList);
+        console.log(videos)
+        setWatchList(videos);
         setLoadingWatchList(false);
       })
       .catch(error => {
+        console.log(error)
         setError(error);
         setLoadingWatchList(false);
       });

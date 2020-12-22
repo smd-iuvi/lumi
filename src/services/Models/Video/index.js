@@ -77,13 +77,35 @@ class Video {
 
   clap = uid => {
     return new Promise((resolve, reject) => {
-      reject()
+      this.apiManager.post(`${ENDPOINT.VIDEOS}/${uid}/applauses`)
+        .then(response => resolve(response.count))
+        .catch(err => reject(err))
+    });
+  };
+
+  getClaps = uid => {
+    return new Promise((resolve, reject) => {
+      this.apiManager.post(`${ENDPOINT.VIDEOS}/${uid}/applauses`)
+        .then(response => resolve(response.count))
+        .catch(err => reject(err))
     });
   };
 
   view = uid => {
     return new Promise((resolve, reject) => {
-      reject()
+      this.apiManager.get(`${ENDPOINT.VIDEOS}/${uid}/views`)
+        .then(response => resolve())
+        .catch(err => reject(err))
+    });
+  };
+
+  getViews = uid => {
+    return new Promise((resolve, reject) => {
+      this.apiManager.get(`${ENDPOINT.VIDEOS}/${uid}/applauses`)
+        .then(response => {
+          console.log(response)
+        })
+        .catch(err => reject(err))
     });
   };
 
@@ -100,26 +122,35 @@ class Video {
     })
   };
 
+  getWatchlist = () => {
+    return new Promise((resolve, reject) => {
+      this.apiManager.get(ENDPOINT.WATCHLIST)
+        .then(videos => resolve(normalizeID(videos)))
+        .catch(err => reject(err))
+    })
+  }
+
   getVideosBy = (field, value) => {
+    console.log(value)
     return new Promise((resolve, reject) => {
       switch (field) {
         case QueryableFields.CREATED_BY:
-          this.apiManager.get(`${ENDPOINT.USERS}/${value} / ${ENDPOINT.VIDEOS}`)
+          this.apiManager.get(`${ENDPOINT.USERS}/${value}/${ENDPOINT.VIDEOS}`)
             .then(videos => resolve(normalizeID(videos)))
             .catch(err => reject(err))
           break
         case QueryableFields.DISCIPLINE:
-          this.apiManager.get(`${ENDPOINT.COURSER}/${value} / ${ENDPOINT.VIDEOS}`)
+          this.apiManager.get(`${ENDPOINT.COURSER}/${value}/${ENDPOINT.VIDEOS}`)
             .then(videos => resolve(normalizeID(videos)))
             .catch(err => reject(err))
           break
         case QueryableFields.GENRE:
-          this.apiManager.get(`${ENDPOINT.EVENTS}/${value} / ${ENDPOINT.VIDEOS}`)
+          this.apiManager.get(`${ENDPOINT.EVENTS}/${value}/${ENDPOINT.VIDEOS}`)
             .then(videos => resolve(normalizeID(videos)))
             .catch(err => reject(err))
           break
         case QueryableFields.SEMESTER:
-          this.apiManager.get(`${ENDPOINT.SEMESTER}/${value} / ${ENDPOINT.VIDEOS}`)
+          this.apiManager.get(`${ENDPOINT.SEMESTER}/${value}/${ENDPOINT.VIDEOS}`)
             .then(videos => resolve(normalizeID(videos)))
             .catch(err => reject(err))
           break

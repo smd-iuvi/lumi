@@ -17,6 +17,8 @@ import './Player.css';
 function Player(props) {
   const [loading, setLoading] = useState(false);
   const [video, setVideo] = useState(null);
+  const [claps, setClap] = useState(null);
+  const [views, setViews] = useState(null);
   const [nextVideo, setNextVideo] = useState(null);
   const [onWatchList, setOnWatchList] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -97,7 +99,9 @@ function Player(props) {
     if (authUser) {
       serviceManager.video
         .clap(params.videoId)
-        .then(() => { })
+        .then((clap) => {
+          console.log(clap)
+        })
         .catch(error => {
           setError(error);
         });
