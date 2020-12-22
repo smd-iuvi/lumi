@@ -52,12 +52,12 @@ function TabBar(props) {
           <img src={props.icon} />
         </article>
         <Header>{props.title}</Header>
-        <button
+        {/* <button
           className="button buttonPrimary"
           onClick={handleModal}
         >
           Criar evento
-        </button>
+        </button> */}
       </div>
       {container}
     </div>
