@@ -27,7 +27,7 @@ function Discover(props) {
     serviceManager.semester
       .get()
       .then(semesters => {
-        const semesterDataSource = semesters.map(semester => semester.name);
+        const semesterDataSource = semesters.map(semester => `${semester.year}.${semester.part}`);
         setSemesterDataSource(semesterDataSource);
       })
       .catch(error => {
