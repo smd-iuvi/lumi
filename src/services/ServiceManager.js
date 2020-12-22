@@ -25,7 +25,7 @@ const config = {
   appId: '1:337072262344:web:4c8f73e8ad2e8e3a'
 };
 
-class Firebase {
+class ServiceManager {
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
@@ -34,57 +34,30 @@ class Firebase {
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
 
-    this.event = new Event(this.db);
-    this.comment = new Comment(this.db);
-    this.discipline = new Discipline(this.db);
-    this.semester = new Semester(this.db);
-    this.genre = new Gender(this.db);
-    this.user = new User(this.db, this.auth);
-    this.video = new Video(this.db);
+    this.event = new Event();
+    this.comment = new Comment();
+    this.discipline = new Discipline();
+    this.semester = new Semester();
+    this.genre = new Gender();
+    this.user = new User(this.auth);
+    this.video = new Video();
   }
 
-  doSignInWithEmailAndPassword = (email, password) => {
-    return this.auth.signInWithEmailAndPassword(email, password);
-  };
 
-  doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
-  doSignOut = () => this.auth.signOut();
+  // doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+  // doSignOut = () => this.auth.signOut();
 
-  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+  // doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
-  doSendEmailVerification = () => {
-    this.auth.currentUser.sendEmailVerification({
-      url: 'http://localhost:3000'
-    });
-  };
+  // doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
-  onAuthUserListener = (next, fallback) =>
-    this.auth.onAuthStateChanged(authUser => {
-      if (authUser) {
-        this.db.ref(`user/${authUser.uid}`).on('value', snapshot => {
-          const dbUser = snapshot.val();
-
-          if (!dbUser.role) {
-            dbUser.role = ROLES.STUDENT;
-          }
-
-          authUser = {
-            uid: authUser.uid,
-            email: authUser.email,
-            emailVerified: authUser.emailVerified,
-            providerData: authUser.providerData,
-            ...dbUser
-          };
-
-          next(authUser);
-        });
-      } else {
-        fallback();
-      }
-    });
+  // doSendEmailVerification = () => {
+  //   this.auth.currentUser.sendEmailVerification({
+  //     url: 'http://localhost:3000'
+  //   });
+  // };
 
   upload = (image, path, callback) => {
     const imageName = uuid.v4();
@@ -117,4 +90,4 @@ class Firebase {
   };
 }
 
-export default Firebase;
+export default ServiceManager;

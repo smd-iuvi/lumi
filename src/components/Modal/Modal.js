@@ -4,8 +4,8 @@ import './Modal.css';
 
 import iconX from './assets/x.svg';
 import Header from '../Header/Header';
-import { withFirebase } from '../../Firebase';
-import { withAuthUser } from '../../Firebase/Session';
+import { withServiceManager } from '../../services';
+import { withAuthUser } from '../../services/Session';
 
 function Upload(props) {
     const { title, closeModal, width, content, options } = props;
@@ -33,4 +33,4 @@ function Upload(props) {
     );
 }
 
-export default withAuthUser(withFirebase(Upload));
+export default withAuthUser(withServiceManager(Upload));

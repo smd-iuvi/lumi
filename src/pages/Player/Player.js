@@ -9,14 +9,16 @@ import Datasheet from '../../components/Player/Datasheet/Datasheet';
 import * as ROUTES from '../../constants/routes';
 import ActionsPlayer from '../../components/ActionsPlayer/ActionsPlayer';
 
-import { withFirebase } from '../../Firebase';
-import { withAuthUser } from '../../Firebase/Session';
+import { withServiceManager } from '../../services';
+import { withAuthUser } from '../../services/Session';
 
 import './Player.css';
 
 function Player(props) {
   const [loading, setLoading] = useState(false);
   const [video, setVideo] = useState(null);
+  const [claps, setClap] = useState(null);
+  const [views, setViews] = useState(null);
   const [nextVideo, setNextVideo] = useState(null);
   const [onWatchList, setOnWatchList] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -29,13 +31,13 @@ function Player(props) {
   useEffect(() => {
     setLoading(true);
     const {
-      firebase,
+      serviceManager,
       match: { params }
     } = props;
 
     eventListener();
 
-    firebase.video
+    serviceManager.video
       .getNextVideo(params.videoId)
       .then(video => setNextVideo(video))
       .catch(error => setError(error));
@@ -44,32 +46,37 @@ function Player(props) {
       setOnWatchList(true);
     return () => {
       const {
-        firebase,
+        serviceManager,
         match: { params }
       } = props;
-      firebase.db.ref(`video/${params.videoId}`).off();
+      serviceManager.db.ref(`video/${params.videoId}`).off();
     }
   }, []);
 
   function eventListener() {
-    props.firebase.db
-      .ref(`video/${params.videoId}`)
-      .on('value', snapshot => {
-        setVideo(snapshot.val());
+    const {
+      serviceManager,
+      match: { params }
+    } = props;
+
+    serviceManager.video.get(params.videoId)
+      .then(video => {
+        console.log(video)
+        setVideo(video);
         setLoading(false);
-      });
+      })
   }
 
 
   function onProgress(progress) {
     const {
-      firebase,
+      serviceManager,
       match: { params }
     } = props;
 
     if (progress.playedSeconds > duration / 2 && !watched) {
       setWatched(true);
-      firebase.video
+      serviceManager.video
         .view(params.videoId)
         .then(video => { })
         .catch(error => {
@@ -84,18 +91,20 @@ function Player(props) {
 
   function didClap() {
     const {
-      firebase,
+      serviceManager,
       authUser,
       match: { params }
     } = props;
 
     if (authUser) {
-      firebase.video
-      .clap(params.videoId)
-      .then(() => { })
-      .catch(error => {
-        setError(error);
-      });
+      serviceManager.video
+        .clap(params.videoId)
+        .then((clap) => {
+          console.log(clap)
+        })
+        .catch(error => {
+          setError(error);
+        });
     } else {
       handleModal()
     }
@@ -104,12 +113,12 @@ function Player(props) {
 
   function didAddToWatchlist() {
     const {
-      firebase,
+      serviceManager,
       authUser,
       match: { params }
     } = props;
     if (authUser) {
-      firebase.user
+      serviceManager.user
         .addVideoToList(authUser.uid, params.videoId)
         .then(() => { })
         .catch(error => { });
@@ -156,7 +165,7 @@ function Player(props) {
   } else if (video != null) {
     nameLabel = video.title;
     viewsLabel = video.views;
-    url = video.link;
+    url = video.url;
     clapsLabel = video.claps;
   }
 
@@ -202,6 +211,6 @@ function Player(props) {
 }
 
 export default compose(
-  withFirebase,
+  withServiceManager,
   withAuthUser
 )(Player);

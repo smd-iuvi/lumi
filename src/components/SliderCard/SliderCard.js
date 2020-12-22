@@ -9,8 +9,8 @@ import addList from '../Carousel/assets/add_list.svg';
 import removeList from '../Carousel/assets/remove_list.svg';
 import * as ROUTES from '../../constants/routes';
 
-import { withFirebase } from '../../Firebase';
-import { withAuthUser } from '../../Firebase/Session';
+import { withServiceManager } from '../../services';
+import { withAuthUser } from '../../services/Session';
 
 const onWatch = (uid, history) => {
   history.push(`${ROUTES.PLAYER}/${uid}`);
@@ -23,22 +23,22 @@ function SliderCard(props) {
   useEffect(() => {
     const {
       authUser,
-      firebase
+      serviceManager
     } = props;
     if (authUser != null && authUser.watchList != null && authUser.watchList.includes(video.uid))
       setOnWatchList(true);
     return () => {
-      firebase.db.ref(`video/${video.uid}`).off();
+      serviceManager.db.ref(`video/${video.uid}`).off();
     }
   }, []);
 
   function didAddToWatchlist() {
     const {
-      firebase,
+      serviceManager,
       authUser
     } = props;
     if (authUser) {
-      firebase.user
+      serviceManager.user
         .addVideoToList(authUser.uid, video.uid)
         .then(() => { setOnWatchList(!onWatchList); })
         .catch(error => { });
@@ -93,6 +93,6 @@ function SliderCard(props) {
 
 export default compose(
   withRouter,
-  withFirebase,
+  withServiceManager,
   withAuthUser
 )(SliderCard);

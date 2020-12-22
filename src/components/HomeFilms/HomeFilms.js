@@ -13,17 +13,17 @@ const HomeFilms = ({ videos, loading }) => {
   if (loading) {
     children = <EmptyLabel>Carregando...</EmptyLabel>;
   } else if (videos !== null) {
-    children = <CardList videos={videos.slice(0, 4)} loading={loading} isScrollable={window.innerWidth < 800} />;
+    children = <CardList videos={videos.slice(0, 8)} loading={loading} isScrollable={window.innerWidth < 800} />;
   } else {
     children = <EmptyLabel>Não há videos nesta lista</EmptyLabel>;
   }
   return (
     <div className="HomeFilms">
       <div className="titleHomeFilms">
-        <Header>Os mais assistidos</Header>
+        <Header>Todos os vídeos</Header>
         <Link to={{
           pathname: ROUTES.VIDEOS_LIST,
-          state: { videos: videos, title: 'Os mais assistidos' }
+          state: { videos: videos, title: 'Todos os vídeos' }
         }}>
           <button className="button buttonSeeMore">Ver todos</button>
         </Link>

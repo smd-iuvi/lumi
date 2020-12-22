@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Discover.css';
 
 import 'react-responsive-carousel/lib/styles/carousel.css';
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 import * as ROUTES from '../../constants/routes';
 
 function Discover(props) {
@@ -12,9 +12,9 @@ function Discover(props) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const { firebase } = props;
+    const { serviceManager } = props;
 
-    firebase.discipline
+    serviceManager.discipline
       .get()
       .then(disciplines => {
         const disciplineDataSource = disciplines;
@@ -24,7 +24,7 @@ function Discover(props) {
         setError(error);
       });
 
-    firebase.semester
+    serviceManager.semester
       .get()
       .then(semesters => {
         const semesterDataSource = semesters.map(semester => semester.name);
@@ -77,4 +77,4 @@ function Discover(props) {
   );
 }
 
-export default withFirebase(Discover);
+export default withServiceManager(Discover);

@@ -5,9 +5,9 @@ import './Category.css';
 import TabBar from '../../components/TabBar/TabBar';
 import CardList from '../../components/CardList/CardList';
 
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 
-import { QueryableFields as Video } from '../../Firebase/Models/Video';
+import { QueryableFields as Video } from '../../services/Models/Video';
 
 import iconDiscipline from './assets/discipline.svg';
 import iconSemester from './assets/semester.svg';
@@ -20,13 +20,13 @@ function Category(props) {
 
   useEffect(() => {
     const {
-      firebase,
+      serviceManager,
       match: { params }
     } = props;
 
     setLoading(true);
 
-    firebase.video
+    serviceManager.video
       .getVideosBy(Video.DISCIPLINE, params.name)
       .then(videos => {
         setVideos(videos);
@@ -103,4 +103,4 @@ function Category(props) {
   );
 }
 
-export default withFirebase(withRouter(Category));
+export default withServiceManager(withRouter(Category));

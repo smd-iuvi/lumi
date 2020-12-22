@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 
 import HomeFilms from '../../components/HomeFilms/HomeFilms';
 import Carousel from '../../components/Carousel/Carousel';
@@ -20,12 +20,17 @@ function Home(props) {
     setLoadingRecents(true);
     setLoadingPopulars(true);
 
-    const { firebase } = props;
+    const { serviceManager } = props;
 
-    firebase.video
+    serviceManager.video
       .get()
       .then(videos => {
-        setRecentsVideos(videos);
+        const sortedVideos = videos.sort((a, b) => {
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+        setRecentsVideos(sortedVideos.slice(0, 5));
         setLoadingRecents(false);
       })
       .catch(error => {
@@ -33,8 +38,8 @@ function Home(props) {
         setLoadingRecents(false);
       });
 
-    firebase.video
-      .getPopulars(10)
+    serviceManager.video
+      .get()
       .then(videos => {
         setPopularsVideos(videos);
         setLoadingPopulars(false);
@@ -44,7 +49,7 @@ function Home(props) {
         setLoadingPopulars(false);
       });
 
-    firebase.event
+    serviceManager.event
       .getNext(3)
       .then(events => {
         setEvents(events);
@@ -52,20 +57,20 @@ function Home(props) {
       .catch(error => setError(error));
 
     return () => {
-      const { firebase } = props;
-      firebase.video.turnOff();
+      const { serviceManager } = props;
+      serviceManager.video.turnOff();
     }
   }, []);
 
   return (
-    <div className="container">
+    < div className="container" >
       <Carousel videos={recentsVideos} loading={loadingRecents} />
       <div className="bannersHome">
         <HomeFilms videos={popularsVideos} loading={loadingPopulars} />
-        <EventsList events={events} loading={loadingEvents} />
+        {/* <EventsList events={events} loading={loadingEvents} /> */}
       </div>
-    </div>
+    </div >
   );
 }
 
-export default withFirebase(Home);
+export default withServiceManager(Home);

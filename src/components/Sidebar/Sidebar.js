@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 
 import './Sidebar.css';
 
@@ -18,7 +18,7 @@ import Upload from '../Upload/Upload';
 import logo from './assets/icons/lumi.svg';
 
 import { Link } from 'react-router-dom';
-import { withAuthUser } from '../../Firebase/Session';
+import { withAuthUser } from '../../services/Session';
 
 function Navbar(props) {
   const [logged, setLogged] = useState(true);
@@ -33,8 +33,8 @@ function Navbar(props) {
   };
 
   function onSignOut() {
-    const { firebase, history } = props;
-    firebase.doSignOut().then(() => {
+    const { serviceManager, history } = props;
+    serviceManager.user.signOut().then(() => {
       history.push(ROUTES.HOME);
     });
   };
@@ -154,6 +154,6 @@ function Navbar(props) {
 
 export default compose(
   withAuthUser,
-  withFirebase,
+  withServiceManager,
   withRouter
 )(Navbar);

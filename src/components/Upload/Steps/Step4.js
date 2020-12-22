@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './Steps.css';
 
-import { withFirebase } from '../../../Firebase';
+import { withServiceManager } from '../../../services';
 
 import SelectBox from '../SelectBox/SelectBox';
 import TextFieldInformation from '../TextFieldInformation/TextFieldInformation';
@@ -15,9 +15,9 @@ function Step4(props) {
   const [error, setError] = useState([]);
 
   useEffect(() => {
-    const { firebase } = props;
+    const { serviceManager } = props;
 
-    firebase.discipline
+    serviceManager.discipline
       .get()
       .then(disciplines => {
         const disciplineDataSource = disciplines.map(
@@ -29,7 +29,7 @@ function Step4(props) {
         setError(error);
       });
 
-    firebase.semester
+    serviceManager.semester
       .get()
       .then(semesters => {
         const semesterDataSource = semesters.map(semester => semester.name);
@@ -39,7 +39,7 @@ function Step4(props) {
         setError(error);
       });
 
-    firebase.event
+    serviceManager.event
       .get()
       .then(events => {
         const eventDataSource = events.map(event => event.name);
@@ -91,7 +91,7 @@ function Step4(props) {
         onChange={onChange}
         placeholder="Sobre o trabalho"
       />
-      <h1 className="Medium-Text-Medium">Evento de disciplina</h1>
+      {/* <h1 className="Medium-Text-Medium">Evento de disciplina</h1>
       <div className="checkDiscipline">
         <input
           type="checkbox"
@@ -114,9 +114,9 @@ function Step4(props) {
           onChange={onChange}
           placeholder="Selecione o evento"
         />
-      )}
+      )} */}
     </div>
   );
 }
 
-export default withFirebase(Step4);
+export default withServiceManager(Step4);

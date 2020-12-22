@@ -7,9 +7,9 @@ import iconNotUser from './assets/user-placeholder.svg';
 import NewComment from './NewComment/NewComment';
 import Comment from './Comment/Comment';
 import EmptyLabel from '../EmptyLabel/EmptyLabel';
-import { withFirebase } from '../../Firebase';
-import { QueryableFields as CommentModel } from '../../Firebase/Models/Comment';
-import { withAuthUser } from '../../Firebase/Session';
+import { withServiceManager } from '../../services';
+import { QueryableFields as CommentModel } from '../../services/Models/Comment';
+import { withAuthUser } from '../../services/Session';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
@@ -23,7 +23,7 @@ function CommentSection(props) {
   }, []);
 
   function onSendComment() {
-    const { firebase, videoId, userId } = props;
+    const { serviceManager, videoId, userId } = props;
 
     const comment = {
       videoId: videoId,
@@ -31,7 +31,7 @@ function CommentSection(props) {
       comment: newComment
     };
 
-    firebase.comment
+    serviceManager.comment
       .create(comment)
       .then(() => {
         setNewComment('');
@@ -41,8 +41,8 @@ function CommentSection(props) {
   };
 
   function fetchComments() {
-    const { firebase, videoId } = props;
-    firebase.comment
+    const { serviceManager, videoId } = props;
+    serviceManager.comment
       .getCommentsBy(CommentModel.VIDEO_ID, videoId)
       .then(comments => {
         setCommentsList(comments ? comments.reverse() : []);
@@ -51,12 +51,12 @@ function CommentSection(props) {
   };
 
   function onDeleteComment(comment) {
-    const { firebase, authUser } = props;
+    const { serviceManager, authUser } = props;
 
     if (comment.userId === authUser.uid) {
-      firebase.comment.delete(comment.uid, error => {
-        console.log(error);
-      });
+      serviceManager.comment.delete(comment.uid)
+        .then()
+        .catch(err => {})
     }
   };
 
@@ -119,6 +119,6 @@ function CommentSection(props) {
 }
 
 export default compose(
-  withFirebase,
+  withServiceManager,
   withAuthUser
 )(CommentSection);

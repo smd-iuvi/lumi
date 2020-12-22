@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './EventsControll.css';
 
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 
 import Event from './Event/Event';
 import ManageEvent from './ManageEvent/ManageEvent';
@@ -58,4 +58,4 @@ function EventsControll(props) {
   return <div className="EventsControll">{container}</div>;
 }
 
-export default withFirebase(EventsControll);
+export default withServiceManager(EventsControll);

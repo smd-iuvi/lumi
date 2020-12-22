@@ -4,8 +4,8 @@ import './Upload.css';
 
 import iconX from './assets/x.svg';
 
-import { withFirebase } from '../../Firebase';
-import { withAuthUser } from '../../Firebase/Session';
+import { withServiceManager } from '../../services';
+import { withAuthUser } from '../../services/Session';
 
 import Header from '../Header/Header';
 import StepBar from './StepBar/StepBar';
@@ -27,6 +27,7 @@ function Upload(props) {
   const [steps, setSteps] = useState(INITIAL_STATE.steps);
 
   function onChange(e) {
+    console.log(e.target.value)
     const currentStepState = steps[step - 1];
     const newCurrentStepState = {
       ...currentStepState,
@@ -61,8 +62,8 @@ function Upload(props) {
   };
 
   function onUpload(image) {
-    const { firebase } = props;
-    firebase
+    const { serviceManager } = props;
+    serviceManager
       .upload(image, 'thumbnail', snapshot => console.log(snapshot))
       .then(url => {
         const currentStepState = steps[step - 1];
@@ -85,14 +86,14 @@ function Upload(props) {
   };
 
   function onSend() {
-    const { firebase, authUser } = props;
+    const { serviceManager, authUser } = props;
 
     setSending(true);
 
     const video = {
       title: steps[0].title.value,
       imageUrl: steps[0].imageUrl.value,
-      link: steps[0].link.value,
+      url: steps[0].link.value,
       description: steps[0].description.value,
       genre: steps[0].genre.value,
       parentalRating: steps[0].parentalRating.value,
@@ -111,7 +112,7 @@ function Upload(props) {
       claps: 0
     };
 
-    firebase.video
+    serviceManager.video
       .create(video)
       .then(() => {
         console.log('Criado');
@@ -312,4 +313,4 @@ function Upload(props) {
   );
 }
 
-export default withAuthUser(withFirebase(Upload));
+export default withAuthUser(withServiceManager(Upload));

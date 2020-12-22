@@ -18,11 +18,11 @@ const TabBarPlayer = ({ video, nextVideo, history, viewsLabel }) => {
       <div>
         <VideoInfo
           title={video ? video.title : null}
-          discipline={video ? video.discipline : null}
-          semester={video ? video.semester : null}
-          genre={video ? video.genre : null}
-          parentalRating={video ? video.parentalRating : null}
-          content={video ? video.content : null}
+          discipline={video && video.discipline ? `Disciplina: ${video.discipline.name}` : null}
+          semester={video && video.semester ? `Semestre: ${video.semester.year}.${video.semester.part}` : null}
+          genre={video && video.genre ? `Gênero: ${video.genre.name}` : null}
+          parentalRating={video && video.parentalRating ? video.parentalRating : null}
+          content={video && video.content ? video.content : null}
           viewsLabel={viewsLabel}
         />
       </div>

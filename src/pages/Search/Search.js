@@ -6,10 +6,12 @@ import './Search.css';
 import iconResultSearch from './assets/resultSearch.svg';
 import iconSearch from './assets/search.png';
 
+import { QueryableFields as Video } from '../../services/Models/Video';
+
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
-import { withFirebase } from '../../Firebase';
+import { withServiceManager } from '../../services';
 
 import TabBar from '../../components/TabBar/TabBar';
 import CardList from '../../components/CardList/CardList';
@@ -40,7 +42,7 @@ function Search(props) {
 
   useEffect(() => {
     const {
-      firebase,
+      serviceManager,
       match: { params }
     } = props;
 
@@ -52,7 +54,7 @@ function Search(props) {
     setVideosListState(newVideosListState);
     setDisciplinesListState(newDisciplinesListState);
 
-    firebase.user
+    serviceManager.user
       .getByName(params.searchTerm)
       .then(users => {
         const newUserListState = {
@@ -71,7 +73,7 @@ function Search(props) {
         setUsersListState(newUserListState);
       });
 
-    firebase.discipline
+    serviceManager.discipline
       .getByName(params.searchTerm)
       .then(disciplines => {
         const newDisciplinesListState = {
@@ -90,8 +92,8 @@ function Search(props) {
         setDisciplinesListState(newDisciplinesListState);
       });
 
-    firebase.video
-      .getByTitle(params.searchTerm)
+    serviceManager.video
+      .getVideosBy(Video.TITLE, params.searchTerm)
       .then(videos => {
         const newVideosListState = {
           ...videosListState,
@@ -209,5 +211,5 @@ function Search(props) {
 
 export default compose(
   withRouter,
-  withFirebase
+  withServiceManager
 )(Search);

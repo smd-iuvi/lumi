@@ -29,7 +29,7 @@ import Error404 from './pages/404/404';
 import RestrictedArea from './pages/RestrictedArea/RestrictedArea';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import Documentation from './pages/Documentation/Documentation';
-import { withAuthentification } from './Firebase/Session';
+import { withAuthentification } from './services/Session';
 
 function App(props) {
   const [width, setWidth] = useState(0);

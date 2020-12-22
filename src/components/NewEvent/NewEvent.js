@@ -3,8 +3,8 @@ import './NewEvent.css';
 
 import { INITIAL_STATE } from './InitialState';
 
-import { withFirebase } from '../../Firebase';
-import { withAuthUser } from '../../Firebase/Session';
+import { withServiceManager } from '../../services';
+import { withAuthUser } from '../../services/Session';
 
 import Header from '../Header/Header';
 import StepBar from './StepBar/StepBar';
@@ -13,8 +13,6 @@ import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 
 import iconX from './assets/x.svg';
-import { ninvoke } from 'q';
-import { database } from 'firebase';
 
 function NewEvent(props) {
   const [uploadingImage, setUploadingImage] = useState(INITIAL_STATE.uploadingImage);
@@ -42,8 +40,8 @@ function NewEvent(props) {
   };
 
   function onUpload(image) {
-    const { firebase } = props;
-    firebase
+    const { serviceManager } = props;
+    serviceManager
       .upload(image, 'event', snapshot => console.log(snapshot))
       .then(url => {
         const currentStepState = steps[step - 1];
@@ -122,7 +120,7 @@ function NewEvent(props) {
   };
 
   function onSend() {
-    const { firebase, authUser } = props;
+    const { serviceManager, authUser } = props;
 
     setSending(true);
 
@@ -137,7 +135,7 @@ function NewEvent(props) {
       createdBy: authUser.uid
     };
 
-    firebase.event
+    serviceManager.event
       .create(event)
       .then(() => {
         console.log('Criado');
@@ -253,4 +251,4 @@ function NewEvent(props) {
   );
 }
 
-export default withAuthUser(withFirebase(NewEvent));
+export default withAuthUser(withServiceManager(NewEvent));

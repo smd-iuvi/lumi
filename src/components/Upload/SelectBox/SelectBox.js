@@ -21,6 +21,8 @@ function SelectBox(props) {
     classes = 'SelectBox infosContainer invalid';
   }
 
+  console.log(dataSource)
+
   return (
     <div className={classes}>
       <select
@@ -33,7 +35,7 @@ function SelectBox(props) {
           {props.placeholder}
         </option>
         {dataSource.map(op => (
-          <option value={op}>{op}</option>
+          <option value={op.uid}>{op.name}</option>
         ))}
       </select>
     </div>
