@@ -43,7 +43,7 @@ function Profile(props) {
         'Minhas informações',
         'Meus envios',
         'Minha lista',
-        'Meus eventos'
+        //'Meus eventos'
       ]);
       setProfileTeacher(true);
 

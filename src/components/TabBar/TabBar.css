@@ -2,8 +2,6 @@
   background-color: var(--text-light);
   height: 144px;
   margin: 5em 1rem 0 1rem;
-  box-sizing: border-box;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
 }
 
 .tabBar .titleTabBar {

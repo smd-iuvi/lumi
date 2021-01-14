@@ -114,7 +114,7 @@ function Navbar(props) {
                 Minha lista
               </ButtonsBottom>
             </Link>
-            {authUser.role === ROLES.TEACHER ? (
+            {/* {authUser.role === ROLES.TEACHER ? (
               <Link to={ROUTES.PROFILE_MY_EVENTS} className="link">
                 <ButtonsBottom
                   newClass="iconBottom iconEvents"
@@ -123,7 +123,7 @@ function Navbar(props) {
                   Meus eventos
                 </ButtonsBottom>
               </Link>
-            ) : null}
+            ) : null} */}
           </div>
           {/* <Link to={ROUTES.PROFILE} className="link"> */}
           <ButtonsBottom newClass="iconBottom iconHelp">Ajuda</ButtonsBottom>
